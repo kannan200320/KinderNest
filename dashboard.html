@@ -66,13 +66,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="font-sans bg-gray-50 dark:bg-darknavy-deep text-gray-900 dark:text-gray-100 transition-colors duration-300 min-h-screen">
+<body class="dashboard-body font-sans bg-gray-50 dark:bg-darknavy-deep text-gray-900 dark:text-gray-100 transition-colors duration-300 min-h-screen">
 
   <!-- Main Layout Wrapper -->
   <div class="h-screen flex flex-col overflow-hidden">
     
     <!-- Top Header -->
-    <header class="h-16 bg-white dark:bg-darknavy-light border-b border-gray-200 dark:border-gray-800 px-4 sm:px-6 flex items-center justify-between z-30 sticky top-0 transition-colors">
+    <header class="dashboard-header h-16 shrink-0 bg-white dark:bg-darknavy-light border-b border-gray-200 dark:border-gray-800 px-4 sm:px-6 flex items-center justify-between z-30 transition-colors">
       <div class="flex items-center gap-3">
         <!-- Hamburger Menu for Mobile -->
         <button id="openSidebarBtn" class="w-10 h-10 rounded-xl border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-200 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-darknavy transition md:hidden" aria-label="Open menu">
@@ -169,7 +169,7 @@
       </aside>
 
       <!-- Main Dashboard Panel -->
-      <main class="flex-grow p-4 sm:p-6 md:p-8 relative bg-white dark:bg-darknavy-deep overflow-y-auto overflow-x-hidden w-full max-w-full">
+      <main class="flex-grow p-4 pt-5 sm:p-6 md:p-8 relative bg-white dark:bg-darknavy-deep overflow-y-auto overflow-x-hidden w-full max-w-full">
         
         <!-- Skeleton Loader Screen -->
         <div id="skeleton-loader" class="space-y-6">
@@ -286,9 +286,9 @@
                   <h3 class="font-bold text-lg text-black dark:text-white">Montessori Guide Observation Notes</h3>
                   <div class="space-y-4 text-xs">
                     <div class="p-4 bg-white dark:bg-darknavy-light rounded-xl border border-gray-100 dark:border-gray-850 space-y-2">
-                      <div class="flex justify-between items-center">
+                      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2">
                         <span class="font-bold text-magenta text-sm">Emily — Children's House (Sensorial & Math)</span>
-                        <span class="text-[9px] text-gray-400">Aug 20, 2026</span>
+                        <span class="text-[10px] text-gray-400 shrink-0 self-start sm:self-auto">Aug 20, 2026</span>
                       </div>
                       <p class="text-gray-600 dark:text-gray-400 leading-relaxed italic">
                         "Emily demonstrated deep, uninterrupted concentration with the Pink Tower and Brown Stair grading apparatus this morning. She unrolled her work mat with graceful precision, organized all ten prisms by thickness without error, and gently invited a younger peer to observe. Her fine-motor control and spatial reasoning have leaped forward."
@@ -296,9 +296,9 @@
                       <p class="text-[10px] font-extrabold text-gray-500">— Guide Clara Vance, AMI Lead Primary</p>
                     </div>
                     <div class="p-4 bg-white dark:bg-darknavy-light rounded-xl border border-gray-100 dark:border-gray-850 space-y-2">
-                      <div class="flex justify-between items-center">
+                      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2">
                         <span class="font-bold text-magenta text-sm">Leo — Lower Elementary (Botany & Research)</span>
-                        <span class="text-[9px] text-gray-400">Aug 18, 2026</span>
+                        <span class="text-[10px] text-gray-400 shrink-0 self-start sm:self-auto">Aug 18, 2026</span>
                       </div>
                       <p class="text-gray-600 dark:text-gray-400 leading-relaxed italic">
                         "Leo conducted a collaborative botany study examining leaf venation patterns in our outdoor courtyard garden. He used the botanical cabinet cards to cross-reference monocot and dicot leaf specimens, drawing detailed cross-sections in his nature journal. His self-directed curiosity and group leadership are truly inspiring."
@@ -306,9 +306,9 @@
                       <p class="text-[10px] font-extrabold text-gray-500">— Guide Marcus Chen, AMS Elementary Lead</p>
                     </div>
                     <div class="p-4 bg-white dark:bg-darknavy-light rounded-xl border border-gray-100 dark:border-gray-850 space-y-2">
-                      <div class="flex justify-between items-center">
+                      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2">
                         <span class="font-bold text-magenta text-sm">Noah — Toddler Community (Practical Life & Motor Mastery)</span>
-                        <span class="text-[9px] text-gray-400">Aug 22, 2026</span>
+                        <span class="text-[10px] text-gray-400 shrink-0 self-start sm:self-auto">Aug 22, 2026</span>
                       </div>
                       <p class="text-gray-600 dark:text-gray-400 leading-relaxed italic">
                         "Noah engaged in independent water pouring and grain transferring with serene concentration. He carefully selected a porcelain pitcher, poured water without spilling into three small glass cups, and wiped the tray with a natural sponge. His fine-motor coordination and sense of purposeful order are blossoming beautifully."
@@ -750,17 +750,17 @@
           <!-- TAB 3: ATTENDANCE RECORD -->
           <div id="tab-attendance" class="tab-panel hidden space-y-6">
             <div>
-              <h2 class="text-3xl font-extrabold text-black dark:text-white">Daily Work Cycle Attendance</h2>
-              <p class="text-xs text-gray-400 mt-1">Calendar logs of morning work cycles and outdoor classroom presence for Emily and Leo.</p>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-black dark:text-white">Daily Work Cycle Attendance</h2>
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Calendar logs of morning work cycles and outdoor classroom presence for Emily and Leo.</p>
             </div>
             
             <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-4">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div class="space-x-2 flex flex-wrap gap-2">
-                  <button class="px-4 py-2 bg-magenta text-white text-xs font-bold rounded-xl" onclick="toggleStudentAttendance('emily')">Emily Jenkins (Primary)</button>
-                  <button class="px-4 py-2 bg-white dark:bg-darknavy-light border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 text-xs font-bold rounded-xl" onclick="toggleStudentAttendance('leo')">Leo Jenkins (Elementary)</button>
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                <div class="flex flex-wrap gap-2">
+                  <button class="px-3.5 sm:px-4 py-2 bg-magenta text-white text-xs font-bold rounded-xl transition shadow-xs" onclick="toggleStudentAttendance('emily')">Emily Jenkins (Primary)</button>
+                  <button class="px-3.5 sm:px-4 py-2 bg-white dark:bg-darknavy-light border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 text-xs font-bold rounded-xl transition hover:border-magenta" onclick="toggleStudentAttendance('leo')">Leo Jenkins (Elementary)</button>
                 </div>
-                <select id="attendance-month" class="px-4 py-2 border border-gray-200 dark:border-gray-800 bg-white dark:bg-darknavy rounded-xl text-xs font-bold outline-none">
+                <select id="attendance-month" class="w-full sm:w-auto px-4 py-2 border border-gray-200 dark:border-gray-800 bg-white dark:bg-darknavy rounded-xl text-xs font-bold outline-none">
                   <option value="August 2026">August 2026</option>
                   <option value="July 2026">July 2026</option>
                 </select>
@@ -789,12 +789,52 @@
           <!-- TAB 5: BILLING & INVOICES -->
           <div id="tab-membership" class="tab-panel hidden space-y-6">
             <div>
-              <h2 class="text-3xl font-extrabold text-black dark:text-white">Pod Tuition & Invoices</h2>
-              <p class="text-xs text-gray-400 mt-1">Manage term tuition fees, materials contributions, and download official payment receipts.</p>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-black dark:text-white">Pod Tuition & Invoices</h2>
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Manage term tuition fees, materials contributions, and download official payment receipts.</p>
             </div>
             
-            <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-6">
-              <div class="overflow-x-auto">
+            <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-4">
+              <!-- MOBILE VIEW: Clean Responsive Invoice Cards (Zero Horizontal Scroll) -->
+              <div class="block md:hidden space-y-3 w-full" id="billing-cards-mobile">
+                <!-- Invoice 003 -->
+                <div class="p-3.5 sm:p-4 bg-white dark:bg-darknavy-light rounded-xl border border-gray-150 dark:border-gray-850 space-y-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="font-bold text-xs text-gray-700 dark:text-gray-300">#INV-2026-003</span>
+                    <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 rounded-full font-bold text-[10px] uppercase" id="status-mob-003">Paid</span>
+                  </div>
+                  <div class="space-y-0.5">
+                    <h4 class="font-bold text-sm text-magenta">Emily Jenkins</h4>
+                    <p class="text-[11px] text-gray-500 dark:text-gray-400">Term 1 Children's House Tuition</p>
+                  </div>
+                  <div class="flex items-center justify-between pt-2 border-t border-gray-100 dark:border-gray-800/80">
+                    <span class="font-extrabold text-sm sm:text-base text-black dark:text-white">$380.00</span>
+                    <button id="btn-mob-2026-003" onclick="downloadReceipt('2026-003', '$380.00')" class="px-3.5 py-1.5 bg-magenta hover:bg-magenta-hover text-white rounded-xl font-bold transition shadow shadow-magenta/20 text-xs">
+                      Receipt
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Invoice 004 -->
+                <div class="p-3.5 sm:p-4 bg-white dark:bg-darknavy-light rounded-xl border border-gray-150 dark:border-gray-850 space-y-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="font-bold text-xs text-gray-700 dark:text-gray-300">#INV-2026-004</span>
+                    <span class="px-2.5 py-0.5 bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300 rounded-full font-bold text-[10px] uppercase" id="status-mob-004">Unpaid</span>
+                  </div>
+                  <div class="space-y-0.5">
+                    <h4 class="font-bold text-sm text-magenta">Leo Jenkins</h4>
+                    <p class="text-[11px] text-gray-500 dark:text-gray-400">Term 1 Elementary Pod Tuition</p>
+                  </div>
+                  <div class="flex items-center justify-between pt-2 border-t border-gray-100 dark:border-gray-800/80">
+                    <span class="font-extrabold text-sm sm:text-base text-black dark:text-white">$420.00</span>
+                    <button id="pay-btn-mob-004" onclick="payInvoice('2026-004', '$420.00')" class="px-3.5 py-1.5 bg-magenta hover:bg-magenta-hover text-white rounded-xl font-bold transition shadow shadow-magenta/20 text-xs">
+                      Pay Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- DESKTOP VIEW: Full Multi-Column Table -->
+              <div class="hidden md:block overflow-x-auto">
                 <table class="w-full text-start border-collapse text-xs">
                   <thead>
                     <tr class="border-b border-gray-200 dark:border-gray-850 text-gray-500 tracking-wider">
@@ -840,8 +880,8 @@
           <!-- TAB 6: PROFILE SETTINGS -->
           <div id="tab-profile" class="tab-panel hidden space-y-6">
             <div>
-              <h2 class="text-3xl font-bold text-black dark:text-white">Family Profile Settings</h2>
-              <p class="text-xs text-gray-400 mt-1">Update parent contact information and preferred emergency contacts.</p>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-black dark:text-white">Family Profile Settings</h2>
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Update parent contact information and preferred emergency contacts.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -895,7 +935,7 @@
                       </select>
                     </div>
                   </div>
-                  <button type="submit" class="px-6 py-3 bg-magenta hover:bg-magenta-hover text-white font-bold rounded-xl transition-all shadow shadow-magenta/20">Save Profile Changes</button>
+                  <button type="submit" class="w-full sm:w-auto px-6 py-3 bg-magenta hover:bg-magenta-hover text-white font-bold rounded-xl transition-all shadow shadow-magenta/20">Save Profile Changes</button>
                 </form>
               </div>
 
@@ -1287,6 +1327,29 @@
         billingTbody.appendChild(invoiceRow);
       }
 
+      const billingMobile = document.getElementById("billing-cards-mobile");
+      if (billingMobile) {
+        const mobCard = document.createElement("div");
+        mobCard.className = "p-3.5 sm:p-4 bg-white dark:bg-darknavy-light rounded-xl border border-gray-150 dark:border-gray-850 space-y-2.5";
+        mobCard.innerHTML = `
+          <div class="flex items-center justify-between gap-2">
+            <span class="font-bold text-xs text-gray-700 dark:text-gray-300">#INV-${invId}</span>
+            <span class="px-2.5 py-0.5 bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300 rounded-full font-bold text-[10px] uppercase" id="status-mob-${paddedNum}">Unpaid</span>
+          </div>
+          <div class="space-y-0.5">
+            <h4 class="font-bold text-sm text-magenta">${name}</h4>
+            <p class="text-[11px] text-gray-500 dark:text-gray-400">Term 1 ${style} Tuition</p>
+          </div>
+          <div class="flex items-center justify-between pt-2 border-t border-gray-100 dark:border-gray-800/80">
+            <span class="font-extrabold text-sm sm:text-base text-black dark:text-white">${amount}</span>
+            <button id="pay-btn-mob-${paddedNum}" onclick="payInvoice('${invId}', '${amount}')" class="px-3.5 py-1.5 bg-magenta hover:bg-magenta-hover text-white rounded-xl font-bold transition shadow shadow-magenta/20 text-xs">
+              Pay Now
+            </button>
+          </div>
+        `;
+        billingMobile.appendChild(mobCard);
+      }
+
       updateOverviewBillingStatus();
 
       const overviewList = document.getElementById("overview-kids-list");
@@ -1561,20 +1624,27 @@
       const parts = currentPaymentInvoiceId.split('-');
       const suffix = parts[parts.length - 1];
       const statusEl = document.getElementById(`status-${suffix}`);
+      const statusMob = document.getElementById(`status-mob-${suffix}`);
       const payBtn = document.getElementById(`pay-btn-${suffix}`);
+      const payBtnMob = document.getElementById(`pay-btn-mob-${suffix}`);
       
-      if (statusEl) {
-        statusEl.textContent = "Paid";
-        statusEl.className = "px-2.5 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 rounded-full font-bold text-[10px] uppercase";
-      }
-      if (payBtn) {
-        payBtn.textContent = "Receipt";
-        payBtn.id = `btn-${currentPaymentInvoiceId}`;
-        payBtn.className = "px-4 py-2 bg-magenta hover:bg-magenta-hover text-white rounded-xl font-bold transition shadow shadow-magenta/20";
-        payBtn.onclick = function() {
-          downloadReceipt(currentPaymentInvoiceId, currentPaymentAmount);
-        };
-      }
+      [statusEl, statusMob].forEach(el => {
+        if (el) {
+          el.textContent = "Paid";
+          el.className = "px-2.5 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 rounded-full font-bold text-[10px] uppercase";
+        }
+      });
+      [payBtn, payBtnMob].forEach(btn => {
+        if (btn) {
+          btn.textContent = "Receipt";
+          btn.className = "px-3.5 sm:px-4 py-1.5 sm:py-2 bg-magenta hover:bg-magenta-hover text-white rounded-xl font-bold transition shadow shadow-magenta/20 text-xs";
+          btn.onclick = function() {
+            downloadReceipt(currentPaymentInvoiceId, currentPaymentAmount);
+          };
+        }
+      });
+      if (payBtn) payBtn.id = `btn-${currentPaymentInvoiceId}`;
+      if (payBtnMob) payBtnMob.id = `btn-mob-${currentPaymentInvoiceId}`;
       
       updateOverviewBillingStatus();
       
@@ -1601,77 +1671,85 @@
 
     function downloadReceipt(invId, amount) {
       const btn = document.getElementById(`btn-${invId}`);
-      if (btn) {
-        btn.innerHTML = `<svg class="animate-spin -ml-1 mr-2 h-4 w-4 inline text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Generating...`;
+      const btnMob = document.getElementById(`btn-mob-${invId}`);
+      const targets = [btn, btnMob].filter(Boolean);
+
+      targets.forEach(b => {
+        b.innerHTML = `<svg class="animate-spin -ml-1 mr-2 h-4 w-4 inline text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Generating...`;
+      });
+
+      setTimeout(() => {
+        targets.forEach(b => {
+          b.innerHTML = `Downloaded`;
+          b.className = "px-3.5 sm:px-4 py-1.5 sm:py-2 bg-emerald-600 text-white rounded-xl font-bold cursor-not-allowed text-xs";
+          b.disabled = true;
+        });
+
+        // Trigger File Download
+        const receiptHTML = `
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="UTF-8">
+            <title>Receipt #INV-${invId} - KinderNest</title>
+            <style>
+              body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; padding: 40px; color: #2D3748; background: #FFFDF9; }
+              .header { border-bottom: 2px solid #E07A5F; padding-bottom: 25px; margin-bottom: 30px; }
+              .brand { color: #E07A5F; font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
+              .table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+              .table th, .table td { padding: 14px; border: 1px solid #E2E8F0; text-align: left; }
+              .table th { background: #E07A5F; color: white; font-weight: 700; font-size: 13px; text-transform: uppercase; }
+              .badge { display: inline-block; padding: 4px 10px; background: #D1FAE5; color: #065F46; border-radius: 9999px; font-weight: 700; font-size: 12px; }
+            </style>
+          </head>
+          <body>
+            <div class="header">
+              <div class="brand">KINDERNEST MONTESSORI POD</div>
+              <p style="color: #718096; margin-top: 4px; font-size: 14px;">Official Learning Pod Enrollment & Tuition Receipt</p>
+              <p style="color: #A0AEC0; font-size: 12px;">42 Blossom Valley Way, Sunnyvale, CA 94087 • contact@kindernest.org</p>
+            </div>
+            <p><strong>Receipt ID:</strong> #INV-${invId}</p>
+            <p><strong>Issued Date:</strong> ${new Date().toLocaleDateString()}</p>
+            <p><strong>Payment Status:</strong> <span class="badge">PAID</span></p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Curriculum & Pod Description</th>
+                  <th>Students</th>
+                  <th>Term Fee</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Montessori Learning Pod Tuition & Learning Materials Fee (Term 1)</td>
+                  <td>1 Enrolled Child</td>
+                  <td>${amount}</td>
+                </tr>
+              </tbody>
+            </table>
+            <h2 style="text-align: right; margin-top: 30px; color: #E07A5F;">Total Paid: ${amount}</h2>
+            <p style="margin-top: 50px; font-size: 13px; color: #718096; text-align: center;">
+              "Education is a natural process carried out by the child and is not acquired by listening to words but by experiences in the environment." — Dr. Maria Montessori
+            </p>
+          </body>
+          </html>
+        `;
+        const blob = new Blob([receiptHTML], { type: 'text/html' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `Receipt_${invId}.html`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
         setTimeout(() => {
-          btn.innerHTML = `Downloaded`;
-          btn.className = "px-4 py-2 bg-emerald-600 text-white rounded-xl font-bold cursor-not-allowed";
-          btn.disabled = true;
-
-          // Trigger File Download
-          const receiptHTML = `
-            <!DOCTYPE html>
-            <html>
-            <head>
-              <meta charset="UTF-8">
-              <title>Receipt #INV-${invId} - KinderNest</title>
-              <style>
-                body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; padding: 40px; color: #2D3748; background: #FFFDF9; }
-                .header { border-bottom: 2px solid #E07A5F; padding-bottom: 25px; margin-bottom: 30px; }
-                .brand { color: #E07A5F; font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
-                .table { width: 100%; border-collapse: collapse; margin-top: 30px; }
-                .table th, .table td { padding: 14px; border: 1px solid #E2E8F0; text-align: left; }
-                .table th { background: #E07A5F; color: white; font-weight: 700; font-size: 13px; text-transform: uppercase; }
-                .badge { display: inline-block; padding: 4px 10px; background: #D1FAE5; color: #065F46; border-radius: 9999px; font-weight: 700; font-size: 12px; }
-              </style>
-            </head>
-            <body>
-              <div class="header">
-                <div class="brand">KINDERNEST MONTESSORI POD</div>
-                <p style="color: #718096; margin-top: 4px; font-size: 14px;">Official Learning Pod Enrollment & Tuition Receipt</p>
-                <p style="color: #A0AEC0; font-size: 12px;">42 Blossom Valley Way, Sunnyvale, CA 94087 • contact@kindernest.org</p>
-              </div>
-              <p><strong>Receipt ID:</strong> #INV-${invId}</p>
-              <p><strong>Issued Date:</strong> ${new Date().toLocaleDateString()}</p>
-              <p><strong>Payment Status:</strong> <span class="badge">PAID</span></p>
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Curriculum & Pod Description</th>
-                    <th>Students</th>
-                    <th>Term Fee</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Montessori Learning Pod Tuition & Learning Materials Fee (Term 1)</td>
-                    <td>1 Enrolled Child</td>
-                    <td>${amount}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <h2 style="text-align: right; margin-top: 30px; color: #E07A5F;">Total Paid: ${amount}</h2>
-              <p style="margin-top: 50px; font-size: 13px; color: #718096; text-align: center;">
-                "Education is a natural process carried out by the child and is not acquired by listening to words but by experiences in the environment." — Dr. Maria Montessori
-              </p>
-            </body>
-            </html>
-          `;
-          const blob = new Blob([receiptHTML], { type: 'text/html' });
-          const link = document.createElement('a');
-          link.href = URL.createObjectURL(blob);
-          link.download = `Receipt_${invId}.html`;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-
-          setTimeout(() => {
-            btn.innerHTML = `Receipt`;
-            btn.className = "px-4 py-2 bg-magenta hover:bg-magenta-hover text-white rounded-xl font-bold transition shadow shadow-magenta/20";
-            btn.disabled = false;
-          }, 1000);
-        }, 1200);
-      }
+          targets.forEach(b => {
+            b.innerHTML = `Receipt`;
+            b.className = "px-3.5 sm:px-4 py-1.5 sm:py-2 bg-magenta hover:bg-magenta-hover text-white rounded-xl font-bold transition shadow shadow-magenta/20 text-xs";
+            b.disabled = false;
+          });
+        }, 1000);
+      }, 1200);
     }
 
     function getInitials(name) {

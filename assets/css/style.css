@@ -210,21 +210,38 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
   border-color: #E07A5F !important;
 }
 
-/* Prevent horizontal layout shifts across page transitions */
+/* Prevent horizontal layout shifts and unwanted horizontal scrolling across all viewports */
 html {
   scrollbar-gutter: stable;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+body {
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
-/* Universal Sticky / Fixed Navigation Bar Across All Pages */
-header.fixed,
-header.sticky,
-body > header {
+/* Universal Sticky / Fixed Navigation Bar Across All Pages (Excluding Dashboard App Shell) */
+body:not(.dashboard-body) > header,
+header.fixed:not(.dashboard-header),
+header.sticky:not(.dashboard-header) {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   z-index: 50 !important;
   width: 100% !important;
+}
+
+/* Dashboard App Header: stays in normal flex document flow so it never overlaps content */
+.dashboard-header {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  width: 100% !important;
+  flex-shrink: 0 !important;
+  z-index: 30 !important;
 }
 
 /* Mobile menu drawer scrolling and full visibility */
