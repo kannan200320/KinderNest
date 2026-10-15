@@ -66,17 +66,21 @@ document.addEventListener("DOMContentLoaded", () => {
   socialContainers.forEach(container => {
     const links = container.querySelectorAll('a');
     if (links.length >= 4) {
-      links[0].href = 'https://www.instagram.com/kindernestmontessori';
+      links[0].href = 'https://www.instagram.com/';
       links[0].target = '_blank';
+      links[0].rel = 'noopener';
       
-      links[1].href = 'https://www.facebook.com/kindernestmontessori';
+      links[1].href = 'https://www.facebook.com/';
       links[1].target = '_blank';
+      links[1].rel = 'noopener';
       
-      links[2].href = 'https://x.com/kindernestpod';
+      links[2].href = 'https://x.com/';
       links[2].target = '_blank';
+      links[2].rel = 'noopener';
       
-      links[3].href = 'https://www.linkedin.com/company/kindernestmontessori';
+      links[3].href = 'https://linkedin.com';
       links[3].target = '_blank';
+      links[3].rel = 'noopener';
     }
   });
 
@@ -99,24 +103,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // 2. Ensure RTL button uses the exact opposing arrows SVG symbol
       rtlBtn.innerHTML = `
-        <svg class="w-4.5 h-4.5 text-gray-555 dark:text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="w-4.5 h-4.5 text-gray-600 dark:text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <!-- Top Arrow: Right to Left -->
           <path d="M20 8H4M8 4L4 8l4 4" />
           <!-- Bottom Arrow: Left to Right -->
           <path d="M4 16h16m-4-4l4 4-4 4" />
         </svg>
       `;
-      rtlBtn.className = 'rtl-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy-light hover:bg-gray-100 dark:hover:bg-darknavy text-gray-555 dark:text-gray-400 transition-colors duration-200 flex items-center justify-center shrink-0 w-9 h-9 sm:w-10 sm:h-10' + rtlHiddenClass;
+      rtlBtn.className = 'rtl-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy-light hover:bg-gray-100 dark:hover:bg-darknavy text-gray-600 dark:text-gray-300 transition-colors duration-200 flex items-center justify-center shrink-0 w-9 h-9 sm:w-10 sm:h-10' + rtlHiddenClass;
       
       // Ensure Theme button uses the exact moon and sun SVG symbols
       const isDark = document.documentElement.classList.contains('dark');
       themeBtn.innerHTML = `
         <!-- Moon Icon -->
-        <svg class="theme-toggle-moon w-4.5 h-4.5 text-gray-555 dark:text-gray-400 fill-current ${isDark ? 'hidden' : ''}" viewBox="0 0 24 24">
+        <svg class="theme-toggle-moon w-4.5 h-4.5 text-gray-600 dark:text-gray-300 fill-current ${isDark ? 'hidden' : ''}" viewBox="0 0 24 24">
           <path d="M12.3 22h-.1c-5.5 0-10-4.5-10-10 0-4.8 3.5-8.9 8.2-9.8.5-.1 1 .2 1.2.7.2.5 0 1.1-.4 1.4-1.2.9-1.9 2.2-1.9 3.7 0 3.9 3.2 7.1 7.1 7.1 1.5 0 2.8-.7 3.7-1.9.3-.4.9-.6 1.4-.4.5.2.8.7.7 1.2-.9 4.7-5 8.2-9.8 8.2z"/>
         </svg>
         <!-- Sun Icon -->
-        <svg class="theme-toggle-sun w-4.5 h-4.5 text-gray-555 dark:text-gray-400 ${isDark ? '' : 'hidden'}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="theme-toggle-sun w-4.5 h-4.5 text-gray-600 dark:text-gray-300 ${isDark ? '' : 'hidden'}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="5"/>
           <line x1="12" y1="1" x2="12" y2="3"/>
           <line x1="12" y1="21" x2="12" y2="23"/>
@@ -128,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
         </svg>
       `;
-      themeBtn.className = 'theme-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy-light hover:bg-gray-100 dark:hover:bg-darknavy text-gray-555 dark:text-gray-400 transition-colors duration-200 flex items-center justify-center shrink-0 w-9 h-9 sm:w-10 sm:h-10' + themeHiddenClass;
+      themeBtn.className = 'theme-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy-light hover:bg-gray-100 dark:hover:bg-darknavy text-gray-600 dark:text-gray-300 transition-colors duration-200 flex items-center justify-center shrink-0 w-9 h-9 sm:w-10 sm:h-10' + themeHiddenClass;
       
       // 3. Re-order them: Theme Toggle first, RTL Toggle second
       const parent = themeBtn.parentElement;
@@ -218,26 +222,43 @@ document.addEventListener('DOMContentLoaded', () => {
 function initTheme() {
   const themeToggleBtns = document.querySelectorAll('.theme-toggle');
   
-  // Set initial state
-  if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  // Set initial state matching documentElement class set by head script
+  const isDark = document.documentElement.classList.contains('dark') || 
+    localStorage.getItem('color-theme') === 'dark' || 
+    (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  
+  if (isDark) {
     document.documentElement.classList.add('dark');
-    updateThemeToggleIcons(true);
   } else {
     document.documentElement.classList.remove('dark');
-    updateThemeToggleIcons(false);
   }
+  updateThemeToggleIcons(isDark);
 
   themeToggleBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-      if (document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('color-theme', 'light');
-        updateThemeToggleIcons(false);
-      } else {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Temporarily disable CSS transitions across the entire DOM to eliminate flicker/glitch
+      document.documentElement.classList.add('no-theme-transition');
+      
+      const willBeDark = !document.documentElement.classList.contains('dark');
+      if (willBeDark) {
         document.documentElement.classList.add('dark');
         localStorage.setItem('color-theme', 'dark');
         updateThemeToggleIcons(true);
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+        updateThemeToggleIcons(false);
       }
+      
+      // Force instantaneous synchronous browser layout reflow
+      void document.documentElement.offsetHeight;
+      
+      // Re-enable normal interactive transitions after repainting
+      setTimeout(() => {
+        document.documentElement.classList.remove('no-theme-transition');
+      }, 40);
     });
   });
 }
@@ -254,6 +275,11 @@ function updateThemeToggleIcons(isDark) {
   moonIcons.forEach(icon => {
     if (isDark) icon.classList.add('hidden');
     else icon.classList.remove('hidden');
+  });
+
+  document.querySelectorAll('.theme-toggle').forEach(btn => {
+    btn.setAttribute('aria-label', isDark ? 'Switch to Bright Mode' : 'Switch to Dark Mode');
+    btn.setAttribute('title', isDark ? 'Switch to Bright Mode' : 'Switch to Dark Mode');
   });
 }
 

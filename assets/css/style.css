@@ -1,8 +1,29 @@
 /* KinderNest Montessori Learning Pod Custom CSS */
 
-/* Custom smooth transitions for dark mode */
-html, body {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+/* Prevent transition glitch, flashing, and color lag when toggling dark and bright mode */
+.no-theme-transition,
+.no-theme-transition *,
+.no-theme-transition *::before,
+.no-theme-transition *::after {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  -ms-transition: none !important;
+  transition: none !important;
+}
+
+/* Ensure mobile header never displays theme toggle (desktop only) */
+@media (max-width: 1279px) {
+  header .xl\:hidden .theme-toggle,
+  header .theme-toggle.xl\:hidden,
+  header #mobile-theme-toggle {
+    display: none !important;
+  }
+}
+@media (max-width: 767px) {
+  header .theme-toggle {
+    display: none !important;
+  }
 }
 
 /* Scrollbar styling using warm Montessori colors */
@@ -324,7 +345,11 @@ section p {
 
 /* 1. Base Interactive Element Transitions */
 a, button, input[type="submit"], input[type="button"], .category-btn, .theme-toggle, .rtl-toggle {
-  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: color 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 /* 2. Primary Action Buttons (bg-magenta, submit buttons, parent portal CTAs) */
@@ -392,11 +417,14 @@ a[class*="border-white"],
 button[class*="border-white"] {
   border-color: rgba(255, 255, 255, 0.75) !important;
   color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background-color: transparent !important;
 }
 a[class*="border-white"]:hover,
 button[class*="border-white"]:hover {
   background-color: #ffffff !important;
-  color: #C85A3E !important;
+  color: #E07A5F !important;
+  -webkit-text-fill-color: #E07A5F !important;
   border-color: #ffffff !important;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22) !important;
   transform: translateY(-2px);
@@ -404,7 +432,8 @@ button[class*="border-white"]:hover {
 .dark a[class*="border-white"]:hover,
 .dark button[class*="border-white"]:hover {
   background-color: #ffffff !important;
-  color: #C85A3E !important;
+  color: #E07A5F !important;
+  -webkit-text-fill-color: #E07A5F !important;
   border-color: #ffffff !important;
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.4) !important;
   transform: translateY(-2px);
@@ -414,7 +443,11 @@ button[class*="border-white"]:hover {
 #hero a[class*="border-gray"],
 a.border-gray-200, a.border-gray-700,
 button.border-gray-200, button.border-gray-700 {
-  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: color 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 #hero a[class*="border-gray"]:hover,
 a.border-gray-200:hover,
@@ -468,23 +501,34 @@ button.border-gray-200:hover {
   transform: translateY(-1px);
 }
 
-/* 7. Header Navigation & Utility Toggles (Theme toggle, RTL toggle) */
+/* 7. Header Navigation & Utility Toggles (Theme toggle, RTL toggle) - Clean hover without box background */
 .theme-toggle:hover,
-.rtl-toggle:hover,
-#mobile-menu-btn:hover,
-#mobile-menu-close:hover {
+.rtl-toggle:hover {
   border-color: #E07A5F !important;
   color: #E07A5F !important;
-  background-color: #FFF7F4 !important;
-  transform: scale(1.05);
+  background-color: transparent !important;
+  background: none !important;
+  box-shadow: none !important;
+  transform: scale(1.06);
 }
 .dark .theme-toggle:hover,
-.dark .rtl-toggle:hover,
-.dark #mobile-menu-btn:hover,
-.dark #mobile-menu-close:hover {
+.dark .rtl-toggle:hover {
   border-color: #F4A261 !important;
   color: #F4A261 !important;
-  background-color: rgba(244, 162, 97, 0.2) !important;
+  background-color: transparent !important;
+  background: none !important;
+  box-shadow: none !important;
+  transform: scale(1.06);
+}
+
+#mobile-menu-btn:hover,
+#mobile-menu-close:hover {
+  color: #E07A5F !important;
+  transform: scale(1.05);
+}
+.dark #mobile-menu-btn:hover,
+.dark #mobile-menu-close:hover {
+  color: #F4A261 !important;
   transform: scale(1.05);
 }
 
@@ -695,7 +739,16 @@ div[class*="from-magenta"] a[class*="border-white"],
 div[class*="from-magenta"] button[class*="border-white"] {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.75) !important;
+  background-color: transparent !important;
+}
+div[class*="from-magenta"] a[class*="border-white"]:hover,
+div[class*="from-magenta"] button[class*="border-white"]:hover {
+  background-color: #ffffff !important;
+  color: #E07A5F !important;
+  -webkit-text-fill-color: #E07A5F !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22) !important;
 }
 
 /* =========================================================
@@ -834,12 +887,19 @@ html:not(.dark) .group .text-xs.text-gray-500 {
    Brand Magenta Text Highlights Across Both Modes
    ========================================================= */
 html:not(.dark) .text-magenta,
-html:not(.dark) a.text-magenta,
+html:not(.dark) a.text-magenta:not(:hover),
 html:not(.dark) span.text-magenta,
 html:not(.dark) p.text-magenta,
-html:not(.dark) button.text-magenta {
+html:not(.dark) button.text-magenta:not(:hover) {
   color: #E07A5F !important;
   -webkit-text-fill-color: #E07A5F !important;
+}
+button:hover[class*="hover:text-white"],
+a:hover[class*="hover:text-white"],
+button:hover[class*="hover:bg-magenta"],
+a:hover[class*="hover:bg-magenta"] {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 /* =========================================================
@@ -955,7 +1015,6 @@ html:not(.dark) aside p {
 .dark .text-gray-400 {
   color: #d1d5db !important;
 }
-
 
 
 

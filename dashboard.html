@@ -72,37 +72,46 @@
   <div class="h-screen flex flex-col overflow-hidden">
     
     <!-- Top Header -->
-    <header class="h-16 bg-white dark:bg-darknavy-light border-b border-gray-200 dark:border-gray-800 px-6 flex items-center justify-between z-30 sticky top-0 transition-colors">
+    <header class="h-16 bg-white dark:bg-darknavy-light border-b border-gray-200 dark:border-gray-800 px-4 sm:px-6 flex items-center justify-between z-30 sticky top-0 transition-colors">
       <div class="flex items-center gap-3">
         <!-- Hamburger Menu for Mobile -->
         <button id="openSidebarBtn" class="w-10 h-10 rounded-xl border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-200 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-darknavy transition md:hidden" aria-label="Open menu">
           <i class="bi bi-list text-xl"></i>
         </button>
-        <a href="index.html" class="flex items-center gap-1.5 sm:gap-2 text-base sm:text-xl font-bold shrink-0">
+        <a href="index.html" class="flex items-center gap-2 text-base sm:text-xl font-bold shrink-0">
           <span class="w-8 h-8 rounded-full bg-magenta flex items-center justify-center text-white text-sm font-extrabold shadow shadow-magenta/30">K</span>
           <span class="tracking-tight text-black dark:text-white">Kinder<span class="text-magenta">Nest</span></span>
         </a>
       </div>
       
-      <div class="flex items-center gap-2.5 sm:gap-4 md:gap-6 text-gray-500 dark:text-gray-400">
-        <button class="theme-toggle flex text-lg hover:text-magenta transition" aria-label="Toggle dark mode">
+      <div class="flex items-center gap-2 sm:gap-3 text-gray-500 dark:text-gray-400">
+        <!-- Bright / Dark Mode Toggle (Desktop & Tablet) -->
+        <button class="theme-toggle hidden md:flex w-9 h-9 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy hover:border-magenta text-gray-600 dark:text-gray-300 items-center justify-center text-sm transition" aria-label="Toggle dark mode">
           <i class="bi bi-moon-fill theme-toggle-moon"></i>
           <i class="bi bi-sun-fill theme-toggle-sun hidden"></i>
         </button>
-        <button class="rtl-toggle hidden sm:flex text-lg hover:text-magenta transition" aria-label="Toggle RTL mode">
+        <!-- RTL Toggle (Desktop & Tablet) -->
+        <button class="rtl-toggle hidden sm:flex w-9 h-9 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy hover:border-magenta text-gray-600 dark:text-gray-300 items-center justify-center text-sm transition" aria-label="Toggle RTL mode">
           <i class="bi bi-arrow-left-right"></i>
         </button>
         
-        <div class="flex items-center gap-2 shrink-0">
-          <div class="w-9 h-9 rounded-full bg-magenta text-white flex items-center justify-center font-bold text-sm shadow-inner" id="userHeaderAvatar">
-            P
+        <!-- User Profile Pill -->
+        <div class="flex items-center gap-2.5 sm:pl-3 sm:border-l border-gray-200 dark:border-gray-800 shrink-0">
+          <div class="w-9 h-9 rounded-full bg-magenta text-white flex items-center justify-center font-bold text-sm shadow-sm" id="userHeaderAvatar">
+            EJ
           </div>
-          <span class="text-xs font-bold hidden sm:inline" id="userHeaderName">Parent Portal</span>
+          <div class="hidden sm:flex flex-col text-left">
+            <span class="text-xs font-bold text-black dark:text-white leading-tight" id="userHeaderName">Eleanor Jenkins</span>
+            <span class="text-[10px] text-gray-400 font-medium">Parent Portal</span>
+          </div>
         </div>
       </div>
     </header>
 
-    <div class="flex-grow flex flex-col md:flex-row overflow-hidden">
+    <div class="flex-grow flex flex-col md:flex-row overflow-hidden relative">
+      <!-- Mobile Backdrop Overlay -->
+      <div id="sidebarBackdrop" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-40 hidden md:hidden transition-opacity duration-300" onclick="closeMobileSidebar()"></div>
+
       <!-- Left Sidebar Menu -->
       <aside id="sidebarMenu" class="fixed inset-y-0 left-0 z-50 w-72 md:w-64 shrink-0 bg-white dark:bg-darknavy border-r border-gray-200 dark:border-gray-800 p-6 flex flex-col justify-between transform -translate-x-full md:translate-x-0 md:static transition-transform duration-300 ease-in-out overflow-y-auto">
         <div class="space-y-6">
@@ -112,14 +121,9 @@
               <span class="w-9 h-9 rounded-full bg-magenta flex items-center justify-center text-white font-extrabold text-base shadow shadow-magenta/30">K</span>
               <span class="text-lg sm:text-xl font-bold tracking-tight text-darknavy dark:text-white font-sans">Kinder<span class="text-magenta">Nest</span></span>
             </a>
-            <div class="flex items-center gap-2 md:hidden">
-              <button class="rtl-toggle w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-500 flex items-center justify-center hover:bg-gray-200 transition" aria-label="Toggle RTL">
-                <i class="bi bi-arrow-left-right text-xs"></i>
-              </button>
-              <button id="closeSidebarBtn" class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-500 flex items-center justify-center hover:bg-gray-200 transition" aria-label="Close sidebar">
-                <i class="bi bi-x-lg text-xs"></i>
-              </button>
-            </div>
+            <button id="closeSidebarBtn" class="md:hidden w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-500 flex items-center justify-center hover:bg-gray-200 transition" aria-label="Close sidebar">
+              <i class="bi bi-x-lg text-xs"></i>
+            </button>
           </div>
 
           <div class="space-y-1">
@@ -146,14 +150,14 @@
 
         <div class="space-y-4 pt-6 border-t border-gray-200 dark:border-gray-800">
           <!-- Theme & RTL Toggles (Visible only in mobile sidebar menu drawer) -->
-          <div class="flex items-center gap-4 px-3 pb-2 md:hidden">
+          <div class="flex items-center gap-3 px-1 pb-2 md:hidden">
             <!-- Theme Switch -->
-            <button class="theme-toggle text-lg hover:text-magenta transition" aria-label="Toggle dark mode">
+            <button class="theme-toggle flex w-9 h-9 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy-light items-center justify-center text-gray-600 dark:text-gray-300 hover:text-magenta transition text-sm" aria-label="Toggle dark mode">
               <i class="bi bi-moon-fill theme-toggle-moon"></i>
               <i class="bi bi-sun-fill theme-toggle-sun hidden"></i>
             </button>
             <!-- RTL Switch -->
-            <button class="rtl-toggle text-lg hover:text-magenta transition" aria-label="Toggle RTL mode">
+            <button class="rtl-toggle flex w-9 h-9 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy-light items-center justify-center text-gray-600 dark:text-gray-300 hover:text-magenta transition text-sm" aria-label="Toggle RTL mode">
               <i class="bi bi-arrow-left-right"></i>
             </button>
           </div>
@@ -165,7 +169,7 @@
       </aside>
 
       <!-- Main Dashboard Panel -->
-      <main class="flex-grow p-6 md:p-8 relative bg-white dark:bg-darknavy-deep overflow-y-auto">
+      <main class="flex-grow p-4 sm:p-6 md:p-8 relative bg-white dark:bg-darknavy-deep overflow-y-auto overflow-x-hidden w-full max-w-full">
         
         <!-- Skeleton Loader Screen -->
         <div id="skeleton-loader" class="space-y-6">
@@ -178,9 +182,14 @@
           
           <!-- TAB 1: OVERVIEW -->
           <div id="tab-overview" class="tab-panel space-y-6">
-            <div>
-              <h2 class="text-3xl font-extrabold text-black dark:text-white">Pod Dashboard</h2>
-              <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Real-time daily work cycle updates, AMI guide observations, and tuition tracking for your family.</p>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-gray-150 dark:border-gray-800">
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-black dark:text-white">Pod Dashboard</h2>
+              <div class="flex items-center gap-2 self-start sm:self-auto">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Active Term 2026
+                </span>
+              </div>
             </div>
             
             <!-- Quick Stats -->
@@ -410,14 +419,15 @@
           </div>
 
           <!-- TAB 2: ENROLL IN PODS -->
-          <div id="tab-enroll" class="tab-panel hidden space-y-6">
+          <div id="tab-enroll" class="tab-panel hidden space-y-6 w-full max-w-full min-w-0">
             <div>
-              <h2 class="text-3xl font-extrabold text-black dark:text-white">Enroll in Learning Pods</h2>
-              <p class="text-xs text-gray-400 mt-1">Enroll your child in our mixed-age Montessori classrooms and specialized enrichment pods.</p>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-black dark:text-white">Enroll in Learning Pods</h2>
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Enroll your child in our mixed-age Montessori classrooms and specialized enrichment pods.</p>
             </div>
             
-            <div class="grid lg:grid-cols-3 gap-8">
-              <form id="enrollment-form" class="lg:col-span-1 bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-4 text-xs" onsubmit="submitEnrollment(event)" novalidate>
+            <div class="grid lg:grid-cols-3 gap-6 lg:gap-8 w-full min-w-0">
+              <!-- Left Column: Enrollment Form -->
+              <form id="enrollment-form" class="lg:col-span-1 bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-4 text-xs w-full min-w-0" onsubmit="submitEnrollment(event)" novalidate>
                 <div>
                   <label for="child-name" class="block font-bold text-gray-700 dark:text-gray-300 mb-2">Child's Full Name *</label>
                   <input type="text" id="child-name" minlength="2" class="w-full px-4 py-3 bg-white dark:bg-darknavy-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-xs" required placeholder="e.g. Maya Jenkins">
@@ -463,14 +473,154 @@
                 <button type="submit" class="w-full bg-magenta text-white py-3 rounded-xl font-bold hover:bg-magenta-hover transition shadow shadow-magenta/20">Submit Pod Enrollment</button>
               </form>
 
-              <div class="lg:col-span-2 space-y-6">
-                <!-- Current Enrollments table -->
-                <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-4">
-                  <div class="flex items-center justify-between">
-                    <h3 class="font-bold text-lg">Active Pod Enrollments</h3>
-                    <span class="text-xs font-bold text-magenta px-3 py-1 rounded-full bg-magenta/10">5 Enrolled</span>
+              <!-- Right Column: Current Enrollments (Mobile Cards & Desktop Table) -->
+              <div class="lg:col-span-2 space-y-6 w-full min-w-0">
+                <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-4 w-full min-w-0">
+                  <div class="flex items-center justify-between gap-2">
+                    <h3 class="font-bold text-base sm:text-lg text-black dark:text-white">Active Pod Enrollments</h3>
+                    <span class="text-xs font-bold text-magenta px-3 py-1 rounded-full bg-magenta/10" id="enroll-count-badge">5 Enrolled</span>
                   </div>
-                  <div class="overflow-x-auto">
+
+                  <!-- MOBILE VIEW: Clean Responsive Cards (Zero Horizontal Scrolling) -->
+                  <div class="block md:hidden space-y-3 w-full" id="enrolled-children-mobile">
+                    <!-- Emily Jenkins -->
+                    <div class="p-3.5 bg-white dark:bg-darknavy-light rounded-xl border border-gray-150 dark:border-gray-850 space-y-2.5">
+                      <div class="flex items-center justify-between gap-2">
+                        <div class="flex items-center gap-2.5 min-w-0">
+                          <div class="w-8 h-8 rounded-full bg-magenta/10 text-magenta font-extrabold text-xs flex items-center justify-center shrink-0">EJ</div>
+                          <h4 class="font-bold text-sm text-black dark:text-white truncate">Emily Jenkins</h4>
+                        </div>
+                        <span class="inline-flex items-center px-2.5 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 rounded-full font-extrabold text-[10px] uppercase tracking-wider shrink-0">Active</span>
+                      </div>
+                      <div class="text-xs space-y-1.5 pt-2 border-t border-gray-100 dark:border-gray-800/80">
+                        <div class="flex items-center justify-between gap-2 text-[11px]">
+                          <span class="text-gray-400 font-medium">Program</span>
+                          <span class="font-bold text-gray-800 dark:text-gray-200 text-right truncate">Children's House (3–6y)</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-2 text-[11px]">
+                          <span class="text-gray-400 font-medium">Schedule</span>
+                          <span class="text-gray-600 dark:text-gray-300 text-right truncate">Full Day Montessori</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-2 text-[11px]">
+                          <span class="text-gray-400 font-medium">Timing</span>
+                          <span class="text-magenta font-semibold text-right flex items-center gap-1">
+                            <i class="bi bi-clock text-[10px]"></i> Mon - Fri 8:30 AM
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Leo Jenkins -->
+                    <div class="p-3.5 bg-white dark:bg-darknavy-light rounded-xl border border-gray-150 dark:border-gray-850 space-y-2.5">
+                      <div class="flex items-center justify-between gap-2">
+                        <div class="flex items-center gap-2.5 min-w-0">
+                          <div class="w-8 h-8 rounded-full bg-magenta/10 text-magenta font-extrabold text-xs flex items-center justify-center shrink-0">LJ</div>
+                          <h4 class="font-bold text-sm text-black dark:text-white truncate">Leo Jenkins</h4>
+                        </div>
+                        <span class="inline-flex items-center px-2.5 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 rounded-full font-extrabold text-[10px] uppercase tracking-wider shrink-0">Active</span>
+                      </div>
+                      <div class="text-xs space-y-1.5 pt-2 border-t border-gray-100 dark:border-gray-800/80">
+                        <div class="flex items-center justify-between gap-2 text-[11px]">
+                          <span class="text-gray-400 font-medium">Program</span>
+                          <span class="font-bold text-gray-800 dark:text-gray-200 text-right truncate">Lower Elementary Pod (6–9y)</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-2 text-[11px]">
+                          <span class="text-gray-400 font-medium">Schedule</span>
+                          <span class="text-gray-600 dark:text-gray-300 text-right truncate">Full Day Montessori</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-2 text-[11px]">
+                          <span class="text-gray-400 font-medium">Timing</span>
+                          <span class="text-magenta font-semibold text-right flex items-center gap-1">
+                            <i class="bi bi-clock text-[10px]"></i> Mon - Fri 8:30 AM
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Noah Jenkins -->
+                    <div class="p-3.5 bg-white dark:bg-darknavy-light rounded-xl border border-gray-150 dark:border-gray-850 space-y-2.5">
+                      <div class="flex items-center justify-between gap-2">
+                        <div class="flex items-center gap-2.5 min-w-0">
+                          <div class="w-8 h-8 rounded-full bg-magenta/10 text-magenta font-extrabold text-xs flex items-center justify-center shrink-0">NJ</div>
+                          <h4 class="font-bold text-sm text-black dark:text-white truncate">Noah Jenkins</h4>
+                        </div>
+                        <span class="inline-flex items-center px-2.5 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 rounded-full font-extrabold text-[10px] uppercase tracking-wider shrink-0">Active</span>
+                      </div>
+                      <div class="text-xs space-y-1.5 pt-2 border-t border-gray-100 dark:border-gray-800/80">
+                        <div class="flex items-center justify-between gap-2 text-[11px]">
+                          <span class="text-gray-400 font-medium">Program</span>
+                          <span class="font-bold text-gray-800 dark:text-gray-200 text-right truncate">Toddler Community (18m-3y)</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-2 text-[11px]">
+                          <span class="text-gray-400 font-medium">Schedule</span>
+                          <span class="text-gray-600 dark:text-gray-300 text-right truncate">Morning 3-Hour Work Cycle</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-2 text-[11px]">
+                          <span class="text-gray-400 font-medium">Timing</span>
+                          <span class="text-magenta font-semibold text-right flex items-center gap-1">
+                            <i class="bi bi-clock text-[10px]"></i> Mon - Fri 8:30 AM
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Maya Jenkins -->
+                    <div class="p-3.5 bg-white dark:bg-darknavy-light rounded-xl border border-gray-150 dark:border-gray-850 space-y-2.5">
+                      <div class="flex items-center justify-between gap-2">
+                        <div class="flex items-center gap-2.5 min-w-0">
+                          <div class="w-8 h-8 rounded-full bg-magenta/10 text-magenta font-extrabold text-xs flex items-center justify-center shrink-0">MJ</div>
+                          <h4 class="font-bold text-sm text-black dark:text-white truncate">Maya Jenkins</h4>
+                        </div>
+                        <span class="inline-flex items-center px-2.5 py-0.5 bg-sky-100 text-sky-700 dark:bg-sky-950/40 dark:text-sky-300 rounded-full font-extrabold text-[10px] uppercase tracking-wider shrink-0">Confirmed</span>
+                      </div>
+                      <div class="text-xs space-y-1.5 pt-2 border-t border-gray-100 dark:border-gray-800/80">
+                        <div class="flex items-center justify-between gap-2 text-[11px]">
+                          <span class="text-gray-400 font-medium">Program</span>
+                          <span class="font-bold text-gray-800 dark:text-gray-200 text-right truncate">Nature & Forest Botanical Pod</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-2 text-[11px]">
+                          <span class="text-gray-400 font-medium">Schedule</span>
+                          <span class="text-gray-600 dark:text-gray-300 text-right truncate">Extended Day After-School Lab</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-2 text-[11px]">
+                          <span class="text-gray-400 font-medium">Timing</span>
+                          <span class="text-magenta font-semibold text-right flex items-center gap-1">
+                            <i class="bi bi-clock text-[10px]"></i> Tue / Thu 3:30 PM
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Siddharth Jenkins -->
+                    <div class="p-3.5 bg-white dark:bg-darknavy-light rounded-xl border border-gray-150 dark:border-gray-850 space-y-2.5">
+                      <div class="flex items-center justify-between gap-2">
+                        <div class="flex items-center gap-2.5 min-w-0">
+                          <div class="w-8 h-8 rounded-full bg-magenta/10 text-magenta font-extrabold text-xs flex items-center justify-center shrink-0">SJ</div>
+                          <h4 class="font-bold text-sm text-black dark:text-white truncate">Siddharth Jenkins</h4>
+                        </div>
+                        <span class="inline-flex items-center px-2.5 py-0.5 bg-purple-100 text-purple-700 dark:bg-purple-950/40 dark:text-purple-300 rounded-full font-extrabold text-[10px] uppercase tracking-wider shrink-0">Waitlist</span>
+                      </div>
+                      <div class="text-xs space-y-1.5 pt-2 border-t border-gray-100 dark:border-gray-800/80">
+                        <div class="flex items-center justify-between gap-2 text-[11px]">
+                          <span class="text-gray-400 font-medium">Program</span>
+                          <span class="font-bold text-gray-800 dark:text-gray-200 text-right truncate">Sensorial Math & Geometry</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-2 text-[11px]">
+                          <span class="text-gray-400 font-medium">Schedule</span>
+                          <span class="text-gray-600 dark:text-gray-300 text-right truncate">Afternoon Enrichment Lab</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-2 text-[11px]">
+                          <span class="text-gray-400 font-medium">Timing</span>
+                          <span class="text-magenta font-semibold text-right flex items-center gap-1">
+                            <i class="bi bi-clock text-[10px]"></i> Mon / Wed / Fri 1:00 PM
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- DESKTOP / TABLET VIEW: Wide Table (hidden on mobile, visible md+) -->
+                  <div class="hidden md:block overflow-x-auto w-full">
                     <table class="w-full text-start border-collapse">
                       <thead>
                         <tr class="border-b border-gray-200 dark:border-gray-850 text-xs uppercase text-gray-500 tracking-wider">
@@ -530,23 +680,24 @@
                       </tbody>
                     </table>
                   </div>
+
                 </div>
               </div>
             </div>
 
             <!-- 3 Montessori Pod Exploration Showcase Cards -->
-            <div class="mt-8 space-y-4">
+            <div class="mt-8 space-y-4 w-full min-w-0">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
-                  <h3 class="font-bold text-lg text-black dark:text-white">Montessori Learning Pod Environments</h3>
+                  <h3 class="font-bold text-base sm:text-lg text-black dark:text-white">Montessori Learning Pod Environments</h3>
                   <p class="text-xs text-gray-500 dark:text-gray-400">Authentic mixed-age environments tailored to developmental sensitive periods.</p>
                 </div>
                 <span class="text-xs font-bold text-magenta px-3 py-1 rounded-full bg-magenta/10 self-start sm:self-auto">3 Primary Pod Levels</span>
               </div>
 
-              <div class="grid md:grid-cols-3 gap-6">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 w-full min-w-0">
                 <!-- Pod Card 1 -->
-                <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-4 hover:border-magenta transition">
+                <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-3 sm:space-y-4 hover:border-magenta transition w-full min-w-0">
                   <div class="flex items-center justify-between">
                     <span class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400">Ages 18m – 3 Years</span>
                     <span class="text-xs font-bold text-gray-400">1:4 Ratio</span>
@@ -562,7 +713,7 @@
                 </div>
 
                 <!-- Pod Card 2 -->
-                <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-4 hover:border-magenta transition">
+                <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-3 sm:space-y-4 hover:border-magenta transition w-full min-w-0">
                   <div class="flex items-center justify-between">
                     <span class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-magenta/10 text-magenta">Ages 3 – 6 Years</span>
                     <span class="text-xs font-bold text-gray-400">1:8 Ratio</span>
@@ -578,7 +729,7 @@
                 </div>
 
                 <!-- Pod Card 3 -->
-                <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-4 hover:border-magenta transition">
+                <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-3 sm:space-y-4 hover:border-magenta transition w-full min-w-0">
                   <div class="flex items-center justify-between">
                     <span class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">Ages 6 – 9 Years</span>
                     <span class="text-xs font-bold text-gray-400">1:10 Ratio</span>
@@ -616,7 +767,7 @@
               </div>
 
               <!-- Calendar Heat Grid -->
-              <div id="attendance-grid-container" class="grid grid-cols-7 gap-3 text-center pt-4 transition duration-300 text-xs font-bold">
+              <div id="attendance-grid-container" class="grid grid-cols-7 gap-1.5 sm:gap-2.5 md:gap-3 text-center pt-4 transition duration-300 text-xs font-bold">
                 <span class="text-xs font-bold text-gray-400">Sun</span>
                 <span class="text-xs font-bold text-gray-400">Mon</span>
                 <span class="text-xs font-bold text-gray-400">Tue</span>
@@ -624,15 +775,13 @@
                 <span class="text-xs font-bold text-gray-400">Thu</span>
                 <span class="text-xs font-bold text-gray-400">Fri</span>
                 <span class="text-xs font-bold text-gray-400">Sat</span>
+              </div>
 
-                <!-- Render 31 Calendar boxes -->
-                <div class="w-8 h-8 rounded-md bg-gray-200 dark:bg-gray-850 flex items-center justify-center text-xs opacity-30">30</div>
-                <div class="w-8 h-8 rounded-md bg-gray-200 dark:bg-gray-850 flex items-center justify-center text-xs opacity-30">31</div>
-                <div class="w-8 h-8 rounded-md flex items-center justify-center text-xs bg-emerald-500/20 text-emerald-500 border border-emerald-500/50">P</div>
-                <div class="w-8 h-8 rounded-md flex items-center justify-center text-xs bg-emerald-500/20 text-emerald-500 border border-emerald-500/50">P</div>
-                <div class="w-8 h-8 rounded-md flex items-center justify-center text-xs bg-red-500/20 text-red-500 border border-red-500/50">A</div>
-                <div class="w-8 h-8 rounded-md flex items-center justify-center text-xs bg-emerald-500/20 text-emerald-500 border border-emerald-500/50">P</div>
-                <div class="w-8 h-8 rounded-md flex items-center justify-center text-xs bg-emerald-500/20 text-emerald-500 border border-emerald-500/50">P</div>
+              <!-- Attendance Legend -->
+              <div class="flex flex-wrap items-center gap-4 text-xs font-medium text-gray-500 dark:text-gray-400 pt-3 border-t border-gray-200 dark:border-gray-800">
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Present in Pod</span>
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-500"></span> Excused Absence</span>
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-gray-700"></span> Weekend / Break</span>
               </div>
             </div>
           </div>
@@ -762,7 +911,7 @@
                     <label for="pass-new" class="block font-bold text-gray-700 dark:text-gray-300 mb-2">New Password</label>
                     <input type="password" id="pass-new" class="w-full px-4 py-3 bg-white dark:bg-darknavy-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-xs" required placeholder="Minimum 8 characters">
                   </div>
-                  <button type="submit" class="w-full py-3 bg-transparent border-2 border-magenta text-magenta hover:bg-magenta hover:text-white font-bold rounded-xl transition-all">Update Security Password</button>
+                  <button type="submit" class="w-full py-3 bg-magenta hover:bg-magenta-hover text-white font-bold rounded-xl transition-all shadow shadow-magenta/20">Update Security Password</button>
                 </form>
               </div>
 
@@ -957,17 +1106,22 @@
       const openBtn = document.getElementById("openSidebarBtn");
       const closeBtn = document.getElementById("closeSidebarBtn");
       const sidebar = document.getElementById("sidebarMenu");
+      const backdrop = document.getElementById("sidebarBackdrop");
 
-      if (openBtn && sidebar) {
-        openBtn.addEventListener("click", () => {
-          sidebar.classList.remove("-translate-x-full");
-        });
-      }
-      if (closeBtn && sidebar) {
-        closeBtn.addEventListener("click", () => {
-          sidebar.classList.add("-translate-x-full");
-        });
-      }
+      window.openMobileSidebar = function() {
+        if (sidebar) sidebar.classList.remove("-translate-x-full");
+        if (backdrop) backdrop.classList.remove("hidden");
+        document.body.classList.add("overflow-hidden");
+      };
+
+      window.closeMobileSidebar = function() {
+        if (sidebar) sidebar.classList.add("-translate-x-full");
+        if (backdrop) backdrop.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+      };
+
+      if (openBtn) openBtn.addEventListener("click", window.openMobileSidebar);
+      if (closeBtn) closeBtn.addEventListener("click", window.closeMobileSidebar);
     });
 
     function switchTab(tabId, btnEl) {
@@ -990,9 +1144,9 @@
         btnEl.className = "w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-start transition tab-btn bg-magenta text-white font-extrabold shadow-md shadow-magenta/20";
       }
 
-      const sidebar = document.getElementById("sidebarMenu");
-      if (window.innerWidth < 768 && sidebar) {
-        sidebar.classList.add("-translate-x-full");
+      // Close mobile sidebar drawer and backdrop if on small screens
+      if (window.innerWidth < 768 && typeof window.closeMobileSidebar === "function") {
+        window.closeMobileSidebar();
       }
 
       const mainPanel = document.querySelector("main");
@@ -1069,6 +1223,46 @@
       `;
       if (tbody) tbody.appendChild(row);
 
+      // Also append to mobile stacked card list
+      const mobileList = document.getElementById("enrolled-children-mobile");
+      if (mobileList) {
+        const initials = getInitials(name);
+        const card = document.createElement("div");
+        card.className = "p-3.5 bg-white dark:bg-darknavy-light rounded-xl border border-gray-150 dark:border-gray-850 space-y-2.5";
+        card.innerHTML = `
+          <div class="flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <div class="w-8 h-8 rounded-full bg-magenta/10 text-magenta font-extrabold text-xs flex items-center justify-center shrink-0">${initials}</div>
+              <h4 class="font-bold text-sm text-black dark:text-white truncate">${name}</h4>
+            </div>
+            <span class="inline-flex items-center px-2.5 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 rounded-full font-extrabold text-[10px] uppercase tracking-wider shrink-0">Active</span>
+          </div>
+          <div class="text-xs space-y-1.5 pt-2 border-t border-gray-100 dark:border-gray-800/80">
+            <div class="flex items-center justify-between gap-2 text-[11px]">
+              <span class="text-gray-400 font-medium">Program</span>
+              <span class="font-bold text-gray-800 dark:text-gray-200 text-right truncate">${style}</span>
+            </div>
+            <div class="flex items-center justify-between gap-2 text-[11px]">
+              <span class="text-gray-400 font-medium">Schedule</span>
+              <span class="text-gray-600 dark:text-gray-300 text-right truncate">${level}</span>
+            </div>
+            <div class="flex items-center justify-between gap-2 text-[11px]">
+              <span class="text-gray-400 font-medium">Timing</span>
+              <span class="text-magenta font-semibold text-right flex items-center gap-1">
+                <i class="bi bi-clock text-[10px]"></i> ${timing}
+              </span>
+            </div>
+          </div>
+        `;
+        mobileList.appendChild(card);
+      }
+
+      // Update enrolled count badge
+      const enrollBadge = document.getElementById("enroll-count-badge");
+      if (enrollBadge && tbody) {
+        enrollBadge.textContent = `${tbody.children.length} Enrolled`;
+      }
+
       // Generate dynamic invoice
       const amount = classPrices[style] || "$350.00";
       const paddedNum = String(nextInvoiceNum++).padStart(3, '0');
@@ -1136,13 +1330,13 @@
       if (!container) return;
       
       container.innerHTML = `
-        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider py-2">Sun</span>
-        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider py-2">Mon</span>
-        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider py-2">Tue</span>
-        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider py-2">Wed</span>
-        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider py-2">Thu</span>
-        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider py-2">Fri</span>
-        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider py-2">Sat</span>
+        <span class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider py-1 sm:py-2">Sun</span>
+        <span class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider py-1 sm:py-2">Mon</span>
+        <span class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider py-1 sm:py-2">Tue</span>
+        <span class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider py-1 sm:py-2">Wed</span>
+        <span class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider py-1 sm:py-2">Thu</span>
+        <span class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider py-1 sm:py-2">Fri</span>
+        <span class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider py-1 sm:py-2">Sat</span>
       `;
       
       const numSpacers = month === 'July 2026' ? 3 : 6;
@@ -1150,13 +1344,13 @@
       
       for (let i = 0; i < numSpacers; i++) {
         const spacer = document.createElement("div");
-        spacer.className = "max-w-[48px] md:max-w-[56px] w-full aspect-square mx-auto rounded-xl bg-transparent border border-transparent";
+        spacer.className = "max-w-[40px] sm:max-w-[48px] md:max-w-[56px] w-full aspect-square mx-auto rounded-xl bg-transparent border border-transparent";
         container.appendChild(spacer);
       }
       
       for (let day = 1; day <= totalDays; day++) {
         const box = document.createElement("div");
-        box.className = "max-w-[48px] md:max-w-[56px] w-full aspect-square mx-auto rounded-xl flex flex-col items-center justify-center border transition p-1 shadow-sm";
+        box.className = "max-w-[40px] sm:max-w-[48px] md:max-w-[56px] w-full aspect-square mx-auto rounded-xl flex flex-col items-center justify-center border transition p-0.5 sm:p-1 shadow-xs";
         
         const dayOfWeek = month === 'July 2026' ? (day + 2) % 7 : (day + 5) % 7; 
         
