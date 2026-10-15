@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Sprout and Heart Leaf for KinderNest -->
+  <path d="M12 22V10" />
+  <path d="M12 10C12 5.5 8 3 4 5c0 5 4 8 8 5z" fill="#E07A5F" fill-opacity="0.2" />
+  <path d="M12 10c0-4.5 4-7 8-5 0 5-4 8-8 5z" fill="#E07A5F" fill-opacity="0.35" />
+  <circle cx="12" cy="4" r="2" fill="#E07A5F" />
+</svg>

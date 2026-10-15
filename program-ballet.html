@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" dir="ltr">
+<head>
+  <script>
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toddler Community Pod (18m–3y) | KinderNest Learning Pod</title>
+  <meta name="description" content="Explore the KinderNest Toddler Community Pod for ages 18 months to 3 years. Fostering language explosion, toilet learning, and practical independence.">
+  <!-- Tailwind CDN & Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            magenta: {
+              DEFAULT: '#E07A5F', // Warm Montessori Terracotta
+              hover: '#C85A3E',
+              light: '#F4A261',
+            },
+            sage: {
+              50: '#F4F7F4',
+              100: '#E8EFE9',
+              500: '#819B88',
+              600: '#647E6B',
+            },
+            honey: {
+              50: '#FFFDF5',
+              100: '#FEF9E7',
+              500: '#F2CC8F',
+              600: '#E5B869',
+            },
+            warmbeige: '#FDFBF7',
+            darknavy: {
+              DEFAULT: '#1E1E24',
+              light: '#282832',
+              deep: '#15151A',
+            },
+            black: {
+              deep: '#131316',
+              light: '#212126',
+              DEFAULT: '#18181D',
+            },
+            gray: {
+              850: '#26262E',
+            },
+            slate: {
+              905: '#1A1A22',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts & Custom Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-white text-gray-900 dark:bg-darknavy-deep dark:text-gray-100 transition-colors duration-300">
+
+  <!-- ================= HEADER SECTION ================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 w-full bg-white/95 dark:bg-darknavy/95 backdrop-blur border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-2 rtl:space-x-reverse shrink-0">
+          <span class="w-9 h-9 rounded-full bg-magenta flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-magenta/30">K</span>
+          <span class="text-xl font-bold tracking-tight text-darknavy dark:text-white font-sans">Kinder<span class="text-magenta">Nest</span></span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden xl:flex space-x-6 rtl:space-x-reverse items-center mx-6">
+          <div class="relative group">
+            <button class="dropdown-toggle flex items-center space-x-1 rtl:space-x-reverse text-gray-700 dark:text-gray-300 hover:text-magenta py-2 font-semibold transition-colors duration-200">
+              <span>Home</span>
+              <svg class="w-4 h-4 text-gray-400 group-hover:text-magenta transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="absolute left-0 rtl:right-0 mt-2 w-56 rounded-xl bg-white dark:bg-darknavy border border-gray-100 dark:border-gray-800 shadow-xl hidden group-hover:block z-50">
+              <div class="p-2 space-y-1">
+                <a href="index.html" class="block px-4 py-3 text-sm rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-darknavy-light hover:text-magenta font-semibold transition-colors">General Montessori Pod</a>
+                <a href="home-niche.html" class="block px-4 py-3 text-sm rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-darknavy-light hover:text-magenta font-semibold transition-colors">Nature & Botanical Pod</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">About Us</a>
+          <a href="services.html" class="text-magenta font-semibold py-2 transition-colors duration-200">Programs</a>
+          <a href="service-details.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Curriculum</a>
+          
+          <div class="relative group">
+            <button class="dropdown-toggle flex items-center space-x-1 rtl:space-x-reverse text-gray-700 dark:text-gray-300 hover:text-magenta py-2 font-semibold transition-colors duration-200">
+              <span>Explore</span>
+              <svg class="w-4 h-4 text-gray-400 group-hover:text-magenta transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="absolute left-0 rtl:right-0 mt-2 w-52 rounded-xl bg-white dark:bg-darknavy border border-gray-100 dark:border-gray-800 shadow-xl hidden group-hover:block z-50">
+              <div class="p-2 space-y-1">
+                <a href="instructors.html" class="block px-4 py-2.5 text-sm rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-darknavy-light hover:text-magenta font-semibold transition-colors">Montessori Guides</a>
+                <a href="pricing.html" class="block px-4 py-2.5 text-sm rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-darknavy-light hover:text-magenta font-semibold transition-colors">Tuition & Plans</a>
+              </div>
+            </div>
+          </div>
+          
+          <a href="blog.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Blog</a>
+          <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Contact</a>
+          <a href="dashboard.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Dashboard</a>
+        </nav>
+
+        <!-- Utility Toggles & Button -->
+        <div class="hidden xl:flex items-center space-x-3 rtl:space-x-reverse shrink-0">
+          <button class="theme-toggle p-2 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-darknavy-light text-gray-500 dark:text-gray-400 transition" aria-label="Toggle dark mode">
+            <svg class="theme-toggle-sun w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+            <svg class="theme-toggle-moon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+          </button>
+          
+          <button class="rtl-toggle px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-xs font-extrabold hover:bg-gray-100 dark:hover:bg-darknavy-light transition text-gray-700 dark:text-gray-300" aria-label="Toggle RTL mode">
+            <span class="rtl-text">RTL</span>
+          </button>
+
+          <a href="login-register.html" class="bg-magenta hover:bg-magenta-hover text-white px-5 py-2.5 rounded-full font-bold shadow-md shadow-magenta/20 transition duration-150 text-sm">Sign In</a>
+        </div>
+
+        <!-- Mobile Menu & Theme Toggle Buttons -->
+        <div class="xl:hidden flex items-center gap-2 shrink-0">
+          <button class="theme-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-darknavy-light text-gray-500 dark:text-gray-400 transition" aria-label="Toggle dark mode">
+            <svg class="theme-toggle-sun w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+            <svg class="theme-toggle-moon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+          </button>
+          <button id="mobile-menu-btn" class="p-2 text-gray-700 dark:text-gray-300 focus:outline-none" aria-label="Open mobile menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-menu" class="hidden fixed inset-0 z-50 bg-black/60 xl:hidden">
+    <!-- Backdrop Close Area -->
+    <div class="absolute inset-0" onclick="document.getElementById('mobile-menu').classList.add('hidden')"></div>
+    
+    <div class="absolute top-0 right-0 rtl:left-0 rtl:right-auto w-80 max-w-[85vw] h-full bg-white dark:bg-neutral-900 p-6 shadow-2xl flex flex-col justify-between transition-transform duration-300 z-10 overflow-y-auto">
+      
+      <div class="space-y-6">
+        <!-- Drawer Header with Visible Toggle Buttons -->
+        <div class="flex justify-between items-center pb-4 border-b border-gray-150 dark:border-gray-800">
+          <h4 class="text-xl font-bold text-darknavy dark:text-white">Menu</h4>
+          <div class="flex items-center gap-2">
+            <!-- Theme Toggle in Drawer Header -->
+            <button class="theme-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy-light hover:bg-gray-100 dark:hover:bg-darknavy text-gray-500 dark:text-gray-400 transition" aria-label="Toggle theme">
+              <svg class="theme-toggle-sun w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+              <svg class="theme-toggle-moon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"></path></svg>
+            </button>
+            <!-- RTL Toggle in Drawer Header -->
+            <button class="rtl-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy-light hover:bg-gray-100 dark:hover:bg-darknavy text-gray-500 dark:text-gray-400 transition" aria-label="Toggle RTL">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+            </button>
+            <!-- Mobile Menu Close Button -->
+            <button id="mobile-menu-close" class="text-gray-500 hover:text-magenta p-1 focus:outline-none" aria-label="Close menu">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Drawer Navigation Links -->
+        <nav class="space-y-3">
+          <div class="space-y-1">
+            <button class="w-full flex justify-between items-center py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition text-left" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              <span>Home</span>
+              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="pl-4 ml-1 space-y-2.5 hidden border-l-2 border-gray-150 dark:border-gray-800 py-1">
+              <a href="index.html" class="block pl-3 text-sm text-gray-500 hover:text-magenta font-medium">General Montessori Pod</a>
+              <a href="home-niche.html" class="block pl-3 text-sm text-gray-500 hover:text-magenta font-medium">Nature & Botanical Pod</a>
+            </div>
+          </div>
+
+          <a href="about.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">About Us</a>
+          <a href="services.html" class="block py-2 text-magenta font-semibold transition">Programs</a>
+          <a href="service-details.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Curriculum</a>
+          
+          <div class="space-y-1">
+            <button class="w-full flex justify-between items-center py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition text-left" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              <span>Explore</span>
+              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="pl-4 ml-1 space-y-2.5 hidden border-l-2 border-gray-150 dark:border-gray-800 py-1">
+              <a href="instructors.html" class="block pl-3 text-sm text-gray-500 hover:text-magenta font-medium">Montessori Guides</a>
+              <a href="pricing.html" class="block pl-3 text-sm text-gray-500 hover:text-magenta font-medium">Tuition & Plans</a>
+            </div>
+          </div>
+
+          <a href="blog.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Blog</a>
+          <a href="contact.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Contact</a>
+          <a href="dashboard.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Dashboard</a>
+        </nav>
+      </div>
+
+      <div class="space-y-4 pt-6">
+        <div class="pt-4 border-t border-gray-150 dark:border-gray-800">
+          <a href="login-register.html" class="block w-full text-center bg-magenta hover:bg-magenta-hover text-white py-3.5 rounded-xl font-bold shadow transition text-sm">Sign In</a>
+        </div>
+
+        <div class="flex justify-between items-center pt-4 border-t border-gray-150 dark:border-gray-800">
+          <button class="theme-toggle p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-xl transition text-gray-500 dark:text-gray-400" aria-label="Toggle dark mode">
+            <svg class="theme-toggle-sun w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+            <svg class="theme-toggle-moon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"></path></svg>
+          </button>
+          
+          <button class="rtl-toggle p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-xl transition text-gray-500 dark:text-gray-400" aria-label="Toggle RTL mode">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= BREADCRUMB ================= -->
+  <section class="bg-gray-50 dark:bg-darknavy-light pt-28 pb-12 border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="inline-block px-3 py-1 rounded-full bg-magenta/10 text-magenta font-bold text-xs uppercase tracking-widest border border-magenta/20">Learning Pod Program</span>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-black dark:text-white">Toddler Community Pod</h1>
+      <p class="text-gray-500 max-w-2xl mx-auto text-sm">Gentle guidance, language explosion, and joyful independence for young explorers aged 18 months to 3 years.</p>
+    </div>
+  </section>
+
+  <!-- ================= DETAILS LAYOUT ================= -->
+  <section class="py-20 bg-white dark:bg-black-deep">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+        
+        <!-- Main Description -->
+        <div class="lg:col-span-2 space-y-8 relative">
+          
+          <!-- Watermark (Sprout leaf) -->
+          <svg class="absolute right-4 bottom-4 w-64 h-64 opacity-[0.03] dark:opacity-[0.06] pointer-events-none select-none text-magenta" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M50 85 V35 M50 35 C40 20 20 25 25 45 C30 55 50 45 50 45 M50 50 C60 30 80 35 75 55 C70 65 50 58 50 58" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+
+          <!-- Fitted HD Image -->
+          <img src="assets/images/program-toddler-pod.jpg" alt="Toddler stacking wooden rings in prepared environment" class="w-full h-96 object-cover object-center rounded-3xl shadow-xl border border-gray-150 dark:border-gray-800">
+          
+          <h2 class="text-3xl font-extrabold text-black dark:text-white">Nurturing the First Plane of Development (Ages 18m – 3y)</h2>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
+            The toddler period is marked by explosive growth in language, gross-motor coordination, and an intense inner desire for functional autonomy: <em>"Help me to do it by myself."</em> In our Toddler Community, every shelf, basin, chair, and table is custom-scaled to the physical dimensions of children under three.
+          </p>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
+            Under the gentle guidance of certified AMI 0–3 specialists, toddlers engage in purposeful work cycles that develop muscular control, spatial reasoning, self-feeding, and compassionate social communication.
+          </p>
+
+          <h3 class="text-2xl font-bold text-black dark:text-white pt-4">Curriculum Highlights</h3>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-2xl border border-gray-150 dark:border-gray-800 space-y-2">
+              <h4 class="font-bold text-magenta text-base">Practical Life & Self-Care</h4>
+              <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Pouring drinking water, peeling bananas, table wiping, washing hands independently, and gentle toilet learning without pressure.</p>
+            </div>
+            <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-2xl border border-gray-150 dark:border-gray-800 space-y-2">
+              <h4 class="font-bold text-magenta text-base">Language & Motor Exploration</h4>
+              <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Object-to-picture matching, rich oral storytelling, vocabulary enrichment baskets, wooden puzzles, and balance stairs.</p>
+            </div>
+          </div>
+
+          <!-- FAQ Accordion (4 FAQs) -->
+          <h3 class="text-2xl font-bold text-black dark:text-white pt-8">Frequently Asked Questions</h3>
+          <div class="space-y-4">
+            
+            <div class="border border-gray-200 dark:border-gray-850 rounded-xl p-5 bg-gray-50 dark:bg-darknavy">
+              <h4 class="font-bold text-black dark:text-white flex justify-between cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
+                <span>1. Does my toddler need to be toilet-trained before enrolling?</span>
+                <span class="text-magenta font-extrabold">+</span>
+              </h4>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 hidden leading-relaxed">
+                No. Toilet learning is a core component of our Toddler Practical Life curriculum. Our bathroom features low, child-accessible toilets, stool steps, and cotton training underwear. We partner gently with your family's home rhythm without shaming or reward charts.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 dark:border-gray-850 rounded-xl p-5 bg-gray-50 dark:bg-darknavy">
+              <h4 class="font-bold text-black dark:text-white flex justify-between cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
+                <span>2. How do guides handle separation anxiety during drop-off?</span>
+                <span class="text-magenta font-extrabold">+</span>
+              </h4>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 hidden leading-relaxed">
+                We implement a gentle, staggered phase-in week where parents attend together for the first three mornings. Our guides provide loving physical containment and immediate redirection to engaging water or grain-pouring apparatus.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 dark:border-gray-850 rounded-xl p-5 bg-gray-50 dark:bg-darknavy">
+              <h4 class="font-bold text-black dark:text-white flex justify-between cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
+                <span>3. Are snacks and meals provided by the pod?</span>
+                <span class="text-magenta font-extrabold">+</span>
+              </h4>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 hidden leading-relaxed">
+                Yes. We provide 100% organic seasonal produce, sourdough bread, avocado, and fruit. Food preparation (slicing soft fruit with dull wooden knives, spreading butter) is done collaboratively with the children as part of their morning work cycle.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 dark:border-gray-850 rounded-xl p-5 bg-gray-50 dark:bg-darknavy">
+              <h4 class="font-bold text-black dark:text-white flex justify-between cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
+                <span>4. What is the guide-to-child ratio in the Toddler pod?</span>
+                <span class="text-magenta font-extrabold">+</span>
+              </h4>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 hidden leading-relaxed">
+                We maintain an intimate 1:4 ratio with one AMI Lead Guide and one certified Assistant Guide for a maximum community of 8 toddlers, ensuring calm, attentive observation and individualized support.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Sidebar Details Card -->
+        <div class="space-y-6">
+          <div class="bg-gray-50 dark:bg-darknavy p-8 rounded-3xl border border-gray-150 dark:border-gray-800 space-y-6">
+            <h3 class="font-bold text-2xl text-black dark:text-white">Pod Overview</h3>
+            <hr class="border-gray-200 dark:border-gray-800">
+            <div class="space-y-3.5 text-sm text-gray-600 dark:text-gray-300">
+              <div class="flex justify-between items-center">
+                <span>Age Window</span>
+                <strong class="text-black dark:text-white">18 Months – 3 Years</strong>
+              </div>
+              <div class="flex justify-between items-center">
+                <span>Guide Ratio</span>
+                <strong class="text-black dark:text-white">1 : 4 Intimate Pod</strong>
+              </div>
+              <div class="flex justify-between items-center">
+                <span>Daily Schedule</span>
+                <strong class="text-black dark:text-white">8:15 AM – 12:30 PM</strong>
+              </div>
+              <div class="flex justify-between items-center">
+                <span>Lead Guide</span>
+                <strong class="text-black dark:text-white">Elena Rostova, AMI</strong>
+              </div>
+              <div class="flex justify-between items-center">
+                <span>Monthly Tuition</span>
+                <strong class="text-magenta font-extrabold text-base">$320 / month</strong>
+              </div>
+            </div>
+            <hr class="border-gray-200 dark:border-gray-800">
+            <a href="login-register.html" class="block w-full bg-magenta hover:bg-magenta-hover text-white text-center py-4 rounded-xl font-bold transition shadow shadow-magenta/20 text-sm">Apply for Pod Enrollment</a>
+            <a href="contact.html" class="block w-full text-center border border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-darknavy-light text-black dark:text-white py-3 rounded-xl font-bold text-xs transition">Schedule Campus Tour</a>
+          </div>
+
+          <!-- Parent Testimonial Pill -->
+          <div class="p-6 rounded-3xl bg-sage-50 dark:bg-darknavy-light border border-sage-500/20 space-y-3">
+            <div class="flex items-center space-x-2 text-magenta">
+              <i class="bi bi-star-fill text-xs"></i>
+              <i class="bi bi-star-fill text-xs"></i>
+              <i class="bi bi-star-fill text-xs"></i>
+              <i class="bi bi-star-fill text-xs"></i>
+              <i class="bi bi-star-fill text-xs"></i>
+            </div>
+            <p class="text-xs text-gray-600 dark:text-gray-300 italic leading-relaxed">
+              "The shift in our 2-year-old daughter within four weeks was breathtaking. She began putting away her dishes and happily putting her shoes on without any tears!"
+            </p>
+            <span class="block text-[11px] font-bold text-black dark:text-white">— Rachel & Mark S. (Toddler Parents)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER SECTION ================= -->
+  <footer class="bg-white dark:bg-black border-t border-gray-150 dark:border-gray-800 py-16 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Newsletter Section -->
+      <div class="flex flex-col items-center text-center pb-12 border-b border-gray-150 dark:border-gray-850">
+        <h3 class="text-2xl font-extrabold text-black dark:text-white font-sans">Join Our Montessori Community</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 mb-6">Receive weekly child observation insights, gentle parenting guides, and seasonal pod updates.</p>
+        <form class="flex flex-col sm:flex-row w-full max-w-md items-center gap-3" onsubmit="handleNewsletterSubmit(event, this)">
+          <input type="email" placeholder="name@gmail.com" required class="w-full px-5 py-3 rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-darknavy-light text-black dark:text-white text-sm focus:outline-none focus:border-magenta transition">
+          <button type="submit" class="w-full sm:w-auto bg-magenta hover:bg-magenta-hover text-white px-8 py-3 rounded-full font-bold text-sm transition shadow-md shadow-magenta/20 shrink-0">Subscribe</button>
+        </form>
+      </div>
+
+      <!-- Links Grid Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pt-12 text-sm text-gray-600 dark:text-gray-300">
+        
+        <!-- Column 1: Logo & Description & Socials -->
+        <div class="space-y-4">
+          <a href="index.html" class="flex items-center space-x-2 rtl:space-x-reverse">
+            <span class="w-9 h-9 rounded-full bg-magenta flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-magenta/30">K</span>
+            <span class="text-xl font-bold tracking-tight text-darknavy dark:text-white">Kinder<span class="text-magenta">Nest</span></span>
+          </a>
+          <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+            A child-centered Montessori micro-school and learning pod cultivating intrinsic curiosity, deep concentration, practical independence, and joyful lifelong discovery.
+          </p>
+          <div class="flex space-x-3 rtl:space-x-reverse pt-2">
+            <a href="#" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-magenta hover:text-white dark:hover:bg-magenta transition flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-magenta dark:hover:border-magenta"><i class="bi bi-instagram text-xs"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-800 hover:bg-magenta hover:text-white dark:hover:bg-magenta transition flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-magenta dark:hover:border-magenta"><i class="bi bi-facebook text-xs"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-800 hover:bg-magenta hover:text-white dark:hover:bg-magenta transition flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-magenta dark:hover:border-magenta"><i class="bi bi-twitter-x text-xs"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-800 hover:bg-magenta hover:text-white dark:hover:bg-magenta transition flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-magenta dark:hover:border-magenta"><i class="bi bi-linkedin text-xs"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2: LEARNING PODS -->
+        <div class="space-y-4">
+          <h4 class="font-extrabold text-xs uppercase tracking-widest text-magenta">Learning Pods</h4>
+          <ul class="space-y-2.5 text-xs font-semibold">
+            <li><a href="program-ballet.html" class="hover:text-magenta transition">Toddler Community (18m-3y)</a></li>
+            <li><a href="program-classical.html" class="hover:text-magenta transition">Children's House (3-6y)</a></li>
+            <li><a href="program-contemporary.html" class="hover:text-magenta transition">Lower Elementary (6-9y)</a></li>
+            <li><a href="home-niche.html" class="hover:text-magenta transition">Botanical Forest Pod</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: QUICK LINKS -->
+        <div class="space-y-4">
+          <h4 class="font-extrabold text-xs uppercase tracking-widest text-magenta">Quick Links</h4>
+          <ul class="space-y-2.5 text-xs font-semibold">
+            <li><a href="about.html" class="hover:text-magenta transition">Montessori Philosophy</a></li>
+            <li><a href="instructors.html" class="hover:text-magenta transition">Our Certified Guides</a></li>
+            <li><a href="pricing.html" class="hover:text-magenta transition">Tuition & Enrollment</a></li>
+            <li><a href="login-register.html" class="hover:text-magenta transition">Parent Portal</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: GET IN TOUCH -->
+        <div class="space-y-4">
+          <h4 class="font-extrabold text-xs uppercase tracking-widest text-magenta">Get In Touch</h4>
+          <ul class="space-y-3.5 text-xs">
+            <li class="flex items-start space-x-2.5 rtl:space-x-reverse leading-relaxed">
+              <svg class="w-4 h-4 text-magenta shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span>482 Discovery Lane, Sunnyvale, CA 94086</span>
+            </li>
+            <li class="flex items-center space-x-2.5 rtl:space-x-reverse">
+              <svg class="w-4 h-4 text-magenta shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.94.725l.548 2.2a1 1 0 00.996.81h2.982a1 1 0 00.996-.81l.548-2.2a1 1 0 01.94-.725H21a2 2 0 012 2v1.5a10.5 10.5 0 01-10.5 10.5H11A10.5 10.5 0 01.5 11V5z"/></svg>
+              <a href="tel:5554321098" class="hover:underline">+1 (555) 432-1098</a>
+            </li>
+            <li class="flex items-center space-x-2.5 rtl:space-x-reverse">
+              <svg class="w-4 h-4 text-magenta shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <a href="mailto:admissions@kindernest.org" class="hover:underline">admissions@kindernest.org</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Divider & Bottom Area -->
+      <div class="mt-12 pt-8 border-t border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+        <p>&copy; 2026 KinderNest Learning Pod. All rights reserved.</p>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-10 h-10 rounded-full bg-magenta text-white flex items-center justify-center hover:bg-magenta-hover transition shadow-md shadow-magenta/20 focus:outline-none shrink-0" aria-label="Scroll to top">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

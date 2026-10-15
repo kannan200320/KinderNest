@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" dir="ltr">
+<head>
+  <script>
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Campus Tours | KinderNest Montessori Pod</title>
+  <!-- Tailwind CDN & Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            magenta: {
+              DEFAULT: '#E07A5F', // Warm Montessori Terracotta / Coral
+              hover: '#C85A3E',
+              light: '#F4A261',
+            },
+            sage: {
+              50: '#F4F7F4',
+              100: '#E8EFE9',
+              500: '#819B88',
+              600: '#647E6B',
+            },
+            honey: {
+              50: '#FFFDF5',
+              100: '#FEF9E7',
+              500: '#F2CC8F',
+              600: '#E5B869',
+            },
+            warmbeige: '#FDFBF7',
+            darknavy: {
+              DEFAULT: '#1E1E24',
+              light: '#282832',
+              deep: '#15151A',
+            },
+            black: {
+              deep: '#131316',
+              light: '#212126',
+              DEFAULT: '#18181D',
+            },
+            gray: {
+              850: '#26262F',
+            },
+            slate: {
+              905: '#0f172a',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Bootstrap Icons & Google Fonts -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="font-sans bg-gray-50 text-gray-900 dark:bg-darknavy-deep dark:text-gray-100 transition-colors duration-300 min-h-screen flex flex-col justify-between">
+
+  <!-- ================= HEADER SECTION ================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 w-full bg-white/95 dark:bg-darknavy/95 backdrop-blur border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-2 rtl:space-x-reverse shrink-0">
+          <span class="w-9 h-9 rounded-full bg-magenta flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-magenta/30">K</span>
+          <span class="text-xl font-bold tracking-tight text-darknavy dark:text-white font-sans">Kinder<span class="text-magenta">Nest</span></span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden xl:flex space-x-6 rtl:space-x-reverse items-center mx-6">
+          
+          <!-- Home Dropdown -->
+          <div class="relative group">
+            <button class="dropdown-toggle flex items-center space-x-1 rtl:space-x-reverse text-gray-700 dark:text-gray-300 hover:text-magenta py-2 font-semibold transition-colors duration-200">
+              <span>Home</span>
+              <svg class="w-4 h-4 text-gray-400 group-hover:text-magenta transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="absolute left-0 rtl:right-0 mt-2 w-56 rounded-xl bg-white dark:bg-darknavy border border-gray-100 dark:border-gray-800 shadow-xl hidden group-hover:block z-50">
+              <div class="p-2 space-y-1">
+                <a href="index.html" class="block px-4 py-3 text-sm rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-darknavy-light hover:text-magenta font-semibold transition-colors">General Montessori Pod</a>
+                <a href="home-niche.html" class="block px-4 py-3 text-sm rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-darknavy-light hover:text-magenta font-semibold transition-colors">Nature & Botanical Pod</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">About Us</a>
+          <a href="services.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Programs</a>
+          <a href="service-details.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Curriculum</a>
+          
+          <!-- Explore Dropdown -->
+          <div class="relative group">
+            <button class="dropdown-toggle flex items-center space-x-1 rtl:space-x-reverse text-gray-700 dark:text-gray-300 hover:text-magenta py-2 font-semibold transition-colors duration-200">
+              <span>Explore</span>
+              <svg class="w-4 h-4 text-gray-400 group-hover:text-magenta transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="absolute left-0 rtl:right-0 mt-2 w-52 rounded-xl bg-white dark:bg-darknavy border border-gray-100 dark:border-gray-800 shadow-xl hidden group-hover:block z-50">
+              <div class="p-2 space-y-1">
+                <a href="instructors.html" class="block px-4 py-2.5 text-sm rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-darknavy-light hover:text-magenta font-semibold transition-colors">Montessori Guides</a>
+                <a href="pricing.html" class="block px-4 py-2.5 text-sm rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-darknavy-light hover:text-magenta font-semibold transition-colors">Tuition & Plans</a>
+              </div>
+            </div>
+          </div>
+          
+          <a href="blog.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Blog</a>
+          <a href="contact.html" class="text-magenta font-semibold transition-colors duration-200">Contact</a>
+          <a href="dashboard.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Dashboard</a>
+        </nav>
+
+        <!-- Utility Toggles & Button -->
+        <div class="hidden xl:flex items-center space-x-3 rtl:space-x-reverse shrink-0">
+          <button class="theme-toggle p-2 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-darknavy-light text-gray-500 dark:text-gray-400 transition" aria-label="Toggle dark mode">
+            <svg class="theme-toggle-sun w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+            <svg class="theme-toggle-moon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+          </button>
+
+          <button class="rtl-toggle px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-xs font-extrabold hover:bg-gray-100 dark:hover:bg-darknavy-light transition text-gray-700 dark:text-gray-300" aria-label="Toggle RTL mode">
+            <span class="rtl-text">RTL</span>
+          </button>
+
+          <a href="login-register.html" class="bg-magenta hover:bg-magenta-hover text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-magenta/20 transition duration-150 text-sm">Sign In</a>
+        </div>
+
+        <!-- Mobile Menu & Theme Toggle Buttons -->
+        <div class="xl:hidden flex items-center gap-2 shrink-0">
+          <button class="theme-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-darknavy-light text-gray-500 dark:text-gray-400 transition" aria-label="Toggle dark mode">
+            <svg class="theme-toggle-sun w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+            <svg class="theme-toggle-moon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+          </button>
+          <button id="mobile-menu-btn" class="p-2 text-gray-700 dark:text-gray-300 focus:outline-none" aria-label="Open mobile navigation">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-menu" class="hidden fixed inset-0 z-50 bg-black/60 xl:hidden">
+    <!-- Backdrop Close Area -->
+    <div class="absolute inset-0" onclick="document.getElementById('mobile-menu').classList.add('hidden')"></div>
+    
+    <div class="absolute top-0 right-0 rtl:left-0 rtl:right-auto w-80 max-w-[85vw] h-full bg-white dark:bg-neutral-900 p-6 shadow-2xl flex flex-col justify-between transition-transform duration-300 z-10 overflow-y-auto">
+      
+      <div class="space-y-6">
+        <!-- Drawer Header with Visible Toggle Buttons -->
+        <div class="flex justify-between items-center pb-4 border-b border-gray-150 dark:border-gray-800">
+          <h4 class="text-xl font-bold text-darknavy dark:text-white">Menu</h4>
+          <div class="flex items-center gap-2">
+            <!-- Theme Toggle in Drawer Header -->
+            <button class="theme-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy-light hover:bg-gray-100 dark:hover:bg-darknavy text-gray-500 dark:text-gray-400 transition" aria-label="Toggle theme">
+              <svg class="theme-toggle-sun w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+              <svg class="theme-toggle-moon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"></path></svg>
+            </button>
+            <!-- RTL Toggle in Drawer Header -->
+            <button class="rtl-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy-light hover:bg-gray-100 dark:hover:bg-darknavy text-gray-500 dark:text-gray-400 transition" aria-label="Toggle RTL">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+            </button>
+            <!-- Mobile Menu Close Button -->
+            <button id="mobile-menu-close" class="text-gray-500 hover:text-magenta p-1 focus:outline-none" aria-label="Close menu">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Drawer Navigation Links -->
+        <nav class="space-y-3">
+          <!-- Home Accordion -->
+          <div class="space-y-1">
+            <button class="w-full flex justify-between items-center py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition text-left" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              <span>Home</span>
+              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="pl-4 ml-1 space-y-2.5 hidden border-l-2 border-gray-150 dark:border-gray-800 py-1">
+              <a href="index.html" class="block pl-3 text-sm text-gray-500 hover:text-magenta font-medium">General Montessori Pod</a>
+              <a href="home-niche.html" class="block pl-3 text-sm text-gray-500 hover:text-magenta font-medium">Nature & Botanical Pod</a>
+            </div>
+          </div>
+
+          <a href="about.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">About Us</a>
+          <a href="services.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Programs</a>
+          <a href="service-details.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Curriculum</a>
+          
+          <!-- Explore Pages Accordion -->
+          <div class="space-y-1">
+            <button class="w-full flex justify-between items-center py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition text-left" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              <span>Explore</span>
+              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="pl-4 ml-1 space-y-2.5 hidden border-l-2 border-gray-150 dark:border-gray-800 py-1">
+              <a href="instructors.html" class="block pl-3 text-sm text-gray-500 hover:text-magenta font-medium">Montessori Guides</a>
+              <a href="pricing.html" class="block pl-3 text-sm text-gray-500 hover:text-magenta font-medium">Tuition & Plans</a>
+            </div>
+          </div>
+
+          <a href="blog.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Blog</a>
+          <a href="contact.html" class="block py-2 text-magenta font-semibold transition">Contact</a>
+          <a href="dashboard.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Dashboard</a>
+        </nav>
+      </div>
+
+      <div class="space-y-4 pt-6">
+        <!-- Sign In CTA button -->
+        <div class="pt-4 border-t border-gray-150 dark:border-gray-800">
+          <a href="login-register.html" class="block w-full text-center bg-magenta hover:bg-magenta-hover text-white py-3.5 rounded-xl font-bold shadow transition text-sm">Sign In</a>
+        </div>
+
+        <!-- Bottom Toggles Bar -->
+        <div class="flex justify-between items-center pt-4 border-t border-gray-150 dark:border-gray-800">
+          <button class="theme-toggle p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-xl transition text-gray-500 dark:text-gray-400" aria-label="Toggle dark mode">
+            <svg class="theme-toggle-sun w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+            <svg class="theme-toggle-moon w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"></path></svg>
+          </button>
+          
+          <button class="rtl-toggle p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-xl transition text-gray-500 dark:text-gray-400" aria-label="Toggle RTL mode">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= BREADCRUMB / HERO COVER IMAGE ================= -->
+  <section class="relative pt-32 pb-24 bg-cover bg-center text-white" style="background-image: url('assets/images/contact-hero-bg.png');">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative max-w-7xl mx-auto px-6 text-center space-y-4">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white">Schedule a Pod Tour & Observation</h1>
+      <p class="text-white max-w-2xl mx-auto text-base leading-relaxed font-sans">
+        Experience our authentic Montessori prepared environments firsthand. Witness our morning work cycles, speak with certified AMI guides, and discover if KinderNest is the right learning community for your child.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT FORM & POD INFO ================= -->
+  <section class="pt-8 pb-20 bg-white dark:bg-black-deep transition-colors relative overflow-hidden">
+    <!-- Sprout Watermark SVG -->
+    <div class="absolute right-[-5%] bottom-[-5%] w-[320px] h-[320px] pointer-events-none select-none text-gray-200/20 dark:text-magenta/10 z-0">
+      <svg viewBox="0 0 100 100" fill="currentColor" class="w-full h-full">
+        <path d="M50 15 C55 35 75 45 85 45 C75 55 55 60 50 85 C45 60 25 55 15 45 C25 45 45 35 50 15 Z" />
+      </svg>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+        
+        <!-- Left: Pod Campus Info Card -->
+        <div class="lg:col-span-5 bg-gray-50 dark:bg-darknavy p-8 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm flex flex-col justify-between">
+          <div class="space-y-6">
+            <div>
+              <span class="text-xs font-bold text-magenta uppercase tracking-wider">Campus Details</span>
+              <h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">KinderNest Campus</h3>
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Child-centered learning cottages nestled along Blossom Creek parkway.</p>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-magenta/10 text-magenta flex items-center justify-center text-xl shrink-0">
+                <i class="bi bi-geo-alt-fill"></i>
+              </div>
+              <div class="space-y-1">
+                <h6 class="font-bold text-sm text-slate-900 dark:text-white">Campus Location</h6>
+                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">42 Blossom Valley Way,<br>Sunnyvale, CA 94087</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-magenta/10 text-magenta flex items-center justify-center text-xl shrink-0">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div class="space-y-1">
+                <h6 class="font-bold text-sm text-slate-900 dark:text-white">Admissions Line</h6>
+                <p class="text-xs text-gray-500 dark:text-gray-400">+1 (555) 438-6378</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-magenta/10 text-magenta flex items-center justify-center text-xl shrink-0">
+                <i class="bi bi-envelope-fill"></i>
+              </div>
+              <div class="space-y-1">
+                <h6 class="font-bold text-sm text-slate-900 dark:text-white">Email Inquiries</h6>
+                <p class="text-xs text-gray-500 dark:text-gray-400">admissions@kindernest.org</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-200 dark:border-gray-800 pt-6 mt-8 space-y-4">
+            <h6 class="font-bold text-sm text-slate-905 dark:text-white">Observation & Visiting Hours</h6>
+            <ul class="space-y-2.5 list-none p-0 text-xs font-semibold text-gray-500 dark:text-gray-400">
+              <li class="flex justify-between"><span>Morning Work Cycle (Tours)</span> <span class="text-magenta font-bold">9:00 AM - 11:30 AM</span></li>
+              <li class="flex justify-between"><span>Campus Office Hours</span> <span>Mon - Fri, 8:00 AM - 5:00 PM</span></li>
+              <li class="flex justify-between"><span>Saturday Family Walkthroughs</span> <span>10:00 AM - 1:00 PM</span></li>
+              <li class="flex justify-between"><span>Sunday</span> <span class="text-gray-400">Closed (Family Day)</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right: Contact & Tour Request Form -->
+        <div class="lg:col-span-7 bg-gray-50 dark:bg-darknavy p-8 md:p-10 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm">
+          <div class="mb-6">
+            <span class="text-xs font-bold text-magenta uppercase tracking-wider">Book an Appointment</span>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">Send a Message or Book a Tour</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Our admissions director responds within 24 business hours.</p>
+          </div>
+          
+          <form id="contactForm" class="space-y-5 text-xs font-semibold" novalidate>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div class="space-y-1.5">
+                <label for="name" class="block text-gray-600 dark:text-gray-400">Parent / Guardian Full Name *</label>
+                <input type="text" id="name" required minlength="2" class="w-full px-4 py-3 bg-white dark:bg-black-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-slate-905 dark:text-white transition" placeholder="e.g. Rachel Adams">
+                <p class="text-[10px] text-red-500 font-bold hidden" id="errName">Full name must be at least 2 characters.</p>
+              </div>
+              <div class="space-y-1.5">
+                <label for="email" class="block text-gray-600 dark:text-gray-400">Email Address *</label>
+                <input type="email" id="email" required class="w-full px-4 py-3 bg-white dark:bg-black-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-slate-905 dark:text-white transition" placeholder="name@gmail.com">
+                <p class="text-[10px] text-red-500 font-bold hidden" id="errEmail">Email address must be in the format name@gmail.com.</p>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div class="space-y-1.5">
+                <label for="phone" class="block text-gray-600 dark:text-gray-400">Phone Number *</label>
+                <input type="tel" id="phone" required maxlength="10" class="w-full px-4 py-3 bg-white dark:bg-black-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-slate-905 dark:text-white transition" placeholder="9876543210">
+                <p class="text-[10px] text-red-500 font-bold hidden" id="errPhone">Phone number must be exactly 10 digits.</p>
+              </div>
+              <div class="space-y-1.5">
+                <label for="subject" class="block text-gray-600 dark:text-gray-400">Area of Interest *</label>
+                <select id="subject" required class="w-full px-4 py-3 bg-white dark:bg-black-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-slate-905 dark:text-white font-bold transition">
+                  <option value="" selected disabled>Choose program / purpose...</option>
+                  <option value="Schedule Pod Tour">Schedule an On-Campus Pod Tour</option>
+                  <option value="Toddler Community">Toddler Community (18 Months - 3 Years)</option>
+                  <option value="Childrens House">Children's House / Primary (3 - 6 Years)</option>
+                  <option value="Lower Elementary">Lower Elementary Pod (6 - 9 Years)</option>
+                  <option value="Tuition & Aid">Tuition Rates & Enrollment Inquiries</option>
+                </select>
+                <p class="text-[10px] text-red-500 font-bold hidden" id="errSubject">Please select a topic.</p>
+              </div>
+            </div>
+
+            <div class="space-y-1.5">
+              <label for="message" class="block text-gray-600 dark:text-gray-400">Child's Age & Specific Questions *</label>
+              <textarea id="message" rows="4" required class="w-full px-4 py-3 bg-white dark:bg-black-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-slate-905 dark:text-white transition" placeholder="Tell us about your child's age, previous preschool experience, and preferred tour days..."></textarea>
+              <p class="text-[10px] text-red-500 font-bold hidden" id="errMessage">Please share your message or inquiry.</p>
+            </div>
+
+            <button type="submit" class="px-8 py-3.5 bg-magenta hover:bg-magenta-hover text-white font-bold rounded-xl shadow-md shadow-magenta/20 transition-all uppercase tracking-wider text-xs">
+              Request Campus Tour
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Campus Location Map (Sunnyvale, CA) -->
+      <div class="mt-14 rounded-3xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800" style="height: 420px;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101416.71217036495!2d-122.08385154564883!3d37.368830026771034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb64e037b51e7%3A0x63390f77977a4175!2sSunnyvale%2C%20CA!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus"
+          width="600"
+          height="420"
+          style="border:0; width: 100%; height: 100%;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="KinderNest Montessori Campus Location">
+        </iframe>
+      </div>
+
+      <!-- Frequently Asked Questions Accordion -->
+      <div class="mt-20 max-w-4xl mx-auto space-y-8">
+        <div class="text-center space-y-2">
+          <span class="text-xs font-bold text-magenta uppercase tracking-wider">Parent Guidance</span>
+          <h3 class="text-3xl font-extrabold text-slate-905 dark:text-white">Frequently Asked Questions</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Answers to common admissions questions from prospective KinderNest families.</p>
+        </div>
+
+        <div class="space-y-4">
+          <!-- FAQ Item 1 -->
+          <div class="faq-item bg-gray-50 dark:bg-darknavy rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm hover:border-magenta transition-all duration-300">
+            <button class="faq-btn w-full px-6 py-4 flex justify-between items-center text-start font-bold text-sm text-slate-905 dark:text-slate-100 focus:outline-none" aria-expanded="false">
+              <span>What is an authentic Montessori 3-hour uninterrupted work cycle?</span>
+              <i class="bi bi-chevron-down faq-icon transition-transform duration-300 text-gray-400"></i>
+            </button>
+            <div class="faq-content hidden px-6 pb-5 text-xs text-gray-500 dark:text-gray-400 leading-relaxed border-t border-gray-150 dark:border-gray-800/50 pt-4">
+              During the morning 3-hour work block, children independently choose self-correcting Montessori materials from open beechwood shelves. Rather than moving as a regimented group from bell to bell, each child immerses deeply into their chosen work cycle (e.g. mathematics, phonics, botanical sorting, or polishing wood). This builds lifelong focus, sustained concentration, and self-discipline.
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="faq-item bg-gray-50 dark:bg-darknavy rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm hover:border-magenta transition-all duration-300">
+            <button class="faq-btn w-full px-6 py-4 flex justify-between items-center text-start font-bold text-sm text-slate-905 dark:text-slate-100 focus:outline-none" aria-expanded="false">
+              <span>Why are classrooms grouped in 3-year mixed-age pods?</span>
+              <i class="bi bi-chevron-down faq-icon transition-transform duration-300 text-gray-400"></i>
+            </button>
+            <div class="faq-content hidden px-6 pb-5 text-xs text-gray-500 dark:text-gray-400 leading-relaxed border-t border-gray-150 dark:border-gray-800/50 pt-4">
+              Dr. Maria Montessori discovered that children thrive in multi-age cohorts (18m–3y, 3–6y, 6–9y). Younger children absorb complex language and work habits naturally by observing older peers, while older students solidify their own mastery and develop empathy by mentoring and guiding younger classmates.
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="faq-item bg-gray-50 dark:bg-darknavy rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm hover:border-magenta transition-all duration-300">
+            <button class="faq-btn w-full px-6 py-4 flex justify-between items-center text-start font-bold text-sm text-slate-905 dark:text-slate-100 focus:outline-none" aria-expanded="false">
+              <span>Can our child enroll mid-term if relocation occurs?</span>
+              <i class="bi bi-chevron-down faq-icon transition-transform duration-300 text-gray-400"></i>
+            </button>
+            <div class="faq-content hidden px-6 pb-5 text-xs text-gray-500 dark:text-gray-400 leading-relaxed border-t border-gray-150 dark:border-gray-800/50 pt-4">
+              Yes, if an opening becomes available in our Toddler, Primary, or Elementary pods, we welcome rolling admissions throughout the school year. Tuition is prorated for the exact number of instructional weeks remaining in the term.
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="faq-item bg-gray-50 dark:bg-darknavy rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm hover:border-magenta transition-all duration-300">
+            <button class="faq-btn w-full px-6 py-4 flex justify-between items-center text-start font-bold text-sm text-slate-905 dark:text-slate-100 focus:outline-none" aria-expanded="false">
+              <span>How are parents kept informed of daily learning milestones?</span>
+              <i class="bi bi-chevron-down faq-icon transition-transform duration-300 text-gray-400"></i>
+            </button>
+            <div class="faq-content hidden px-6 pb-5 text-xs text-gray-500 dark:text-gray-400 leading-relaxed border-t border-gray-150 dark:border-gray-800/50 pt-4">
+              Every enrolled family receives access to our KinderNest Parent Portal. Here, you can review qualitative narrative observations written by your child's AMI Lead Guide, track milestone progressions across our 5 core curriculum areas, review work cycle attendance, and manage tuition receipts.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 3. WHAT TO EXPECT ON YOUR VISIT ================= -->
+  <section class="py-24 bg-gray-50 dark:bg-darknavy border-t border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Visit Experience</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">What to Expect on Your Morning Tour</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">We design tours to give parents an authentic, unfiltered look into the calm reality of a living Montessori community.</p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6 items-stretch">
+        
+        <div class="bg-white dark:bg-black-light p-6 rounded-3xl border border-gray-150 dark:border-gray-800 flex flex-col h-full space-y-3 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-magenta/10 text-magenta font-extrabold flex items-center justify-center text-base shrink-0">1</div>
+          <h4 class="font-bold text-black dark:text-white min-h-[1.5rem] flex items-center">Warm Welcome</h4>
+          <div class="pt-3 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Arrive at 9:00 AM for organic herbal tea in our sunlit administrative lobby with our admissions director.</p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-black-light p-6 rounded-3xl border border-gray-150 dark:border-gray-800 flex flex-col h-full space-y-3 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 font-extrabold flex items-center justify-center text-base shrink-0">2</div>
+          <h4 class="font-bold text-black dark:text-white min-h-[1.5rem] flex items-center">Observation Booth</h4>
+          <div class="pt-3 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Spend 30 uninterrupted minutes behind one-way glass watching children work with golden beads and sandpaper letters.</p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-black-light p-6 rounded-3xl border border-gray-150 dark:border-gray-800 flex flex-col h-full space-y-3 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 font-extrabold flex items-center justify-center text-base shrink-0">3</div>
+          <h4 class="font-bold text-black dark:text-white min-h-[1.5rem] flex items-center">Outdoor Farm Walk</h4>
+          <div class="pt-3 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Tour our living soil permaculture beds, vermiculture observation station, and shaded woodland atelier.</p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-black-light p-6 rounded-3xl border border-gray-150 dark:border-gray-800 flex flex-col h-full space-y-3 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-600 font-extrabold flex items-center justify-center text-base shrink-0">4</div>
+          <h4 class="font-bold text-black dark:text-white min-h-[1.5rem] flex items-center">Unhurried Q&A</h4>
+          <div class="pt-3 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Sit down with our Head of School to discuss pod openings, tuition assistance, and your child's sensitive periods.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 4. VISITOR ETIQUETTE GUIDELINES ================= -->
+  <section class="py-24 bg-white dark:bg-black-deep border-t border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        
+        <div class="space-y-6">
+          <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Observation Protocol</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white leading-tight">
+            Protecting the Children's Sacred Flow State
+          </h2>
+          <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            In our environment, deep concentration is treated as sacred. To prevent disrupting the children's absorption during your tour, we ask all visitors to honor three simple observation agreements:
+          </p>
+          <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="text-magenta font-bold">1.</span>
+              <span><strong>Move Slowly and Softly:</strong> Walk around the perimeter of the room, being careful never to step on a child's floor work rug.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-magenta font-bold">2.</span>
+              <span><strong>Observe Without Interrupting:</strong> Please do not initiate conversation with children at work. If a child approaches you with a smile, respond warmly but briefly.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-magenta font-bold">3.</span>
+              <span><strong>Phones on Silent:</strong> Photography and recording are strictly prohibited during classroom hours to protect child privacy.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="relative">
+          <div class="w-full h-[400px] rounded-3xl overflow-hidden shadow-2xl border border-gray-150 dark:border-gray-800">
+            <img src="assets/images/contact-observation-protocol.jpg" alt="Observation Protocol: Protecting the Children's Sacred Flow State" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. CAMPUS LOCATION & TRANSIT ================= -->
+  <section class="py-24 bg-gray-50 dark:bg-darknavy border-t border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Silicon Valley Campus</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">Conveniently Located in Sunnyvale</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Nestled in a peaceful residential neighborhood adjacent to redwood parks, minutes from major South Bay transit.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 items-stretch">
+        
+        <div class="bg-white dark:bg-black-light p-8 rounded-3xl border border-gray-150 dark:border-gray-800 flex flex-col h-full space-y-3 shadow-sm">
+          <span class="text-2xl shrink-0">🚗</span>
+          <h3 class="text-lg font-bold text-black dark:text-white min-h-[1.75rem] flex items-center">Highway & Highway Access</h3>
+          <div class="pt-3 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+              Convenient access from Highway 85, Highway 280, and Central Expressway with a dedicated circular one-way drop-off queue.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-black-light p-8 rounded-3xl border border-gray-150 dark:border-gray-800 flex flex-col h-full space-y-3 shadow-sm">
+          <span class="text-2xl shrink-0">🚆</span>
+          <h3 class="text-lg font-bold text-black dark:text-white min-h-[1.75rem] flex items-center">Caltrain Proximity</h3>
+          <div class="pt-3 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+              Less than 1.5 miles from the Sunnyvale Caltrain Station, ideal for parents commuting to San Francisco or Silicon Valley tech campuses.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-black-light p-8 rounded-3xl border border-gray-150 dark:border-gray-800 flex flex-col h-full space-y-3 shadow-sm">
+          <span class="text-2xl shrink-0">🚲</span>
+          <h3 class="text-lg font-bold text-black dark:text-white min-h-[1.75rem] flex items-center">Bicycle & Stroller Valet</h3>
+          <div class="pt-3 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+              Covered, secure bike racks and electric cargo bike charging docks for neighborhood families who walk or bike to pod mornings.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 6. DIRECT DEPARTMENT DIRECTORY ================= -->
+  <section class="py-24 bg-white dark:bg-black-deep border-t border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Connect Directly</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">Campus Department Directory</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Reach the specific team member who can best support your family's needs.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+        
+        <div class="p-6 rounded-3xl bg-gray-50 dark:bg-darknavy border border-gray-150 dark:border-gray-800 flex flex-col h-full space-y-2 shadow-sm">
+          <h4 class="font-bold text-sm text-black dark:text-white min-h-[1.5rem] flex items-center">Admissions & Tours</h4>
+          <p class="text-xs text-magenta font-bold">admissions@kindernest.org</p>
+          <div class="pt-3 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-[11px] text-gray-400 leading-relaxed">Tour bookings, waitlist status, and application support.</p>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-gray-50 dark:bg-darknavy border border-gray-150 dark:border-gray-800 flex flex-col h-full space-y-2 shadow-sm">
+          <h4 class="font-bold text-sm text-black dark:text-white min-h-[1.5rem] flex items-center">Head of School</h4>
+          <p class="text-xs text-magenta font-bold">director@kindernest.org</p>
+          <div class="pt-3 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-[11px] text-gray-400 leading-relaxed">Pedagogical consultations, philosophy, and community life.</p>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-gray-50 dark:bg-darknavy border border-gray-150 dark:border-gray-800 flex flex-col h-full space-y-2 shadow-sm">
+          <h4 class="font-bold text-sm text-black dark:text-white min-h-[1.5rem] flex items-center">Billing & Finance</h4>
+          <p class="text-xs text-magenta font-bold">billing@kindernest.org</p>
+          <div class="pt-3 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-[11px] text-gray-400 leading-relaxed">Tuition receipts, FSA letters, and financial aid paperwork.</p>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-gray-50 dark:bg-darknavy border border-gray-150 dark:border-gray-800 flex flex-col h-full space-y-2 shadow-sm">
+          <h4 class="font-bold text-sm text-black dark:text-white min-h-[1.5rem] flex items-center">Health & Nutrition</h4>
+          <p class="text-xs text-magenta font-bold">nurse@kindernest.org</p>
+          <div class="pt-3 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-[11px] text-gray-400 leading-relaxed">Allergy management, immunization records, and organic snacks.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 7. ADMISSIONS DESK HOURS ================= -->
+  <section class="py-20 bg-gray-50 dark:bg-darknavy border-t border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-xl mx-auto mb-12 space-y-2">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-magenta/10 text-magenta uppercase tracking-widest">
+          <i class="bi bi-clock"></i> Timings & Access
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-black dark:text-white">Admissions Desk Hours</h2>
+        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Reach our admissions team directly or visit during dedicated campus hours.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+        <!-- Card 1: Weekday Hours -->
+        <div class="p-8 rounded-3xl bg-white dark:bg-black-light border border-gray-150 dark:border-gray-800 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-magenta/10 text-magenta flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+              <i class="bi bi-clock-history"></i>
+            </div>
+            <div>
+              <span class="inline-block text-[11px] font-bold text-magenta uppercase tracking-wider bg-magenta/5 px-2.5 py-0.5 rounded-full mb-2">Office Hours</span>
+              <h3 class="text-xl font-bold text-black dark:text-white">Monday – Friday</h3>
+              <p class="text-sm font-semibold text-gray-700 dark:text-gray-300 mt-1">8:00 AM – 4:30 PM (PST)</p>
+            </div>
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed border-t border-gray-100 dark:border-gray-800 pt-3">
+              Open for parent inquiries, application reviews, and scheduled campus walkthroughs.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 flex items-center gap-2 text-xs font-bold text-magenta">
+            <i class="bi bi-geo-alt"></i> Main Administration Wing
+          </div>
+        </div>
+
+        <!-- Card 2: Weekend Tours -->
+        <div class="p-8 rounded-3xl bg-white dark:bg-black-light border border-gray-150 dark:border-gray-800 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+              <i class="bi bi-calendar2-check"></i>
+            </div>
+            <div>
+              <span class="inline-block text-[11px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider bg-emerald-500/10 px-2.5 py-0.5 rounded-full mb-2">Family Tours</span>
+              <h3 class="text-xl font-bold text-black dark:text-white">Saturday Mornings</h3>
+              <p class="text-sm font-semibold text-gray-700 dark:text-gray-300 mt-1">9:30 AM – 12:00 PM</p>
+            </div>
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed border-t border-gray-100 dark:border-gray-800 pt-3">
+              By prior appointment only. Families experience the prepared environment together.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+            <i class="bi bi-shield-check"></i> Reservation Required
+          </div>
+        </div>
+
+        <!-- Card 3: Direct Phone Line -->
+        <div class="p-8 rounded-3xl bg-white dark:bg-black-light border border-gray-150 dark:border-gray-800 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+              <i class="bi bi-telephone-inbound"></i>
+            </div>
+            <div>
+              <span class="inline-block text-[11px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider bg-amber-500/10 px-2.5 py-0.5 rounded-full mb-2">Immediate Support</span>
+              <h3 class="text-xl font-bold text-black dark:text-white">
+                <a href="tel:5554321098" class="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">+1 (555) 432-1098</a>
+              </h3>
+              <p class="text-sm font-semibold text-gray-700 dark:text-gray-300 mt-1">Sunnyvale Front Desk</p>
+            </div>
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed border-t border-gray-100 dark:border-gray-800 pt-3">
+              Direct assistance during active campus hours for existing parents and urgent queries.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 flex items-center gap-2 text-xs font-bold text-amber-600 dark:text-amber-400">
+            <i class="bi bi-headset"></i> Dedicated Concierge
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 8. COMMUNITY PARTNERSHIPS ================= -->
+  <section class="py-24 bg-white dark:bg-black-deep border-t border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Ecosystem</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">Community & Botanical Partnerships</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">KinderNest collaborates with local environmental organizations and university child development programs.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 items-stretch">
+        
+        <div class="p-8 rounded-3xl bg-gray-50 dark:bg-darknavy border border-gray-150 dark:border-gray-800 flex flex-col h-full space-y-3 shadow-sm">
+          <span class="text-2xl shrink-0">🌱</span>
+          <h3 class="text-base font-bold text-black dark:text-white min-h-[1.5rem] flex items-center">Silicon Valley Permaculture</h3>
+          <div class="pt-3 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Collaborating on native plant biodiversity, drought-resilient gardening, and children's vermiculture science.</p>
+          </div>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-gray-50 dark:bg-darknavy border border-gray-150 dark:border-gray-800 flex flex-col h-full space-y-3 shadow-sm">
+          <span class="text-2xl shrink-0">🎓</span>
+          <h3 class="text-base font-bold text-black dark:text-white min-h-[1.5rem] flex items-center">Montessori Teacher Residencies</h3>
+          <div class="pt-3 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Partnering with AMI training centers to mentor emerging guides in authentic child observation practices.</p>
+          </div>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-gray-50 dark:bg-darknavy border border-gray-150 dark:border-gray-800 flex flex-col h-full space-y-3 shadow-sm">
+          <span class="text-2xl shrink-0">🍯</span>
+          <h3 class="text-base font-bold text-black dark:text-white min-h-[1.5rem] flex items-center">Santa Clara Native Bee Haven</h3>
+          <div class="pt-3 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Maintaining solitary mason bee houses on campus to teach children gentle stewardship of native pollinators.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 9. VISITOR REFLECTIONS ================= -->
+  <section class="py-24 bg-gray-50 dark:bg-darknavy border-t border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">First Impressions</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">What Visitors Say After Observing</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Reflections from parents who attended our quiet morning observation tour.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 items-stretch">
+        
+        <div class="bg-white dark:bg-black-light p-8 rounded-3xl border border-gray-150 dark:border-gray-800 flex flex-col h-full justify-between shadow-sm">
+          <p class="text-xs text-gray-600 dark:text-gray-300 italic leading-relaxed min-h-[5.5rem] flex-grow">
+            "I walked into the observation room expecting chaotic toddler noise, but it was as peaceful as a library. A 3-year-old was carefully carrying a glass of water without spilling a drop. I enrolled on the spot."
+          </p>
+          <div class="mt-auto pt-4 border-t border-gray-150 dark:border-gray-800">
+            <h4 class="font-bold text-sm text-black dark:text-white">Dr. Daniel H.</h4>
+            <span class="text-[10px] text-gray-400">Tour Visitor & Prospective Parent</span>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-black-light p-8 rounded-3xl border border-gray-150 dark:border-gray-800 flex flex-col h-full justify-between shadow-sm">
+          <p class="text-xs text-gray-600 dark:text-gray-300 italic leading-relaxed min-h-[5.5rem] flex-grow">
+            "The outdoor living garden is extraordinary. Watching elementary children independently take soil pH readings and discuss root nitrogen was breathtaking."
+          </p>
+          <div class="mt-auto pt-4 border-t border-gray-150 dark:border-gray-800">
+            <h4 class="font-bold text-sm text-black dark:text-white">Meera V.</h4>
+            <span class="text-[10px] text-gray-400">Tour Visitor & Software Architect</span>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-black-light p-8 rounded-3xl border border-gray-150 dark:border-gray-800 flex flex-col h-full justify-between shadow-sm">
+          <p class="text-xs text-gray-600 dark:text-gray-300 italic leading-relaxed min-h-[5.5rem] flex-grow">
+            "The guides speak with such quiet reverence to the children. No shouting, no shaming. It felt like walking into an oasis of childhood respect."
+          </p>
+          <div class="mt-auto pt-4 border-t border-gray-150 dark:border-gray-800">
+            <h4 class="font-bold text-sm text-black dark:text-white">Robert & Ana K.</h4>
+            <span class="text-[10px] text-gray-400">Tour Visitors & Sunnyvale Residents</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 10. TOUR FAQS ================= -->
+  <section class="py-24 bg-white dark:bg-black-deep border-t border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-16 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Visit Questions</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">Campus Visit Frequently Asked Questions</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Helpful details to prepare for your observation morning.</p>
+      </div>
+
+      <div class="space-y-4">
+        
+        <div class="border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50 dark:bg-darknavy transition">
+          <h3 class="font-bold text-base text-black dark:text-white flex justify-between items-center cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            <span>Should we bring our child on the initial parent tour?</span>
+            <span class="text-magenta font-extrabold text-xl">+</span>
+          </h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 hidden leading-relaxed">
+            We recommend that parents attend the initial 45-minute tour adults-only so you can focus completely on observing the work cycle and asking pedagogical questions. Once you decide to proceed with an application, your child is invited for their personal 30-minute classroom visit.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50 dark:bg-darknavy transition">
+          <h3 class="font-bold text-base text-black dark:text-white flex justify-between items-center cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            <span>How far in advance should we book a tour?</span>
+            <span class="text-magenta font-extrabold text-xl">+</span>
+          </h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 hidden leading-relaxed">
+            Because we limit tour groups to 4 families at a time to prevent disturbing the classrooms, tours typically book 2 to 3 weeks in advance. We encourage scheduling early.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50 dark:bg-darknavy transition">
+          <h3 class="font-bold text-base text-black dark:text-white flex justify-between items-center cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            <span>Is parking available on campus?</span>
+            <span class="text-magenta font-extrabold text-xl">+</span>
+          </h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 hidden leading-relaxed">
+            Yes, we provide dedicated visitor parking spaces directly in front of the main administrative atrium, including accessible stalls and EV charging stations.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 11. QUICK APPLICATION BANNER ================= -->
+  <section class="py-24 bg-gray-50 dark:bg-darknavy border-t border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative bg-gradient-to-br from-magenta via-[#C85A3E] to-[#9E3E26] text-white p-10 sm:p-16 rounded-[40px] shadow-2xl overflow-hidden">
+        
+        <svg class="absolute -right-12 -bottom-12 w-80 h-80 opacity-10 text-white pointer-events-none" viewBox="0 0 100 100" fill="currentColor">
+          <path d="M50 0 C70 30 100 50 100 100 C50 100 30 70 0 50 C30 50 50 30 50 0 Z"/>
+        </svg>
+
+        <div class="max-w-3xl space-y-6 relative z-10">
+          <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur text-xs font-bold uppercase tracking-widest">Ready to Connect?</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold leading-tight">We Look Forward to Welcoming Your Family</h2>
+          <p class="text-sm sm:text-base text-white/90 leading-relaxed max-w-2xl">
+            Whether you are exploring toddler enrollment or looking for an elementary alternative, we invite you to experience the KinderNest difference in person.
+          </p>
+          <div class="pt-4 flex flex-col sm:flex-row gap-4">
+            <a href="login-register.html" class="bg-white text-magenta hover:bg-gray-100 font-extrabold px-8 py-4 rounded-2xl text-center shadow-lg transition duration-200 text-sm">Parent Portal Access</a>
+            <a href="services.html" class="border-2 border-white/60 hover:border-white text-white font-bold px-8 py-4 rounded-2xl text-center transition duration-200 text-sm">Explore Learning Pods</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Toast alert box -->
+  <div class="fixed top-5 right-5 z-[1080] transform translate-y-[-150%] transition-transform duration-500" id="contactToast">
+    <div class="bg-emerald-600 text-white px-6 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 text-xs font-bold">
+      <i class="bi bi-check-circle-fill text-lg"></i>
+      <span>Thank you! Your tour request has been received. Our admissions team will reach out shortly.</span>
+      <button type="button" class="ml-4 text-white hover:text-gray-200" id="closeToastBtn" aria-label="Close notification"><i class="bi bi-x-lg"></i></button>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER SECTION ================= -->
+  <footer class="bg-white dark:bg-black border-t border-gray-150 dark:border-gray-800 py-16 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Newsletter Section -->
+      <div class="flex flex-col items-center text-center pb-12 border-b border-gray-150 dark:border-gray-850">
+        <span class="text-xs font-bold text-magenta uppercase tracking-wider mb-2">Montessori Parenting Circle</span>
+        <h3 class="text-2xl font-extrabold text-black dark:text-white font-sans">Receive Our Weekly Journal</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-6">Gentle discipline insights, prepared home ideas, and seasonal nature activities.</p>
+        <form class="flex flex-col sm:flex-row w-full max-w-md items-center gap-3" onsubmit="handleNewsletterSubmit(event, this)">
+          <input type="email" placeholder="name@gmail.com" required class="w-full px-5 py-3 rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-darknavy-light text-black dark:text-white text-sm focus:outline-none focus:border-magenta transition">
+          <button type="submit" class="w-full sm:w-auto bg-magenta hover:bg-magenta-hover text-white px-8 py-3 rounded-full font-bold text-sm transition shadow-md shadow-magenta/20 shrink-0">Subscribe</button>
+        </form>
+      </div>
+
+      <!-- Links Grid Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pt-12 text-sm text-gray-600 dark:text-gray-300">
+        
+        <!-- Column 1: Logo & Description & Socials -->
+        <div class="space-y-4">
+          <a href="index.html" class="flex items-center space-x-2 rtl:space-x-reverse">
+            <span class="w-10 h-10 rounded-full bg-magenta flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-magenta/30">K</span>
+            <span class="text-xl font-bold tracking-tight text-darknavy dark:text-white">Kinder<span class="text-magenta">Nest</span></span>
+          </a>
+          <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+            KinderNest is an authentic Montessori learning community dedicated to nurturing intrinsic curiosity, independence, and respect for nature across early childhood and elementary years.
+          </p>
+          <!-- Social Icons -->
+          <div class="flex space-x-3 rtl:space-x-reverse pt-2">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-magenta hover:text-white dark:hover:bg-magenta transition flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-magenta dark:hover:border-magenta" aria-label="KinderNest Instagram">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-800 hover:bg-magenta hover:text-white dark:hover:bg-magenta transition flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-magenta dark:hover:border-magenta" aria-label="KinderNest Facebook">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h4v-9h3.61L17 8h-4V7.007C13 6.273 13.5 6 14 6h2V3h-3.328C10.05 3 9 4.35 9 6.828V8z"/></svg>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-800 hover:bg-magenta hover:text-white dark:hover:bg-magenta transition flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-magenta dark:hover:border-magenta" aria-label="KinderNest X">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-800 hover:bg-magenta hover:text-white dark:hover:bg-magenta transition flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-magenta dark:hover:border-magenta" aria-label="KinderNest LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: LEARNING PODS -->
+        <div class="space-y-4">
+          <h4 class="font-extrabold text-xs uppercase tracking-widest text-magenta">Learning Pods</h4>
+          <ul class="space-y-2.5 text-xs font-semibold">
+            <li><a href="services.html" class="hover:text-magenta transition">Toddler Community (18m-3y)</a></li>
+            <li><a href="services.html" class="hover:text-magenta transition">Children's House (3-6y)</a></li>
+            <li><a href="services.html" class="hover:text-magenta transition">Lower Elementary Pod (6-9y)</a></li>
+            <li><a href="service-details.html" class="hover:text-magenta transition">Montessori Curriculum Areas</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: EXPLORE & PARENTS -->
+        <div class="space-y-4">
+          <h4 class="font-extrabold text-xs uppercase tracking-widest text-magenta">Explore KinderNest</h4>
+          <ul class="space-y-2.5 text-xs font-semibold">
+            <li><a href="about.html" class="hover:text-magenta transition">Montessori Philosophy</a></li>
+            <li><a href="instructors.html" class="hover:text-magenta transition">Certified Lead Guides</a></li>
+            <li><a href="pricing.html" class="hover:text-magenta transition">Tuition & Financial Aid</a></li>
+            <li><a href="login-register.html" class="hover:text-magenta transition">Parent Portal Sign In</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: GET IN TOUCH -->
+        <div class="space-y-4">
+          <h4 class="font-extrabold text-xs uppercase tracking-widest text-magenta">Campus Contact</h4>
+          <ul class="space-y-3.5 text-xs">
+            <li class="flex items-start space-x-2.5 rtl:space-x-reverse leading-relaxed">
+              <svg class="w-4 h-4 text-magenta shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span>42 Blossom Valley Way, Sunnyvale, CA 94087</span>
+            </li>
+            <li class="flex items-center space-x-2.5 rtl:space-x-reverse">
+              <svg class="w-4 h-4 text-magenta shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.94.725l.548 2.2a1 1 0 00.996.81h2.982a1 1 0 00.996-.81l.548-2.2a1 1 0 01.94-.725H21a2 2 0 012 2v1.5a10.5 10.5 0 01-10.5 10.5H11A10.5 10.5 0 01.5 11V5z"/></svg>
+              <a href="tel:5554386378" class="hover:underline">+1 (555) 438-6378</a>
+            </li>
+            <li class="flex items-center space-x-2.5 rtl:space-x-reverse">
+              <svg class="w-4 h-4 text-magenta shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <a href="mailto:admissions@kindernest.org" class="hover:underline">admissions@kindernest.org</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Divider & Bottom Area -->
+      <div class="mt-12 pt-8 border-t border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+        <p>&copy; 2026 KinderNest Montessori School. All rights reserved.</p>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-10 h-10 rounded-full bg-magenta text-white flex items-center justify-center hover:bg-magenta-hover transition shadow-md shadow-magenta/20 focus:outline-none shrink-0" aria-label="Scroll back to top">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contactForm");
+      const toast = document.getElementById("contactToast");
+      const closeToastBtn = document.getElementById("closeToastBtn");
+
+      function showToast() {
+        if (!toast) return;
+        toast.style.transform = "translateY(0)";
+        setTimeout(() => {
+          toast.style.transform = "translateY(-150%)";
+        }, 5000);
+      }
+
+      if (closeToastBtn && toast) {
+        closeToastBtn.addEventListener("click", () => {
+          toast.style.transform = "translateY(-150%)";
+        });
+      }
+
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+      const phoneInput = document.getElementById("phone");
+
+      // Requirement 1: Full name should not accept numbers
+      if (nameInput) {
+        nameInput.addEventListener("beforeinput", (e) => {
+          if (e.data && /[0-9]/.test(e.data)) {
+            e.preventDefault();
+          }
+        });
+        nameInput.addEventListener("input", function() {
+          this.value = this.value.replace(/[0-9]/g, "");
+          if (this.value.trim().length >= 2) {
+            document.getElementById("errName").classList.add("hidden");
+          }
+        });
+      }
+
+      // Requirement 2: Phone number field should not accept alphabet letters and must be 10 digits
+      if (phoneInput) {
+        phoneInput.addEventListener("beforeinput", (e) => {
+          if (e.data && /[a-zA-Z]/.test(e.data)) {
+            e.preventDefault();
+          }
+        });
+        phoneInput.addEventListener("input", function() {
+          this.value = this.value.replace(/[^0-9]/g, "").slice(0, 10);
+          if (this.value.length === 10) {
+            document.getElementById("errPhone").classList.add("hidden");
+          }
+        });
+      }
+
+      // Requirement 3: Email format check (name@gmail.com)
+      if (emailInput) {
+        emailInput.addEventListener("input", function() {
+          const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/i;
+          if (emailRegex.test(this.value.trim())) {
+            document.getElementById("errEmail").classList.add("hidden");
+          }
+        });
+      }
+
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const phone = document.getElementById("phone").value.trim();
+          const subject = document.getElementById("subject").value;
+          const message = document.getElementById("message").value.trim();
+
+          let valid = true;
+
+          // Name validation: must not accept numbers and must be 2 characters or more
+          if (!name || name.length < 2 || /[0-9]/.test(name)) {
+            document.getElementById("errName").classList.remove("hidden");
+            valid = false;
+          } else {
+            document.getElementById("errName").classList.add("hidden");
+          }
+
+          // Email validation: should be name@gmail.com
+          const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/i;
+          if (!email || !emailRegex.test(email)) {
+            document.getElementById("errEmail").classList.remove("hidden");
+            valid = false;
+          } else {
+            document.getElementById("errEmail").classList.add("hidden");
+          }
+
+          // Phone validation: no alphabet letters and exactly 10 digits
+          const cleanPhone = phone.replace(/\D/g, "");
+          if (!phone || cleanPhone.length !== 10 || /[a-zA-Z]/.test(phone)) {
+            document.getElementById("errPhone").classList.remove("hidden");
+            valid = false;
+          } else {
+            document.getElementById("errPhone").classList.add("hidden");
+          }
+
+          // Subject validation
+          if (!subject) {
+            document.getElementById("errSubject").classList.remove("hidden");
+            valid = false;
+          } else {
+            document.getElementById("errSubject").classList.add("hidden");
+          }
+
+          // Message validation
+          if (!message) {
+            document.getElementById("errMessage").classList.remove("hidden");
+            valid = false;
+          } else {
+            document.getElementById("errMessage").classList.add("hidden");
+          }
+
+          if (valid) {
+            const inbox = JSON.parse(localStorage.getItem("adminContactMessages") || "[]");
+            inbox.push({
+              id: Date.now(),
+              name: name,
+              email: email,
+              phone: phone,
+              subject: subject,
+              message: message,
+              date: new Date().toLocaleDateString(),
+              resolved: false
+            });
+            localStorage.setItem("adminContactMessages", JSON.stringify(inbox));
+
+            showToast();
+            form.reset();
+          }
+        });
+      }
+
+      // FAQ Accordion Toggle
+      const faqBtns = document.querySelectorAll(".faq-btn");
+      faqBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const content = btn.nextElementSibling;
+          const icon = btn.querySelector(".faq-icon");
+          const isOpen = btn.getAttribute("aria-expanded") === "true";
+          
+          faqBtns.forEach(otherBtn => {
+            if (otherBtn !== btn) {
+              otherBtn.setAttribute("aria-expanded", "false");
+              otherBtn.nextElementSibling.classList.add("hidden");
+              otherBtn.querySelector(".faq-icon").classList.remove("rotate-180");
+            }
+          });
+
+          if (isOpen) {
+            btn.setAttribute("aria-expanded", "false");
+            content.classList.add("hidden");
+            icon.classList.remove("rotate-180");
+          } else {
+            btn.setAttribute("aria-expanded", "true");
+            content.classList.remove("hidden");
+            icon.classList.add("rotate-180");
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

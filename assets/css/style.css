@@ -1,0 +1,961 @@
+/* KinderNest Montessori Learning Pod Custom CSS */
+
+/* Custom smooth transitions for dark mode */
+html, body {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Scrollbar styling using warm Montessori colors */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #18181D;
+}
+::-webkit-scrollbar-thumb {
+  background: #E07A5F;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C85A3E;
+}
+
+/* RTL layout adjustments for specific elements if needed */
+[dir="rtl"] .rtl-mirror {
+  transform: scaleX(-1);
+}
+
+/* Custom background animation for Hero */
+@keyframes pulse-slow {
+  0%, 100% { transform: scale(1); opacity: 0.1; }
+  50% { transform: scale(1.05); opacity: 0.15; }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 8s infinite ease-in-out;
+}
+
+/* Custom Dark Mode Hover Shadows and Outlines for Cards (Scoped to content sections/main) */
+.dark section .group:not(a.group):hover,
+.dark main .group:not(a.group):hover,
+.dark article .group:not(a.group):hover,
+.dark section .hover\:shadow-2xl:hover,
+.dark section .hover\:shadow-xl:hover,
+.dark section .hover\:shadow-lg:hover,
+.dark section .hover\:shadow:hover,
+.dark section [class*="hover:shadow"]:hover,
+.dark main .hover\:shadow-2xl:hover,
+.dark main .hover\:shadow-xl:hover,
+.dark main .hover\:shadow-lg:hover,
+.dark main .hover\:shadow:hover,
+.dark main [class*="hover:shadow"]:hover {
+  box-shadow: 0 10px 30px -10px rgba(224, 122, 95, 0.35), 0 1px 15px 0 rgba(224, 122, 95, 0.15) !important;
+  border-color: rgba(224, 122, 95, 0.4) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Explicitly reset header navigation and dropdowns so no card shadows or border boxes appear */
+header .group,
+header .group:hover,
+header nav .group,
+header nav .group:hover,
+header .dropdown-toggle,
+header .dropdown-toggle:hover,
+#mobileMenu .group,
+#mobileMenu .group:hover,
+header .group:not(a.group):hover,
+.dark header .group:not(a.group):hover,
+.dark header .dropdown-toggle:hover,
+.dark #mobileMenu .group:not(a.group):hover {
+  box-shadow: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+}
+
+/* Ensure the brand logo is always fully visible and doesn't fade/pulse */
+.bg-magenta.flex.items-center.justify-center {
+  opacity: 1 !important;
+  animation: none !important;
+}
+
+/* Hover effects for links in dark mode */
+.dark a[href*="program-"]:hover,
+.dark a[href*="blog-details-"]:hover,
+.dark a[class*="hover:text-magenta"]:hover,
+.dark a.hover\:text-magenta:hover,
+.dark a.hover\:underline:hover {
+  color: #F4A261 !important; /* Glow warm peach/coral */
+  text-shadow: 0 0 8px rgba(224, 122, 95, 0.4) !important;
+  transform: translateX(3px);
+  transition: all 0.3s ease !important;
+}
+
+/* Equal Height & Bottom-Aligned Buttons for Cards */
+.grid > div.rounded-3xl,
+.grid > div.program-card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.grid > div.rounded-3xl > div.p-6,
+.grid > div.program-card > div.p-6 {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important;
+}
+
+.grid > div.rounded-3xl > div.p-6 > a,
+.grid > div.rounded-3xl > div.p-6 > div,
+.grid > div.program-card > div.p-6 > a,
+.grid > div.program-card > div.p-6 > div {
+  margin-top: auto !important;
+}
+
+/* Hide Scroll to Top Button Globally */
+button[onclick*="window.scrollTo"] {
+  display: none !important;
+}
+
+/* Custom compatibility rules for invalid dark mode gray classes */
+.dark [class*="dark:border-gray-85"] {
+  border-color: #282832 !important;
+}
+.dark [class*="dark:divide-gray-85"] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #282832 !important;
+}
+.dark [class*="dark:bg-gray-85"] {
+  background-color: #22222B !important;
+}
+
+/* Center Footer Copyright Text Globally */
+footer .border-t.flex-col.sm\:flex-row {
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+/* Fix mobile menu drawer toggles gap globally */
+#mobile-menu .flex.justify-between.items-center.pt-4.border-t {
+  justify-content: center !important;
+  gap: 1.5rem !important;
+}
+
+/* Hide scrollbar utility class */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* Hamburger animation */
+#mobile-menu-btn .line-1,
+#mobile-menu-btn .line-2,
+#mobile-menu-btn .line-3 {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: 12px 12px;
+}
+#mobile-menu-btn.open .line-1 {
+  transform: translateY(6px) rotate(45deg);
+}
+#mobile-menu-btn.open .line-2 {
+  opacity: 0;
+}
+#mobile-menu-btn.open .line-3 {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Ensure proper form input contrast in dark and light modes */
+input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="search"], input[type="file"], select, textarea {
+  color: #111111 !important;
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder, input[type="tel"]::placeholder, input[type="search"]::placeholder, textarea::placeholder {
+  color: #6b7280 !important;
+}
+
+.dark input[type="text"], .dark input[type="email"], .dark input[type="password"], .dark input[type="tel"], .dark input[type="search"], .dark input[type="file"], .dark select, .dark textarea {
+  color: #ffffff !important;
+  background-color: #1e1e24 !important;
+  border-color: #374151 !important;
+}
+.dark input[type="text"]::placeholder, .dark input[type="email"]::placeholder, .dark input[type="password"]::placeholder, .dark input[type="tel"]::placeholder, .dark input[type="search"]::placeholder, .dark textarea::placeholder {
+  color: #9ca3af !important;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="tel"]:focus, input[type="search"]:focus, select:focus, textarea:focus {
+  border-color: #E07A5F !important;
+}
+
+/* Prevent horizontal layout shifts across page transitions */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Universal Sticky / Fixed Navigation Bar Across All Pages */
+header.fixed,
+header.sticky,
+body > header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 50 !important;
+  width: 100% !important;
+}
+
+/* Mobile menu drawer scrolling and full visibility */
+#mobile-menu > div:nth-child(2) {
+  overflow-y: auto !important;
+  max-height: 100vh !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ==========================================================================
+   NORMAL TEXT COLOR IN BRIGHT MODE (BLACK INSTEAD OF GREY)
+   ========================================================================== */
+html:not(.dark) body {
+  color: #000000 !important;
+}
+
+html:not(.dark) p:not(.text-white):not([class*="text-white"]):not(.text-magenta):not([class*="text-magenta"]),
+html:not(.dark) section:not(.bg-cover):not([style*="background-image"]):not(.text-white) p,
+html:not(.dark) article p,
+html:not(.dark) main p,
+html:not(.dark) footer:not([class*="bg-black"]) p,
+html:not(.dark) aside p,
+html:not(.dark) .subheading,
+html:not(.dark) .text-gray-400:not(.text-white):not([class*="text-white"]):not(.text-magenta):not([class*="text-magenta"]):not(svg),
+html:not(.dark) .text-gray-500:not(.text-white):not([class*="text-white"]):not(.text-magenta):not([class*="text-magenta"]):not(svg),
+html:not(.dark) .text-gray-550:not(.text-white):not([class*="text-white"]):not(.text-magenta):not([class*="text-magenta"]):not(svg),
+html:not(.dark) .text-gray-600:not(.text-white):not([class*="text-white"]):not(.text-magenta):not([class*="text-magenta"]):not(svg),
+html:not(.dark) .text-gray-650:not(.text-white):not([class*="text-white"]):not(.text-magenta):not([class*="text-magenta"]):not(svg),
+html:not(.dark) .text-gray-700:not(.text-white):not([class*="text-white"]):not(.text-magenta):not([class*="text-magenta"]):not(svg),
+html:not(.dark) .text-gray-800:not(.text-white):not([class*="text-white"]):not(.text-magenta):not([class*="text-magenta"]):not(svg),
+html:not(.dark) li:not(.text-white):not([class*="text-white"]):not(.text-magenta):not([class*="text-magenta"]),
+html:not(.dark) span.text-gray-400,
+html:not(.dark) span.text-gray-500,
+html:not(.dark) span.text-gray-600,
+html:not(.dark) span.text-gray-700,
+html:not(.dark) label.text-gray-600,
+html:not(.dark) label.text-gray-700,
+html:not(.dark) label.text-gray-500,
+html:not(.dark) td.text-gray-600,
+html:not(.dark) td.text-gray-700,
+html:not(.dark) td.text-gray-500 {
+  color: #000000 !important;
+}
+
+/* Ensure Dark Mode retains high-contrast light text */
+.dark,
+.dark body {
+  color: #f3f4f6 !important;
+}
+.dark p,
+.dark section p,
+.dark article p,
+.dark main p,
+.dark footer p,
+.dark .text-gray-300,
+.dark .text-gray-400,
+.dark .text-gray-450,
+.dark .text-gray-500,
+.dark .text-gray-600,
+.dark .text-gray-650 {
+  color: #d1d5db !important;
+}
+
+/* Card borders and container backgrounds contrast in dark mode (excluding interactive buttons/links/badges) */
+.dark div.bg-white:not(a):not(button),
+.dark div.bg-gray-50:not(a):not(button),
+.dark section.bg-white, .dark section.bg-gray-50,
+.dark article.bg-white, .dark article.bg-gray-50,
+.dark aside.bg-white, .dark aside.bg-gray-50,
+.dark main.bg-white, .dark main.bg-gray-50 {
+  background-color: #18181D !important;
+}
+.dark .border-gray-100, .dark .border-gray-150, .dark .border-gray-200 {
+  border-color: #282832 !important;
+}
+
+/* Remove button hover styling override */
+#removePicBtn:hover {
+  color: #E07A5F !important;
+  border-color: #E07A5F !important;
+  background-color: rgba(224, 122, 95, 0.08) !important;
+}
+.dark #removePicBtn:hover {
+  color: #F4A261 !important;
+  border-color: #F4A261 !important;
+  background-color: rgba(244, 162, 97, 0.1) !important;
+}
+
+/* Typography Hierarchy & Header Height */
+header .h-20,
+header .h-16 {
+  height: 4rem !important; /* 64px standard header height */
+}
+
+/* Maintain heading font weight up to 600 */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600 !important;
+}
+h1.font-extrabold, h2.font-extrabold, h3.font-extrabold, h4.font-extrabold,
+h1.font-bold, h2.font-bold, h3.font-bold, h4.font-bold {
+  font-weight: 600 !important;
+}
+
+/* Subheadings and descriptions between 400 and 550 */
+.subheading,
+section .text-gray-500,
+section .text-gray-600,
+section .dark\:text-gray-300,
+section .dark\:text-gray-400,
+p.font-sans,
+section p {
+  font-weight: 450;
+}
+
+/* ==========================================================================
+   UNIVERSAL BUTTON & INTERACTIVE HOVER SYSTEM (BRIGHT & DARK MODES)
+   ========================================================================== */
+
+/* 1. Base Interactive Element Transitions */
+a, button, input[type="submit"], input[type="button"], .category-btn, .theme-toggle, .rtl-toggle {
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* 2. Primary Action Buttons (bg-magenta, submit buttons, parent portal CTAs) */
+.bg-magenta,
+button[type="submit"],
+.btn-magenta,
+a.bg-magenta,
+button.bg-magenta {
+  background-color: #E07A5F !important;
+  color: #ffffff !important;
+}
+
+/* Primary Button Hover - Bright Mode */
+button[type="submit"]:hover,
+input[type="submit"]:hover,
+.btn-magenta:hover,
+a.bg-magenta:hover,
+button.bg-magenta:hover {
+  background-color: #C85A3E !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 25px -4px rgba(224, 122, 95, 0.45) !important;
+  transform: translateY(-2px);
+}
+
+/* Primary Button Hover - Dark Mode (Warm Luminous Contrast) */
+.dark button[type="submit"]:hover,
+.dark input[type="submit"]:hover,
+.dark .btn-magenta:hover,
+.dark a.bg-magenta:hover,
+.dark button.bg-magenta:hover {
+  background-color: #F4A261 !important;
+  color: #131316 !important;
+  box-shadow: 0 0 25px rgba(244, 162, 97, 0.55), 0 8px 20px rgba(0, 0, 0, 0.5) !important;
+  transform: translateY(-2px);
+}
+
+/* 3. Hero & Banner Solid White Buttons (e.g. Schedule Visit, Book a Tour) */
+a[class*="bg-white"][class*="text-magenta"],
+button[class*="bg-white"][class*="text-magenta"] {
+  background-color: #ffffff !important;
+  color: #E07A5F !important;
+}
+a[class*="bg-white"][class*="text-magenta"]:hover,
+button[class*="bg-white"][class*="text-magenta"]:hover {
+  background-color: #FFF2ED !important;
+  color: #C85A3E !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-2px);
+}
+.dark a[class*="bg-white"][class*="text-magenta"],
+.dark button[class*="bg-white"][class*="text-magenta"] {
+  background-color: #ffffff !important;
+  color: #C85A3E !important;
+}
+.dark a[class*="bg-white"][class*="text-magenta"]:hover,
+.dark button[class*="bg-white"][class*="text-magenta"]:hover {
+  background-color: #F4A261 !important;
+  color: #131316 !important;
+  box-shadow: 0 0 25px rgba(244, 162, 97, 0.6) !important;
+  transform: translateY(-2px);
+}
+
+/* 4. Banner White Outline Buttons (e.g. "Parent Portal Login", "Explore Pod Programs") */
+a[class*="border-white"],
+button[class*="border-white"] {
+  border-color: rgba(255, 255, 255, 0.75) !important;
+  color: #ffffff !important;
+}
+a[class*="border-white"]:hover,
+button[class*="border-white"]:hover {
+  background-color: #ffffff !important;
+  color: #C85A3E !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22) !important;
+  transform: translateY(-2px);
+}
+.dark a[class*="border-white"]:hover,
+.dark button[class*="border-white"]:hover {
+  background-color: #ffffff !important;
+  color: #C85A3E !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-2px);
+}
+
+/* 5. Secondary Outline Buttons (e.g. Hero secondary buttons, cancel buttons) */
+#hero a[class*="border-gray"],
+a.border-gray-200, a.border-gray-700,
+button.border-gray-200, button.border-gray-700 {
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+#hero a[class*="border-gray"]:hover,
+a.border-gray-200:hover,
+button.border-gray-200:hover {
+  border-color: #E07A5F !important;
+  color: #E07A5F !important;
+  background-color: #FFF7F4 !important;
+  box-shadow: 0 4px 15px rgba(224, 122, 95, 0.15) !important;
+  transform: translateY(-1px);
+}
+.dark #hero a[class*="border-gray"]:hover,
+.dark a.border-gray-700:hover,
+.dark button.border-gray-700:hover {
+  border-color: #F4A261 !important;
+  color: #F4A261 !important;
+  background-color: rgba(244, 162, 97, 0.16) !important;
+  box-shadow: 0 0 18px rgba(244, 162, 97, 0.25) !important;
+  transform: translateY(-1px);
+}
+
+/* 6. Blog & Category Filter Pills */
+.category-btn {
+  cursor: pointer;
+}
+.category-btn.active {
+  background-color: #E07A5F !important;
+  color: #ffffff !important;
+}
+.category-btn.active:hover {
+  background-color: #C85A3E !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 18px rgba(224, 122, 95, 0.4) !important;
+  transform: translateY(-1px);
+}
+.dark .category-btn.active:hover {
+  background-color: #F4A261 !important;
+  color: #131316 !important;
+  box-shadow: 0 0 20px rgba(244, 162, 97, 0.5) !important;
+  transform: translateY(-1px);
+}
+.category-btn:not(.active):hover {
+  background-color: #FFF7F4 !important;
+  color: #E07A5F !important;
+  border-color: #E07A5F !important;
+  transform: translateY(-1px);
+}
+.dark .category-btn:not(.active):hover {
+  background-color: rgba(244, 162, 97, 0.18) !important;
+  color: #F4A261 !important;
+  border-color: #F4A261 !important;
+  transform: translateY(-1px);
+}
+
+/* 7. Header Navigation & Utility Toggles (Theme toggle, RTL toggle) */
+.theme-toggle:hover,
+.rtl-toggle:hover,
+#mobile-menu-btn:hover,
+#mobile-menu-close:hover {
+  border-color: #E07A5F !important;
+  color: #E07A5F !important;
+  background-color: #FFF7F4 !important;
+  transform: scale(1.05);
+}
+.dark .theme-toggle:hover,
+.dark .rtl-toggle:hover,
+.dark #mobile-menu-btn:hover,
+.dark #mobile-menu-close:hover {
+  border-color: #F4A261 !important;
+  color: #F4A261 !important;
+  background-color: rgba(244, 162, 97, 0.2) !important;
+  transform: scale(1.05);
+}
+
+/* 8. Social Login Buttons (Google, Apple ID in login-register) */
+button[onclick*="demoSocialLogin"]:hover {
+  border-color: #E07A5F !important;
+  background-color: #FFF7F4 !important;
+  color: #E07A5F !important;
+  box-shadow: 0 4px 15px rgba(224, 122, 95, 0.15) !important;
+  transform: translateY(-1px);
+}
+.dark button[onclick*="demoSocialLogin"]:hover {
+  border-color: #F4A261 !important;
+  background-color: rgba(244, 162, 97, 0.16) !important;
+  color: #F4A261 !important;
+  box-shadow: 0 0 16px rgba(244, 162, 97, 0.25) !important;
+  transform: translateY(-1px);
+}
+
+/* 9. Social Media Icon Circles in Footer */
+footer a.w-8.h-8:hover,
+footer a.rounded-full:hover {
+  background-color: #E07A5F !important;
+  color: #ffffff !important;
+  border-color: #E07A5F !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(224, 122, 95, 0.35) !important;
+}
+.dark footer a.w-8.h-8:hover,
+.dark footer a.rounded-full:hover {
+  background-color: #F4A261 !important;
+  color: #131316 !important;
+  border-color: #F4A261 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(244, 162, 97, 0.45) !important;
+}
+
+/* 10. Dashboard Modal and Interactive Buttons */
+#confirm-modal-cancel:hover,
+button[onclick="hidePaymentModal()"]:hover {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+  transform: translateY(-1px);
+}
+.dark #confirm-modal-cancel:hover,
+.dark button[onclick="hidePaymentModal()"]:hover {
+  background-color: #374151 !important;
+  color: #f9fafb !important;
+  transform: translateY(-1px);
+}
+#uploadPicBtn:hover {
+  background-color: #C85A3E !important;
+  box-shadow: 0 6px 18px rgba(224, 122, 95, 0.4) !important;
+}
+.dark #uploadPicBtn:hover {
+  background-color: #F4A261 !important;
+  color: #131316 !important;
+  box-shadow: 0 0 20px rgba(244, 162, 97, 0.5) !important;
+}
+
+/* 11. Header Nav Dropdown & Menu Toggles */
+.dark header .dropdown-toggle:hover,
+.dark header nav button:hover {
+  color: #F4A261 !important;
+  text-shadow: 0 0 8px rgba(224, 122, 95, 0.4) !important;
+}
+.dark header .dropdown-toggle:hover svg,
+.dark header nav button:hover svg {
+  color: #F4A261 !important;
+  stroke: #F4A261 !important;
+}
+
+/* 12. Border-Magenta Buttons & Interactive Outlines */
+button[class*="border-magenta"]:hover,
+a[class*="border-magenta"]:hover {
+  background-color: #E07A5F !important;
+  color: #ffffff !important;
+  border-color: #E07A5F !important;
+  box-shadow: 0 6px 20px rgba(224, 122, 95, 0.35) !important;
+  transform: translateY(-1px);
+}
+.dark button[class*="border-magenta"]:hover,
+.dark a[class*="border-magenta"]:hover {
+  background-color: #F4A261 !important;
+  color: #131316 !important;
+  border-color: #F4A261 !important;
+  box-shadow: 0 0 20px rgba(244, 162, 97, 0.5) !important;
+  transform: translateY(-1px);
+}
+
+/* 13. FAQ Accordion Cards */
+#faq .border:hover,
+section[id*="faq"] .border:hover {
+  border-color: #E07A5F !important;
+  box-shadow: 0 4px 15px rgba(224, 122, 95, 0.1) !important;
+  transform: translateY(-1px);
+}
+.dark #faq .border:hover,
+.dark section[id*="faq"] .border:hover {
+  border-color: #F4A261 !important;
+  box-shadow: 0 0 15px rgba(244, 162, 97, 0.2) !important;
+  transform: translateY(-1px);
+}
+
+/* 14. Tab Switchers and Password Eye Buttons in Login/Register */
+#login-tab-btn:hover,
+#register-tab-btn:hover,
+button[onclick*="togglePasswordVisibility"]:hover {
+  color: #E07A5F !important;
+  transform: scale(1.05);
+}
+.dark #login-tab-btn:hover,
+.dark #register-tab-btn:hover,
+.dark button[onclick*="togglePasswordVisibility"]:hover {
+  color: #F4A261 !important;
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   Universal Layout Stability: Scrollbar Gutter & Sticky Nav
+   ========================================================= */
+html {
+  scrollbar-gutter: stable;
+}
+
+header.fixed,
+header.sticky,
+body > header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 50 !important;
+  width: 100% !important;
+}
+
+/* Mobile menu drawer scrolling */
+#mobile-menu > div:nth-child(2),
+#mobile-menu [class*="overflow-y-auto"] {
+  overflow-y: auto !important;
+  max-height: 100vh !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* =========================================================
+   Hero & Breadcrumb Banners: Bright White Text in BOTH Modes
+   ========================================================= */
+section.bg-cover h1,
+section.bg-cover h2,
+section.bg-cover h3,
+section.bg-cover p,
+section.bg-cover .font-sans,
+section[style*="background-image"]:not(#hero) h1,
+section[style*="background-image"]:not(#hero) h2,
+section[style*="background-image"]:not(#hero) h3,
+section[style*="background-image"]:not(#hero) p,
+section[style*="background-image"]:not(#hero) .font-sans,
+html:not(.dark) section.bg-cover h1,
+html:not(.dark) section.bg-cover h2,
+html:not(.dark) section.bg-cover h3,
+html:not(.dark) section.bg-cover p,
+html:not(.dark) section[style*="background-image"]:not(#hero) h1,
+html:not(.dark) section[style*="background-image"]:not(#hero) h2,
+html:not(.dark) section[style*="background-image"]:not(#hero) h3,
+html:not(.dark) section[style*="background-image"]:not(#hero) p {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Ensure pill badges on hero banners keep their distinct styling */
+section.bg-cover span[class*="text-magenta"],
+section[style*="background-image"] span[class*="text-magenta"],
+section.text-white span[class*="text-magenta"] {
+  color: #E07A5F !important;
+  -webkit-text-fill-color: #E07A5F !important;
+}
+
+/* =========================================================
+   CTA Banner Headings & Paragraphs (Terracotta gradient banners)
+   ========================================================= */
+div[class*="from-magenta"][class*="text-white"] h2,
+div[class*="from-magenta"][class*="text-white"] p,
+div[class*="from-magenta"][class*="text-white"] span[class*="bg-white/20"] {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Buttons inside CTA Banners: White button must have Magenta text! */
+div[class*="from-magenta"] a.bg-white,
+div[class*="from-magenta"] button.bg-white,
+a.bg-white.text-magenta,
+button.bg-white.text-magenta {
+  background-color: #ffffff !important;
+  color: #E07A5F !important;
+  -webkit-text-fill-color: #E07A5F !important;
+}
+div[class*="from-magenta"] a.bg-white:hover,
+div[class*="from-magenta"] button.bg-white:hover,
+a.bg-white.text-magenta:hover,
+button.bg-white.text-magenta:hover {
+  background-color: #f3f4f6 !important;
+  color: #C85A3E !important;
+  -webkit-text-fill-color: #C85A3E !important;
+}
+
+/* Secondary outline button inside CTA banners */
+div[class*="from-magenta"] a[class*="border-white"],
+div[class*="from-magenta"] button[class*="border-white"] {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* =========================================================
+   Bright Mode Typography: Solid Black Normal Text (#000000)
+   All paragraphs, labels, card content, and headings in bright mode
+   ========================================================= */
+html:not(.dark) body {
+  color: #000000 !important;
+}
+
+html:not(.dark) p:not(.text-white):not([class*="text-white"]):not([class*="text-magenta"]):not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-teal"]):not([class*="text-blue"]):not([class*="text-yellow"]):not([class*="text-red"]) {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* All gray & slate utility classes in bright mode become solid black */
+html:not(.dark) .text-gray-400:not(.text-white):not([class*="text-white"]):not([class*="text-magenta"]):not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-teal"]):not([class*="text-blue"]),
+html:not(.dark) .text-gray-500:not(.text-white):not([class*="text-white"]):not([class*="text-magenta"]):not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-teal"]):not([class*="text-blue"]),
+html:not(.dark) .text-gray-600:not(.text-white):not([class*="text-white"]):not([class*="text-magenta"]):not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-teal"]):not([class*="text-blue"]),
+html:not(.dark) .text-gray-650:not(.text-white):not([class*="text-white"]):not([class*="text-magenta"]):not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-teal"]):not([class*="text-blue"]),
+html:not(.dark) .text-gray-700:not(.text-white):not([class*="text-white"]):not([class*="text-magenta"]):not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-teal"]):not([class*="text-blue"]),
+html:not(.dark) .text-gray-800:not(.text-white):not([class*="text-white"]):not([class*="text-magenta"]):not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-teal"]):not([class*="text-blue"]),
+html:not(.dark) .text-slate-400:not(.text-white),
+html:not(.dark) .text-slate-500:not(.text-white),
+html:not(.dark) .text-slate-600:not(.text-white),
+html:not(.dark) .subheading,
+html:not(.dark) label:not(.text-white),
+html:not(.dark) td:not(.text-white):not([class*="text-magenta"]):not([class*="text-emerald"]):not([class*="text-amber"]),
+html:not(.dark) th:not(.text-white):not([class*="text-magenta"]):not([class*="text-emerald"]):not([class*="text-amber"]),
+html:not(.dark) li:not(.text-white):not([class*="text-magenta"]):not([class*="text-emerald"]):not([class*="text-amber"]) {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Ensure headings in cards and sections outside hero banners are pure black */
+html:not(.dark) main h1:not([class*="text-magenta"]),
+html:not(.dark) main h2:not([class*="text-magenta"]),
+html:not(.dark) main h3:not([class*="text-magenta"]),
+html:not(.dark) main h4:not([class*="text-magenta"]),
+html:not(.dark) section:not(.bg-cover):not([style*="background-image"]) h1:not([class*="text-white"]):not([class*="text-magenta"]),
+html:not(.dark) section:not(.bg-cover):not([style*="background-image"]) h2:not([class*="text-white"]):not([class*="text-magenta"]),
+html:not(.dark) section:not(.bg-cover):not([style*="background-image"]) h3:not([class*="text-white"]):not([class*="text-magenta"]),
+html:not(.dark) section:not(.bg-cover):not([style*="background-image"]) h4:not([class*="text-white"]):not([class*="text-magenta"]) {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* =========================================================
+   Light Pastel Tint Badges & Containers (bg-magenta/10, bg-magenta/5, etc.)
+   Text and icons must NEVER be white! Must be warm terracotta (#E07A5F) or solid black (#000000)
+   ========================================================= */
+html:not(.dark) [class*="bg-magenta/"] .text-magenta,
+html:not(.dark) [class*="bg-magenta/"] span.text-magenta,
+html:not(.dark) [class*="bg-magenta/"] span[class*="text-magenta"],
+html:not(.dark) [class*="bg-magenta/"] i,
+html:not(.dark) [class*="bg-magenta/"] svg:not([fill="currentColor"]):not([class*="text-yellow"]),
+html:not(.dark) span[class*="bg-magenta/"],
+html:not(.dark) div[class*="bg-magenta/"].text-magenta,
+html:not(.dark) span[class*="bg-magenta/"].text-magenta {
+  color: #E07A5F !important;
+  -webkit-text-fill-color: #E07A5F !important;
+}
+
+/* Ensure all spans/text inside colored badges get the badge's accent color */
+html:not(.dark) [class*="bg-magenta/"][class*="text-magenta"] *,
+html:not(.dark) span[class*="bg-magenta/"][class*="text-magenta"] *,
+html:not(.dark) div[class*="bg-magenta/"][class*="text-magenta"] * {
+  color: #E07A5F !important;
+  -webkit-text-fill-color: #E07A5F !important;
+}
+
+/* Normal descriptive text inside light peach containers is solid black */
+html:not(.dark) [class*="bg-magenta/"]:not([class*="text-magenta"]) p,
+html:not(.dark) [class*="bg-magenta/"]:not([class*="text-magenta"]) span:not([class*="text-magenta"]):not(.text-magenta),
+html:not(.dark) div[class*="bg-magenta/5"] p,
+html:not(.dark) div[class*="bg-magenta/10"] p {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Emerald, Amber, Teal light badges */
+html:not(.dark) [class*="bg-emerald-500/"] span,
+html:not(.dark) [class*="bg-emerald-500/"] .text-emerald-600,
+html:not(.dark) [class*="bg-emerald-100"] .text-emerald-600,
+html:not(.dark) [class*="bg-emerald"][class*="text-emerald"] *,
+html:not(.dark) [class*="bg-emerald-500/"] svg {
+  color: #059669 !important;
+  -webkit-text-fill-color: #059669 !important;
+}
+html:not(.dark) [class*="bg-amber-500/"] span,
+html:not(.dark) [class*="bg-amber-500/"] .text-amber-600,
+html:not(.dark) [class*="bg-amber-100"] .text-amber-600,
+html:not(.dark) [class*="bg-amber"][class*="text-amber"] *,
+html:not(.dark) [class*="bg-amber-500/"] svg {
+  color: #d97706 !important;
+  -webkit-text-fill-color: #d97706 !important;
+}
+html:not(.dark) [class*="bg-teal-500/"] span,
+html:not(.dark) [class*="bg-teal-500/"] .text-teal-600,
+html:not(.dark) [class*="bg-teal-100"] .text-teal-600,
+html:not(.dark) [class*="bg-teal"][class*="text-teal"] * {
+  color: #0d9488 !important;
+  -webkit-text-fill-color: #0d9488 !important;
+}
+
+/* Dashboard Top Header in Bright Mode */
+html:not(.dark) header #userHeaderName,
+html:not(.dark) header .theme-toggle,
+html:not(.dark) header .rtl-toggle,
+html:not(.dark) #openSidebarBtn {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* =========================================================
+   Cards with hover:bg-magenta or hover:border-magenta (Testimonials, Features)
+   Text inside cards MUST remain solid black in bright mode
+   ========================================================= */
+html:not(.dark) .group p,
+html:not(.dark) .group h3,
+html:not(.dark) .group h4,
+html:not(.dark) .group span:not([class*="text-magenta"]):not([class*="text-yellow"]):not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="bg-magenta"]) {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Testimonial and Card Author Subtitles in Bright Mode */
+html:not(.dark) .group .text-\[10px\],
+html:not(.dark) .group .text-xs.text-gray-400,
+html:not(.dark) .group .text-xs.text-gray-500 {
+  color: #262626 !important;
+  -webkit-text-fill-color: #262626 !important;
+}
+
+/* =========================================================
+   Brand Magenta Text Highlights Across Both Modes
+   ========================================================= */
+html:not(.dark) .text-magenta,
+html:not(.dark) a.text-magenta,
+html:not(.dark) span.text-magenta,
+html:not(.dark) p.text-magenta,
+html:not(.dark) button.text-magenta {
+  color: #E07A5F !important;
+  -webkit-text-fill-color: #E07A5F !important;
+}
+
+/* =========================================================
+   Solid Primary Magenta Buttons (Pure White Text & Icons)
+   Only solid buttons have white text, never containers or cards!
+   ========================================================= */
+a.bg-magenta,
+button.bg-magenta,
+button[type="submit"].bg-magenta,
+.category-btn.active,
+.btn.bg-magenta {
+  background-color: #E07A5F !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+a.bg-magenta *,
+button.bg-magenta *,
+button[type="submit"].bg-magenta *,
+.category-btn.active * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Secondary White Buttons (e.g. Hero Secondary "Book a Tour") */
+#hero a.bg-white,
+#hero button.bg-white,
+a.bg-white:not([class*="text-magenta"]):not([class*="text-white"]),
+button.bg-white:not([class*="text-magenta"]):not([class*="text-white"]) {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* =========================================================
+   Dashboard Sidebar Tabs & Content Contrast
+   ========================================================= */
+.tab-btn.bg-magenta {
+  background-color: #E07A5F !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(224, 122, 95, 0.25) !important;
+}
+.tab-btn.bg-magenta *,
+.tab-btn.bg-magenta i {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+html:not(.dark) .tab-btn:not(.bg-magenta) {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+html:not(.dark) .tab-btn:not(.bg-magenta) i {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+html:not(.dark) .tab-btn:not(.bg-magenta):hover {
+  background-color: rgba(224, 122, 95, 0.1) !important;
+  color: #E07A5F !important;
+  -webkit-text-fill-color: #E07A5F !important;
+}
+html:not(.dark) .tab-btn:not(.bg-magenta):hover i {
+  color: #E07A5F !important;
+  -webkit-text-fill-color: #E07A5F !important;
+}
+
+.dark .tab-btn.bg-magenta {
+  background-color: #E07A5F !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+.dark .tab-btn:not(.bg-magenta) {
+  color: #9ca3af !important;
+  -webkit-text-fill-color: #9ca3af !important;
+}
+.dark .tab-btn:not(.bg-magenta) i {
+  color: #9ca3af !important;
+  -webkit-text-fill-color: #9ca3af !important;
+}
+.dark .tab-btn:not(.bg-magenta):hover {
+  background-color: rgba(244, 162, 97, 0.15) !important;
+  color: #F4A261 !important;
+  -webkit-text-fill-color: #F4A261 !important;
+}
+.dark .tab-btn:not(.bg-magenta):hover i {
+  color: #F4A261 !important;
+  -webkit-text-fill-color: #F4A261 !important;
+}
+
+/* Dashboard Content: Avatar Initials, Badges, Dates in Bright Mode */
+html:not(.dark) #overview-kids-list [class*="bg-magenta/10"] {
+  color: #E07A5F !important;
+  -webkit-text-fill-color: #E07A5F !important;
+  font-weight: 800 !important;
+}
+html:not(.dark) [id*="kids-list"] [class*="bg-magenta/10"] {
+  color: #E07A5F !important;
+  -webkit-text-fill-color: #E07A5F !important;
+  font-weight: 800 !important;
+}
+html:not(.dark) aside [class*="text-black"],
+html:not(.dark) aside p {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Strict guarantee that dark mode retains crisp light text */
+.dark body {
+  color: #f3f4f6 !important;
+}
+.dark p,
+.dark .text-gray-300,
+.dark .text-gray-400 {
+  color: #d1d5db !important;
+}
+
+
+
+

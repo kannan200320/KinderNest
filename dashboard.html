@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" dir="ltr">
+<head>
+  <script>
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parent Portal Dashboard | KinderNest Montessori Pod</title>
+  <!-- Tailwind CDN & Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            magenta: {
+              DEFAULT: '#E07A5F', // Warm Montessori Terracotta / Coral
+              hover: '#C85A3E',
+              light: '#F4A261',
+            },
+            sage: {
+              50: '#F4F7F4',
+              100: '#E8EFE9',
+              500: '#819B88',
+              600: '#647E6B',
+            },
+            honey: {
+              50: '#FFFDF5',
+              100: '#FEF9E7',
+              500: '#F2CC8F',
+              600: '#E5B869',
+            },
+            warmbeige: '#FDFBF7',
+            darknavy: {
+              DEFAULT: '#1E1E24',
+              light: '#282832',
+              deep: '#15151A',
+            },
+            black: {
+              deep: '#131316',
+              light: '#212126',
+              DEFAULT: '#18181D',
+            },
+            gray: {
+              850: '#26262F',
+            },
+            slate: {
+              905: '#0f172a',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Bootstrap Icons and Fonts -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="font-sans bg-gray-50 dark:bg-darknavy-deep text-gray-900 dark:text-gray-100 transition-colors duration-300 min-h-screen">
+
+  <!-- Main Layout Wrapper -->
+  <div class="h-screen flex flex-col overflow-hidden">
+    
+    <!-- Top Header -->
+    <header class="h-16 bg-white dark:bg-darknavy-light border-b border-gray-200 dark:border-gray-800 px-6 flex items-center justify-between z-30 sticky top-0 transition-colors">
+      <div class="flex items-center gap-3">
+        <!-- Hamburger Menu for Mobile -->
+        <button id="openSidebarBtn" class="w-10 h-10 rounded-xl border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-200 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-darknavy transition md:hidden" aria-label="Open menu">
+          <i class="bi bi-list text-xl"></i>
+        </button>
+        <a href="index.html" class="flex items-center gap-1.5 sm:gap-2 text-base sm:text-xl font-bold shrink-0">
+          <span class="w-8 h-8 rounded-full bg-magenta flex items-center justify-center text-white text-sm font-extrabold shadow shadow-magenta/30">K</span>
+          <span class="tracking-tight text-black dark:text-white">Kinder<span class="text-magenta">Nest</span></span>
+        </a>
+      </div>
+      
+      <div class="flex items-center gap-2.5 sm:gap-4 md:gap-6 text-gray-500 dark:text-gray-400">
+        <button class="theme-toggle flex text-lg hover:text-magenta transition" aria-label="Toggle dark mode">
+          <i class="bi bi-moon-fill theme-toggle-moon"></i>
+          <i class="bi bi-sun-fill theme-toggle-sun hidden"></i>
+        </button>
+        <button class="rtl-toggle hidden sm:flex text-lg hover:text-magenta transition" aria-label="Toggle RTL mode">
+          <i class="bi bi-arrow-left-right"></i>
+        </button>
+        
+        <div class="flex items-center gap-2 shrink-0">
+          <div class="w-9 h-9 rounded-full bg-magenta text-white flex items-center justify-center font-bold text-sm shadow-inner" id="userHeaderAvatar">
+            P
+          </div>
+          <span class="text-xs font-bold hidden sm:inline" id="userHeaderName">Parent Portal</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="flex-grow flex flex-col md:flex-row overflow-hidden">
+      <!-- Left Sidebar Menu -->
+      <aside id="sidebarMenu" class="fixed inset-y-0 left-0 z-50 w-72 md:w-64 shrink-0 bg-white dark:bg-darknavy border-r border-gray-200 dark:border-gray-800 p-6 flex flex-col justify-between transform -translate-x-full md:translate-x-0 md:static transition-transform duration-300 ease-in-out overflow-y-auto">
+        <div class="space-y-6">
+          <!-- Brand Logo & Name Header (Above Parent Hub) -->
+          <div class="flex items-center justify-between pb-5 border-b border-gray-200 dark:border-gray-800">
+            <a href="index.html" class="flex items-center space-x-2.5 rtl:space-x-reverse">
+              <span class="w-9 h-9 rounded-full bg-magenta flex items-center justify-center text-white font-extrabold text-base shadow shadow-magenta/30">K</span>
+              <span class="text-lg sm:text-xl font-bold tracking-tight text-darknavy dark:text-white font-sans">Kinder<span class="text-magenta">Nest</span></span>
+            </a>
+            <div class="flex items-center gap-2 md:hidden">
+              <button class="rtl-toggle w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-500 flex items-center justify-center hover:bg-gray-200 transition" aria-label="Toggle RTL">
+                <i class="bi bi-arrow-left-right text-xs"></i>
+              </button>
+              <button id="closeSidebarBtn" class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-500 flex items-center justify-center hover:bg-gray-200 transition" aria-label="Close sidebar">
+                <i class="bi bi-x-lg text-xs"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <p class="text-[10px] uppercase font-black text-black dark:text-gray-400 tracking-wider px-3 mb-3">Parent Hub</p>
+            <nav class="space-y-1 list-none p-0 text-xs font-bold whitespace-nowrap">
+              <button onclick="switchTab('overview', this)" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-start transition tab-btn bg-magenta text-white font-extrabold shadow-md shadow-magenta/20">
+                <i class="bi bi-grid-1x2-fill"></i> Overview Dashboard
+              </button>
+              <button onclick="switchTab('enroll', this)" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-start transition text-black dark:text-gray-400 hover:bg-magenta/10 hover:text-magenta tab-btn font-bold">
+                <i class="bi bi-calendar-plus-fill"></i> Enroll in Pods
+              </button>
+              <button onclick="switchTab('attendance', this)" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-start transition text-black dark:text-gray-400 hover:bg-magenta/10 hover:text-magenta tab-btn font-bold">
+                <i class="bi bi-clock-history"></i> Daily Work & Attendance
+              </button>
+              <button onclick="switchTab('membership', this)" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-start transition text-black dark:text-gray-400 hover:bg-magenta/10 hover:text-magenta tab-btn font-bold">
+                <i class="bi bi-credit-card-2-back-fill"></i> Tuition & Billing
+              </button>
+              <button onclick="switchTab('profile', this)" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-start transition text-black dark:text-gray-400 hover:bg-magenta/10 hover:text-magenta tab-btn font-bold">
+                <i class="bi bi-person-fill-gear"></i> Family Profile
+              </button>
+            </nav>
+          </div>
+        </div>
+
+        <div class="space-y-4 pt-6 border-t border-gray-200 dark:border-gray-800">
+          <!-- Theme & RTL Toggles (Visible only in mobile sidebar menu drawer) -->
+          <div class="flex items-center gap-4 px-3 pb-2 md:hidden">
+            <!-- Theme Switch -->
+            <button class="theme-toggle text-lg hover:text-magenta transition" aria-label="Toggle dark mode">
+              <i class="bi bi-moon-fill theme-toggle-moon"></i>
+              <i class="bi bi-sun-fill theme-toggle-sun hidden"></i>
+            </button>
+            <!-- RTL Switch -->
+            <button class="rtl-toggle text-lg hover:text-magenta transition" aria-label="Toggle RTL mode">
+              <i class="bi bi-arrow-left-right"></i>
+            </button>
+          </div>
+
+          <button onclick="signOut()" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold text-red-600 text-start hover:bg-red-50 dark:hover:bg-red-950/20 transition">
+            <i class="bi bi-box-arrow-right"></i> Sign Out
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Dashboard Panel -->
+      <main class="flex-grow p-6 md:p-8 relative bg-white dark:bg-darknavy-deep overflow-y-auto">
+        
+        <!-- Skeleton Loader Screen -->
+        <div id="skeleton-loader" class="space-y-6">
+          <div class="h-12 w-48 bg-gray-200 dark:bg-gray-800 rounded-xl animate-pulse"></div>
+          <div class="h-80 bg-white dark:bg-darknavy-light rounded-3xl border border-gray-200 dark:border-gray-800 animate-pulse"></div>
+        </div>
+
+        <!-- Real Content Panel -->
+        <div id="real-content" class="hidden space-y-8">
+          
+          <!-- TAB 1: OVERVIEW -->
+          <div id="tab-overview" class="tab-panel space-y-6">
+            <div>
+              <h2 class="text-3xl font-extrabold text-black dark:text-white">Pod Dashboard</h2>
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Real-time daily work cycle updates, AMI guide observations, and tuition tracking for your family.</p>
+            </div>
+            
+            <!-- Quick Stats -->
+            <div class="grid sm:grid-cols-3 gap-6">
+              <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 flex items-center justify-between">
+                <div>
+                  <h4 class="text-gray-400 text-xs font-bold uppercase">Enrolled Children</h4>
+                  <p class="text-3xl font-extrabold text-magenta mt-2">3 Active</p>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-magenta/10 flex items-center justify-center text-magenta">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                </div>
+              </div>
+              <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 flex items-center justify-between">
+                <div>
+                  <h4 class="text-gray-400 text-xs font-bold uppercase">Work Cycle Attendance</h4>
+                  <p class="text-3xl font-extrabold text-emerald-600 dark:text-emerald-400 mt-2">96%</p>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+              </div>
+              <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 flex items-center justify-between">
+                <div>
+                  <h4 class="text-gray-400 text-xs font-bold uppercase">Tuition Status</h4>
+                  <p class="text-xs font-extrabold text-amber-600 mt-3 bg-amber-100 dark:bg-amber-950/40 px-3 py-1.5 rounded-full inline-block" id="overview-billing-status">Pending Payment</p>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Detailed Grid -->
+            <div class="grid lg:grid-cols-12 gap-8 pt-4">
+              
+              <!-- Left Side: Children & Feedback (col-span-8) -->
+              <div class="lg:col-span-8 space-y-8">
+                
+                <!-- Enrolled Children Overview -->
+                <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-150 dark:border-gray-800 space-y-4">
+                  <h3 class="font-bold text-lg text-black dark:text-white">Active Children Learning Pods</h3>
+                  <div class="space-y-3" id="overview-kids-list">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-white dark:bg-darknavy-light rounded-xl border border-gray-100 dark:border-gray-850 gap-4">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-magenta/10 flex items-center justify-center text-magenta text-sm font-extrabold shrink-0">EJ</div>
+                        <div>
+                          <h4 class="font-bold text-sm text-black dark:text-white">Emily Jenkins</h4>
+                          <p class="text-[10px] text-gray-500">Children's House (3-6y) • Sensorial & Golden Beads • Mon-Fri 8:30 AM</p>
+                        </div>
+                      </div>
+                      <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 sm:justify-end">
+                        <span class="text-[10px] font-bold px-3 py-1 rounded-full bg-magenta/10 text-magenta shrink-0">Primary Pod</span>
+                        <button onclick="switchTab('attendance')" class="text-[10px] font-bold text-magenta hover:underline shrink-0">View Work Cycle</button>
+                      </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-white dark:bg-darknavy-light rounded-xl border border-gray-100 dark:border-gray-850 gap-4">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-magenta/10 flex items-center justify-center text-magenta text-sm font-extrabold shrink-0">LJ</div>
+                        <div>
+                          <h4 class="font-bold text-sm text-black dark:text-white">Leo Jenkins</h4>
+                          <p class="text-[10px] text-gray-500">Lower Elementary (6-9y) • Botany & Cosmic Curriculum • Mon-Fri 8:30 AM</p>
+                        </div>
+                      </div>
+                      <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 sm:justify-end">
+                        <span class="text-[10px] font-bold px-3 py-1 rounded-full bg-magenta/10 text-magenta shrink-0">Elementary Pod</span>
+                        <button onclick="switchTab('attendance')" class="text-[10px] font-bold text-magenta hover:underline shrink-0">View Work Cycle</button>
+                      </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-white dark:bg-darknavy-light rounded-xl border border-gray-100 dark:border-gray-850 gap-4">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-magenta/10 flex items-center justify-center text-magenta text-sm font-extrabold shrink-0">NJ</div>
+                        <div>
+                          <h4 class="font-bold text-sm text-black dark:text-white">Noah Jenkins</h4>
+                          <p class="text-[10px] text-gray-500">Toddler Community (18m-3y) • Practical Life & Sensorial Independence • Mon-Fri 8:30 AM</p>
+                        </div>
+                      </div>
+                      <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 sm:justify-end">
+                        <span class="text-[10px] font-bold px-3 py-1 rounded-full bg-magenta/10 text-magenta shrink-0">Toddler Pod</span>
+                        <button onclick="switchTab('attendance')" class="text-[10px] font-bold text-magenta hover:underline shrink-0">View Work Cycle</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Montessori Guide Observation Notes -->
+                <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-150 dark:border-gray-800 space-y-4">
+                  <h3 class="font-bold text-lg text-black dark:text-white">Montessori Guide Observation Notes</h3>
+                  <div class="space-y-4 text-xs">
+                    <div class="p-4 bg-white dark:bg-darknavy-light rounded-xl border border-gray-100 dark:border-gray-850 space-y-2">
+                      <div class="flex justify-between items-center">
+                        <span class="font-bold text-magenta text-sm">Emily — Children's House (Sensorial & Math)</span>
+                        <span class="text-[9px] text-gray-400">Aug 20, 2026</span>
+                      </div>
+                      <p class="text-gray-600 dark:text-gray-400 leading-relaxed italic">
+                        "Emily demonstrated deep, uninterrupted concentration with the Pink Tower and Brown Stair grading apparatus this morning. She unrolled her work mat with graceful precision, organized all ten prisms by thickness without error, and gently invited a younger peer to observe. Her fine-motor control and spatial reasoning have leaped forward."
+                      </p>
+                      <p class="text-[10px] font-extrabold text-gray-500">— Guide Clara Vance, AMI Lead Primary</p>
+                    </div>
+                    <div class="p-4 bg-white dark:bg-darknavy-light rounded-xl border border-gray-100 dark:border-gray-850 space-y-2">
+                      <div class="flex justify-between items-center">
+                        <span class="font-bold text-magenta text-sm">Leo — Lower Elementary (Botany & Research)</span>
+                        <span class="text-[9px] text-gray-400">Aug 18, 2026</span>
+                      </div>
+                      <p class="text-gray-600 dark:text-gray-400 leading-relaxed italic">
+                        "Leo conducted a collaborative botany study examining leaf venation patterns in our outdoor courtyard garden. He used the botanical cabinet cards to cross-reference monocot and dicot leaf specimens, drawing detailed cross-sections in his nature journal. His self-directed curiosity and group leadership are truly inspiring."
+                      </p>
+                      <p class="text-[10px] font-extrabold text-gray-500">— Guide Marcus Chen, AMS Elementary Lead</p>
+                    </div>
+                    <div class="p-4 bg-white dark:bg-darknavy-light rounded-xl border border-gray-100 dark:border-gray-850 space-y-2">
+                      <div class="flex justify-between items-center">
+                        <span class="font-bold text-magenta text-sm">Noah — Toddler Community (Practical Life & Motor Mastery)</span>
+                        <span class="text-[9px] text-gray-400">Aug 22, 2026</span>
+                      </div>
+                      <p class="text-gray-600 dark:text-gray-400 leading-relaxed italic">
+                        "Noah engaged in independent water pouring and grain transferring with serene concentration. He carefully selected a porcelain pitcher, poured water without spilling into three small glass cups, and wiped the tray with a natural sponge. His fine-motor coordination and sense of purposeful order are blossoming beautifully."
+                      </p>
+                      <p class="text-[10px] font-extrabold text-gray-500">— Guide Elena Rostova, AMI Toddler Lead</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Right Side: Announcements & Timelines (col-span-4) -->
+              <div class="lg:col-span-4 space-y-8">
+                
+                <!-- Announcements -->
+                <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-150 dark:border-gray-800 space-y-4">
+                  <h3 class="font-bold text-lg text-black dark:text-white">Pod Community News</h3>
+                  <div class="space-y-3 text-xs">
+                    <div class="p-3 bg-amber-500/10 border-l-4 border-amber-500 rounded-r-xl">
+                      <h4 class="font-bold text-amber-800 dark:text-amber-300">Forest Day Excursion</h4>
+                      <p class="text-[10px] text-gray-500 dark:text-gray-400 mt-1 leading-normal">Botanical nature hike along Blossom Creek this Friday. Please pack rain boots and a sketch pad.</p>
+                    </div>
+                    <div class="p-3 bg-teal-500/10 border-l-4 border-teal-500 rounded-r-xl">
+                      <h4 class="font-bold text-teal-800 dark:text-teal-300">Quiet Observation Mornings</h4>
+                      <p class="text-[10px] text-gray-500 dark:text-gray-400 mt-1 leading-normal">Parent observation chairs available for the 3-hour morning work cycle starting Oct 1st.</p>
+                    </div>
+                    <div class="p-3 bg-magenta/10 border-l-4 border-magenta rounded-r-xl">
+                      <h4 class="font-bold text-magenta">Autumn Lantern Festival</h4>
+                      <p class="text-[10px] text-gray-500 dark:text-gray-400 mt-1 leading-normal">Families are invited to bring handmade glass lanterns for twilight storytelling and warm spiced cider on Oct 28th at 5:30 PM.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Upcoming Key Dates -->
+                <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-150 dark:border-gray-800 space-y-4">
+                  <h3 class="font-bold text-lg text-black dark:text-white">Upcoming Pod Calendar</h3>
+                  <div class="space-y-4 text-xs">
+                    <div class="flex gap-3">
+                      <div class="w-10 h-10 rounded-xl bg-magenta/10 text-magenta flex flex-col items-center justify-center shrink-0">
+                        <span class="font-extrabold text-sm leading-none">12</span>
+                        <span class="text-[8px] uppercase font-bold mt-0.5">Oct</span>
+                      </div>
+                      <div>
+                        <h4 class="font-bold text-black dark:text-white">Great Story: Formation of the Stars</h4>
+                        <p class="text-[10px] text-gray-400 mt-0.5">9:15 AM | Elementary Circle Space</p>
+                      </div>
+                    </div>
+                    <div class="flex gap-3">
+                      <div class="w-10 h-10 rounded-xl bg-magenta/10 text-magenta flex flex-col items-center justify-center shrink-0">
+                        <span class="font-extrabold text-sm leading-none">24</span>
+                        <span class="text-[8px] uppercase font-bold mt-0.5">Oct</span>
+                      </div>
+                      <div>
+                        <h4 class="font-bold text-black dark:text-white">Autumn Bread Baking & Harvest</h4>
+                        <p class="text-[10px] text-gray-400 mt-0.5">10:30 AM | Practical Life Kitchen</p>
+                      </div>
+                    </div>
+                    <div class="flex gap-3">
+                      <div class="w-10 h-10 rounded-xl bg-magenta/10 text-magenta flex flex-col items-center justify-center shrink-0">
+                        <span class="font-extrabold text-sm leading-none">05</span>
+                        <span class="text-[8px] uppercase font-bold mt-0.5">Nov</span>
+                      </div>
+                      <div>
+                        <h4 class="font-bold text-black dark:text-white">Parent Seminar: Positive Discipline</h4>
+                        <p class="text-[10px] text-gray-400 mt-0.5">6:30 PM | Community Hall & Zoom</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Montessori Developmental Milestones Focus -->
+            <div class="mt-8 bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-150 dark:border-gray-800 space-y-4">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-bold text-lg text-black dark:text-white">Montessori Developmental Milestones Focus</h3>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">Current observation pillars across our mixed-age learning pods.</p>
+                </div>
+                <span class="text-xs font-bold text-magenta px-3 py-1 rounded-full bg-magenta/10 self-start sm:self-auto">Term 1 Progress Track</span>
+              </div>
+              <div class="grid md:grid-cols-3 gap-4 text-xs">
+                <div class="p-4 bg-white dark:bg-darknavy-light rounded-xl border border-gray-100 dark:border-gray-850 space-y-2">
+                  <div class="flex items-center gap-2 text-magenta font-bold">
+                    <i class="bi bi-stars"></i>
+                    <span>Practical Life & Autonomy</span>
+                  </div>
+                  <p class="text-gray-500 dark:text-gray-400 leading-relaxed text-[11px]">Building executive function, uninterrupted task completion, and intrinsic joy in caring for the environment.</p>
+                </div>
+                <div class="p-4 bg-white dark:bg-darknavy-light rounded-xl border border-gray-100 dark:border-gray-850 space-y-2">
+                  <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold">
+                    <i class="bi bi-grid-3x3"></i>
+                    <span>Sensorial & Decimal Math</span>
+                  </div>
+                  <p class="text-gray-500 dark:text-gray-400 leading-relaxed text-[11px]">Progressing through Golden Beads hierarchy, tactile geometry solids, and decimal addition via concrete manipulation.</p>
+                </div>
+                <div class="p-4 bg-white dark:bg-darknavy-light rounded-xl border border-gray-100 dark:border-gray-850 space-y-2">
+                  <div class="flex items-center gap-2 text-sky-600 dark:text-sky-400 font-bold">
+                    <i class="bi bi-globe-americas"></i>
+                    <span>Cosmic Geography & Language</span>
+                  </div>
+                  <p class="text-gray-500 dark:text-gray-400 leading-relaxed text-[11px]">Sandpaper phonetic phonograms, classification cards, and the First Great Lesson exploring cosmic origins.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: ENROLL IN PODS -->
+          <div id="tab-enroll" class="tab-panel hidden space-y-6">
+            <div>
+              <h2 class="text-3xl font-extrabold text-black dark:text-white">Enroll in Learning Pods</h2>
+              <p class="text-xs text-gray-400 mt-1">Enroll your child in our mixed-age Montessori classrooms and specialized enrichment pods.</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+              <form id="enrollment-form" class="lg:col-span-1 bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-4 text-xs" onsubmit="submitEnrollment(event)" novalidate>
+                <div>
+                  <label for="child-name" class="block font-bold text-gray-700 dark:text-gray-300 mb-2">Child's Full Name *</label>
+                  <input type="text" id="child-name" minlength="2" class="w-full px-4 py-3 bg-white dark:bg-darknavy-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-xs" required placeholder="e.g. Maya Jenkins">
+                  <p class="text-[10px] text-red-500 font-bold hidden mt-1" id="errEnrollChild">Full name must be at least 2 characters.</p>
+                </div>
+                <div>
+                  <label for="enroll-email" class="block font-bold text-gray-700 dark:text-gray-300 mb-2">Guardian Email Address *</label>
+                  <input type="email" id="enroll-email" class="w-full px-4 py-3 bg-white dark:bg-darknavy-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-xs" required placeholder="name@gmail.com">
+                  <p class="text-[10px] text-red-500 font-bold hidden mt-1" id="errEnrollEmail">Email address must be in the format name@gmail.com.</p>
+                </div>
+                <div>
+                  <label for="enroll-phone" class="block font-bold text-gray-700 dark:text-gray-300 mb-2">Emergency Contact Phone *</label>
+                  <input type="tel" id="enroll-phone" maxlength="10" class="w-full px-4 py-3 bg-white dark:bg-darknavy-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-xs" required placeholder="9876543210">
+                  <p class="text-[10px] text-red-500 font-bold hidden mt-1" id="errEnrollPhone">Phone number must be exactly 10 digits.</p>
+                </div>
+                <div>
+                  <label for="pod-program" class="block font-bold text-gray-700 dark:text-gray-300 mb-2">Pod Program *</label>
+                  <select id="pod-program" class="w-full px-4 py-3 bg-white dark:bg-darknavy-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-xs font-bold">
+                    <option value="Toddler Community (18m-3y)">Toddler Community (18m-3y)</option>
+                    <option value="Children's House (3-6y)" selected>Children's House (3-6y)</option>
+                    <option value="Lower Elementary Pod (6-9y)">Lower Elementary Pod (6-9y)</option>
+                    <option value="Nature & Forest Botanical Pod">Nature & Forest Botanical Pod</option>
+                    <option value="Sensorial Math & Geometry Studio">Sensorial Math & Geometry Studio</option>
+                    <option value="Practical Life & Culinary Lab">Practical Life & Culinary Lab</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="schedule-option" class="block font-bold text-gray-700 dark:text-gray-300 mb-2">Schedule Option *</label>
+                  <select id="schedule-option" class="w-full px-4 py-3 bg-white dark:bg-darknavy-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-xs font-bold">
+                    <option value="Morning 3-Hour Work Cycle">Morning 3-Hour Work Cycle (8:30 - 11:30 AM)</option>
+                    <option value="Full Day Montessori Immersion">Full Day Montessori Immersion (8:30 AM - 3:30 PM)</option>
+                    <option value="Extended Day After-School Lab">Extended Day After-School Lab (3:30 - 5:30 PM)</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="preferred-timing" class="block font-bold text-gray-700 dark:text-gray-300 mb-2">Days of Attendance *</label>
+                  <select id="preferred-timing" class="w-full px-4 py-3 bg-white dark:bg-darknavy-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-xs font-bold">
+                    <option value="Monday - Friday (5 Days)">Monday - Friday (5 Days)</option>
+                    <option value="Mon / Wed / Fri (3 Days)">Mon / Wed / Fri (3 Days)</option>
+                    <option value="Tue / Thu (2 Days)">Tue / Thu (2 Days)</option>
+                  </select>
+                </div>
+                <button type="submit" class="w-full bg-magenta text-white py-3 rounded-xl font-bold hover:bg-magenta-hover transition shadow shadow-magenta/20">Submit Pod Enrollment</button>
+              </form>
+
+              <div class="lg:col-span-2 space-y-6">
+                <!-- Current Enrollments table -->
+                <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-4">
+                  <div class="flex items-center justify-between">
+                    <h3 class="font-bold text-lg">Active Pod Enrollments</h3>
+                    <span class="text-xs font-bold text-magenta px-3 py-1 rounded-full bg-magenta/10">5 Enrolled</span>
+                  </div>
+                  <div class="overflow-x-auto">
+                    <table class="w-full text-start border-collapse">
+                      <thead>
+                        <tr class="border-b border-gray-200 dark:border-gray-850 text-xs uppercase text-gray-500 tracking-wider">
+                          <th class="py-3.5 px-4 text-start font-bold whitespace-nowrap">Child Name</th>
+                          <th class="py-3.5 px-4 text-start font-bold">Program</th>
+                          <th class="py-3.5 px-4 text-start font-bold">Schedule</th>
+                          <th class="py-3.5 px-4 text-start font-bold whitespace-nowrap">Timing</th>
+                          <th class="py-3.5 px-4 text-center font-bold whitespace-nowrap">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody id="enrolled-children">
+                        <tr class="border-b border-gray-150 dark:border-gray-850 text-xs hover:bg-gray-100/50 dark:hover:bg-darknavy-light/50 transition">
+                          <td class="py-4 px-4 font-bold text-magenta whitespace-nowrap">Emily Jenkins</td>
+                          <td class="py-4 px-4 font-medium text-gray-700 dark:text-gray-300">Children's House (3–6y)</td>
+                          <td class="py-4 px-4 text-gray-600 dark:text-gray-400">Full Day Montessori</td>
+                          <td class="py-4 px-4 text-gray-600 dark:text-gray-400 whitespace-nowrap">Mon - Fri 8:30 AM</td>
+                          <td class="py-4 px-4 text-center whitespace-nowrap">
+                            <span class="inline-flex items-center justify-center min-w-[88px] px-3 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 rounded-full font-extrabold text-[10px] uppercase tracking-wider">Active</span>
+                          </td>
+                        </tr>
+                        <tr class="border-b border-gray-150 dark:border-gray-850 text-xs hover:bg-gray-100/50 dark:hover:bg-darknavy-light/50 transition">
+                          <td class="py-4 px-4 font-bold text-magenta whitespace-nowrap">Leo Jenkins</td>
+                          <td class="py-4 px-4 font-medium text-gray-700 dark:text-gray-300">Lower Elementary Pod (6–9y)</td>
+                          <td class="py-4 px-4 text-gray-600 dark:text-gray-400">Full Day Montessori</td>
+                          <td class="py-4 px-4 text-gray-600 dark:text-gray-400 whitespace-nowrap">Mon - Fri 8:30 AM</td>
+                          <td class="py-4 px-4 text-center whitespace-nowrap">
+                            <span class="inline-flex items-center justify-center min-w-[88px] px-3 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 rounded-full font-extrabold text-[10px] uppercase tracking-wider">Active</span>
+                          </td>
+                        </tr>
+                        <tr class="border-b border-gray-150 dark:border-gray-850 text-xs hover:bg-gray-100/50 dark:hover:bg-darknavy-light/50 transition">
+                          <td class="py-4 px-4 font-bold text-magenta whitespace-nowrap">Noah Jenkins</td>
+                          <td class="py-4 px-4 font-medium text-gray-700 dark:text-gray-300">Toddler Community (18m-3y)</td>
+                          <td class="py-4 px-4 text-gray-600 dark:text-gray-400">Morning 3-Hour Work Cycle</td>
+                          <td class="py-4 px-4 text-gray-600 dark:text-gray-400 whitespace-nowrap">Mon - Fri 8:30 AM</td>
+                          <td class="py-4 px-4 text-center whitespace-nowrap">
+                            <span class="inline-flex items-center justify-center min-w-[88px] px-3 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 rounded-full font-extrabold text-[10px] uppercase tracking-wider">Active</span>
+                          </td>
+                        </tr>
+                        <tr class="border-b border-gray-150 dark:border-gray-850 text-xs hover:bg-gray-100/50 dark:hover:bg-darknavy-light/50 transition">
+                          <td class="py-4 px-4 font-bold text-magenta whitespace-nowrap">Maya Jenkins</td>
+                          <td class="py-4 px-4 font-medium text-gray-700 dark:text-gray-300">Nature & Forest Botanical Pod</td>
+                          <td class="py-4 px-4 text-gray-600 dark:text-gray-400">Extended Day After-School Lab</td>
+                          <td class="py-4 px-4 text-gray-600 dark:text-gray-400 whitespace-nowrap">Tue / Thu 3:30 PM</td>
+                          <td class="py-4 px-4 text-center whitespace-nowrap">
+                            <span class="inline-flex items-center justify-center min-w-[88px] px-3 py-1 bg-sky-100 text-sky-700 dark:bg-sky-950/40 dark:text-sky-300 rounded-full font-extrabold text-[10px] uppercase tracking-wider">Confirmed</span>
+                          </td>
+                        </tr>
+                        <tr class="border-b border-gray-150 dark:border-gray-850 text-xs hover:bg-gray-100/50 dark:hover:bg-darknavy-light/50 transition">
+                          <td class="py-4 px-4 font-bold text-magenta whitespace-nowrap">Siddharth Jenkins</td>
+                          <td class="py-4 px-4 font-medium text-gray-700 dark:text-gray-300">Sensorial Math & Geometry Studio</td>
+                          <td class="py-4 px-4 text-gray-600 dark:text-gray-400">Afternoon Enrichment Lab</td>
+                          <td class="py-4 px-4 text-gray-600 dark:text-gray-400 whitespace-nowrap">Mon / Wed / Fri 1:00 PM</td>
+                          <td class="py-4 px-4 text-center whitespace-nowrap">
+                            <span class="inline-flex items-center justify-center min-w-[88px] px-3 py-1 bg-purple-100 text-purple-700 dark:bg-purple-950/40 dark:text-purple-300 rounded-full font-extrabold text-[10px] uppercase tracking-wider">Waitlist</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3 Montessori Pod Exploration Showcase Cards -->
+            <div class="mt-8 space-y-4">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-bold text-lg text-black dark:text-white">Montessori Learning Pod Environments</h3>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">Authentic mixed-age environments tailored to developmental sensitive periods.</p>
+                </div>
+                <span class="text-xs font-bold text-magenta px-3 py-1 rounded-full bg-magenta/10 self-start sm:self-auto">3 Primary Pod Levels</span>
+              </div>
+
+              <div class="grid md:grid-cols-3 gap-6">
+                <!-- Pod Card 1 -->
+                <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-4 hover:border-magenta transition">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400">Ages 18m – 3 Years</span>
+                    <span class="text-xs font-bold text-gray-400">1:4 Ratio</span>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-base text-black dark:text-white">Toddler Community Pod</h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1.5 leading-relaxed">Nurturing early independence, toilet learning, expressive speech, and gross motor coordination within a peaceful, child-scaled room.</p>
+                  </div>
+                  <div class="pt-3 border-t border-gray-200 dark:border-gray-800 text-[11px] space-y-1.5 text-gray-600 dark:text-gray-300">
+                    <div class="flex items-center gap-2"><i class="bi bi-check2 text-emerald-500 font-bold"></i> Practical life water pouring & care</div>
+                    <div class="flex items-center gap-2"><i class="bi bi-check2 text-emerald-500 font-bold"></i> Sensory exploration & vocabulary</div>
+                  </div>
+                </div>
+
+                <!-- Pod Card 2 -->
+                <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-4 hover:border-magenta transition">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-magenta/10 text-magenta">Ages 3 – 6 Years</span>
+                    <span class="text-xs font-bold text-gray-400">1:8 Ratio</span>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-base text-black dark:text-white">Children's House Primary Pod</h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1.5 leading-relaxed">The classic Montessori 3-hour morning work cycle. Sensorial apparatus, mathematical decimal beads, phonics reading, and grace & courtesy.</p>
+                  </div>
+                  <div class="pt-3 border-t border-gray-200 dark:border-gray-800 text-[11px] space-y-1.5 text-gray-600 dark:text-gray-300">
+                    <div class="flex items-center gap-2"><i class="bi bi-check2 text-emerald-500 font-bold"></i> Pink tower & brown stair geometry</div>
+                    <div class="flex items-center gap-2"><i class="bi bi-check2 text-emerald-500 font-bold"></i> Movable alphabet & cursive writing</div>
+                  </div>
+                </div>
+
+                <!-- Pod Card 3 -->
+                <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-4 hover:border-magenta transition">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">Ages 6 – 9 Years</span>
+                    <span class="text-xs font-bold text-gray-400">1:10 Ratio</span>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-base text-black dark:text-white">Lower Elementary Cosmic Pod</h4>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1.5 leading-relaxed">Cosmic education and the Five Great Lessons. Igniting child imagination through astronomy, world geography, biology labs, and collaborative team research.</p>
+                  </div>
+                  <div class="pt-3 border-t border-gray-200 dark:border-gray-800 text-[11px] space-y-1.5 text-gray-600 dark:text-gray-300">
+                    <div class="flex items-center gap-2"><i class="bi bi-check2 text-emerald-500 font-bold"></i> Botanical dissection & classification</div>
+                    <div class="flex items-center gap-2"><i class="bi bi-check2 text-emerald-500 font-bold"></i> Going-Out self-directed field studies</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: ATTENDANCE RECORD -->
+          <div id="tab-attendance" class="tab-panel hidden space-y-6">
+            <div>
+              <h2 class="text-3xl font-extrabold text-black dark:text-white">Daily Work Cycle Attendance</h2>
+              <p class="text-xs text-gray-400 mt-1">Calendar logs of morning work cycles and outdoor classroom presence for Emily and Leo.</p>
+            </div>
+            
+            <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-4">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="space-x-2 flex flex-wrap gap-2">
+                  <button class="px-4 py-2 bg-magenta text-white text-xs font-bold rounded-xl" onclick="toggleStudentAttendance('emily')">Emily Jenkins (Primary)</button>
+                  <button class="px-4 py-2 bg-white dark:bg-darknavy-light border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 text-xs font-bold rounded-xl" onclick="toggleStudentAttendance('leo')">Leo Jenkins (Elementary)</button>
+                </div>
+                <select id="attendance-month" class="px-4 py-2 border border-gray-200 dark:border-gray-800 bg-white dark:bg-darknavy rounded-xl text-xs font-bold outline-none">
+                  <option value="August 2026">August 2026</option>
+                  <option value="July 2026">July 2026</option>
+                </select>
+              </div>
+
+              <!-- Calendar Heat Grid -->
+              <div id="attendance-grid-container" class="grid grid-cols-7 gap-3 text-center pt-4 transition duration-300 text-xs font-bold">
+                <span class="text-xs font-bold text-gray-400">Sun</span>
+                <span class="text-xs font-bold text-gray-400">Mon</span>
+                <span class="text-xs font-bold text-gray-400">Tue</span>
+                <span class="text-xs font-bold text-gray-400">Wed</span>
+                <span class="text-xs font-bold text-gray-400">Thu</span>
+                <span class="text-xs font-bold text-gray-400">Fri</span>
+                <span class="text-xs font-bold text-gray-400">Sat</span>
+
+                <!-- Render 31 Calendar boxes -->
+                <div class="w-8 h-8 rounded-md bg-gray-200 dark:bg-gray-850 flex items-center justify-center text-xs opacity-30">30</div>
+                <div class="w-8 h-8 rounded-md bg-gray-200 dark:bg-gray-850 flex items-center justify-center text-xs opacity-30">31</div>
+                <div class="w-8 h-8 rounded-md flex items-center justify-center text-xs bg-emerald-500/20 text-emerald-500 border border-emerald-500/50">P</div>
+                <div class="w-8 h-8 rounded-md flex items-center justify-center text-xs bg-emerald-500/20 text-emerald-500 border border-emerald-500/50">P</div>
+                <div class="w-8 h-8 rounded-md flex items-center justify-center text-xs bg-red-500/20 text-red-500 border border-red-500/50">A</div>
+                <div class="w-8 h-8 rounded-md flex items-center justify-center text-xs bg-emerald-500/20 text-emerald-500 border border-emerald-500/50">P</div>
+                <div class="w-8 h-8 rounded-md flex items-center justify-center text-xs bg-emerald-500/20 text-emerald-500 border border-emerald-500/50">P</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 5: BILLING & INVOICES -->
+          <div id="tab-membership" class="tab-panel hidden space-y-6">
+            <div>
+              <h2 class="text-3xl font-extrabold text-black dark:text-white">Pod Tuition & Invoices</h2>
+              <p class="text-xs text-gray-400 mt-1">Manage term tuition fees, materials contributions, and download official payment receipts.</p>
+            </div>
+            
+            <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-6">
+              <div class="overflow-x-auto">
+                <table class="w-full text-start border-collapse text-xs">
+                  <thead>
+                    <tr class="border-b border-gray-200 dark:border-gray-850 text-gray-500 tracking-wider">
+                      <th class="py-3 px-4 font-bold text-start">Invoice ID</th>
+                      <th class="py-3 px-4 font-bold text-start">Child Name</th>
+                      <th class="py-3 px-4 font-bold text-start">Tuition Period</th>
+                      <th class="py-3 px-4 font-bold text-start">Amount</th>
+                      <th class="py-3 px-4 font-bold text-start">Status</th>
+                      <th class="py-3 px-4 font-bold text-start">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="billing-tbody">
+                    <tr class="border-b border-gray-150 dark:border-gray-850">
+                      <td class="py-4 px-4 font-bold">#INV-2026-003</td>
+                      <td class="py-4 px-4 font-bold text-magenta">Emily Jenkins</td>
+                      <td class="py-4 px-4">Term 1 Children's House Tuition</td>
+                      <td class="py-4 px-4 font-bold">$380.00</td>
+                      <td class="py-4 px-4"><span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 rounded-full font-bold text-[10px] uppercase">Paid</span></td>
+                      <td class="py-4 px-4">
+                        <button id="btn-2026-003" onclick="downloadReceipt('2026-003', '$380.00')" class="px-4 py-2 bg-magenta hover:bg-magenta-hover text-white rounded-xl font-bold transition shadow shadow-magenta/20">
+                          Receipt
+                        </button>
+                      </td>
+                    </tr>
+                    <tr class="border-b border-gray-150 dark:border-gray-850">
+                      <td class="py-4 px-4 font-bold">#INV-2026-004</td>
+                      <td class="py-4 px-4 font-bold text-magenta">Leo Jenkins</td>
+                      <td class="py-4 px-4">Term 1 Elementary Pod Tuition</td>
+                      <td class="py-4 px-4 font-bold">$420.00</td>
+                      <td class="py-4 px-4"><span class="px-2.5 py-0.5 bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300 rounded-full font-bold text-[10px] uppercase" id="status-004">Unpaid</span></td>
+                      <td class="py-4 px-4">
+                        <button id="pay-btn-004" onclick="payInvoice('2026-004', '$420.00')" class="px-4 py-2 bg-magenta hover:bg-magenta-hover text-white rounded-xl font-bold transition shadow shadow-magenta/20">
+                          Pay Now
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 6: PROFILE SETTINGS -->
+          <div id="tab-profile" class="tab-panel hidden space-y-6">
+            <div>
+              <h2 class="text-3xl font-bold text-black dark:text-white">Family Profile Settings</h2>
+              <p class="text-xs text-gray-400 mt-1">Update parent contact information and preferred emergency contacts.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              
+              <!-- Personal details form -->
+              <div class="lg:col-span-7 bg-gray-50 dark:bg-darknavy rounded-2xl border border-gray-150 dark:border-gray-800 p-4 sm:p-6 shadow-sm space-y-6">
+                <h4 class="text-lg font-bold text-black dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3">Parent Details</h4>
+                
+                <div class="flex flex-col sm:flex-row items-center gap-6 pb-6 border-b border-gray-250 dark:border-gray-800">
+                  <div class="relative w-20 h-20 rounded-full border border-gray-250 dark:border-gray-700 bg-magenta text-white flex items-center justify-center font-bold text-2xl shadow-inner overflow-hidden" id="profilePicPreview">
+                    EJ
+                  </div>
+                  <div class="space-y-2 text-center sm:text-left">
+                    <h5 class="text-sm font-bold text-black dark:text-white">Guardian Photo</h5>
+                    <p class="text-[10px] text-gray-500">Supported formats: JPG, PNG. Max size 2MB.</p>
+                    <div class="flex flex-wrap justify-center sm:justify-start gap-2">
+                      <button type="button" id="uploadPicBtn" class="px-4 py-2 bg-magenta hover:bg-magenta-hover text-white font-bold rounded-xl shadow transition-all text-xs">Upload Photo</button>
+                      <button type="button" id="removePicBtn" class="px-4 py-2 border border-gray-250 dark:border-gray-850 text-gray-500 hover:text-magenta rounded-xl transition-all text-xs">Remove</button>
+                      <input type="file" id="picInput" class="hidden" accept="image/*">
+                    </div>
+                  </div>
+                </div>
+
+                <form id="profileForm" class="space-y-4 text-xs" onsubmit="updateProfile(event)" novalidate>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label for="profile-name" class="block font-bold text-gray-700 dark:text-gray-300 mb-2">Guardian Full Name *</label>
+                      <input type="text" id="profile-name" minlength="2" class="w-full px-4 py-3 bg-white dark:bg-darknavy-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-xs" required placeholder="Eleanor Jenkins">
+                      <p class="text-[10px] text-red-500 font-bold hidden mt-1" id="errProfileName">Full name must be at least 2 characters.</p>
+                    </div>
+                    <div>
+                      <label for="profile-email" class="block font-bold text-gray-700 dark:text-gray-300 mb-2">Email Address *</label>
+                      <input type="email" id="profile-email" class="w-full px-4 py-3 bg-white dark:bg-darknavy-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-xs" required placeholder="name@gmail.com">
+                      <p class="text-[10px] text-red-500 font-bold hidden mt-1" id="errProfileEmail">Email address must be in the format name@gmail.com.</p>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label for="profile-phone" class="block font-bold text-gray-700 dark:text-gray-300 mb-2">Primary Phone Number *</label>
+                      <input type="tel" id="profile-phone" maxlength="10" class="w-full px-4 py-3 bg-white dark:bg-darknavy-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-xs" required placeholder="9876543210">
+                      <p class="text-[10px] text-red-500 font-bold hidden mt-1" id="errProfilePhone">Phone number must be exactly 10 digits.</p>
+                    </div>
+                    <div>
+                      <label for="profile-style" class="block font-bold text-gray-700 dark:text-gray-300 mb-2">Primary Learning Pod</label>
+                      <select id="profile-style" class="w-full px-4 py-3 bg-white dark:bg-darknavy-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-xs font-bold">
+                        <option value="" disabled>Choose a pod...</option>
+                        <option value="Toddler Community">Toddler Community (18m-3y)</option>
+                        <option value="Children House" selected>Children's House (3-6y)</option>
+                        <option value="Elementary Pod">Lower Elementary Pod (6-9y)</option>
+                        <option value="Nature Pod">Nature & Forest Botanical Pod</option>
+                      </select>
+                    </div>
+                  </div>
+                  <button type="submit" class="px-6 py-3 bg-magenta hover:bg-magenta-hover text-white font-bold rounded-xl transition-all shadow shadow-magenta/20">Save Profile Changes</button>
+                </form>
+              </div>
+
+              <!-- Password setting form -->
+              <div class="lg:col-span-5 bg-gray-50 dark:bg-darknavy rounded-2xl border border-gray-150 dark:border-gray-800 p-4 sm:p-6 shadow-sm space-y-6">
+                <h4 class="text-lg font-bold text-black dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3">Portal Security</h4>
+                <form id="passwordForm" class="space-y-4 text-xs" onsubmit="event.preventDefault(); alert('Portal password updated successfully!'); this.reset();">
+                  <div>
+                    <label for="pass-current" class="block font-bold text-gray-700 dark:text-gray-300 mb-2">Current Password</label>
+                    <input type="password" id="pass-current" class="w-full px-4 py-3 bg-white dark:bg-darknavy-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-xs" required placeholder="••••••••">
+                  </div>
+                  <div>
+                    <label for="pass-new" class="block font-bold text-gray-700 dark:text-gray-300 mb-2">New Password</label>
+                    <input type="password" id="pass-new" class="w-full px-4 py-3 bg-white dark:bg-darknavy-deep border border-gray-200 dark:border-gray-850 rounded-xl outline-none focus:border-magenta text-xs" required placeholder="Minimum 8 characters">
+                  </div>
+                  <button type="submit" class="w-full py-3 bg-transparent border-2 border-magenta text-magenta hover:bg-magenta hover:text-white font-bold rounded-xl transition-all">Update Security Password</button>
+                </form>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    let currentSelectedChild = 'emily';
+    let nextInvoiceNum = 5;
+    const classPrices = {
+      "Toddler Community (18m-3y)": "$320.00",
+      "Children's House (3-6y)": "$380.00",
+      "Lower Elementary Pod (6-9y)": "$420.00",
+      "Nature & Forest Botanical Pod": "$260.00",
+      "Sensorial Math & Geometry Studio": "$180.00",
+      "Practical Life & Culinary Lab": "$180.00"
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Load saved profile photo on start
+      const savedAvatar = localStorage.getItem("userAvatar");
+      if (savedAvatar) {
+        const imgHtml = `<img src="${savedAvatar}" class="w-full h-full rounded-full object-cover" alt="Preview">`;
+        const previewEl = document.getElementById("profilePicPreview");
+        const headerAvatar = document.getElementById("userHeaderAvatar");
+        if (previewEl) previewEl.innerHTML = imgHtml;
+        if (headerAvatar) headerAvatar.innerHTML = imgHtml;
+      }
+
+      // Load saved profile data
+      const savedName = localStorage.getItem("userName");
+      const savedEmail = localStorage.getItem("userEmail");
+      const savedPhone = localStorage.getItem("userPhone");
+      const savedStyle = localStorage.getItem("userStyle");
+      
+      if (savedName) {
+        const nameInput = document.getElementById("profile-name");
+        if (nameInput) nameInput.value = savedName;
+        const headerName = document.getElementById("userHeaderName");
+        if (headerName) headerName.textContent = savedName;
+        
+        if (!savedAvatar) {
+          const initials = getInitials(savedName);
+          const previewEl = document.getElementById("profilePicPreview");
+          const headerAvatar = document.getElementById("userHeaderAvatar");
+          if (previewEl) previewEl.textContent = initials;
+          if (headerAvatar) headerAvatar.textContent = initials;
+        }
+      } else {
+        if (!savedAvatar) {
+          const previewEl = document.getElementById("profilePicPreview");
+          const headerAvatar = document.getElementById("userHeaderAvatar");
+          if (previewEl) previewEl.textContent = "EJ";
+          if (headerAvatar) headerAvatar.textContent = "EJ";
+        }
+      }
+      if (savedEmail) {
+        const emailInput = document.getElementById("profile-email");
+        if (emailInput) emailInput.value = savedEmail;
+      }
+      if (savedPhone) {
+        const phoneInput = document.getElementById("profile-phone");
+        if (phoneInput) phoneInput.value = savedPhone;
+      }
+      if (savedStyle) {
+        const styleInput = document.getElementById("profile-style");
+        if (styleInput) styleInput.value = savedStyle;
+      }
+
+      // Card Input Auto Formatters
+      const cardNumInput = document.getElementById("card-num-input");
+      if (cardNumInput) {
+        cardNumInput.addEventListener("input", (e) => {
+          let val = e.target.value.replace(/\D/g, "");
+          let formatted = "";
+          for (let i = 0; i < val.length && i < 16; i++) {
+            if (i > 0 && i % 4 === 0) formatted += " ";
+            formatted += val[i];
+          }
+          e.target.value = formatted;
+        });
+      }
+
+      const cardExpiryInput = document.getElementById("card-expiry-input");
+      if (cardExpiryInput) {
+        cardExpiryInput.addEventListener("input", (e) => {
+          let val = e.target.value.replace(/\D/g, "");
+          let formatted = "";
+          if (val.length > 0) {
+            formatted = val.substring(0, 2);
+            if (val.length > 2) {
+              formatted += "/" + val.substring(2, 4);
+            }
+          }
+          e.target.value = formatted;
+        });
+      }
+
+      const cardCvcInput = document.getElementById("card-cvc-input");
+      if (cardCvcInput) {
+        cardCvcInput.addEventListener("input", (e) => {
+          e.target.value = e.target.value.replace(/\D/g, "").substring(0, 4);
+        });
+      }
+
+      // Skeleton loader simulation
+      setTimeout(() => {
+        const loader = document.getElementById("skeleton-loader");
+        if (loader) loader.classList.add("hidden");
+        const realContent = document.getElementById("real-content");
+        if (realContent) realContent.classList.remove("hidden");
+        if (typeof renderAttendanceGrid === 'function') {
+          renderAttendanceGrid(currentSelectedChild, 'August 2026');
+        }
+      }, 500);
+
+      // Handle month change event
+      const monthSelect = document.getElementById("attendance-month");
+      if (monthSelect) {
+        monthSelect.addEventListener("change", (e) => {
+          if (typeof renderAttendanceGrid === 'function') {
+            renderAttendanceGrid(currentSelectedChild, e.target.value);
+          }
+        });
+      }
+
+      // Handle Avatar upload
+      const picInput = document.getElementById("picInput");
+      const uploadPicBtn = document.getElementById("uploadPicBtn");
+      const removePicBtn = document.getElementById("removePicBtn");
+      const previewEl = document.getElementById("profilePicPreview");
+
+      if (uploadPicBtn && picInput) {
+        uploadPicBtn.addEventListener("click", () => picInput.click());
+        picInput.addEventListener("change", (e) => {
+          const file = e.target.files[0];
+          if (file) {
+            const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+            const allowedMimeTypes = ['image/jpeg', 'image/png'];
+            
+            if (!allowedMimeTypes.includes(file.type) && !allowedExtensions.test(file.name)) {
+              alert("Supported formats: JPG, JPEG, PNG. Please upload a valid image file.");
+              picInput.value = "";
+              return;
+            }
+            
+            const maxSize = 2 * 1024 * 1024; // 2MB
+            if (file.size > maxSize) {
+              alert("File size exceeds 2MB limit. Please upload a smaller image.");
+              picInput.value = "";
+              return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+              const imgHtml = `<img src="${event.target.result}" class="w-full h-full rounded-full object-cover" alt="Preview">`;
+              previewEl.innerHTML = imgHtml;
+              localStorage.setItem("userAvatar", event.target.result);
+              
+              const headerAvatar = document.getElementById("userHeaderAvatar");
+              if (headerAvatar) {
+                headerAvatar.innerHTML = imgHtml;
+              }
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+      }
+      if (removePicBtn) {
+        removePicBtn.addEventListener("click", () => {
+          localStorage.removeItem("userAvatar");
+          const nameVal = document.getElementById("profile-name").value;
+          const initials = getInitials(nameVal);
+          previewEl.innerHTML = initials;
+          
+          const headerAvatar = document.getElementById("userHeaderAvatar");
+          if (headerAvatar) {
+            headerAvatar.innerHTML = initials;
+            headerAvatar.className = "relative w-10 h-10 rounded-full border border-gray-200 dark:border-gray-800 bg-magenta text-white flex items-center justify-center font-bold text-sm shadow-inner";
+          }
+        });
+      }
+
+      // Sidebar open/close for mobile
+      const openBtn = document.getElementById("openSidebarBtn");
+      const closeBtn = document.getElementById("closeSidebarBtn");
+      const sidebar = document.getElementById("sidebarMenu");
+
+      if (openBtn && sidebar) {
+        openBtn.addEventListener("click", () => {
+          sidebar.classList.remove("-translate-x-full");
+        });
+      }
+      if (closeBtn && sidebar) {
+        closeBtn.addEventListener("click", () => {
+          sidebar.classList.add("-translate-x-full");
+        });
+      }
+    });
+
+    function switchTab(tabId, btnEl) {
+      const panels = document.querySelectorAll(".tab-panel");
+      panels.forEach(p => p.classList.add("hidden"));
+      
+      const targetPanel = document.getElementById(`tab-${tabId}`);
+      if (targetPanel) targetPanel.classList.remove("hidden");
+
+      const buttons = document.querySelectorAll(".tab-btn");
+      buttons.forEach(b => {
+        b.className = "w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-start transition text-black dark:text-gray-400 hover:bg-magenta/10 hover:text-magenta tab-btn font-bold";
+      });
+
+      if (!btnEl) {
+        btnEl = document.querySelector(`button[onclick^="switchTab('${tabId}'"]`) || document.querySelector(`button[onclick*="switchTab('${tabId}'"]`);
+      }
+
+      if (btnEl) {
+        btnEl.className = "w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-start transition tab-btn bg-magenta text-white font-extrabold shadow-md shadow-magenta/20";
+      }
+
+      const sidebar = document.getElementById("sidebarMenu");
+      if (window.innerWidth < 768 && sidebar) {
+        sidebar.classList.add("-translate-x-full");
+      }
+
+      const mainPanel = document.querySelector("main");
+      if (mainPanel) {
+        mainPanel.classList.add("overflow-y-auto");
+        mainPanel.classList.remove("overflow-hidden");
+
+        if (tabId === 'enroll' || tabId === 'profile') {
+          mainPanel.classList.add("no-scrollbar");
+        } else {
+          mainPanel.classList.remove("no-scrollbar");
+        }
+        mainPanel.scrollTop = 0;
+      }
+    }
+
+    function submitEnrollment(event) {
+      event.preventDefault();
+      const childNameInput = document.getElementById("child-name");
+      const emailInput = document.getElementById("enroll-email");
+      const phoneInput = document.getElementById("enroll-phone");
+
+      const name = childNameInput ? childNameInput.value.trim() : "";
+      const email = emailInput ? emailInput.value.trim() : "";
+      const phone = phoneInput ? phoneInput.value.trim() : "";
+
+      const errChild = document.getElementById("errEnrollChild");
+      const errEmail = document.getElementById("errEnrollEmail");
+      const errPhone = document.getElementById("errEnrollPhone");
+
+      // Hide all errors first
+      if (errChild) errChild.classList.add("hidden");
+      if (errEmail) errEmail.classList.add("hidden");
+      if (errPhone) errPhone.classList.add("hidden");
+
+      // Step 1: Child's Full Name (min 2 chars, no numbers)
+      if (!name || name.length < 2 || /[0-9]/.test(name)) {
+        if (errChild) errChild.classList.remove("hidden");
+        if (childNameInput) childNameInput.focus();
+        return;
+      }
+
+      // Step 2: Guardian Email Address (name@gmail.com)
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/i;
+      if (!email || !emailRegex.test(email)) {
+        if (errEmail) errEmail.classList.remove("hidden");
+        if (emailInput) emailInput.focus();
+        return;
+      }
+
+      // Step 3: Emergency Contact Phone (exactly 10 digits, no letters)
+      const cleanPhone = phone.replace(/\D/g, "");
+      if (!phone || cleanPhone.length !== 10 || /[a-zA-Z]/.test(phone)) {
+        if (errPhone) errPhone.classList.remove("hidden");
+        if (phoneInput) phoneInput.focus();
+        return;
+      }
+
+      const style = document.getElementById("pod-program").value;
+      const level = document.getElementById("schedule-option").value;
+      const timing = document.getElementById("preferred-timing").value;
+
+      const tbody = document.getElementById("enrolled-children");
+      const row = document.createElement("tr");
+      row.className = "border-b border-gray-150 dark:border-gray-850 text-xs hover:bg-gray-100/50 dark:hover:bg-darknavy-light/50 transition";
+      row.innerHTML = `
+        <td class="py-4 px-4 font-bold text-magenta whitespace-nowrap">${name}</td>
+        <td class="py-4 px-4 font-medium text-gray-700 dark:text-gray-300">${style}</td>
+        <td class="py-4 px-4 text-gray-600 dark:text-gray-400">${level}</td>
+        <td class="py-4 px-4 text-gray-600 dark:text-gray-400 whitespace-nowrap">${timing}</td>
+        <td class="py-4 px-4 text-center whitespace-nowrap">
+          <span class="inline-flex items-center justify-center min-w-[88px] px-3 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 rounded-full font-extrabold text-[10px] uppercase tracking-wider">Active</span>
+        </td>
+      `;
+      if (tbody) tbody.appendChild(row);
+
+      // Generate dynamic invoice
+      const amount = classPrices[style] || "$350.00";
+      const paddedNum = String(nextInvoiceNum++).padStart(3, '0');
+      const invId = `2026-${paddedNum}`;
+      
+      const billingTbody = document.getElementById("billing-tbody");
+      if (billingTbody) {
+        const invoiceRow = document.createElement("tr");
+        invoiceRow.className = "border-b border-gray-150 dark:border-gray-850";
+        invoiceRow.innerHTML = `
+          <td class="py-4 px-4 font-bold">#INV-${invId}</td>
+          <td class="py-4 px-4 font-bold text-magenta">${name}</td>
+          <td class="py-4 px-4">Term 1 ${style} Tuition</td>
+          <td class="py-4 px-4 font-bold">${amount}</td>
+          <td class="py-4 px-4"><span class="px-2.5 py-0.5 bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300 rounded-full font-bold text-[10px] uppercase" id="status-${paddedNum}">Unpaid</span></td>
+          <td class="py-4 px-4">
+            <button id="pay-btn-${paddedNum}" onclick="payInvoice('${invId}', '${amount}')" class="px-4 py-2 bg-magenta hover:bg-magenta-hover text-white rounded-xl font-bold transition shadow shadow-magenta/20">
+              Pay Now
+            </button>
+          </td>
+        `;
+        billingTbody.appendChild(invoiceRow);
+      }
+
+      updateOverviewBillingStatus();
+
+      const overviewList = document.getElementById("overview-kids-list");
+      if (overviewList) {
+        const initials = getInitials(name);
+        const kidBlock = document.createElement("div");
+        kidBlock.className = "flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-white dark:bg-darknavy-light rounded-xl border border-gray-100 dark:border-gray-850 gap-4";
+        kidBlock.innerHTML = `
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-magenta/10 flex items-center justify-center text-magenta text-sm font-extrabold">${initials}</div>
+            <div>
+              <h4 class="font-bold text-sm text-black dark:text-white">${name}</h4>
+              <p class="text-[10px] text-gray-500">${style} • ${timing}</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 self-end sm:self-auto">
+            <span class="text-[10px] font-bold px-3 py-1 rounded-full bg-magenta/10 text-magenta">${level}</span>
+            <button onclick="switchTab('attendance')" class="text-[10px] font-bold text-magenta hover:underline">View Work Cycle</button>
+          </div>
+        `;
+        overviewList.appendChild(kidBlock);
+      }
+      
+      const countEl = document.querySelector("#tab-overview p.text-3xl");
+      if (countEl && countEl.textContent.includes("Active")) {
+        const currentCount = parseInt(countEl.textContent);
+        if (!isNaN(currentCount)) {
+          countEl.textContent = `${currentCount + 1} Active`;
+        }
+      }
+
+      alert(`Successfully registered ${name} for ${style}! An invoice has been generated under Tuition & Billing.`);
+      document.getElementById("enrollment-form").reset();
+      if (errChild) errChild.classList.add("hidden");
+      if (errEmail) errEmail.classList.add("hidden");
+      if (errPhone) errPhone.classList.add("hidden");
+    }
+
+    function renderAttendanceGrid(child, month) {
+      const container = document.getElementById("attendance-grid-container");
+      if (!container) return;
+      
+      container.innerHTML = `
+        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider py-2">Sun</span>
+        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider py-2">Mon</span>
+        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider py-2">Tue</span>
+        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider py-2">Wed</span>
+        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider py-2">Thu</span>
+        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider py-2">Fri</span>
+        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider py-2">Sat</span>
+      `;
+      
+      const numSpacers = month === 'July 2026' ? 3 : 6;
+      const totalDays = 31;
+      
+      for (let i = 0; i < numSpacers; i++) {
+        const spacer = document.createElement("div");
+        spacer.className = "max-w-[48px] md:max-w-[56px] w-full aspect-square mx-auto rounded-xl bg-transparent border border-transparent";
+        container.appendChild(spacer);
+      }
+      
+      for (let day = 1; day <= totalDays; day++) {
+        const box = document.createElement("div");
+        box.className = "max-w-[48px] md:max-w-[56px] w-full aspect-square mx-auto rounded-xl flex flex-col items-center justify-center border transition p-1 shadow-sm";
+        
+        const dayOfWeek = month === 'July 2026' ? (day + 2) % 7 : (day + 5) % 7; 
+        
+        let status = "";
+        // Weekdays: Monday to Friday (dayOfWeek 1 to 5)
+        if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+          if (child === 'emily') {
+            if (month === 'August 2026') {
+              if (day === 12) status = "A";
+              else if (day < 25) status = "P";
+            } else {
+              if (day === 17) status = "A";
+              else status = "P";
+            }
+          } else {
+            if (month === 'August 2026') {
+              if (day === 7) status = "A";
+              else if (day < 25) status = "P";
+            } else {
+              if (day === 21) status = "A";
+              else status = "P";
+            }
+          }
+        }
+        
+        if (status === "P") {
+          box.className += " bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20 hover:bg-emerald-500/20";
+          box.innerHTML = `<span class="text-sm font-extrabold leading-none">${day}</span><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1 shrink-0" title="Present in Pod"></span>`;
+        } else if (status === "A") {
+          box.className += " bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20 hover:bg-red-500/20";
+          box.innerHTML = `<span class="text-sm font-extrabold leading-none">${day}</span><span class="w-1.5 h-1.5 rounded-full bg-red-500 mt-1 shrink-0" title="Excused Absence"></span>`;
+        } else {
+          box.className += " bg-white dark:bg-darknavy-light text-gray-400 dark:text-gray-500 border-gray-150 dark:border-gray-800";
+          box.innerHTML = `<span class="text-sm font-medium text-gray-400 dark:text-gray-500">${day}</span>`;
+        }
+        
+        container.appendChild(box);
+      }
+    }
+
+    function toggleStudentAttendance(child) {
+      const emilyBtn = document.querySelector("button[onclick=\"toggleStudentAttendance('emily')\"]");
+      const leoBtn = document.querySelector("button[onclick=\"toggleStudentAttendance('leo')\"]");
+      
+      if (child === 'emily') {
+        if (emilyBtn) emilyBtn.className = "px-4 py-2 bg-magenta text-white text-xs font-bold rounded-xl transition";
+        if (leoBtn) leoBtn.className = "px-4 py-2 bg-white dark:bg-darknavy-light border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 text-xs font-bold rounded-xl transition";
+      } else {
+        if (leoBtn) leoBtn.className = "px-4 py-2 bg-magenta text-white text-xs font-bold rounded-xl transition";
+        if (emilyBtn) emilyBtn.className = "px-4 py-2 bg-white dark:bg-darknavy-light border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 text-xs font-bold rounded-xl transition";
+      }
+      
+      currentSelectedChild = child;
+      const month = document.getElementById("attendance-month").value;
+      renderAttendanceGrid(child, month);
+    }
+
+    let currentPaymentInvoiceId = "";
+    let currentPaymentAmount = "";
+
+    function payInvoice(invId, amount) {
+      currentPaymentInvoiceId = invId;
+      currentPaymentAmount = amount;
+      
+      const modal = document.getElementById("payment-method-modal");
+      const infoEl = document.getElementById("payment-modal-invoice-info");
+      if (!modal) return;
+      
+      if (infoEl) {
+        infoEl.textContent = `Invoice #${invId} • Amount: ${amount}`;
+      }
+      
+      document.getElementById("payment-method-form").reset();
+      
+      // Hide all errors
+      const errCardName = document.getElementById("errCardName");
+      const errCardNum = document.getElementById("errCardNum");
+      const errCardExpiry = document.getElementById("errCardExpiry");
+      const errCardCvc = document.getElementById("errCardCvc");
+      const phoneError = document.getElementById("upi-validation-error");
+      if (errCardName) errCardName.classList.add("hidden");
+      if (errCardNum) errCardNum.classList.add("hidden");
+      if (errCardExpiry) errCardExpiry.classList.add("hidden");
+      if (errCardCvc) errCardCvc.classList.add("hidden");
+      if (phoneError) phoneError.classList.add("hidden");
+
+      toggleCardInputs('card');
+      
+      modal.classList.remove("hidden");
+      setTimeout(() => {
+        modal.classList.remove("opacity-0");
+        modal.firstElementChild.classList.remove("scale-95");
+      }, 10);
+    }
+    
+    function hidePaymentModal() {
+      const modal = document.getElementById("payment-method-modal");
+      if (!modal) return;
+      modal.classList.add("opacity-0");
+      modal.firstElementChild.classList.add("scale-95");
+      setTimeout(() => {
+        modal.classList.add("hidden");
+      }, 300);
+    }
+    
+    function toggleCardInputs(method) {
+      const cardInputs = document.getElementById("card-details-inputs");
+      const phoneInputs = document.getElementById("phone-details-inputs");
+      
+      // Hide all errors on toggle
+      const errCardName = document.getElementById("errCardName");
+      const errCardNum = document.getElementById("errCardNum");
+      const errCardExpiry = document.getElementById("errCardExpiry");
+      const errCardCvc = document.getElementById("errCardCvc");
+      const phoneError = document.getElementById("upi-validation-error");
+      if (errCardName) errCardName.classList.add("hidden");
+      if (errCardNum) errCardNum.classList.add("hidden");
+      if (errCardExpiry) errCardExpiry.classList.add("hidden");
+      if (errCardCvc) errCardCvc.classList.add("hidden");
+      if (phoneError) phoneError.classList.add("hidden");
+      
+      if (method === 'card') {
+        if (cardInputs) cardInputs.classList.remove("hidden");
+        if (phoneInputs) phoneInputs.classList.add("hidden");
+      } else {
+        if (cardInputs) cardInputs.classList.add("hidden");
+        if (phoneInputs) phoneInputs.classList.remove("hidden");
+      }
+    }
+    
+    function processPaymentSubmit(event) {
+      event.preventDefault();
+      
+      const selectedMethod = document.querySelector('input[name="payment-method"]:checked').value;
+      
+      const errCardName = document.getElementById("errCardName");
+      const errCardNum = document.getElementById("errCardNum");
+      const errCardExpiry = document.getElementById("errCardExpiry");
+      const errCardCvc = document.getElementById("errCardCvc");
+      const phoneError = document.getElementById("upi-validation-error");
+
+      // Hide all errors before step-by-step verification
+      if (errCardName) errCardName.classList.add("hidden");
+      if (errCardNum) errCardNum.classList.add("hidden");
+      if (errCardExpiry) errCardExpiry.classList.add("hidden");
+      if (errCardCvc) errCardCvc.classList.add("hidden");
+      if (phoneError) phoneError.classList.add("hidden");
+
+      if (selectedMethod === "card") {
+        const cardNameInput = document.getElementById("card-name-input");
+        const cardNumInput = document.getElementById("card-num-input");
+        const cardExpiryInput = document.getElementById("card-expiry-input");
+        const cardCvcInput = document.getElementById("card-cvc-input");
+
+        const cardHolder = cardNameInput ? cardNameInput.value.trim() : "";
+        const cleanCardNum = cardNumInput ? cardNumInput.value.replace(/\D/g, "") : "";
+        const cardExpiry = cardExpiryInput ? cardExpiryInput.value.trim() : "";
+        const cardCvc = cardCvcInput ? cardCvcInput.value.trim() : "";
+
+        // Step 1: Card Holder Name (min 2 characters, no numbers)
+        if (!cardHolder || cardHolder.length < 2 || /[0-9]/.test(cardHolder)) {
+          if (errCardName) errCardName.classList.remove("hidden");
+          if (cardNameInput) cardNameInput.focus();
+          return;
+        }
+
+        // Step 2: Card Number (16 digits)
+        if (!cleanCardNum || cleanCardNum.length !== 16) {
+          if (errCardNum) errCardNum.classList.remove("hidden");
+          if (cardNumInput) cardNumInput.focus();
+          return;
+        }
+
+        // Step 3: Expiry Date (MM/YY format, valid month)
+        const expiryRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+        if (!cardExpiry || !expiryRegex.test(cardExpiry)) {
+          if (errCardExpiry) errCardExpiry.classList.remove("hidden");
+          if (cardExpiryInput) cardExpiryInput.focus();
+          return;
+        }
+
+        // Step 4: CVC (3 or 4 digits)
+        if (!cardCvc || cardCvc.length < 3 || cardCvc.length > 4 || /\D/.test(cardCvc)) {
+          if (errCardCvc) errCardCvc.classList.remove("hidden");
+          if (cardCvcInput) cardCvcInput.focus();
+          return;
+        }
+
+      } else if (selectedMethod === "googlepay" || selectedMethod === "phonepe") {
+        const phoneInput = document.getElementById("phone-number-input");
+        const phoneNumVal = phoneInput ? phoneInput.value.trim() : "";
+        const digits = phoneNumVal.replace(/\D/g, "");
+        if (!phoneNumVal || digits.length !== 10 || /[a-zA-Z]/.test(phoneNumVal)) {
+          if (phoneError) phoneError.classList.remove("hidden");
+          if (phoneInput) phoneInput.focus();
+          return;
+        }
+      }
+
+      // If all step-by-step validations succeed, complete the payment
+      let methodText = "";
+      if (selectedMethod === "card") methodText = "Credit Card";
+      else if (selectedMethod === "googlepay") methodText = "Google Pay";
+      else if (selectedMethod === "phonepe") methodText = "PhonePe";
+      
+      hidePaymentModal();
+      
+      const parts = currentPaymentInvoiceId.split('-');
+      const suffix = parts[parts.length - 1];
+      const statusEl = document.getElementById(`status-${suffix}`);
+      const payBtn = document.getElementById(`pay-btn-${suffix}`);
+      
+      if (statusEl) {
+        statusEl.textContent = "Paid";
+        statusEl.className = "px-2.5 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 rounded-full font-bold text-[10px] uppercase";
+      }
+      if (payBtn) {
+        payBtn.textContent = "Receipt";
+        payBtn.id = `btn-${currentPaymentInvoiceId}`;
+        payBtn.className = "px-4 py-2 bg-magenta hover:bg-magenta-hover text-white rounded-xl font-bold transition shadow shadow-magenta/20";
+        payBtn.onclick = function() {
+          downloadReceipt(currentPaymentInvoiceId, currentPaymentAmount);
+        };
+      }
+      
+      updateOverviewBillingStatus();
+      
+      alert(`Payment of ${currentPaymentAmount} via ${methodText} successful! Tuition record updated.`);
+    }
+
+    function updateOverviewBillingStatus() {
+      const overviewBilling = document.getElementById("overview-billing-status");
+      if (!overviewBilling) return;
+
+      const billingTbody = document.getElementById("billing-tbody");
+      if (!billingTbody) return;
+
+      const unpaidInvoices = Array.from(billingTbody.querySelectorAll("span")).filter(span => span.textContent.trim().toLowerCase() === "unpaid");
+      
+      if (unpaidInvoices.length > 0) {
+        overviewBilling.textContent = "Pending Payment";
+        overviewBilling.className = "text-xs font-extrabold text-amber-600 mt-3 bg-amber-100 dark:bg-amber-950/40 px-3 py-1.5 rounded-full inline-block";
+      } else {
+        overviewBilling.textContent = "All Paid";
+        overviewBilling.className = "text-xs font-extrabold text-emerald-600 mt-2 bg-emerald-100 dark:bg-emerald-950/40 px-3 py-1 rounded-full inline-block";
+      }
+    }
+
+    function downloadReceipt(invId, amount) {
+      const btn = document.getElementById(`btn-${invId}`);
+      if (btn) {
+        btn.innerHTML = `<svg class="animate-spin -ml-1 mr-2 h-4 w-4 inline text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Generating...`;
+        setTimeout(() => {
+          btn.innerHTML = `Downloaded`;
+          btn.className = "px-4 py-2 bg-emerald-600 text-white rounded-xl font-bold cursor-not-allowed";
+          btn.disabled = true;
+
+          // Trigger File Download
+          const receiptHTML = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <meta charset="UTF-8">
+              <title>Receipt #INV-${invId} - KinderNest</title>
+              <style>
+                body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; padding: 40px; color: #2D3748; background: #FFFDF9; }
+                .header { border-bottom: 2px solid #E07A5F; padding-bottom: 25px; margin-bottom: 30px; }
+                .brand { color: #E07A5F; font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
+                .table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+                .table th, .table td { padding: 14px; border: 1px solid #E2E8F0; text-align: left; }
+                .table th { background: #E07A5F; color: white; font-weight: 700; font-size: 13px; text-transform: uppercase; }
+                .badge { display: inline-block; padding: 4px 10px; background: #D1FAE5; color: #065F46; border-radius: 9999px; font-weight: 700; font-size: 12px; }
+              </style>
+            </head>
+            <body>
+              <div class="header">
+                <div class="brand">KINDERNEST MONTESSORI POD</div>
+                <p style="color: #718096; margin-top: 4px; font-size: 14px;">Official Learning Pod Enrollment & Tuition Receipt</p>
+                <p style="color: #A0AEC0; font-size: 12px;">42 Blossom Valley Way, Sunnyvale, CA 94087 • contact@kindernest.org</p>
+              </div>
+              <p><strong>Receipt ID:</strong> #INV-${invId}</p>
+              <p><strong>Issued Date:</strong> ${new Date().toLocaleDateString()}</p>
+              <p><strong>Payment Status:</strong> <span class="badge">PAID</span></p>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Curriculum & Pod Description</th>
+                    <th>Students</th>
+                    <th>Term Fee</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Montessori Learning Pod Tuition & Learning Materials Fee (Term 1)</td>
+                    <td>1 Enrolled Child</td>
+                    <td>${amount}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h2 style="text-align: right; margin-top: 30px; color: #E07A5F;">Total Paid: ${amount}</h2>
+              <p style="margin-top: 50px; font-size: 13px; color: #718096; text-align: center;">
+                "Education is a natural process carried out by the child and is not acquired by listening to words but by experiences in the environment." — Dr. Maria Montessori
+              </p>
+            </body>
+            </html>
+          `;
+          const blob = new Blob([receiptHTML], { type: 'text/html' });
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.download = `Receipt_${invId}.html`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+
+          setTimeout(() => {
+            btn.innerHTML = `Receipt`;
+            btn.className = "px-4 py-2 bg-magenta hover:bg-magenta-hover text-white rounded-xl font-bold transition shadow shadow-magenta/20";
+            btn.disabled = false;
+          }, 1000);
+        }, 1200);
+      }
+    }
+
+    function getInitials(name) {
+      let initials = "P";
+      if (name) {
+        const parts = name.trim().split(/\s+/);
+        if (parts.length >= 2) {
+          initials = (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+        } else if (parts.length === 1 && parts[0].length > 0) {
+          initials = parts[0].substring(0, 2).toUpperCase();
+        }
+      }
+      return initials;
+    }
+
+    function updateProfile(event) {
+      event.preventDefault();
+      const nameInput = document.getElementById("profile-name");
+      const emailInput = document.getElementById("profile-email");
+      const phoneInput = document.getElementById("profile-phone");
+      const styleInput = document.getElementById("profile-style");
+
+      const name = nameInput ? nameInput.value.trim() : "";
+      const email = emailInput ? emailInput.value.trim() : "";
+      const phone = phoneInput ? phoneInput.value.trim() : "";
+      const style = styleInput ? styleInput.value : "";
+      
+      const errName = document.getElementById("errProfileName");
+      const errEmail = document.getElementById("errProfileEmail");
+      const errPhone = document.getElementById("errProfilePhone");
+
+      // Hide all errors first
+      if (errName) errName.classList.add("hidden");
+      if (errEmail) errEmail.classList.add("hidden");
+      if (errPhone) errPhone.classList.add("hidden");
+
+      // Step 1: Guardian Full Name (min 2 characters, no numbers)
+      if (!name || name.length < 2 || /[0-9]/.test(name)) {
+        if (errName) errName.classList.remove("hidden");
+        if (nameInput) nameInput.focus();
+        return;
+      }
+
+      // Step 2: Email Address (name@gmail.com)
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/i;
+      if (!email || !emailRegex.test(email)) {
+        if (errEmail) errEmail.classList.remove("hidden");
+        if (emailInput) emailInput.focus();
+        return;
+      }
+
+      // Step 3: Phone Number (exactly 10 digits, no letters)
+      const cleanPhone = phone.replace(/\D/g, "");
+      if (!phone || cleanPhone.length !== 10 || /[a-zA-Z]/.test(phone)) {
+        if (errPhone) errPhone.classList.remove("hidden");
+        if (phoneInput) phoneInput.focus();
+        return;
+      }
+
+      localStorage.setItem("userName", name);
+      localStorage.setItem("userEmail", email);
+      localStorage.setItem("userPhone", phone);
+      localStorage.setItem("userStyle", style);
+      
+      const headerName = document.getElementById("userHeaderName");
+      if (headerName) headerName.textContent = name || "Parent Portal";
+      
+      const initials = getInitials(name);
+
+      const previewEl = document.getElementById("profilePicPreview");
+      const headerAvatar = document.getElementById("userHeaderAvatar");
+      if (headerAvatar && previewEl) {
+        const img = previewEl.querySelector("img");
+        if (img) {
+          headerAvatar.innerHTML = img.outerHTML;
+        } else {
+          previewEl.textContent = initials;
+          headerAvatar.textContent = initials;
+          headerAvatar.className = "w-9 h-9 rounded-full bg-magenta text-white flex items-center justify-center font-bold text-sm shadow-inner";
+        }
+      }
+      
+      alert("Parent profile updated successfully!");
+    }
+
+    // Attach real-time input restrictions and dynamic error hiding across dashboard forms
+    document.addEventListener("DOMContentLoaded", () => {
+      const attachNameValidation = (inputId, errId) => {
+        const el = document.getElementById(inputId);
+        const err = document.getElementById(errId);
+        if (el) {
+          el.addEventListener("beforeinput", (e) => {
+            if (e.data && /[0-9]/.test(e.data)) e.preventDefault();
+          });
+          el.addEventListener("input", function() {
+            this.value = this.value.replace(/[0-9]/g, "");
+            if (this.value.trim().length >= 2 && err) {
+              err.classList.add("hidden");
+            }
+          });
+        }
+      };
+
+      const attachEmailValidation = (inputId, errId) => {
+        const el = document.getElementById(inputId);
+        const err = document.getElementById(errId);
+        if (el) {
+          el.addEventListener("input", function() {
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/i;
+            if (emailRegex.test(this.value.trim()) && err) {
+              err.classList.add("hidden");
+            }
+          });
+        }
+      };
+
+      const attachPhoneValidation = (inputId, errId, maxLen = 10) => {
+        const el = document.getElementById(inputId);
+        const err = document.getElementById(errId);
+        if (el) {
+          el.addEventListener("beforeinput", (e) => {
+            if (e.data && /[a-zA-Z]/.test(e.data)) e.preventDefault();
+          });
+          el.addEventListener("input", function() {
+            this.value = this.value.replace(/[^0-9]/g, "").slice(0, maxLen);
+            if (this.value.length === maxLen && err) {
+              err.classList.add("hidden");
+            }
+          });
+        }
+      };
+
+      // Name inputs
+      attachNameValidation("profile-name", "errProfileName");
+      attachNameValidation("child-name", "errEnrollChild");
+      attachNameValidation("card-name-input", "errCardName");
+
+      // Email inputs
+      attachEmailValidation("profile-email", "errProfileEmail");
+      attachEmailValidation("enroll-email", "errEnrollEmail");
+
+      // Phone inputs
+      attachPhoneValidation("profile-phone", "errProfilePhone", 10);
+      attachPhoneValidation("enroll-phone", "errEnrollPhone", 10);
+      attachPhoneValidation("phone-number-input", "upi-validation-error", 10);
+
+      // Card details dynamic validation
+      const cardNumEl = document.getElementById("card-num-input");
+      const errCardNum = document.getElementById("errCardNum");
+      if (cardNumEl) {
+        cardNumEl.addEventListener("input", function() {
+          const digits = this.value.replace(/\D/g, "");
+          if (digits.length === 16 && errCardNum) {
+            errCardNum.classList.add("hidden");
+          }
+        });
+      }
+
+      const cardExpiryEl = document.getElementById("card-expiry-input");
+      const errCardExpiry = document.getElementById("errCardExpiry");
+      if (cardExpiryEl) {
+        cardExpiryEl.addEventListener("input", function() {
+          const expiryRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+          if (expiryRegex.test(this.value.trim()) && errCardExpiry) {
+            errCardExpiry.classList.add("hidden");
+          }
+        });
+      }
+
+      const cardCvcEl = document.getElementById("card-cvc-input");
+      const errCardCvc = document.getElementById("errCardCvc");
+      if (cardCvcEl) {
+        cardCvcEl.addEventListener("input", function() {
+          const val = this.value.trim();
+          if ((val.length === 3 || val.length === 4) && !/\D/.test(val) && errCardCvc) {
+            errCardCvc.classList.add("hidden");
+          }
+        });
+      }
+    });
+
+    function showCustomConfirm(title, message, onConfirm) {
+      const modal = document.getElementById("custom-confirm-modal");
+      const titleEl = document.getElementById("confirm-modal-title");
+      const msgEl = document.getElementById("confirm-modal-message");
+      const cancelBtn = document.getElementById("confirm-modal-cancel");
+      const confirmBtn = document.getElementById("confirm-modal-confirm");
+      
+      if (!modal) return;
+      
+      titleEl.textContent = title;
+      msgEl.textContent = message;
+      
+      modal.classList.remove("hidden");
+      setTimeout(() => {
+        modal.classList.remove("opacity-0");
+        modal.firstElementChild.classList.remove("scale-95");
+      }, 10);
+      
+      const hideModal = () => {
+        modal.classList.add("opacity-0");
+        modal.firstElementChild.classList.add("scale-95");
+        setTimeout(() => {
+          modal.classList.add("hidden");
+        }, 300);
+      };
+      
+      cancelBtn.onclick = () => {
+        hideModal();
+      };
+      
+      confirmBtn.onclick = () => {
+        hideModal();
+        if (onConfirm) onConfirm();
+      };
+    }
+
+    function signOut() {
+      showCustomConfirm(
+        "Confirm Sign Out",
+        "Sign out from your KinderNest Parent Portal session?",
+        () => {
+          alert("Signing out. Returning to KinderNest Home...");
+          setTimeout(() => {
+            window.location.href = "index.html";
+          }, 1000);
+        }
+      );
+    }
+  </script>
+
+  <!-- ================= CUSTOM CONFIRM MODAL ================= -->
+  <div id="custom-confirm-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[10000] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white dark:bg-darknavy p-8 rounded-3xl shadow-2xl max-w-sm w-full mx-4 text-center border border-gray-150 dark:border-gray-800 scale-95 transition-transform duration-300">
+      
+      <!-- Icon -->
+      <div class="w-16 h-16 bg-magenta/10 dark:bg-magenta/25 text-magenta rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-extrabold">
+        ?
+      </div>
+      
+      <!-- Title -->
+      <h3 class="text-xl font-bold text-black dark:text-white mb-3" id="confirm-modal-title">Confirm Sign Out</h3>
+      
+      <!-- Message -->
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-8 leading-relaxed font-semibold" id="confirm-modal-message">Are you sure you want to proceed?</p>
+      
+      <!-- Actions -->
+      <div class="grid grid-cols-2 gap-4">
+        <button id="confirm-modal-cancel" class="py-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-2xl font-bold transition text-xs">
+          Cancel
+        </button>
+        <button id="confirm-modal-confirm" class="py-3 bg-magenta hover:bg-magenta-hover text-white rounded-2xl font-bold shadow-lg shadow-magenta/20 transition text-xs">
+          Confirm
+        </button>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- ================= PAYMENT METHOD MODAL ================= -->
+  <div id="payment-method-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[10000] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white dark:bg-darknavy p-6 sm:p-8 rounded-3xl shadow-2xl max-w-md w-full mx-4 border border-gray-150 dark:border-gray-800 scale-95 transition-transform duration-300 text-xs">
+      
+      <!-- Header -->
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 bg-magenta/10 dark:bg-magenta/25 text-magenta rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-extrabold">
+          <i class="bi bi-credit-card-2-front"></i>
+        </div>
+        <h3 class="text-lg font-bold text-black dark:text-white" id="payment-modal-title">Select Payment Method</h3>
+        <p class="text-xs text-gray-500 mt-1" id="payment-modal-invoice-info">Invoice #INV-2026-004 • Amount: $420.00</p>
+      </div>
+      
+      <!-- Payment Methods Form -->
+      <form id="payment-method-form" onsubmit="processPaymentSubmit(event)" class="space-y-4" novalidate>
+        <!-- Radio options -->
+        <div class="space-y-2.5">
+          <!-- Card Option -->
+          <label class="flex items-center gap-3 p-3 bg-gray-50 dark:bg-darknavy-light border border-gray-200 dark:border-gray-800 rounded-xl cursor-pointer hover:border-magenta transition">
+            <input type="radio" name="payment-method" value="card" checked onchange="toggleCardInputs('card')" class="accent-magenta w-4 h-4">
+            <div class="flex-1 flex justify-between items-center">
+              <span class="font-bold text-gray-700 dark:text-gray-300">Credit / Debit Card</span>
+              <span class="text-gray-400"><i class="bi bi-credit-card"></i></span>
+            </div>
+          </label>
+          
+          <!-- Card Details Input Container -->
+          <div id="card-details-inputs" class="p-3 bg-gray-100/50 dark:bg-darknavy-deep border border-gray-200/60 dark:border-gray-850 rounded-xl space-y-3">
+            <div>
+              <label for="card-name-input" class="block text-[10px] font-bold text-gray-500 uppercase mb-1">Card Holder Name</label>
+              <input type="text" id="card-name-input" class="w-full px-3 py-2 bg-white dark:bg-darknavy border border-gray-200 dark:border-gray-800 rounded-lg outline-none focus:border-magenta text-xs font-semibold" placeholder="e.g. Eleanor Jenkins">
+              <p class="text-[10px] text-red-500 font-bold hidden mt-1" id="errCardName">Card holder name must be at least 2 characters.</p>
+            </div>
+            <div>
+              <label for="card-num-input" class="block text-[10px] font-bold text-gray-500 uppercase mb-1">Card Number</label>
+              <input type="text" id="card-num-input" class="w-full px-3 py-2 bg-white dark:bg-darknavy border border-gray-200 dark:border-gray-800 rounded-lg outline-none focus:border-magenta text-xs font-semibold" placeholder="•••• •••• •••• ••••" maxlength="19">
+              <p class="text-[10px] text-red-500 font-bold hidden mt-1" id="errCardNum">Card number must be 16 digits.</p>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label for="card-expiry-input" class="block text-[10px] font-bold text-gray-500 uppercase mb-1">Expiry Date</label>
+                <input type="text" id="card-expiry-input" class="w-full px-3 py-2 bg-white dark:bg-darknavy border border-gray-200 dark:border-gray-800 rounded-lg outline-none focus:border-magenta text-xs font-semibold" placeholder="MM/YY" maxlength="5">
+                <p class="text-[10px] text-red-500 font-bold hidden mt-1" id="errCardExpiry">Please enter a valid expiry date (MM/YY).</p>
+              </div>
+              <div>
+                <label for="card-cvc-input" class="block text-[10px] font-bold text-gray-500 uppercase mb-1">CVC</label>
+                <input type="text" id="card-cvc-input" class="w-full px-3 py-2 bg-white dark:bg-darknavy border border-gray-200 dark:border-gray-800 rounded-lg outline-none focus:border-magenta text-xs font-semibold" placeholder="•••" maxlength="4">
+                <p class="text-[10px] text-red-500 font-bold hidden mt-1" id="errCardCvc">CVC must be 3 or 4 digits.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Google Pay Option -->
+          <label class="flex items-center gap-3 p-3 bg-gray-50 dark:bg-darknavy-light border border-gray-200 dark:border-gray-850 rounded-xl cursor-pointer hover:border-magenta transition">
+            <input type="radio" name="payment-method" value="googlepay" onchange="toggleCardInputs('googlepay')" class="accent-magenta w-4 h-4">
+            <div class="flex-1 flex justify-between items-center">
+              <span class="font-bold text-gray-700 dark:text-gray-300">Google Pay</span>
+              <span class="text-gray-400"><i class="bi bi-google"></i></span>
+            </div>
+          </label>
+
+          <!-- PhonePe Option -->
+          <label class="flex items-center gap-3 p-3 bg-gray-50 dark:bg-darknavy-light border border-gray-200 dark:border-gray-850 rounded-xl cursor-pointer hover:border-magenta transition">
+            <input type="radio" name="payment-method" value="phonepe" onchange="toggleCardInputs('phonepe')" class="accent-magenta w-4 h-4">
+            <div class="flex-1 flex justify-between items-center">
+              <span class="font-bold text-gray-700 dark:text-gray-300">PhonePe</span>
+              <span class="text-gray-400"><i class="bi bi-wallet2"></i></span>
+            </div>
+          </label>
+
+          <!-- Phone Number Input Container -->
+          <div id="phone-details-inputs" class="p-3 bg-gray-100/50 dark:bg-darknavy-deep border border-gray-200/60 dark:border-gray-850 rounded-xl space-y-3 hidden">
+            <div>
+              <label class="block text-[10px] font-bold text-gray-500 uppercase mb-1">UPI Phone Number</label>
+              <input type="text" id="phone-number-input" class="w-full px-3 py-2 bg-white dark:bg-darknavy border border-gray-200 dark:border-gray-850 rounded-lg outline-none focus:border-magenta text-xs font-semibold" placeholder="9876543210" maxlength="10">
+              <p id="upi-validation-error" class="text-[10px] text-red-500 mt-1 font-bold hidden">Phone number must be exactly 10 digits.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Actions -->
+        <div class="grid grid-cols-2 gap-4 pt-4 border-t border-gray-150 dark:border-gray-800">
+          <button type="button" onclick="hidePaymentModal()" class="py-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-2xl font-bold transition">
+            Cancel
+          </button>
+          <button type="submit" class="py-3 bg-magenta hover:bg-magenta-hover text-white rounded-2xl font-bold shadow-lg shadow-magenta/20 transition">
+            Pay Now
+          </button>
+        </div>
+      </form>
+      
+    </div>
+  </div>
+</body>
+</html>

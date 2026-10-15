@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" dir="ltr">
+<head>
+  <script>
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nature & Botanical Learning Pod | KinderNest Montessori</title>
+  <meta name="description" content="Immersive Nature & Botanical Montessori Learning Pod at KinderNest. Nurturing ecological mindfulness, outdoor science, and hands-on sensorial discovery.">
+  <!-- Tailwind CDN & Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            magenta: {
+              DEFAULT: '#E07A5F', // Warm Montessori Terracotta / Coral
+              hover: '#C85A3E',
+              light: '#F4A261',
+            },
+            sage: {
+              50: '#F4F7F4',
+              100: '#E8EFE9',
+              500: '#819B88',
+              600: '#647E6B',
+            },
+            honey: {
+              50: '#FFFDF5',
+              100: '#FEF9E7',
+              500: '#F2CC8F',
+              600: '#E5B869',
+            },
+            warmbeige: '#FDFBF7',
+            darknavy: {
+              DEFAULT: '#1E1E24',
+              light: '#282832',
+              deep: '#15151A',
+            },
+            black: {
+              deep: '#131316',
+              light: '#212126',
+              DEFAULT: '#18181D',
+            },
+            gray: {
+              850: '#26262E',
+            },
+            slate: {
+              905: '#1A1A22',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts & Custom Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-white text-gray-900 dark:bg-darknavy-deep dark:text-gray-100 transition-colors duration-300">
+
+  <!-- ================= HEADER SECTION ================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 w-full bg-white/95 dark:bg-darknavy/95 backdrop-blur border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-2 rtl:space-x-reverse shrink-0">
+          <span class="w-9 h-9 rounded-full bg-magenta flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-magenta/30">K</span>
+          <span class="text-xl font-bold tracking-tight text-darknavy dark:text-white font-sans">Kinder<span class="text-magenta">Nest</span></span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden xl:flex space-x-6 rtl:space-x-reverse items-center mx-6">
+          
+          <!-- Home Dropdown -->
+          <div class="relative group">
+            <button class="dropdown-toggle flex items-center space-x-1 rtl:space-x-reverse text-magenta font-semibold py-2 transition-colors duration-200">
+              <span>Home</span>
+              <svg class="w-4 h-4 text-magenta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="absolute left-0 rtl:right-0 mt-2 w-56 rounded-xl bg-white dark:bg-darknavy border border-gray-100 dark:border-gray-800 shadow-xl hidden group-hover:block z-50">
+              <div class="p-2 space-y-1">
+                <a href="index.html" class="block px-4 py-3 text-sm rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-darknavy-light hover:text-magenta font-semibold transition-colors">General Montessori Pod</a>
+                <a href="home-niche.html" class="block px-4 py-3 text-sm rounded-lg text-magenta bg-gray-50 dark:bg-darknavy-light font-semibold transition-colors">Nature & Botanical Pod</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">About Us</a>
+          <a href="services.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Programs</a>
+          <a href="service-details.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Curriculum</a>
+          
+          <!-- Explore Dropdown -->
+          <div class="relative group">
+            <button class="dropdown-toggle flex items-center space-x-1 rtl:space-x-reverse text-gray-700 dark:text-gray-300 hover:text-magenta py-2 font-semibold transition-colors duration-200">
+              <span>Explore</span>
+              <svg class="w-4 h-4 text-gray-400 group-hover:text-magenta transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="absolute left-0 rtl:right-0 mt-2 w-52 rounded-xl bg-white dark:bg-darknavy border border-gray-100 dark:border-gray-800 shadow-xl hidden group-hover:block z-50">
+              <div class="p-2 space-y-1">
+                <a href="instructors.html" class="block px-4 py-2.5 text-sm rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-darknavy-light hover:text-magenta font-semibold transition-colors">Montessori Guides</a>
+                <a href="pricing.html" class="block px-4 py-2.5 text-sm rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-darknavy-light hover:text-magenta font-semibold transition-colors">Tuition & Plans</a>
+              </div>
+            </div>
+          </div>
+          
+          <a href="blog.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Blog</a>
+          <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Contact</a>
+          <a href="dashboard.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Dashboard</a>
+        </nav>
+
+        <!-- Utility Toggles & Button -->
+        <div class="hidden xl:flex items-center space-x-3 rtl:space-x-reverse shrink-0">
+          <button class="theme-toggle p-2 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-darknavy-light text-gray-500 dark:text-gray-400 transition" aria-label="Toggle dark mode">
+            <svg class="theme-toggle-sun w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+            <svg class="theme-toggle-moon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+          </button>
+
+          <button class="rtl-toggle px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-xs font-extrabold hover:bg-gray-100 dark:hover:bg-darknavy-light transition text-gray-700 dark:text-gray-300" aria-label="Toggle RTL mode">
+            <span class="rtl-text">RTL</span>
+          </button>
+
+          <a href="login-register.html" class="bg-magenta hover:bg-magenta-hover text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-magenta/20 transition duration-150 text-sm">Sign In</a>
+        </div>
+
+        <!-- Mobile Menu & Theme Toggle Buttons -->
+        <div class="xl:hidden flex items-center gap-2 shrink-0">
+          <button class="theme-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-darknavy-light text-gray-500 dark:text-gray-400 transition" aria-label="Toggle dark mode">
+            <svg class="theme-toggle-sun w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+            <svg class="theme-toggle-moon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+          </button>
+          <button id="mobile-menu-btn" class="p-2 text-gray-700 dark:text-gray-300 focus:outline-none" aria-label="Open mobile navigation">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-menu" class="hidden fixed inset-0 z-50 bg-black/60 xl:hidden">
+    <div class="absolute inset-0" onclick="document.getElementById('mobile-menu').classList.add('hidden')"></div>
+    
+    <div class="absolute top-0 right-0 rtl:left-0 rtl:right-auto w-80 max-w-[85vw] h-full bg-white dark:bg-neutral-900 p-6 shadow-2xl flex flex-col justify-between transition-transform duration-300 z-10 overflow-y-auto">
+      <div class="space-y-6">
+        <!-- Drawer Header with Visible Toggle Buttons -->
+        <div class="flex justify-between items-center pb-4 border-b border-gray-150 dark:border-gray-800">
+          <h4 class="text-xl font-bold text-darknavy dark:text-white">Menu</h4>
+          <div class="flex items-center gap-2">
+            <!-- Theme Toggle in Drawer Header -->
+            <button class="theme-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy-light hover:bg-gray-100 dark:hover:bg-darknavy text-gray-500 dark:text-gray-400 transition" aria-label="Toggle theme">
+              <svg class="theme-toggle-sun w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+              <svg class="theme-toggle-moon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"></path></svg>
+            </button>
+            <!-- RTL Toggle in Drawer Header -->
+            <button class="rtl-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy-light hover:bg-gray-100 dark:hover:bg-darknavy text-gray-500 dark:text-gray-400 transition" aria-label="Toggle RTL">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+            </button>
+            <!-- Mobile Menu Close Button -->
+            <button id="mobile-menu-close" class="text-gray-500 hover:text-magenta p-1 focus:outline-none" aria-label="Close menu">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <nav class="space-y-3">
+          <div class="space-y-1">
+            <button class="w-full flex justify-between items-center py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition text-left" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              <span>Home</span>
+              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="pl-4 ml-1 space-y-2.5 hidden border-l-2 border-gray-150 dark:border-gray-800 py-1">
+              <a href="index.html" class="block pl-3 text-sm text-gray-500 hover:text-magenta font-medium">General Montessori Pod</a>
+              <a href="home-niche.html" class="block pl-3 text-sm text-magenta font-semibold">Nature & Botanical Pod</a>
+            </div>
+          </div>
+
+          <a href="about.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">About Us</a>
+          <a href="services.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Programs</a>
+          <a href="service-details.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Curriculum</a>
+          
+          <div class="space-y-1">
+            <button class="w-full flex justify-between items-center py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition text-left" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              <span>Explore</span>
+              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="pl-4 ml-1 space-y-2.5 hidden border-l-2 border-gray-150 dark:border-gray-800 py-1">
+              <a href="instructors.html" class="block pl-3 text-sm text-gray-500 hover:text-magenta font-medium">Montessori Guides</a>
+              <a href="pricing.html" class="block pl-3 text-sm text-gray-500 hover:text-magenta font-medium">Tuition & Plans</a>
+            </div>
+          </div>
+
+          <a href="blog.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Blog</a>
+          <a href="contact.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Contact</a>
+          <a href="dashboard.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Dashboard</a>
+        </nav>
+      </div>
+
+      <div class="space-y-4">
+        <div class="pt-4 border-t border-gray-150 dark:border-gray-800">
+          <a href="login-register.html" class="block w-full text-center bg-magenta hover:bg-magenta-hover text-white py-3.5 rounded-xl font-bold shadow transition text-sm">Sign In</a>
+        </div>
+
+        <div class="flex justify-between items-center pt-4 border-t border-gray-150 dark:border-gray-800">
+          <button class="theme-toggle p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-xl transition text-gray-500 dark:text-gray-400">
+            <svg class="theme-toggle-sun w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+            <svg class="theme-toggle-moon w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"></path></svg>
+          </button>
+          
+          <button class="rtl-toggle p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-xl transition text-gray-500 dark:text-gray-400">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 1. HERO SECTION ================= -->
+  <section id="hero" class="relative overflow-hidden bg-white dark:bg-black py-28 lg:py-40 text-black dark:text-white border-b border-gray-150 dark:border-gray-900 transition-colors duration-300">
+    <div class="absolute inset-0 bg-cover bg-center opacity-50 dark:opacity-60" style="background-image: url('assets/images/home2-hero-bg.jpg');"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent dark:from-black dark:via-black/60 dark:to-transparent"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6 flex flex-col items-center text-center">
+      <span class="inline-block bg-magenta text-white font-extrabold text-xs px-4 py-2 rounded-full tracking-widest uppercase shadow-sm">
+        🌿 Forest & Botanical Montessori Pod
+      </span>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl text-black dark:text-white mx-auto">
+        Connecting the Child to the Wisdom of the <span class="text-magenta">Natural World</span>
+      </h1>
+      <p class="text-base sm:text-lg text-gray-650 dark:text-gray-300 max-w-2xl mx-auto">
+        A specialized nature-immersed micro-pod where children learn biological sciences, gardening, outdoor woodworking, and sensory exploration through authentic Montessori self-direction.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 pt-4">
+        <a href="login-register.html" class="bg-magenta hover:bg-magenta-hover text-white px-8 py-4 rounded-full font-extrabold tracking-wide uppercase transition text-xs shadow-lg shadow-magenta/30">
+          Book Observation Slot
+        </a>
+        <a href="#nature-calendar" class="bg-transparent border border-gray-300 dark:border-gray-700 hover:border-magenta text-gray-700 dark:text-white px-8 py-4 rounded-full font-extrabold tracking-wide uppercase transition text-xs">
+          View Seasonal Schedule
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2. LIVING NATURE POD CULTURE ================= -->
+  <section id="about" class="py-24 bg-white dark:bg-black-deep border-b border-gray-150 dark:border-gray-900 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Text -->
+        <div class="space-y-6">
+          <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Natural Pod Culture</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white leading-tight font-sans">
+            Hands-On Botanical Science, Sustainable Care & Sensory Vitality
+          </h2>
+          <p class="text-gray-650 dark:text-gray-300 leading-relaxed">
+            Children possess an innate reverence for living things. In our Botanical Pod, children tend to heirloom organic vegetables, investigate living soil microbes with microscopes, identify native trees through Montessori botany leaf cabinets, and experience the calming peace of natural materials.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-4 pt-4 border-t border-gray-150 dark:border-gray-800">
+            <div class="p-5 bg-gray-50 dark:bg-darknavy rounded-2xl border border-gray-150 dark:border-gray-800 flex flex-col justify-between h-full">
+              <div>
+                <h4 class="font-bold text-magenta text-base">Practical Botany</h4>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">Daily watering, composting, propagating cuttings, and harvesting organic herbs.</p>
+              </div>
+            </div>
+            <div class="p-5 bg-gray-50 dark:bg-darknavy rounded-2xl border border-gray-150 dark:border-gray-800 flex flex-col justify-between h-full">
+              <div>
+                <h4 class="font-bold text-magenta text-base">Sensorial Natural Craft</h4>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">Carving soft cedar, botanical watercolor pressings, and natural stone mosaics.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Image -->
+        <div class="w-full h-96 rounded-[2rem] bg-gray-150 dark:bg-gray-800 overflow-hidden shadow-2xl border border-gray-150 dark:border-gray-800 relative">
+          <img src="assets/images/home2-botanical-science.jpg" alt="Children exploring botany and microscopes in Botanical Pod" class="w-full h-full object-cover" loading="lazy">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 3. SPECIALTIES OF NATURE POD ================= -->
+  <section id="programs" class="py-20 bg-gray-50 dark:bg-darknavy border-b border-gray-150 dark:border-gray-900 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Pod Specialties</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white font-sans">Core Botanical Pillars</h2>
+        <p class="text-gray-500 dark:text-gray-400">Discover the four developmental branches that anchor our Nature & Botanical Learning Pod.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Style 1 -->
+        <div class="bg-white dark:bg-black-deep p-6 rounded-3xl border border-gray-155 dark:border-gray-800 shadow-sm flex flex-col h-full hover:shadow-lg transition">
+          <div class="w-12 h-12 bg-magenta/10 text-magenta rounded-2xl flex items-center justify-center text-xl font-bold shrink-0">01</div>
+          <h4 class="font-extrabold text-lg text-black dark:text-white mt-4 min-h-[1.75rem] flex items-center">Living Botany</h4>
+          <div class="pt-3 mt-2 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed min-h-[4.5rem]">Leaf cabinets, plant kingdom classification, root observation tubes, and flower dissection matching Dr. Montessori's nomenclature cards.</p>
+          </div>
+        </div>
+
+        <!-- Style 2 -->
+        <div class="bg-white dark:bg-black-deep p-6 rounded-3xl border border-gray-155 dark:border-gray-800 shadow-sm flex flex-col h-full hover:shadow-lg transition">
+          <div class="w-12 h-12 bg-magenta/10 text-magenta rounded-2xl flex items-center justify-center text-xl font-bold shrink-0">02</div>
+          <h4 class="font-extrabold text-lg text-black dark:text-white mt-4 min-h-[1.75rem] flex items-center">Forest Mathematics</h4>
+          <div class="pt-3 mt-2 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed min-h-[4.5rem]">Fibonacci patterns in pinecones and sunflowers, counting annual tree rings, measuring sun shadow angles, and natural geometric symmetry.</p>
+          </div>
+        </div>
+
+        <!-- Style 3 -->
+        <div class="bg-white dark:bg-black-deep p-6 rounded-3xl border border-gray-155 dark:border-gray-800 shadow-sm flex flex-col h-full hover:shadow-lg transition">
+          <div class="w-12 h-12 bg-magenta/10 text-magenta rounded-2xl flex items-center justify-center text-xl font-bold shrink-0">03</div>
+          <h4 class="font-extrabold text-lg text-black dark:text-white mt-4 min-h-[1.75rem] flex items-center">Soil & Zoology</h4>
+          <div class="pt-3 mt-2 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed min-h-[4.5rem]">Observing beneficial insects, maintaining red wiggler worm compost, tracking songbird migrations, and testing natural soil pH levels.</p>
+          </div>
+        </div>
+
+        <!-- Style 4 -->
+        <div class="bg-white dark:bg-black-deep p-6 rounded-3xl border border-gray-155 dark:border-gray-800 shadow-sm flex flex-col h-full hover:shadow-lg transition">
+          <div class="w-12 h-12 bg-magenta/10 text-magenta rounded-2xl flex items-center justify-center text-xl font-bold shrink-0">04</div>
+          <h4 class="font-extrabold text-lg text-black dark:text-white mt-4 min-h-[1.75rem] flex items-center">Earth Stewardship</h4>
+          <div class="pt-3 mt-2 border-t border-gray-150 dark:border-gray-800 flex-grow">
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed min-h-[4.5rem]">Rainwater harvesting, regenerative gardening, zero-waste snack prep, and caring for the outdoor learning habitat with reverence.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 4. OUR OUTDOOR LEARNING METHODOLOGY ================= -->
+  <section class="py-20 bg-white dark:bg-black-deep border-b border-gray-150 dark:border-gray-900 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="grid lg:grid-cols-12 gap-16 items-center">
+        <!-- Image Left -->
+        <div class="lg:col-span-5">
+          <div class="w-full h-96 rounded-[2rem] bg-gray-150 dark:bg-gray-800 overflow-hidden shadow-2xl border border-gray-150 dark:border-gray-800 relative">
+            <img src="assets/images/home2-nature-methodology.jpg" alt="KinderNest Nature Pod outdoor learning and naturalist guides" class="w-full h-full object-cover" loading="lazy">
+          </div>
+        </div>
+        
+        <!-- Content Right -->
+        <div class="lg:col-span-7 space-y-8">
+          <div class="space-y-4">
+            <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Our Methodology</span>
+            <h2 class="text-3xl font-extrabold text-black dark:text-white font-sans">Why KinderNest Nature Pod?</h2>
+            <p class="text-gray-650 dark:text-gray-300">We unite Montessori's prepared environment with the restorative benefits of daily outdoor living, building calm minds and hardy bodies.</p>
+          </div>
+
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-full bg-magenta/10 text-magenta flex items-center justify-center shrink-0 mt-1 font-bold">✔</div>
+              <div>
+                <h5 class="font-bold text-black dark:text-white">All-Weather Outdoor Work Cycles</h5>
+                <p class="text-xs text-gray-500 mt-1">Rain or shine, children experience seasonal transitions with appropriate gear, developing physical resilience and sensory awareness.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-full bg-magenta/10 text-magenta flex items-center justify-center shrink-0 mt-1 font-bold">✔</div>
+              <div>
+                <h5 class="font-bold text-black dark:text-white">Safety-Trained Naturalist Guides</h5>
+                <p class="text-xs text-gray-500 mt-1">Our guides are wilderness first-aid certified and specialize in gentle, respectful risk management that empowers confidence.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-full bg-magenta/10 text-magenta flex items-center justify-center shrink-0 mt-1 font-bold">✔</div>
+              <div>
+                <h5 class="font-bold text-black dark:text-white">Deep Concentration Without Over-Stimulation</h5>
+                <p class="text-xs text-gray-500 mt-1">Replacing screens and plastic flashing toys with natural stones, clean timber, and real earth fosters lasting peace of mind.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 5. PARENT TESTIMONIALS ================= -->
+  <section class="py-20 bg-gray-50 dark:bg-darknavy border-b border-gray-150 dark:border-gray-900 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Real Feedback</span>
+        <h2 class="text-3xl font-extrabold text-black dark:text-white font-sans">What Nature Pod Parents Say</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
+        <!-- Testimonial 1 -->
+        <div class="group bg-white dark:bg-black-deep p-8 rounded-3xl border border-gray-155 dark:border-gray-800 shadow-sm relative flex flex-col justify-between h-full hover:border-magenta hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-magenta/20 transition duration-300">
+          <span class="text-magenta text-5xl font-serif absolute right-6 top-6 opacity-20 group-hover:opacity-40 group-hover:scale-110 transition duration-300">“</span>
+          <p class="text-sm text-gray-650 dark:text-gray-300 italic leading-relaxed min-h-[5.5rem] flex-grow">
+            "The botanical pod has given our son a profound connection to nature. He comes home telling us about earthworm aeration, naming tree species by their bark, and displaying an inner stillness we had never seen before."
+          </p>
+          <div class="flex items-center gap-3.5 mt-auto pt-4 border-t border-gray-150 dark:border-gray-800">
+            <img src="assets/images/avatars/avatar-parent-2.jpg" alt="Marcus T." class="w-11 h-11 rounded-full object-cover border-2 border-magenta/40 shadow-sm shrink-0">
+            <div>
+              <h6 class="font-bold text-black dark:text-white text-sm">Marcus T.</h6>
+              <span class="text-[10px] text-gray-400 uppercase font-extrabold">Parent of Julian (Nature Pod, Age 5)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="group bg-white dark:bg-black-deep p-8 rounded-3xl border border-gray-155 dark:border-gray-800 shadow-sm relative flex flex-col justify-between h-full hover:border-magenta hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-magenta/20 transition duration-300">
+          <span class="text-magenta text-5xl font-serif absolute right-6 top-6 opacity-20 group-hover:opacity-40 group-hover:scale-110 transition duration-300">“</span>
+          <p class="text-sm text-gray-650 dark:text-gray-300 italic leading-relaxed min-h-[5.5rem] flex-grow">
+            "We were looking for an alternative to noisy daycare centers. KinderNest's garden pod is peaceful, clean, and filled with gentle joy. Watching the children cooperatively peel organic carrots for snack is priceless."
+          </p>
+          <div class="flex items-center gap-3.5 mt-auto pt-4 border-t border-gray-150 dark:border-gray-800">
+            <img src="assets/images/avatars/avatar-parent-1.jpg" alt="Elena V." class="w-11 h-11 rounded-full object-cover border-2 border-magenta/40 shadow-sm shrink-0">
+            <div>
+              <h6 class="font-bold text-black dark:text-white text-sm">Elena V.</h6>
+              <span class="text-[10px] text-gray-400 uppercase font-extrabold">Parent of Maya (Children's House, Age 4)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 6. NATURE CALENDAR & WORKSHOPS ================= -->
+  <section id="nature-calendar" class="py-24 bg-white dark:bg-black-deep border-b border-gray-150 dark:border-gray-900 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Seasonal Rhythm</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">Upcoming Nature Workshops</h2>
+        <p class="text-sm text-gray-500">Families are invited to join our weekend seasonal celebrations and garden harvesting.</p>
+      </div>
+
+      <div class="bg-gray-50 dark:bg-darknavy rounded-3xl border border-gray-155 dark:border-gray-800 overflow-hidden shadow">
+        <div class="divide-y divide-gray-100 dark:divide-gray-800 text-sm">
+          
+          <div class="p-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+            <div class="space-y-1">
+              <span class="text-xs font-bold text-magenta uppercase">Oct 12, 2026</span>
+              <h4 class="font-bold text-black dark:text-white">Autumn Seed Saving & Pressed Leaf Identification</h4>
+            </div>
+            <div class="flex justify-between items-center sm:gap-8 w-full sm:w-auto">
+              <span class="text-xs text-gray-500 font-sans">Outdoor Garden Pod – 10:00 AM</span>
+              <a href="login-register.html" class="inline-block bg-magenta hover:bg-magenta-hover text-white px-5 py-2 rounded-xl font-bold text-xs transition">RSVP Tour</a>
+            </div>
+          </div>
+
+          <div class="p-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+            <div class="space-y-1">
+              <span class="text-xs font-bold text-magenta uppercase">Nov 28, 2026</span>
+              <h4 class="font-bold text-black dark:text-white">Winter Bird Feeder Building & Soil Microbe Science</h4>
+            </div>
+            <div class="flex justify-between items-center sm:gap-8 w-full sm:w-auto">
+              <span class="text-xs text-gray-500 font-sans">Woodcraft Atelier – 10:30 AM</span>
+              <a href="login-register.html" class="inline-block bg-magenta hover:bg-magenta-hover text-white px-5 py-2 rounded-xl font-bold text-xs transition">RSVP Tour</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 7. OUTDOOR PREPARED ENVIRONMENT (PERMACULTURE ZONES) ================= -->
+  <section id="permaculture-zones" class="py-24 bg-gray-50 dark:bg-darknavy border-b border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Prepared Outdoors</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">Our 4 Permaculture Learning Zones</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Nature is not an occasional field trip; it is an intricately prepared outdoor classroom where children study ecological harmony.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+        
+        <div class="bg-white dark:bg-black-light p-6 rounded-3xl border border-gray-150 dark:border-gray-800 shadow-sm hover:border-magenta hover:shadow-xl transition duration-300 flex flex-col h-full">
+          <div class="min-h-[2rem] flex items-center">
+            <span class="inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold">Zone 01</span>
+          </div>
+          <h3 class="text-lg font-bold text-black dark:text-white mt-3 min-h-[1.75rem]">Child Potting Shed</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-2 mb-4 min-h-[4.5rem] flex-grow">
+            Equipped with child-sized cedar workbenches, brass trowels, seed sorters, terracotta pots, and natural bristle sweeping brushes.
+          </p>
+          <div class="mt-auto pt-4 border-t border-gray-150 dark:border-gray-800 text-[11px] text-gray-400 min-h-[3rem] flex items-center">
+            <span>Skills: Sifting, pot filling & tamping</span>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-black-light p-6 rounded-3xl border border-gray-150 dark:border-gray-800 shadow-sm hover:border-magenta hover:shadow-xl transition duration-300 flex flex-col h-full">
+          <div class="min-h-[2rem] flex items-center">
+            <span class="inline-block px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">Zone 02</span>
+          </div>
+          <h3 class="text-lg font-bold text-black dark:text-white mt-3 min-h-[1.75rem]">Sensory Herb Spiral</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-2 mb-4 min-h-[4.5rem] flex-grow">
+            Micro-climates planted with sweet basil, lavender, rosemary, and chamomile. Children crush leaves to isolate olfactory notes and prepare teas.
+          </p>
+          <div class="mt-auto pt-4 border-t border-gray-150 dark:border-gray-800 text-[11px] text-gray-400 min-h-[3rem] flex items-center">
+            <span>Skills: Olfactory refinement & micro-climates</span>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-black-light p-6 rounded-3xl border border-gray-150 dark:border-gray-800 shadow-sm hover:border-magenta hover:shadow-xl transition duration-300 flex flex-col h-full">
+          <div class="min-h-[2rem] flex items-center">
+            <span class="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-bold">Zone 03</span>
+          </div>
+          <h3 class="text-lg font-bold text-black dark:text-white mt-3 min-h-[1.75rem]">Living Soil & Worm Villa</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-2 mb-4 min-h-[4.5rem] flex-grow">
+            Glass observation chambers revealing red wiggler earthworms decomposing organic apple peels into nutrient-rich vermicastings.
+          </p>
+          <div class="mt-auto pt-4 border-t border-gray-150 dark:border-gray-800 text-[11px] text-gray-400 min-h-[3rem] flex items-center">
+            <span>Skills: Biological decomposition & stewardship</span>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-black-light p-6 rounded-3xl border border-gray-150 dark:border-gray-800 shadow-sm hover:border-magenta hover:shadow-xl transition duration-300 flex flex-col h-full">
+          <div class="min-h-[2rem] flex items-center">
+            <span class="inline-block px-3 py-1 rounded-full bg-magenta/10 text-magenta text-xs font-bold">Zone 04</span>
+          </div>
+          <h3 class="text-lg font-bold text-black dark:text-white mt-3 min-h-[1.75rem]">Woodland Canopy Loft</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-2 mb-4 min-h-[4.5rem] flex-grow">
+            Shaded redwood grove with weather station barometers, rain gauges, wind vanes, and binoculars for resident Western Scrub Jay bird watching.
+          </p>
+          <div class="mt-auto pt-4 border-t border-gray-150 dark:border-gray-800 text-[11px] text-gray-400 min-h-[3rem] flex items-center">
+            <span>Skills: Meteorology & ornithology tracking</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 8. CHILD NATURALIST MILESTONES ================= -->
+  <section class="py-24 bg-white dark:bg-black-deep border-b border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Progressive Mastery</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">Naturalist Exploration Milestones</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Instead of synthetic letter grades, children earn meaningful stewardship badges grounded in real environmental mastery.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 items-stretch">
+        
+        <div class="p-8 rounded-3xl bg-gray-50 dark:bg-darknavy border border-gray-150 dark:border-gray-800 hover:border-magenta transition duration-300 flex flex-col h-full">
+          <div class="text-3xl min-h-[2.5rem] flex items-center">🌱</div>
+          <h3 class="text-xl font-bold text-black dark:text-white mt-4 min-h-[1.75rem]">Seed Propagation Steward</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-3 mb-6 min-h-[4.5rem] flex-grow">
+            Demonstrates patient seed selection, proper soil depth calculation, gentle watering without washing seeds away, and recording the first emergence of cotyledons.
+          </p>
+          <div class="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700 min-h-[2.75rem] flex items-center">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Completed in Toddler & Primary</span>
+          </div>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-gray-50 dark:bg-darknavy border border-gray-150 dark:border-gray-800 hover:border-magenta transition duration-300 flex flex-col h-full">
+          <div class="text-3xl min-h-[2.5rem] flex items-center">🍃</div>
+          <h3 class="text-xl font-bold text-black dark:text-white mt-4 min-h-[1.75rem]">Leaf Morphology Scholar</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-3 mb-6 min-h-[4.5rem] flex-grow">
+            Uses the Montessori botany cabinet to match 14 leaf shapes (cordate, sagittate, reniform, lanceolate) with living botanical specimens collected during nature walks.
+          </p>
+          <div class="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700 min-h-[2.75rem] flex items-center">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Completed in Primary Children's House</span>
+          </div>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-gray-50 dark:bg-darknavy border border-gray-150 dark:border-gray-800 hover:border-magenta transition duration-300 flex flex-col h-full">
+          <div class="text-3xl min-h-[2.5rem] flex items-center">🔬</div>
+          <h3 class="text-xl font-bold text-black dark:text-white mt-4 min-h-[1.75rem]">Living Soil Microbiologist</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-3 mb-6 min-h-[4.5rem] flex-grow">
+            Collects soil samples, prepares microscope slides to identify nematodes and fungal mycelium, tests soil pH levels, and amends beds with compost tea.
+          </p>
+          <div class="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700 min-h-[2.75rem] flex items-center">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-magenta">Completed in Lower Elementary</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 9. NATURE-BASED PARENT TESTIMONIALS ================= -->
+  <section class="py-24 bg-gray-50 dark:bg-darknavy border-b border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Community Voices</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">Parent Reflections on the Nature Pod</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">How spending daily hours in living nature calms the nervous system and sparks scientific wonder.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 items-stretch">
+        
+        <div class="bg-white dark:bg-black-light p-8 rounded-3xl border border-gray-155 dark:border-gray-800 flex flex-col h-full justify-between shadow-sm hover:shadow-xl transition duration-300">
+          <p class="text-xs text-gray-600 dark:text-gray-300 italic leading-relaxed min-h-[7rem] flex-grow mb-4">
+            "Before KinderNest, our son was constantly hyper-stimulated by screens. Being in the forest pod ground him completely. He comes home with dirt under his nails and talks passionately about honeybee pollination!"
+          </p>
+          <div class="mt-auto flex items-center space-x-3 rtl:space-x-reverse pt-4 border-t border-gray-150 dark:border-gray-800 min-h-[3.5rem]">
+            <img src="assets/images/avatars/avatar-parent-3.jpg" alt="Maya & Rohan S." class="w-11 h-11 rounded-full object-cover border-2 border-magenta/40 shadow-sm shrink-0">
+            <div>
+              <h4 class="font-bold text-sm text-black dark:text-white">Maya & Rohan S.</h4>
+              <span class="text-[10px] text-gray-400">Parents of Kabir (Age 5)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-black-light p-8 rounded-3xl border border-gray-155 dark:border-gray-800 flex flex-col h-full justify-between shadow-sm hover:shadow-xl transition duration-300">
+          <p class="text-xs text-gray-600 dark:text-gray-300 italic leading-relaxed min-h-[7rem] flex-grow mb-4">
+            "The combination of rigorous Montessori geometry with genuine permaculture gardening is genius. Our daughter calculated the square footage needed for carrot rows using multiplication bead chains!"
+          </p>
+          <div class="mt-auto flex items-center space-x-3 rtl:space-x-reverse pt-4 border-t border-gray-150 dark:border-gray-800 min-h-[3.5rem]">
+            <img src="assets/images/avatars/avatar-parent-2.jpg" alt="Thomas & Lisa K." class="w-11 h-11 rounded-full object-cover border-2 border-emerald-500/40 shadow-sm shrink-0">
+            <div>
+              <h4 class="font-bold text-sm text-black dark:text-white">Thomas & Lisa K.</h4>
+              <span class="text-[10px] text-gray-400">Parents of Zoe (Age 7)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-black-light p-8 rounded-3xl border border-gray-155 dark:border-gray-800 flex flex-col h-full justify-between shadow-sm hover:shadow-xl transition duration-300">
+          <p class="text-xs text-gray-600 dark:text-gray-300 italic leading-relaxed min-h-[7rem] flex-grow mb-4">
+            "The guides have an extraordinary reverence for childhood. They let kids explore puddles, examine spider webs with magnifying glasses, and climb gentle logs safely without hovering."
+          </p>
+          <div class="mt-auto flex items-center space-x-3 rtl:space-x-reverse pt-4 border-t border-gray-150 dark:border-gray-800 min-h-[3.5rem]">
+            <img src="assets/images/avatars/avatar-parent-1.jpg" alt="Elena & Gregory B." class="w-11 h-11 rounded-full object-cover border-2 border-amber-500/40 shadow-sm shrink-0">
+            <div>
+              <h4 class="font-bold text-sm text-black dark:text-white">Elena & Gregory B.</h4>
+              <span class="text-[10px] text-gray-400">Parents of Nora (Age 3.5)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 10. NATURE POD FAQS ================= -->
+  <section class="py-24 bg-white dark:bg-black-deep border-b border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-16 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Outdoor Guidelines</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">Nature Pod Frequently Asked Questions</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">How we ensure joyful, safe, and weather-resilient outdoor learning every day.</p>
+      </div>
+
+      <div class="space-y-4">
+        
+        <div class="border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50 dark:bg-darknavy transition">
+          <h3 class="font-bold text-base text-black dark:text-white flex justify-between items-center cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            <span>What is your weather policy when it rains or gets cold?</span>
+            <span class="text-magenta font-extrabold text-xl">+</span>
+          </h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 hidden leading-relaxed">
+            We adhere to the Scandinavian philosophy: "There is no bad weather, only inappropriate clothing." On rainy days, children suit up in waterproof mud-bibs and boots to observe rainfall collection, mud viscosity, and earthworm behavior. In case of lightning or extreme weather, work moves to our greenhouse atrium.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50 dark:bg-darknavy transition">
+          <h3 class="font-bold text-base text-black dark:text-white flex justify-between items-center cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            <span>What gear do parents need to provide?</span>
+            <span class="text-magenta font-extrabold text-xl">+</span>
+          </h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 hidden leading-relaxed">
+            Each family provides a labeled pair of durable rain boots, waterproof rain pants or bibs, an all-weather jacket, sun hat, and three complete changes of clothes kept in their personal cedar cubby.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50 dark:bg-darknavy transition">
+          <h3 class="font-bold text-base text-black dark:text-white flex justify-between items-center cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            <span>How do you protect children against sun and insects?</span>
+            <span class="text-magenta font-extrabold text-xl">+</span>
+          </h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 hidden leading-relaxed">
+            Our campus features natural shaded redwood canopies. Parents apply mineral sunscreen and natural insect repellent before morning drop-off, and guides re-apply with parental permission before midday garden cycles.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50 dark:bg-darknavy transition">
+          <h3 class="font-bold text-base text-black dark:text-white flex justify-between items-center cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            <span>Is the botanical harvest actually eaten by the children?</span>
+            <span class="text-magenta font-extrabold text-xl">+</span>
+          </h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 hidden leading-relaxed">
+            Yes! Our organic garden yields sugar snap peas, strawberries, cherry tomatoes, mint, and spinach. Under guide supervision, children harvest, wash, chop, and incorporate these ingredients into their community morning snack.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 11. NATURE POD TOUR CTA BANNER ================= -->
+  <section class="py-24 bg-white dark:bg-black-deep relative overflow-hidden transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative bg-gradient-to-br from-[#819B88] via-[#647E6B] to-[#455A4B] text-white p-10 sm:p-16 rounded-[40px] shadow-2xl overflow-hidden">
+        
+        <svg class="absolute -right-12 -bottom-12 w-80 h-80 opacity-10 text-white pointer-events-none" viewBox="0 0 100 100" fill="currentColor">
+          <circle cx="50" cy="50" r="45"/>
+        </svg>
+
+        <div class="max-w-3xl space-y-6 relative z-10">
+          <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur text-xs font-bold uppercase tracking-widest">Limited Pod Spots for Fall 2026</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold leading-tight">Step into Our Botanical Outdoor Pod</h2>
+          <p class="text-sm sm:text-base text-white/90 leading-relaxed max-w-2xl">
+            Book a private morning nature tour. Walk alongside our certified naturalists, observe children caring for living seedlings, and discover the calm joy of outdoor Montessori.
+          </p>
+          <div class="pt-4 flex flex-col sm:flex-row gap-4">
+            <a href="contact.html" class="bg-white text-emerald-800 hover:bg-gray-100 font-extrabold px-8 py-4 rounded-2xl text-center shadow-lg transition duration-200 text-sm">Schedule Woodland Visit</a>
+            <a href="services.html" class="border-2 border-white/60 hover:border-white text-white font-bold px-8 py-4 rounded-2xl text-center transition duration-200 text-sm">View All Age Pods</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 7. FOOTER SECTION ================= -->
+  <footer class="bg-white dark:bg-black border-t border-gray-150 dark:border-gray-800 py-16 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col items-center text-center pb-12 border-b border-gray-150 dark:border-gray-850">
+        <h3 class="text-2xl font-extrabold text-black dark:text-white font-sans">Join the KinderNest Nestletter</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 mb-6">Receive monthly Montessori at-home guides, gentle parenting tips, and pod schedule updates.</p>
+        <form class="flex flex-col sm:flex-row w-full max-w-md items-center gap-3" onsubmit="handleNewsletterSubmit(event, this)">
+          <input type="email" placeholder="name@gmail.com" required class="w-full px-5 py-3 rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-darknavy-light text-black dark:text-white text-sm focus:outline-none focus:border-magenta transition">
+          <button type="submit" class="w-full sm:w-auto bg-magenta hover:bg-magenta-hover text-white px-8 py-3 rounded-full font-bold text-sm transition shadow-md shadow-magenta/20 shrink-0">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pt-12 text-sm text-gray-600 dark:text-gray-300">
+        <div class="space-y-4">
+          <a href="index.html" class="flex items-center space-x-2 rtl:space-x-reverse">
+            <span class="w-10 h-10 rounded-full bg-magenta flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-magenta/30">K</span>
+            <span class="text-xl font-bold tracking-tight text-darknavy dark:text-white">Kinder<span class="text-magenta">Nest</span></span>
+          </a>
+          <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+            A warm, child-centered Montessori micro-pod cultivating independence, intrinsic curiosity, and emotional empathy in prepared natural environments.
+          </p>
+          <div class="flex space-x-3 rtl:space-x-reverse pt-2">
+            <a href="https://www.instagram.com/kindernestmontessori" target="_blank" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-magenta hover:text-white dark:hover:bg-magenta transition flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-magenta dark:hover:border-magenta">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/kindernestmontessori" target="_blank" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-800 hover:bg-magenta hover:text-white dark:hover:bg-magenta transition flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-magenta dark:hover:border-magenta">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h4v-9h3.61L17 8h-4V7.007C13 6.273 13.5 6 14 6h2V3h-3.328C10.05 3 9 4.35 9 6.828V8z"/></svg>
+            </a>
+            <a href="https://x.com/kindernestpod" target="_blank" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-800 hover:bg-magenta hover:text-white dark:hover:bg-magenta transition flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-magenta dark:hover:border-magenta">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/kindernestmontessori" target="_blank" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-800 hover:bg-magenta hover:text-white dark:hover:bg-magenta transition flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-magenta dark:hover:border-magenta">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <h4 class="font-extrabold text-xs uppercase tracking-widest text-magenta">Learning Pods</h4>
+          <ul class="space-y-2.5 text-xs font-semibold">
+            <li><a href="program-ballet.html" class="hover:text-magenta transition">Toddler Community (18m-3y)</a></li>
+            <li><a href="program-classical.html" class="hover:text-magenta transition">Children's House (3-6y)</a></li>
+            <li><a href="program-contemporary.html" class="hover:text-magenta transition">Lower Elementary Pod (6-9y)</a></li>
+            <li><a href="program-vocal.html" class="hover:text-magenta transition">Forest & Nature Discovery</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-4">
+          <h4 class="font-extrabold text-xs uppercase tracking-widest text-magenta">Quick Links</h4>
+          <ul class="space-y-2.5 text-xs font-semibold">
+            <li><a href="about.html" class="hover:text-magenta transition">Montessori Philosophy</a></li>
+            <li><a href="service-details.html" class="hover:text-magenta transition">Curriculum Areas</a></li>
+            <li><a href="instructors.html" class="hover:text-magenta transition">Our Montessori Guides</a></li>
+            <li><a href="pricing.html" class="hover:text-magenta transition">Tuition & Pod Plans</a></li>
+            <li><a href="dashboard.html" class="hover:text-magenta transition">Parent Portal Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-4">
+          <h4 class="font-extrabold text-xs uppercase tracking-widest text-magenta">Visit Our Pod</h4>
+          <ul class="space-y-3.5 text-xs">
+            <li class="flex items-start space-x-2.5 rtl:space-x-reverse leading-relaxed">
+              <svg class="w-4 h-4 text-magenta shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span>42 Blossom Valley Way, Sunnyvale, CA 94087</span>
+            </li>
+            <li class="flex items-center space-x-2.5 rtl:space-x-reverse">
+              <svg class="w-4 h-4 text-magenta shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.94.725l.548 2.2a1 1 0 00.996.81h2.982a1 1 0 00.996-.81l.548-2.2a1 1 0 01.94-.725H21a2 2 0 012 2v1.5a10.5 10.5 0 01-10.5 10.5H11A10.5 10.5 0 01.5 11V5z"/></svg>
+              <a href="tel:5554386378" class="hover:underline">+1 (555) 438-6378</a>
+            </li>
+            <li class="flex items-center space-x-2.5 rtl:space-x-reverse">
+              <svg class="w-4 h-4 text-magenta shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <a href="mailto:hello@kindernest.org" class="hover:underline">hello@kindernest.org</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+        <p>&copy; 2026 KinderNest Montessori Learning Pod. All rights reserved.</p>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-10 h-10 rounded-full bg-magenta text-white flex items-center justify-center hover:bg-magenta-hover transition shadow-md shadow-magenta/20 focus:outline-none shrink-0" aria-label="Scroll to top">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

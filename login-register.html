@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" dir="ltr">
+<head>
+  <script>
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parent Portal Access | KinderNest Montessori</title>
+  <!-- Tailwind CDN & Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            magenta: {
+              DEFAULT: '#E07A5F', // Warm Montessori Terracotta / Coral
+              hover: '#C85A3E',
+              light: '#F4A261',
+            },
+            sage: {
+              50: '#F4F7F4',
+              100: '#E8EFE9',
+              500: '#819B88',
+              600: '#647E6B',
+            },
+            honey: {
+              50: '#FFFDF5',
+              100: '#FEF9E7',
+              500: '#F2CC8F',
+              600: '#E5B869',
+            },
+            warmbeige: '#FDFBF7',
+            darknavy: {
+              DEFAULT: '#1E1E24',
+              light: '#282832',
+              deep: '#15151A',
+            },
+            black: {
+              deep: '#131316',
+              light: '#212126',
+              DEFAULT: '#18181D',
+            },
+            gray: {
+              850: '#26262F',
+            },
+            slate: {
+              905: '#0f172a',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Bootstrap Icons and Fonts -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-white text-gray-900 dark:bg-darknavy-deep dark:text-gray-100 transition-colors duration-300 min-h-screen flex flex-col justify-center items-center py-10 px-4">
+
+  <!-- ================= AUTH CARD ================= -->
+  <main class="max-w-md w-full bg-white dark:bg-darknavy p-6 sm:p-8 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-2xl relative z-10 space-y-6 overflow-hidden">
+    <!-- Sprout / Leaf Watermark SVG -->
+    <svg class="absolute right-4 bottom-4 w-24 h-24 opacity-[0.04] dark:opacity-[0.08] pointer-events-none select-none text-magenta" viewBox="0 0 100 100" fill="currentColor">
+      <path d="M50 15 C55 35 75 45 85 45 C75 55 55 60 50 85 C45 60 25 55 15 45 C25 45 45 35 50 15 Z" />
+    </svg>
+
+    <!-- Top-Right Action Toggles (Theme & RTL) -->
+    <div class="absolute top-5 right-5 sm:top-6 sm:right-6 flex items-center space-x-2 rtl:space-x-reverse rtl:left-5 rtl:right-auto sm:rtl:left-6 sm:rtl:right-auto z-20">
+      <!-- Theme Switch (Sun/Moon Icon) -->
+      <button class="theme-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy-light hover:bg-gray-100 dark:hover:bg-darknavy text-gray-500 dark:text-gray-400 transition" aria-label="Toggle dark mode">
+        <i class="bi bi-moon-fill theme-toggle-moon text-sm"></i>
+        <i class="bi bi-sun-fill theme-toggle-sun text-sm hidden"></i>
+      </button>
+      <!-- RTL Switch (Arrows Icon) -->
+      <button class="rtl-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy-light hover:bg-gray-100 dark:hover:bg-darknavy text-gray-500 dark:text-gray-400 transition" aria-label="Toggle RTL mode">
+        <i class="bi bi-arrow-left-right text-sm"></i>
+      </button>
+    </div>
+
+    <!-- Center-Aligned Brand Logo & Name -->
+    <div class="flex justify-center items-center pt-2 pb-2 border-b border-gray-150 dark:border-gray-800">
+      <a href="index.html" class="flex items-center space-x-2.5 rtl:space-x-reverse">
+        <span class="w-9 h-9 rounded-full bg-magenta flex items-center justify-center text-white font-extrabold text-base shadow shadow-magenta/30">K</span>
+        <span class="text-xl font-bold tracking-tight text-darknavy dark:text-white font-sans">Kinder<span class="text-magenta">Nest</span></span>
+      </a>
+    </div>
+    
+    <!-- Header Text (below divider) -->
+    <div class="text-center space-y-1.5 pt-2">
+      <h2 class="text-2xl font-extrabold text-black dark:text-white" id="card-title">Welcome Back</h2>
+      <p class="text-xs text-gray-500 dark:text-gray-400" id="card-desc">Login to access your child's daily learning journal and progress reports.</p>
+    </div>
+
+    <!-- Toggle Tabs -->
+    <div class="grid grid-cols-2 bg-gray-50 dark:bg-darknavy-light p-1.5 rounded-xl border border-gray-200 dark:border-gray-850">
+      <button type="button" onclick="toggleForm('login')" id="login-tab-btn" class="py-2 text-xs font-bold rounded-lg bg-white dark:bg-darknavy text-magenta shadow">Sign In</button>
+      <button type="button" onclick="toggleForm('register')" id="register-tab-btn" class="py-2 text-xs font-bold rounded-lg text-gray-500 dark:text-gray-400">Register</button>
+    </div>
+
+    <!-- Forms -->
+    <!-- SIGN IN FORM -->
+    <form id="login-form" class="space-y-4" novalidate>
+      <div class="space-y-1">
+        <label for="login-email" class="text-xs font-bold text-gray-500 uppercase tracking-wider">Email Address</label>
+        <div class="relative">
+          <input type="email" id="login-email" placeholder="name@gmail.com" class="w-full bg-white dark:bg-darknavy-deep text-black dark:text-white border border-gray-200 dark:border-gray-850 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-magenta transition">
+          <i class="bi bi-envelope absolute right-3.5 rtl:left-3.5 rtl:right-auto top-3 text-gray-400 pointer-events-none text-sm"></i>
+        </div>
+      </div>
+      
+      <div class="space-y-1">
+        <label for="login-password" class="text-xs font-bold text-gray-500 uppercase tracking-wider">Password</label>
+        <div class="relative">
+          <input type="password" id="login-password" placeholder="••••••••" class="w-full bg-white dark:bg-darknavy-deep text-black dark:text-white border border-gray-200 dark:border-gray-850 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-magenta transition">
+          <button type="button" onclick="togglePasswordVisibility('login-password', this)" class="absolute right-3.5 rtl:left-3.5 rtl:right-auto top-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-sm focus:outline-none" aria-label="Toggle password view">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Remember Me & Forgot Password -->
+      <div class="flex items-center justify-between text-sm pt-1">
+        <label class="flex items-center gap-2 cursor-pointer text-gray-600 dark:text-gray-400 select-none">
+          <input type="checkbox" id="login-remember" class="w-4 h-4 rounded border-gray-300 dark:border-gray-700 text-magenta focus:ring-magenta focus:ring-offset-0 bg-white dark:bg-darknavy-deep transition">
+          <span class="text-xs font-semibold">Remember me</span>
+        </label>
+        <a href="javascript:void(0)" class="text-xs font-semibold text-gray-600 dark:text-gray-400 hover:text-magenta transition">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="w-full bg-magenta hover:bg-magenta-hover active:scale-[0.98] text-white py-3.5 rounded-xl font-bold shadow-md shadow-magenta/20 transition uppercase tracking-wider text-xs">
+        Sign In to Parent Portal
+      </button>
+
+      <!-- Divider -->
+      <div class="relative flex py-2 items-center">
+        <div class="flex-grow border-t border-gray-150 dark:border-gray-850"></div>
+        <span class="flex-shrink mx-4 text-gray-400 dark:text-gray-500 text-[10px] font-extrabold tracking-widest uppercase">Or continue with</span>
+        <div class="flex-grow border-t border-gray-150 dark:border-gray-850"></div>
+      </div>
+
+      <!-- Social Logins -->
+      <div class="grid grid-cols-2 gap-4">
+        <button type="button" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-darknavy hover:bg-gray-50 dark:hover:bg-darknavy-light transition text-xs font-bold text-gray-700 dark:text-gray-200">
+          <i class="bi bi-google text-sm text-[#4285F4]"></i>
+          Google
+        </button>
+        <button type="button" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-darknavy hover:bg-gray-50 dark:hover:bg-darknavy-light transition text-xs font-bold text-gray-700 dark:text-gray-200">
+          <i class="bi bi-apple text-sm"></i>
+          Apple ID
+        </button>
+      </div>
+
+      <!-- Footer Link -->
+      <div class="text-center pt-2">
+        <p class="text-xs text-gray-500 dark:text-gray-400">
+          Enrolling a new student? <a href="javascript:void(0)" onclick="toggleForm('register')" class="font-bold text-magenta hover:underline">Create Parent Account</a>
+        </p>
+      </div>
+    </form>
+
+    <!-- REGISTER FORM -->
+    <form id="register-form" class="space-y-4 hidden" novalidate>
+      <div class="space-y-1">
+        <label for="register-name" class="text-xs font-bold text-gray-500 uppercase tracking-wider">Parent/Guardian Name</label>
+        <div class="relative">
+          <input type="text" id="register-name" minlength="2" placeholder="Eleanor Jenkins" class="w-full bg-white dark:bg-darknavy-deep text-black dark:text-white border border-gray-200 dark:border-gray-850 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-magenta transition">
+          <i class="bi bi-person absolute right-3.5 rtl:left-3.5 rtl:right-auto top-3 text-gray-400 pointer-events-none text-sm"></i>
+        </div>
+      </div>
+
+      <div class="space-y-1">
+        <label for="register-email" class="text-xs font-bold text-gray-500 uppercase tracking-wider">Email Address</label>
+        <div class="relative">
+          <input type="email" id="register-email" placeholder="name@gmail.com" class="w-full bg-white dark:bg-darknavy-deep text-black dark:text-white border border-gray-200 dark:border-gray-850 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-magenta transition">
+          <i class="bi bi-envelope absolute right-3.5 rtl:left-3.5 rtl:right-auto top-3 text-gray-400 pointer-events-none text-sm"></i>
+        </div>
+      </div>
+
+      <div class="space-y-1">
+        <label for="register-password" class="text-xs font-bold text-gray-500 uppercase tracking-wider">Password (Min 8 characters)</label>
+        <div class="relative">
+          <input type="password" id="register-password" placeholder="••••••••" class="w-full bg-white dark:bg-darknavy-deep text-black dark:text-white border border-gray-200 dark:border-gray-850 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-magenta transition">
+          <button type="button" onclick="togglePasswordVisibility('register-password', this)" class="absolute right-3.5 rtl:left-3.5 rtl:right-auto top-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-sm focus:outline-none" aria-label="Toggle password view">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="space-y-1">
+        <label for="register-confirm-password" class="text-xs font-bold text-gray-500 uppercase tracking-wider">Confirm Password</label>
+        <div class="relative">
+          <input type="password" id="register-confirm-password" placeholder="••••••••" class="w-full bg-white dark:bg-darknavy-deep text-black dark:text-white border border-gray-200 dark:border-gray-850 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-magenta transition">
+          <button type="button" onclick="togglePasswordVisibility('register-confirm-password', this)" class="absolute right-3.5 rtl:left-3.5 rtl:right-auto top-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-sm focus:outline-none" aria-label="Toggle password view">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Terms and Conditions Checkbox -->
+      <div class="space-y-1 pt-1">
+        <label class="flex items-start gap-2 cursor-pointer text-gray-600 dark:text-gray-400 select-none">
+          <input type="checkbox" id="register-agree" class="w-4 h-4 mt-0.5 rounded border-gray-300 dark:border-gray-700 text-magenta focus:ring-magenta focus:ring-offset-0 bg-white dark:bg-darknavy-deep transition shrink-0">
+          <span class="text-xs leading-normal">I agree to the KinderNest <a href="javascript:void(0)" class="text-magenta hover:underline font-bold">Community Guidelines</a> &amp; Parent Handbook.</span>
+        </label>
+      </div>
+
+      <button type="submit" class="w-full bg-magenta hover:bg-magenta-hover active:scale-[0.98] text-white py-3.5 rounded-xl font-bold shadow-md shadow-magenta/20 transition uppercase tracking-wider text-xs">
+        Create Parent Account
+      </button>
+
+      <!-- Footer Link -->
+      <div class="text-center pt-2">
+        <p class="text-xs text-gray-500 dark:text-gray-400">
+          Already registered? <a href="javascript:void(0)" onclick="toggleForm('login')" class="font-bold text-magenta hover:underline">Sign In Instead</a>
+        </p>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    function toggleForm(form) {
+      const loginForm = document.getElementById('login-form');
+      const registerForm = document.getElementById('register-form');
+      const loginTab = document.getElementById('login-tab-btn');
+      const registerTab = document.getElementById('register-tab-btn');
+      const cardTitle = document.getElementById('card-title');
+      const cardDesc = document.getElementById('card-desc');
+
+      if (form === 'login') {
+        loginForm.classList.remove('hidden');
+        registerForm.classList.add('hidden');
+        loginTab.className = "py-2 text-xs font-bold rounded-lg bg-white dark:bg-darknavy text-magenta shadow";
+        registerTab.className = "py-2 text-xs font-bold rounded-lg text-gray-500 dark:text-gray-400";
+        cardTitle.textContent = "Welcome Back";
+        cardDesc.textContent = "Login to access your child's daily learning journal and progress reports.";
+      } else {
+        loginForm.classList.add('hidden');
+        registerForm.classList.remove('hidden');
+        registerTab.className = "py-2 text-xs font-bold rounded-lg bg-white dark:bg-darknavy text-magenta shadow";
+        loginTab.className = "py-2 text-xs font-bold rounded-lg text-gray-500 dark:text-gray-400";
+        cardTitle.textContent = "Create Parent Account";
+        cardDesc.textContent = "Register a parent portal account to track admissions and learning journals.";
+      }
+    }
+
+    function togglePasswordVisibility(inputId, button) {
+      const input = document.getElementById(inputId);
+      const icon = button.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'bi bi-eye-slash';
+      } else {
+        input.type = 'password';
+        icon.className = 'bi bi-eye';
+      }
+    }
+
+    // Completely dummy forms: no alerts, no messages, no navigation
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+    });
+
+    document.getElementById('register-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+    });
+  </script>
+</body>
+</html>

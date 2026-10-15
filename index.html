@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" dir="ltr">
+<head>
+  <script>
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KinderNest | Montessori-Inspired Learning Pod</title>
+  <meta name="description" content="Where little minds grow with love and curiosity. Discover KinderNest, a warm, child-centered Montessori learning pod for Toddler, Primary, and Elementary children.">
+  <!-- Tailwind CDN & Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            magenta: {
+              DEFAULT: '#E07A5F', // Warm Montessori Terracotta / Coral
+              hover: '#C85A3E',
+              light: '#F4A261',
+            },
+            sage: {
+              50: '#F4F7F4',
+              100: '#E8EFE9',
+              500: '#819B88',
+              600: '#647E6B',
+            },
+            honey: {
+              50: '#FFFDF5',
+              100: '#FEF9E7',
+              500: '#F2CC8F',
+              600: '#E5B869',
+            },
+            warmbeige: '#FDFBF7',
+            darknavy: {
+              DEFAULT: '#1E1E24',
+              light: '#282832',
+              deep: '#15151A',
+            },
+            black: {
+              deep: '#131316',
+              light: '#212126',
+              DEFAULT: '#18181D',
+            },
+            gray: {
+              850: '#26262E',
+            },
+            slate: {
+              905: '#1A1A22',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts & Custom Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-white text-gray-900 dark:bg-darknavy-deep dark:text-gray-100 transition-colors duration-300">
+
+  <!-- ================= HEADER SECTION ================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 w-full bg-white/95 dark:bg-darknavy/95 backdrop-blur border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-2 rtl:space-x-reverse shrink-0">
+          <span class="w-9 h-9 rounded-full bg-magenta flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-magenta/30">K</span>
+          <span class="text-xl font-bold tracking-tight text-darknavy dark:text-white font-sans">Kinder<span class="text-magenta">Nest</span></span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden xl:flex space-x-6 rtl:space-x-reverse items-center mx-6">
+          
+          <!-- Home Dropdown -->
+          <div class="relative group">
+            <button class="dropdown-toggle flex items-center space-x-1 rtl:space-x-reverse text-magenta font-semibold py-2 transition-colors duration-200">
+              <span>Home</span>
+              <svg class="w-4 h-4 text-magenta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="absolute left-0 rtl:right-0 mt-2 w-56 rounded-xl bg-white dark:bg-darknavy border border-gray-100 dark:border-gray-800 shadow-xl hidden group-hover:block z-50">
+              <div class="p-2 space-y-1">
+                <a href="index.html" class="block px-4 py-3 text-sm rounded-lg text-magenta bg-gray-50 dark:bg-darknavy-light font-semibold transition-colors">General Montessori Pod</a>
+                <a href="home-niche.html" class="block px-4 py-3 text-sm rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-darknavy-light hover:text-magenta font-semibold transition-colors">Nature & Botanical Pod</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">About Us</a>
+          <a href="services.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Programs</a>
+          <a href="service-details.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Curriculum</a>
+          
+          <!-- Explore Dropdown -->
+          <div class="relative group">
+            <button class="dropdown-toggle flex items-center space-x-1 rtl:space-x-reverse text-gray-700 dark:text-gray-300 hover:text-magenta py-2 font-semibold transition-colors duration-200">
+              <span>Explore</span>
+              <svg class="w-4 h-4 text-gray-400 group-hover:text-magenta transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="absolute left-0 rtl:right-0 mt-2 w-52 rounded-xl bg-white dark:bg-darknavy border border-gray-100 dark:border-gray-800 shadow-xl hidden group-hover:block z-50">
+              <div class="p-2 space-y-1">
+                <a href="instructors.html" class="block px-4 py-2.5 text-sm rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-darknavy-light hover:text-magenta font-semibold transition-colors">Montessori Guides</a>
+                <a href="pricing.html" class="block px-4 py-2.5 text-sm rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-darknavy-light hover:text-magenta font-semibold transition-colors">Tuition & Plans</a>
+              </div>
+            </div>
+          </div>
+          
+          <a href="blog.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Blog</a>
+          <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Contact</a>
+          <a href="dashboard.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Dashboard</a>
+        </nav>
+
+        <!-- Utility Toggles & Button -->
+        <div class="hidden xl:flex items-center space-x-3 rtl:space-x-reverse shrink-0">
+          <button class="theme-toggle p-2 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-darknavy-light text-gray-500 dark:text-gray-400 transition" aria-label="Toggle dark mode">
+            <svg class="theme-toggle-sun w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+            <svg class="theme-toggle-moon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+          </button>
+
+          <button class="rtl-toggle px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-xs font-extrabold hover:bg-gray-100 dark:hover:bg-darknavy-light transition text-gray-700 dark:text-gray-300" aria-label="Toggle RTL mode">
+            <span class="rtl-text">RTL</span>
+          </button>
+
+          <a href="login-register.html" class="bg-magenta hover:bg-magenta-hover text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-magenta/20 transition duration-150 text-sm">Sign In</a>
+        </div>
+
+        <!-- Mobile Menu & Theme Toggle Buttons -->
+        <div class="xl:hidden flex items-center gap-2 shrink-0">
+          <button class="theme-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-darknavy-light text-gray-500 dark:text-gray-400 transition" aria-label="Toggle dark mode">
+            <svg class="theme-toggle-sun w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+            <svg class="theme-toggle-moon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+          </button>
+          <button id="mobile-menu-btn" class="p-2 text-gray-700 dark:text-gray-300 focus:outline-none" aria-label="Open mobile navigation">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-menu" class="hidden fixed inset-0 z-50 bg-black/60 xl:hidden">
+    <!-- Backdrop Close Area -->
+    <div class="absolute inset-0" onclick="document.getElementById('mobile-menu').classList.add('hidden')"></div>
+    
+    <div class="absolute top-0 right-0 rtl:left-0 rtl:right-auto w-80 max-w-[85vw] h-full bg-white dark:bg-neutral-900 p-6 shadow-2xl flex flex-col justify-between transition-transform duration-300 z-10 overflow-y-auto">
+      
+      <div class="space-y-6">
+        <!-- Drawer Header with Visible Toggle Buttons -->
+        <div class="flex justify-between items-center pb-4 border-b border-gray-150 dark:border-gray-800">
+          <h4 class="text-xl font-bold text-darknavy dark:text-white">Menu</h4>
+          <div class="flex items-center gap-2">
+            <!-- Theme Toggle in Drawer Header -->
+            <button class="theme-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy-light hover:bg-gray-100 dark:hover:bg-darknavy text-gray-500 dark:text-gray-400 transition" aria-label="Toggle theme">
+              <svg class="theme-toggle-sun w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+              <svg class="theme-toggle-moon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"></path></svg>
+            </button>
+            <!-- RTL Toggle in Drawer Header -->
+            <button class="rtl-toggle p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darknavy-light hover:bg-gray-100 dark:hover:bg-darknavy text-gray-500 dark:text-gray-400 transition" aria-label="Toggle RTL">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+            </button>
+            <!-- Mobile Menu Close Button -->
+            <button id="mobile-menu-close" class="text-gray-500 hover:text-magenta p-1 focus:outline-none" aria-label="Close menu">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Drawer Navigation Links -->
+        <nav class="space-y-3">
+          <!-- Home Accordion -->
+          <div class="space-y-1">
+            <button class="w-full flex justify-between items-center py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition text-left" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              <span>Home</span>
+              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="pl-4 ml-1 space-y-2.5 hidden border-l-2 border-gray-150 dark:border-gray-800 py-1">
+              <a href="index.html" class="block pl-3 text-sm text-magenta font-semibold">General Montessori Pod</a>
+              <a href="home-niche.html" class="block pl-3 text-sm text-gray-500 hover:text-magenta font-medium">Nature & Botanical Pod</a>
+            </div>
+          </div>
+
+          <a href="about.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">About Us</a>
+          <a href="services.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Programs</a>
+          <a href="service-details.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Curriculum</a>
+          
+          <!-- Explore Pages Accordion -->
+          <div class="space-y-1">
+            <button class="w-full flex justify-between items-center py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition text-left" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              <span>Explore</span>
+              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="pl-4 ml-1 space-y-2.5 hidden border-l-2 border-gray-150 dark:border-gray-800 py-1">
+              <a href="instructors.html" class="block pl-3 text-sm text-gray-500 hover:text-magenta font-medium">Montessori Guides</a>
+              <a href="pricing.html" class="block pl-3 text-sm text-gray-500 hover:text-magenta font-medium">Tuition & Plans</a>
+            </div>
+          </div>
+
+          <a href="blog.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Blog</a>
+          <a href="contact.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Contact</a>
+          <a href="dashboard.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition">Dashboard</a>
+        </nav>
+      </div>
+
+      <div class="space-y-4">
+        <!-- Sign In CTA button (full-width) -->
+        <div class="pt-4 border-t border-gray-150 dark:border-gray-800">
+          <a href="login-register.html" class="block w-full text-center bg-magenta hover:bg-magenta-hover text-white py-3.5 rounded-xl font-bold shadow transition text-sm">Sign In</a>
+        </div>
+
+        <!-- Bottom Toggles Bar -->
+        <div class="flex justify-between items-center pt-4 border-t border-gray-150 dark:border-gray-800">
+          <!-- Theme Toggle Icon Button -->
+          <button class="theme-toggle p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-xl transition text-gray-500 dark:text-gray-400">
+            <svg class="theme-toggle-sun w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+            <svg class="theme-toggle-moon w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"></path></svg>
+          </button>
+          
+          <!-- RTL/LTR Swap Icon Button -->
+          <button class="rtl-toggle p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-xl transition text-gray-500 dark:text-gray-400">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= 1. HERO SECTION ================= -->
+  <section id="hero" class="relative overflow-hidden bg-gradient-to-br from-warmbeige via-white to-orange-50/30 dark:from-darknavy-deep dark:via-darknavy dark:to-darknavy-light pt-28 lg:pt-36 pb-20 lg:pb-32 border-b border-gray-100 dark:border-gray-900">
+    <!-- Hero Background Image (1st Image) with Soft Transparent Overlay -->
+    <div class="absolute inset-0 bg-cover bg-center opacity-45 dark:opacity-50 pointer-events-none" style="background-image: url('assets/images/home-bg.jpg');"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-white/50 via-white/60 to-white dark:from-darknavy-deep/50 dark:via-darknavy/65 dark:to-darknavy pointer-events-none"></div>
+
+    <!-- Subtle Ambient Glow -->
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-magenta/10 rounded-full blur-3xl animate-pulse-slow"></div>
+    <div class="absolute bottom-0 right-0 w-80 h-80 bg-honey-500/10 rounded-full blur-3xl"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <!-- Hero Left Content -->
+        <div class="lg:col-span-7 space-y-8 text-center lg:text-left rtl:lg:text-right">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-black dark:text-white">
+            Where Little Minds Grow with <span class="text-magenta">Love & Curiosity</span>
+          </h1>
+          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0">
+            Welcome to KinderNest — a warm, child-centered Montessori micro-pod where hands-on exploration, peaceful focus, and natural curiosity flourish. Grounded in Dr. Maria Montessori's philosophy, we nurture independence, empathy, and lifelong joy in discovery.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+            <a href="services.html" class="bg-magenta hover:bg-magenta-hover text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-magenta/20 transition transform hover:-translate-y-0.5 text-center text-sm uppercase tracking-wider">
+              Explore Our Programs
+            </a>
+            <a href="contact.html" class="bg-white hover:bg-gray-50 dark:bg-darknavy-light dark:hover:bg-darknavy border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white px-8 py-4 rounded-full font-bold transition text-center text-sm uppercase tracking-wider">
+              Book a Tour
+            </a>
+          </div>
+
+          <!-- Hero Horizontal Info Items -->
+          <div class="pt-8 grid sm:grid-cols-3 gap-6 border-t border-gray-200 dark:border-gray-800 text-left rtl:text-right">
+            <div class="flex items-start space-x-3 rtl:space-x-reverse">
+              <span class="text-2xl mt-1 text-magenta">🪵</span>
+              <div>
+                <h4 class="font-bold text-sm text-black dark:text-white">Prepared Spaces</h4>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Natural wood, child-sized materials.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3 rtl:space-x-reverse">
+              <span class="text-2xl mt-1 text-magenta">🌿</span>
+              <div>
+                <h4 class="font-bold text-sm text-black dark:text-white">Mixed-Age Pods</h4>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Peer mentoring & natural empathy.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3 rtl:space-x-reverse">
+              <span class="text-2xl mt-1 text-magenta">🤍</span>
+              <div>
+                <h4 class="font-bold text-sm text-black dark:text-white">Certified Guides</h4>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">AMI/AMS certified gentle mentors.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Image Frame: Natural images around text with high readability -->
+        <div class="lg:col-span-5 relative">
+          <div class="absolute inset-0 bg-gradient-to-tr from-magenta/20 to-transparent opacity-30 rounded-3xl blur-xl"></div>
+          <div class="relative w-full h-[480px] rounded-3xl bg-gray-150 dark:bg-gray-800 overflow-hidden shadow-2xl border-4 border-white dark:border-darknavy">
+            <img src="assets/images/home-hero.jpg" alt="Children working with Montessori materials in prepared KinderNest environment" class="w-full h-full object-cover" loading="lazy">
+            <div class="absolute bottom-4 left-4 right-4 bg-white/90 dark:bg-darknavy/90 backdrop-blur p-4 rounded-2xl border border-gray-100 dark:border-gray-800 flex items-center justify-between">
+              <div>
+                <p class="text-xs font-bold text-magenta uppercase tracking-wide">3-Hour Work Cycle</p>
+                <p class="text-xs text-gray-600 dark:text-gray-300">Deep concentration & joy</p>
+              </div>
+              <span class="text-xl">🌸</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2. MONTESSORI PHILOSOPHY & ABOUT ================= -->
+  <section id="about" class="py-24 bg-white dark:bg-black-deep border-b border-gray-100 dark:border-gray-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div>
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">The Montessori Philosophy</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white leading-tight mt-3">
+          Nurturing Independence, Self-Discipline, and Creative Joy
+        </h2>
+        <p class="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed max-w-3xl mx-auto">
+          At KinderNest, we honor the child as an active builder of their own mind. Our micro-pods combine the timeless wisdom of Dr. Maria Montessori with modern developmental science. Children are invited to choose purposeful work, engage their senses, and develop authentic self-reliance within a calm, orderly community.
+        </p>
+      </div>
+
+      <!-- Horizontal items -->
+      <div class="grid sm:grid-cols-2 gap-6 text-left rtl:text-right pt-4">
+        <div class="flex items-start space-x-4 rtl:space-x-reverse p-6 rounded-2xl bg-gray-50 dark:bg-darknavy border border-gray-150 dark:border-gray-800">
+          <div class="w-10 h-10 rounded-xl bg-magenta/10 text-magenta flex items-center justify-center text-lg font-bold shrink-0">🪴</div>
+          <div>
+            <h4 class="font-bold text-black dark:text-white">Freedom Within Structured Limits</h4>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Children select their own learning materials at their personal sensitive periods, developing genuine internal motivation.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4 rtl:space-x-reverse p-6 rounded-2xl bg-gray-50 dark:bg-darknavy border border-gray-150 dark:border-gray-800">
+          <div class="w-10 h-10 rounded-xl bg-magenta/10 text-magenta flex items-center justify-center text-lg font-bold shrink-0">🤝</div>
+          <div>
+            <h4 class="font-bold text-black dark:text-white">Grace & Courtesy Community</h4>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Daily social habits teach conflict resolution, empathy, caring for plants and pets, and respecting fellow learners.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4">
+        <a href="about.html" class="inline-flex items-center bg-darknavy dark:bg-white text-white dark:text-black hover:bg-magenta dark:hover:bg-magenta dark:hover:text-white px-8 py-3.5 rounded-full font-bold transition text-xs uppercase tracking-wider">
+          Read Our Full Story
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 3. PROGRAMS BY AGE GROUP ================= -->
+  <section id="programs" class="py-24 bg-gray-50 dark:bg-darknavy border-b border-gray-100 dark:border-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Pod Programs By Age Group</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white leading-tight">
+          Developmentally Attuned Pods from Toddlerhood to Elementary
+        </h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Each learning pod is capped at 10-12 learners to ensure genuine one-on-one mentorship by certified Montessori guides.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 items-stretch">
+        
+        <!-- Program 1: Toddler -->
+        <div class="group bg-white dark:bg-black-light rounded-3xl border border-gray-155 dark:border-gray-800 overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 flex flex-col justify-between">
+          <div class="relative overflow-hidden h-60 bg-gray-150 dark:bg-gray-800">
+            <img src="assets/images/home-toddler-community.jpg" alt="Toddler Community Pod guide and child with wooden ring stacker" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+            <div class="absolute top-4 left-4 bg-magenta text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">Ages 18m – 3 Years</div>
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+            <div class="space-y-2">
+              <h3 class="font-bold text-lg text-black dark:text-white group-hover:text-magenta transition min-h-[1.75rem] flex items-center">Toddler Community</h3>
+              <p class="text-xs text-gray-500 dark:text-gray-400 min-h-[3.25rem] leading-relaxed">Language explosion, gross and fine motor coordination, self-feeding, toileting independence, and peaceful separation.</p>
+            </div>
+            <div class="pt-4 border-t border-gray-100 dark:border-gray-800 flex justify-between items-center text-xs">
+              <span class="font-extrabold text-magenta text-sm">$320/mo</span>
+              <a href="program-ballet.html" class="font-bold text-black dark:text-white hover:text-magenta">View Pod Details →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 2: Primary / Children's House -->
+        <div class="group bg-white dark:bg-black-light rounded-3xl border border-gray-155 dark:border-gray-800 overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 flex flex-col justify-between">
+          <div class="relative overflow-hidden h-60 bg-gray-150 dark:bg-gray-800">
+            <img src="assets/images/home-childrens-house.jpg" alt="Children's House Primary prepared classroom with Montessori materials" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+            <div class="absolute top-4 left-4 bg-magenta text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">Ages 3 – 6 Years</div>
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+            <div class="space-y-2">
+              <h3 class="font-bold text-lg text-black dark:text-white group-hover:text-magenta transition min-h-[1.75rem] flex items-center">Children's House (Primary)</h3>
+              <p class="text-xs text-gray-500 dark:text-gray-400 min-h-[3.25rem] leading-relaxed">Sensorial exploration, concrete golden beads arithmetic, phonetic movable alphabet reading, and botanical biology.</p>
+            </div>
+            <div class="pt-4 border-t border-gray-100 dark:border-gray-800 flex justify-between items-center text-xs">
+              <span class="font-extrabold text-magenta text-sm">$380/mo</span>
+              <a href="program-classical.html" class="font-bold text-black dark:text-white hover:text-magenta">View Pod Details →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 3: Lower Elementary -->
+        <div class="group bg-white dark:bg-black-light rounded-3xl border border-gray-155 dark:border-gray-800 overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 flex flex-col justify-between">
+          <div class="relative overflow-hidden h-60 bg-gray-150 dark:bg-gray-800">
+            <img src="assets/images/home-lower-elementary.jpg" alt="Lower Elementary Pod students collaborating on cosmic timeline research" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+            <div class="absolute top-4 left-4 bg-magenta text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">Ages 6 – 9 Years</div>
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+            <div class="space-y-2">
+              <h3 class="font-bold text-lg text-black dark:text-white group-hover:text-magenta transition min-h-[1.75rem] flex items-center">Lower Elementary Pod</h3>
+              <p class="text-xs text-gray-500 dark:text-gray-400 min-h-[3.25rem] leading-relaxed">Cosmic education, historical timelines, advanced decimal math, scientific hypotheses, creative writing, and group inquiry.</p>
+            </div>
+            <div class="pt-4 border-t border-gray-100 dark:border-gray-800 flex justify-between items-center text-xs">
+              <span class="font-extrabold text-magenta text-sm">$420/mo</span>
+              <a href="program-contemporary.html" class="font-bold text-black dark:text-white hover:text-magenta">View Pod Details →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Ribbon Footer -->
+      <div class="mt-16 bg-[#E07A5F] text-white p-6 rounded-3xl flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left rtl:md:text-right">
+        <p class="font-bold text-sm">✨ Micro-Pods with a 1:5 Guide-to-Child Ratio — Spaces Are Limited to Preserve Quality.</p>
+        <a href="services.html" class="bg-white text-[#E07A5F] hover:text-[#C85A3E] font-extrabold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider hover:bg-white/95 transition shrink-0 shadow hover:shadow-lg">Explore Full Curriculum</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 4. WHY CHOOSE KINDERNEST ================= -->
+  <section class="py-24 bg-white dark:bg-black-deep border-b border-gray-100 dark:border-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-16 items-center">
+        
+        <!-- Left: Text content -->
+        <div class="lg:col-span-7 space-y-6">
+          <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Why KinderNest</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white leading-tight">
+            Child-Centered Education That Inspires Natural Confidence
+          </h2>
+          <p class="text-gray-600 dark:text-gray-300">
+            Unlike traditional rote memorization or rigid testing, our Montessori pods offer an unhurried sanctuary where your child's intrinsic curiosity is cherished. We observe each child deeply, tailoring presentations to match their evolving passions and developmental readiness.
+          </p>
+
+          <div class="space-y-4 pt-2">
+            <div class="flex items-center space-x-3 rtl:space-x-reverse text-sm font-bold text-gray-700 dark:text-gray-300">
+              <span class="text-magenta">✔</span> <span>Uninterrupted 3-hour morning work cycle fostering profound focus</span>
+            </div>
+            <div class="flex items-center space-x-3 rtl:space-x-reverse text-sm font-bold text-gray-700 dark:text-gray-300">
+              <span class="text-magenta">✔</span> <span>Mixed-age pods nurturing natural leadership, patience, and peer empathy</span>
+            </div>
+            <div class="flex items-center space-x-3 rtl:space-x-reverse text-sm font-bold text-gray-700 dark:text-gray-300">
+              <span class="text-magenta">✔</span> <span>Organic farm-to-table snacks prepared independently by the children</span>
+            </div>
+            <div class="flex items-center space-x-3 rtl:space-x-reverse text-sm font-bold text-gray-700 dark:text-gray-300">
+              <span class="text-magenta">✔</span> <span>Transparent digital parent portal with daily learning milestones & photos</span>
+            </div>
+          </div>
+
+          <!-- Counter box & help desk info cap -->
+          <div class="pt-6 border-t border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row items-center gap-8">
+            <div class="flex items-center space-x-4 rtl:space-x-reverse">
+              <span class="text-4xl font-extrabold text-magenta">12+</span>
+              <div class="text-xs text-gray-500 font-bold uppercase tracking-wider leading-tight">
+                Years of Joyful<br>Pod Learning
+              </div>
+            </div>
+            <div class="flex items-center space-x-3 rtl:space-x-reverse bg-gray-50 dark:bg-darknavy p-4 px-6 rounded-2xl border border-gray-150 dark:border-gray-800">
+              <span class="text-2xl">📞</span>
+              <div>
+                <p class="text-[10px] text-gray-400 uppercase font-bold">Have Questions?</p>
+                <p class="text-sm font-extrabold text-black dark:text-white"><a href="tel:5554386378">+1 (555) 438-6378</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Overlapping offset images -->
+        <div class="lg:col-span-5 relative">
+          <div class="absolute inset-0 bg-magenta/5 rounded-3xl blur-2xl"></div>
+          <div class="relative w-full h-[400px] bg-gray-150 dark:bg-gray-800 rounded-3xl overflow-hidden shadow-2xl">
+            <img src="assets/images/home-confidence.jpg" alt="Children exploring nature and science in Montessori outdoor classroom" class="w-full h-full object-cover" loading="lazy">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. HOW TO ENROLL: 3-STEP JOURNEY ================= -->
+  <section class="py-24 bg-gray-50 dark:bg-darknavy border-t border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Simple Enrollment</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">Your KinderNest Journey in 3 Steps</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">We make pod onboarding gentle and welcoming for both child and parents.</p>
+      </div>
+
+      <!-- Steps Grid -->
+      <div class="grid md:grid-cols-3 gap-12 relative">
+        
+        <!-- Connecting Line (Desktop) -->
+        <div class="hidden md:block absolute top-1/3 left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-magenta/10 via-magenta/40 to-magenta/10 z-0"></div>
+
+        <!-- Step 1 -->
+        <div class="group relative bg-white dark:bg-black-light p-8 rounded-3xl border border-gray-155 dark:border-gray-800 shadow-md hover:shadow-magenta/10 dark:hover:shadow-magenta/25 hover:border-magenta hover:-translate-y-2 transition duration-300 z-10 flex flex-col justify-between">
+          <div class="space-y-6">
+            <div class="w-16 h-16 bg-magenta/10 dark:bg-magenta/25 rounded-2xl flex items-center justify-center text-magenta font-extrabold text-2xl group-hover:rotate-12 group-hover:scale-110 transition duration-300 shrink-0">
+              01
+            </div>
+            <h3 class="text-xl font-bold text-black dark:text-white group-hover:text-magenta transition duration-300">Select Age Pod</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+              Explore our Toddler (18m-3y), Children's House (3-6y), or Elementary Pod (6-9y) to match your child's sensitive periods and developmental stage.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="group relative bg-white dark:bg-black-light p-8 rounded-3xl border border-gray-155 dark:border-gray-800 shadow-md hover:shadow-magenta/10 dark:hover:shadow-magenta/25 hover:border-magenta hover:-translate-y-2 transition duration-300 z-10 flex flex-col justify-between">
+          <div class="space-y-6">
+            <div class="w-16 h-16 bg-magenta/10 dark:bg-magenta/25 rounded-2xl flex items-center justify-center text-magenta font-extrabold text-2xl group-hover:-rotate-12 group-hover:scale-110 transition duration-300 shrink-0">
+              02
+            </div>
+            <h3 class="text-xl font-bold text-black dark:text-white group-hover:text-magenta transition duration-300">Observation Visit</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+              Schedule a quiet morning observation. Watch the children work with self-direction, see the prepared environment firsthand, and meet the lead guide.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="group relative bg-white dark:bg-black-light p-8 rounded-3xl border border-gray-155 dark:border-gray-800 shadow-md hover:shadow-magenta/10 dark:hover:shadow-magenta/25 hover:border-magenta hover:-translate-y-2 transition duration-300 z-10 flex flex-col justify-between">
+          <div class="space-y-6">
+            <div class="w-16 h-16 bg-magenta/10 dark:bg-magenta/25 rounded-2xl flex items-center justify-center text-magenta font-extrabold text-2xl group-hover:rotate-12 group-hover:scale-110 transition duration-300 shrink-0">
+              03
+            </div>
+            <h3 class="text-xl font-bold text-black dark:text-white group-hover:text-magenta transition duration-300">Welcome to the Nest</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+              Complete enrollment through the parent portal, access daily milestone updates, track tuition payments, and begin your child's joyful journey.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 6. PARENT SUCCESS STORIES & TESTIMONIALS ================= -->
+  <section class="py-24 bg-white dark:bg-black-deep relative overflow-hidden transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Title -->
+      <div class="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Parent Voices</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">Stories from Our KinderNest Families</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Read how the prepared Montessori pod environment has transformed children's self-confidence and love for learning.</p>
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <!-- Card 1 -->
+        <div class="group relative bg-gray-50 dark:bg-darknavy p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:bg-magenta/[0.01] hover:border-magenta hover:shadow-2xl dark:hover:shadow-magenta/15 transition duration-300 flex flex-col justify-between overflow-hidden">
+          <div class="space-y-6">
+            <div class="flex justify-between items-center">
+              <div class="flex text-yellow-400 gap-1">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              </div>
+              <span class="text-magenta/20 group-hover:text-magenta transition-all duration-300">
+                <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              </span>
+            </div>
+            <p class="text-sm text-gray-500 dark:text-gray-400 italic leading-relaxed">
+              "Enrolling our 3-year-old in KinderNest Children's House has been wondrous. Within two months, she was independently preparing her morning snack, pouring water with focus, and counting with golden beads. The calm warmth of the guides is truly unmatched."
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800 flex items-center gap-4">
+            <img src="assets/images/avatars/avatar-parent-1.jpg" alt="Sarah Jenkins" class="w-11 h-11 rounded-full object-cover border-2 border-magenta/40 shadow-sm shrink-0">
+            <div>
+              <h4 class="font-bold text-sm text-black dark:text-white">Sarah Jenkins</h4>
+              <span class="text-[10px] text-gray-400">Mother of Mia (Children's House, Age 4)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="group relative bg-gray-50 dark:bg-darknavy p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:bg-magenta/[0.01] hover:border-magenta hover:shadow-2xl dark:hover:shadow-magenta/15 transition duration-300 flex flex-col justify-between overflow-hidden">
+          <div class="space-y-6">
+            <div class="flex justify-between items-center">
+              <div class="flex text-yellow-400 gap-1">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              </div>
+              <span class="text-magenta/20 group-hover:text-magenta transition-all duration-300">
+                <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              </span>
+            </div>
+            <p class="text-sm text-gray-500 dark:text-gray-400 italic leading-relaxed">
+              "The mixed-age pod model has done wonders for Leo. He used to struggle with peer patience, but having older kids model peaceful problem solving and younger kids whom he could help guide turned him into an empathetic, joyful leader."
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800 flex items-center gap-4">
+            <img src="assets/images/avatars/avatar-parent-2.jpg" alt="David K." class="w-11 h-11 rounded-full object-cover border-2 border-magenta/40 shadow-sm shrink-0">
+            <div>
+              <h4 class="font-bold text-sm text-black dark:text-white">David K.</h4>
+              <span class="text-[10px] text-gray-400">Father of Leo (Elementary Pod, Age 7)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="group relative bg-gray-50 dark:bg-darknavy p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:bg-magenta/[0.01] hover:border-magenta hover:shadow-2xl dark:hover:shadow-magenta/15 transition duration-300 flex flex-col justify-between overflow-hidden">
+          <div class="space-y-6">
+            <div class="flex justify-between items-center">
+              <div class="flex text-yellow-400 gap-1">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              </div>
+              <span class="text-magenta/20 group-hover:text-magenta transition-all duration-300">
+                <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              </span>
+            </div>
+            <p class="text-sm text-gray-500 dark:text-gray-400 italic leading-relaxed">
+              "The parent dashboard is a dream come true for working parents. We see photos of Kavya working with the movable alphabet and read detailed teacher notes every week. KinderNest feels like an extension of our family."
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800 flex items-center gap-4">
+            <img src="assets/images/avatars/avatar-parent-3.jpg" alt="Priya R." class="w-11 h-11 rounded-full object-cover border-2 border-magenta/40 shadow-sm shrink-0">
+            <div>
+              <h4 class="font-bold text-sm text-black dark:text-white">Priya R.</h4>
+              <span class="text-[10px] text-gray-400">Mother of Kavya (Toddler Pod, Age 2.5)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 7. INTERACTIVE DAILY RHYTHM PREVIEW ================= -->
+  <section id="daily-rhythm" class="py-24 bg-gray-50 dark:bg-darknavy border-b border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Daily Flow</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">The 3-Hour Uninterrupted Rhythm</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Our day honors the natural biological cadence of childhood—fostering deep concentration, self-regulation, and quiet inner joy.</p>
+      </div>
+
+      <!-- 4 Daily Rhythm Cards -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Card 1 -->
+        <div class="bg-white dark:bg-black-light p-6 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm hover:border-magenta hover:shadow-lg transition duration-300 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-orange-100 dark:bg-orange-950/40 text-magenta flex items-center justify-center font-extrabold text-lg">
+              01
+            </div>
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-magenta/10 text-magenta text-[10px] font-bold uppercase tracking-wider">8:15 – 8:45 AM</span>
+            <h3 class="text-lg font-bold text-black dark:text-white">Gentle Arrival & Greeting</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+              Children independently hang their coats, transition into indoor shoes, and exchange a warm, respectful handshake greeting with their lead guide.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-100 dark:border-gray-800 text-[11px] font-semibold text-magenta">
+            Focus: Independence & Order
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white dark:bg-black-light p-6 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm hover:border-magenta hover:shadow-lg transition duration-300 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-extrabold text-lg">
+              02
+            </div>
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold uppercase tracking-wider">8:45 – 11:45 AM</span>
+            <h3 class="text-lg font-bold text-black dark:text-white">The 3-Hour Work Cycle</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+              Unbroken flow state. Children freely choose didactic materials, receive one-on-one guide lessons, and experience profound deep concentration.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-100 dark:border-gray-800 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+            Focus: Deep Concentration
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white dark:bg-black-light p-6 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm hover:border-magenta hover:shadow-lg transition duration-300 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-amber-100 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 flex items-center justify-center font-extrabold text-lg">
+              03
+            </div>
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] font-bold uppercase tracking-wider">11:45 AM – 1:00 PM</span>
+            <h3 class="text-lg font-bold text-black dark:text-white">Grace & Courtesy Lunch</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+              Children set tables with real porcelain dishes, pour drinks from pitchers, practice courteous mealtime conversation, and wash their own plates.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-100 dark:border-gray-800 text-[11px] font-semibold text-amber-600 dark:text-amber-400">
+            Focus: Community & Etiquette
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white dark:bg-black-light p-6 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm hover:border-magenta hover:shadow-lg transition duration-300 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-teal-100 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 flex items-center justify-center font-extrabold text-lg">
+              04
+            </div>
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 text-[10px] font-bold uppercase tracking-wider">1:00 – 3:00 PM</span>
+            <h3 class="text-lg font-bold text-black dark:text-white">Afternoon Atelier & Nature</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+              Outdoor botanical exploration, organic soil study, Montessori tone bell harmonization, watercolor painting, and gentle dismissal reflections.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-100 dark:border-gray-800 text-[11px] font-semibold text-teal-600 dark:text-teal-400">
+            Focus: Cosmic Education & Art
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 8. MONTESSORI MATERIAL SPOTLIGHT ================= -->
+  <section id="materials" class="py-24 bg-white dark:bg-black-deep border-b border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Didactic Apparatus</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">Materials of Self-Discovery</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Engineered with a built-in "control of error," every Montessori material allows the child to correct themselves independently without adult critique.</p>
+      </div>
+
+      <!-- 4 Material Cards -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Material 1 -->
+        <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-3xl border border-gray-150 dark:border-gray-800 group hover:border-magenta hover:shadow-xl transition duration-300 flex flex-col h-full">
+          <div class="h-44 w-full rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800 shrink-0">
+            <img src="assets/images/home-pink-tower.jpg" alt="Montessori Pink Tower" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          </div>
+          <div class="pt-4 flex items-center min-h-[2rem]">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-magenta/10 text-magenta text-[10px] font-bold uppercase">Sensorial</span>
+          </div>
+          <h3 class="text-lg font-bold text-black dark:text-white mt-2 min-h-[1.75rem]">The Pink Tower</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-2 mb-4 min-h-[4.5rem] flex-grow">
+            10 graduated wooden cubes ranging from 1cm³ to 10cm³. The child builds visual-spatial discrimination and prepares the mathematical mind for the decimal system.
+          </p>
+          <div class="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700 text-[11px] text-gray-400 min-h-[3rem] flex items-center">
+            <span>Control of Error: Visual symmetry & gravity</span>
+          </div>
+        </div>
+
+        <!-- Material 2 -->
+        <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-3xl border border-gray-150 dark:border-gray-800 group hover:border-magenta hover:shadow-xl transition duration-300 flex flex-col h-full">
+          <div class="h-44 w-full rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800 shrink-0">
+            <img src="assets/images/home-golden-beads.jpg" alt="Montessori Golden Beads" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          </div>
+          <div class="pt-4 flex items-center min-h-[2rem]">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] font-bold uppercase">Mathematics</span>
+          </div>
+          <h3 class="text-lg font-bold text-black dark:text-white mt-2 min-h-[1.75rem]">Golden Bead Material</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-2 mb-4 min-h-[4.5rem] flex-grow">
+            Single bead units, 10-bars, 100-squares, and 1000-cubes. Children physically hold and feel the weight of thousands before writing numbers symbolically on paper.
+          </p>
+          <div class="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700 text-[11px] text-gray-400 min-h-[3rem] flex items-center">
+            <span>Control of Error: Tactile quantity comparison</span>
+          </div>
+        </div>
+
+        <!-- Material 3 -->
+        <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-3xl border border-gray-150 dark:border-gray-800 group hover:border-magenta hover:shadow-xl transition duration-300 flex flex-col h-full">
+          <div class="h-44 w-full rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800 shrink-0">
+            <img src="assets/images/home-movable-alphabet.jpg" alt="Montessori Movable Alphabet" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          </div>
+          <div class="pt-4 flex items-center min-h-[2rem]">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-bold uppercase">Language</span>
+          </div>
+          <h3 class="text-lg font-bold text-black dark:text-white mt-2 min-h-[1.75rem]">Large Movable Alphabet</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-2 mb-4 min-h-[4.5rem] flex-grow">
+            Compartmentalized wooden letters (consonants pink, vowels blue). Allows children to express thoughts into multi-sentence stories before their hand muscles master pencils.
+          </p>
+          <div class="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700 text-[11px] text-gray-400 min-h-[3rem] flex items-center">
+            <span>Control of Error: Auditory phonemic blending</span>
+          </div>
+        </div>
+
+        <!-- Material 4 -->
+        <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-3xl border border-gray-150 dark:border-gray-800 group hover:border-magenta hover:shadow-xl transition duration-300 flex flex-col h-full">
+          <div class="h-44 w-full rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800 shrink-0">
+            <img src="assets/images/home-cylinder-blocks.jpg" alt="Montessori Cylinder Blocks" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          </div>
+          <div class="pt-4 flex items-center min-h-[2rem]">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold uppercase">Sensorial & Motor</span>
+          </div>
+          <h3 class="text-lg font-bold text-black dark:text-white mt-2 min-h-[1.75rem]">Knobbed Cylinder Blocks</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-2 mb-4 min-h-[4.5rem] flex-grow">
+            Solid beechwood blocks with 10 fitted cylinders held by small wooden knobs. Refines the exact three-finger pincer grasp necessary for future pencil holding.
+          </p>
+          <div class="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700 text-[11px] text-gray-400 min-h-[3rem] flex items-center">
+            <span>Control of Error: Mechanical fit (only 1 right slot)</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 9. CAMPUS FACILITIES & PREPARED ENVIRONMENT ================= -->
+  <section id="facilities" class="py-24 bg-gray-50 dark:bg-darknavy border-b border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="text-center max-w-2xl mx-auto mb-20 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Our Prepared Campus</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">Designed Entirely from the Child's Perspective</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Every shelf, chair, pitcher, and rug is intentionally scaled to the child's stature so they never need to ask an adult for permission to work.</p>
+      </div>
+
+      <!-- 3 Facility Cards -->
+      <div class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Space 1 -->
+        <div class="bg-white dark:bg-black-light rounded-3xl overflow-hidden border border-gray-150 dark:border-gray-800 shadow-sm hover:shadow-xl transition duration-300 group flex flex-col h-full">
+          <div class="h-64 overflow-hidden relative shrink-0">
+            <img src="assets/images/home-sunlit-atrium.jpg" alt="Sunlit Montessori Learning Atrium with child-sized furniture and natural light" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <span class="absolute top-4 left-4 bg-white/90 dark:bg-darknavy/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-magenta">Indoor Prepared Environment</span>
+          </div>
+          <div class="p-8 flex-1 flex flex-col">
+            <h3 class="text-xl font-bold text-black dark:text-white min-h-[1.75rem]">Sunlit Learning Atriums</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-3 mb-6 min-h-[4.5rem]">
+              Open floor plans with natural light, low hardwood shelving, non-toxic finishes, real house plants, and personal woven floor rugs that define each child's sovereign workspace.
+            </p>
+            <div class="mt-auto pt-5 border-t border-gray-150 dark:border-gray-800 min-h-[5.5rem] flex flex-col justify-center">
+              <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2.5">
+                <li class="flex items-center space-x-2 rtl:space-x-reverse">
+                  <span class="text-magenta font-bold">✓</span>
+                  <span>100% solid beechwood and maple low shelving</span>
+                </li>
+                <li class="flex items-center space-x-2 rtl:space-x-reverse">
+                  <span class="text-magenta font-bold">✓</span>
+                  <span>Breakable ceramic & glassware for real consequence awareness</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Space 2 -->
+        <div class="bg-white dark:bg-black-light rounded-3xl overflow-hidden border border-gray-150 dark:border-gray-800 shadow-sm hover:shadow-xl transition duration-300 group flex flex-col h-full">
+          <div class="h-64 overflow-hidden relative shrink-0">
+            <img src="assets/images/home-micro-farm.jpg" alt="Children tending plants and vermicompost at the Living Soil Atelier and Botany Lab" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <span class="absolute top-4 left-4 bg-white/90 dark:bg-darknavy/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-emerald-600 dark:text-emerald-400">Living Soil Atelier</span>
+          </div>
+          <div class="p-8 flex-1 flex flex-col">
+            <h3 class="text-xl font-bold text-black dark:text-white min-h-[1.75rem]">Micro-Farm & Botany Beds</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-3 mb-6 min-h-[4.5rem]">
+              An outdoor permaculture laboratory where children care for heirloom tomato plants, test living soil microbes, manage vermicompost, and harvest organic ingredients for snack preparation.
+            </p>
+            <div class="mt-auto pt-5 border-t border-gray-150 dark:border-gray-800 min-h-[5.5rem] flex flex-col justify-center">
+              <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2.5">
+                <li class="flex items-center space-x-2 rtl:space-x-reverse">
+                  <span class="text-emerald-500 font-bold">✓</span>
+                  <span>Active child-maintained organic compost system</span>
+                </li>
+                <li class="flex items-center space-x-2 rtl:space-x-reverse">
+                  <span class="text-emerald-500 font-bold">✓</span>
+                  <span>Seasonal seedling germination timelines</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Space 3 -->
+        <div class="bg-white dark:bg-black-light rounded-3xl overflow-hidden border border-gray-150 dark:border-gray-800 shadow-sm hover:shadow-xl transition duration-300 group flex flex-col h-full">
+          <div class="h-64 overflow-hidden relative shrink-0">
+            <img src="assets/images/home-peace-corner.jpg" alt="Montessori Peace Corner with watercolor easel, emotion stones, and cozy cushions" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <span class="absolute top-4 left-4 bg-white/90 dark:bg-darknavy/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-amber-600 dark:text-amber-400">Social-Emotional Sanctuary</span>
+          </div>
+          <div class="p-8 flex-1 flex flex-col">
+            <h3 class="text-xl font-bold text-black dark:text-white min-h-[1.75rem]">The Peace Corner & Atelier</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-3 mb-6 min-h-[4.5rem]">
+              A serene retreat equipped with a Tibetan peace chime, emotion identification stones, a cozy reading nook, and an artistic wet-on-wet watercolor easel for emotional regulation.
+            </p>
+            <div class="mt-auto pt-5 border-t border-gray-150 dark:border-gray-800 min-h-[5.5rem] flex flex-col justify-center">
+              <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2.5">
+                <li class="flex items-center space-x-2 rtl:space-x-reverse">
+                  <span class="text-amber-500 font-bold">✓</span>
+                  <span>Self-directed conflict resolution without adult punishment</span>
+                </li>
+                <li class="flex items-center space-x-2 rtl:space-x-reverse">
+                  <span class="text-amber-500 font-bold">✓</span>
+                  <span>Open watercolor and genuine beeswax modeling studio</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 10. PARENT FAQ & ADMISSIONS GUIDANCE ================= -->
+  <section id="faq" class="py-24 bg-white dark:bg-black-deep border-b border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="text-center mb-16 space-y-4">
+        <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Common Questions</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">Frequently Asked Questions</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Everything you need to know about our Montessori pod philosophy, safety, and admissions.</p>
+      </div>
+
+      <!-- FAQ Accordions -->
+      <div class="space-y-4">
+        
+        <div class="border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50 dark:bg-darknavy transition">
+          <h3 class="font-bold text-base text-black dark:text-white flex justify-between items-center cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            <span>Why does KinderNest utilize mixed-age 3-year pods?</span>
+            <span class="text-magenta font-extrabold text-xl">+</span>
+          </h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 hidden leading-relaxed">
+            Mixed-age groups replicate natural community life. Younger children learn through keen observation of older peers, while older children solidify their knowledge and develop profound empathy by mentoring younger classmates. This eliminates artificial grade competition.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50 dark:bg-darknavy transition">
+          <h3 class="font-bold text-base text-black dark:text-white flex justify-between items-center cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            <span>How do children transition from KinderNest to traditional schools?</span>
+            <span class="text-magenta font-extrabold text-xl">+</span>
+          </h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 hidden leading-relaxed">
+            Research consistently shows that Montessori alumni thrive academically and socially in conventional environments. Because they have spent years developing self-motivation, time management, and intrinsic curiosity, they adapt seamlessly and frequently become class leaders.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50 dark:bg-darknavy transition">
+          <h3 class="font-bold text-base text-black dark:text-white flex justify-between items-center cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            <span>What is your digital device and screen-time policy?</span>
+            <span class="text-magenta font-extrabold text-xl">+</span>
+          </h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 hidden leading-relaxed">
+            Our Toddler and Children’s House environments are 100% screen-free. In early childhood, the neurological development of the brain depends upon real three-dimensional tactile manipulation and sensory input. In Lower Elementary, technology is introduced solely as a research and creation tool.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50 dark:bg-darknavy transition">
+          <h3 class="font-bold text-base text-black dark:text-white flex justify-between items-center cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            <span>How are behavioral challenges and peer conflicts handled?</span>
+            <span class="text-magenta font-extrabold text-xl">+</span>
+          </h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 hidden leading-relaxed">
+            We never use punitive time-outs, shame, or reward stickers. Instead, guides facilitate peaceful conflict resolution in the Peace Corner using restorative communication. Children learn to name their feelings, listen to their peer's perspective, and identify gentle solutions together.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 dark:border-gray-800 rounded-2xl p-6 bg-gray-50 dark:bg-darknavy transition">
+          <h3 class="font-bold text-base text-black dark:text-white flex justify-between items-center cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            <span>What are the qualifications of your lead educators?</span>
+            <span class="text-magenta font-extrabold text-xl">+</span>
+          </h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 hidden leading-relaxed">
+            Every lead guide holds an internationally recognized AMI (Association Montessori Internationale) or AMS (American Montessori Society) diploma in their specific age level, alongside university degrees in Early Childhood Education and pediatric first aid certifications.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 11. THE KINDERNEST JOURNAL / RECENT INSIGHTS ================= -->
+  <section id="journal" class="py-24 bg-gray-50 dark:bg-darknavy border-b border-gray-150 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div class="space-y-4 max-w-xl">
+          <span class="text-magenta font-extrabold text-sm uppercase tracking-widest">Montessori at Home</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-black dark:text-white">From the KinderNest Journal</h2>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Practical guides, child observation notes, and gentle parenting wisdom curated by our certified faculty.</p>
+        </div>
+        <a href="blog.html" class="inline-flex items-center space-x-2 text-magenta font-bold text-sm hover:underline shrink-0">
+          <span>Read All Articles</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- 3 Blog Cards -->
+      <div class="grid md:grid-cols-3 gap-8 items-stretch">
+        
+        <!-- Post 1 -->
+        <article class="bg-white dark:bg-black-light rounded-3xl overflow-hidden border border-gray-155 dark:border-gray-800 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group">
+          <div class="h-48 overflow-hidden relative shrink-0">
+            <img src="assets/images/blog-work-cycle.jpg" alt="Child deeply focused on Montessori work" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <span class="absolute top-4 left-4 bg-white/90 dark:bg-darknavy/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-magenta">Focus & Brain</span>
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+            <div class="space-y-2">
+              <span class="text-[11px] text-gray-400 block">March 12, 2026 • 6 min read</span>
+              <h3 class="text-lg font-bold text-black dark:text-white group-hover:text-magenta transition min-h-[3.75rem] flex items-start leading-snug">
+                <a href="blog-details-1.html">The 3-Hour Work Cycle: How Unbroken Concentration Builds the Developing Brain</a>
+              </h3>
+              <p class="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed min-h-[2.5rem] flex items-start">
+                Why interrupting a child in deep concentration diminishes cognitive stamina, and how our morning rhythm protects neurological flow.
+              </p>
+            </div>
+            <div class="mt-auto pt-4 border-t border-gray-150 dark:border-gray-800">
+              <a href="blog-details-1.html" class="text-xs font-bold text-magenta inline-flex items-center space-x-1 group-hover:underline">
+                <span>Read Article</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="bg-white dark:bg-black-light rounded-3xl overflow-hidden border border-gray-155 dark:border-gray-800 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group">
+          <div class="h-48 overflow-hidden relative shrink-0">
+            <img src="assets/images/blog-prepared-home.jpg" alt="Child organizing shoes on wooden shelf" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <span class="absolute top-4 left-4 bg-white/90 dark:bg-darknavy/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-magenta">Montessori at Home</span>
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+            <div class="space-y-2">
+              <span class="text-[11px] text-gray-400 block">February 28, 2026 • 8 min read</span>
+              <h3 class="text-lg font-bold text-black dark:text-white group-hover:text-magenta transition min-h-[3.75rem] flex items-start leading-snug">
+                <a href="blog-details-2.html">Creating a Prepared Home: 6 Practical Steps for Fostering Early Independence</a>
+              </h3>
+              <p class="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed min-h-[2.5rem] flex items-start">
+                Simple adaptations like low hooks, accessible drinking water, and open clothing baskets that empower your toddler every day.
+              </p>
+            </div>
+            <div class="mt-auto pt-4 border-t border-gray-150 dark:border-gray-800">
+              <a href="blog-details-2.html" class="text-xs font-bold text-magenta inline-flex items-center space-x-1 group-hover:underline">
+                <span>Read Article</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="bg-white dark:bg-black-light rounded-3xl overflow-hidden border border-gray-155 dark:border-gray-800 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group">
+          <div class="h-48 overflow-hidden relative shrink-0">
+            <img src="assets/images/blog-golden-beads.jpg" alt="Child working with golden beads" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <span class="absolute top-4 left-4 bg-white/90 dark:bg-darknavy/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-magenta">Mathematics</span>
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+            <div class="space-y-2">
+              <span class="text-[11px] text-gray-400 block">February 14, 2026 • 5 min read</span>
+              <h3 class="text-lg font-bold text-black dark:text-white group-hover:text-magenta transition min-h-[3.75rem] flex items-start leading-snug">
+                <a href="blog-details-4.html">Concrete to Abstract: Why Montessori Math Begins With Real Golden Beads</a>
+              </h3>
+              <p class="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed min-h-[2.5rem] flex items-start">
+                Transforming arithmetic from rote memorization into tactile discovery using unit beads, 10-bars, 100-squares, and cubes.
+              </p>
+            </div>
+            <div class="mt-auto pt-4 border-t border-gray-150 dark:border-gray-800">
+              <a href="blog-details-4.html" class="text-xs font-bold text-magenta inline-flex items-center space-x-1 group-hover:underline">
+                <span>Read Article</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 12. CALL TO ACTION: SCHEDULE AN OBSERVATION VISIT ================= -->
+  <section class="py-24 bg-white dark:bg-black-deep relative overflow-hidden transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative bg-gradient-to-br from-magenta via-[#C85A3E] to-[#9E3E26] text-white p-10 sm:p-16 rounded-[40px] shadow-2xl overflow-hidden">
+        
+        <!-- Background Leaf Pattern SVG -->
+        <svg class="absolute -right-12 -bottom-12 w-80 h-80 opacity-10 text-white pointer-events-none" viewBox="0 0 100 100" fill="currentColor">
+          <path d="M50 0 C70 30 100 50 100 100 C50 100 30 70 0 50 C30 50 50 30 50 0 Z"/>
+        </svg>
+
+        <div class="max-w-3xl space-y-6 relative z-10">
+          <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur text-xs font-bold uppercase tracking-widest">Experience the Magic in Person</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold leading-tight">Hear the Peaceful Hum of Our Children's House</h2>
+          <p class="text-sm sm:text-base text-white/90 leading-relaxed max-w-2xl">
+            Words cannot fully convey the serene concentration of 3-year-olds carefully carrying trays or 7-year-olds solving multi-digit equations. Schedule a quiet morning observation tour to see our pod community in action.
+          </p>
+          <div class="pt-4 flex flex-col sm:flex-row gap-4">
+            <a href="contact.html" class="bg-white text-magenta hover:bg-gray-100 font-extrabold px-8 py-4 rounded-2xl text-center shadow-lg transition duration-200 text-sm">Schedule Morning Visit</a>
+            <a href="login-register.html" class="border-2 border-white/60 hover:border-white text-white font-bold px-8 py-4 rounded-2xl text-center transition duration-200 text-sm">Parent Portal Login</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 7. FOOTER SECTION ================= -->
+  <footer class="bg-white dark:bg-black border-t border-gray-150 dark:border-gray-800 py-16 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Newsletter Section -->
+      <div class="flex flex-col items-center text-center pb-12 border-b border-gray-150 dark:border-gray-850">
+        <h3 class="text-2xl font-extrabold text-black dark:text-white font-sans">Join the KinderNest Nestletter</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 mb-6">Receive monthly Montessori at-home guides, gentle parenting tips, and pod schedule updates.</p>
+        <form class="flex flex-col sm:flex-row w-full max-w-md items-center gap-3" onsubmit="handleNewsletterSubmit(event, this)">
+          <input type="email" placeholder="name@gmail.com" required class="w-full px-5 py-3 rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-darknavy-light text-black dark:text-white text-sm focus:outline-none focus:border-magenta transition">
+          <button type="submit" class="w-full sm:w-auto bg-magenta hover:bg-magenta-hover text-white px-8 py-3 rounded-full font-bold text-sm transition shadow-md shadow-magenta/20 shrink-0">Subscribe</button>
+        </form>
+      </div>
+
+      <!-- Links Grid Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pt-12 text-sm text-gray-600 dark:text-gray-300">
+        
+        <!-- Column 1: Logo & Description & Socials -->
+        <div class="space-y-4">
+          <a href="index.html" class="flex items-center space-x-2 rtl:space-x-reverse">
+            <span class="w-10 h-10 rounded-full bg-magenta flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-magenta/30">K</span>
+            <span class="text-xl font-bold tracking-tight text-darknavy dark:text-white">Kinder<span class="text-magenta">Nest</span></span>
+          </a>
+          <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+            A warm, child-centered Montessori micro-pod cultivating independence, intrinsic curiosity, and emotional empathy in prepared natural environments.
+          </p>
+          <div class="flex space-x-3 rtl:space-x-reverse pt-2">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/kindernestmontessori" target="_blank" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-magenta hover:text-white dark:hover:bg-magenta transition flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-magenta dark:hover:border-magenta">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/kindernestmontessori" target="_blank" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-800 hover:bg-magenta hover:text-white dark:hover:bg-magenta transition flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-magenta dark:hover:border-magenta">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h4v-9h3.61L17 8h-4V7.007C13 6.273 13.5 6 14 6h2V3h-3.328C10.05 3 9 4.35 9 6.828V8z"/></svg>
+            </a>
+            <!-- X (Twitter) -->
+            <a href="https://x.com/kindernestpod" target="_blank" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-800 hover:bg-magenta hover:text-white dark:hover:bg-magenta transition flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-magenta dark:hover:border-magenta">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/company/kindernestmontessori" target="_blank" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-800 hover:bg-magenta hover:text-white dark:hover:bg-magenta transition flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-magenta dark:hover:border-magenta">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: LEARNING PODS -->
+        <div class="space-y-4">
+          <h4 class="font-extrabold text-xs uppercase tracking-widest text-magenta">Learning Pods</h4>
+          <ul class="space-y-2.5 text-xs font-semibold">
+            <li><a href="program-ballet.html" class="hover:text-magenta transition">Toddler Community (18m-3y)</a></li>
+            <li><a href="program-classical.html" class="hover:text-magenta transition">Children's House (3-6y)</a></li>
+            <li><a href="program-contemporary.html" class="hover:text-magenta transition">Lower Elementary Pod (6-9y)</a></li>
+            <li><a href="program-vocal.html" class="hover:text-magenta transition">Forest & Nature Discovery</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: QUICK LINKS -->
+        <div class="space-y-4">
+          <h4 class="font-extrabold text-xs uppercase tracking-widest text-magenta">Quick Links</h4>
+          <ul class="space-y-2.5 text-xs font-semibold">
+            <li><a href="about.html" class="hover:text-magenta transition">Montessori Philosophy</a></li>
+            <li><a href="service-details.html" class="hover:text-magenta transition">Curriculum Areas</a></li>
+            <li><a href="instructors.html" class="hover:text-magenta transition">Our Montessori Guides</a></li>
+            <li><a href="pricing.html" class="hover:text-magenta transition">Tuition & Pod Plans</a></li>
+            <li><a href="dashboard.html" class="hover:text-magenta transition">Parent Portal Dashboard</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: GET IN TOUCH -->
+        <div class="space-y-4">
+          <h4 class="font-extrabold text-xs uppercase tracking-widest text-magenta">Visit Our Pod</h4>
+          <ul class="space-y-3.5 text-xs">
+            <li class="flex items-start space-x-2.5 rtl:space-x-reverse leading-relaxed">
+              <svg class="w-4 h-4 text-magenta shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span>42 Blossom Valley Way, Sunnyvale, CA 94087</span>
+            </li>
+            <li class="flex items-center space-x-2.5 rtl:space-x-reverse">
+              <svg class="w-4 h-4 text-magenta shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.94.725l.548 2.2a1 1 0 00.996.81h2.982a1 1 0 00.996-.81l.548-2.2a1 1 0 01.94-.725H21a2 2 0 012 2v1.5a10.5 10.5 0 01-10.5 10.5H11A10.5 10.5 0 01.5 11V5z"/></svg>
+              <a href="tel:5554386378" class="hover:underline">+1 (555) 438-6378</a>
+            </li>
+            <li class="flex items-center space-x-2.5 rtl:space-x-reverse">
+              <svg class="w-4 h-4 text-magenta shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <a href="mailto:hello@kindernest.org" class="hover:underline">hello@kindernest.org</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Divider & Bottom Area -->
+      <div class="mt-12 pt-8 border-t border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+        <p>&copy; 2026 KinderNest Montessori Learning Pod. All rights reserved.</p>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-10 h-10 rounded-full bg-magenta text-white flex items-center justify-center hover:bg-magenta-hover transition shadow-md shadow-magenta/20 focus:outline-none shrink-0" aria-label="Scroll to top">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
