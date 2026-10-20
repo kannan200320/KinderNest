@@ -115,13 +115,17 @@
       <!-- Left Sidebar Menu -->
       <aside id="sidebarMenu" class="fixed inset-y-0 left-0 z-50 w-72 md:w-64 shrink-0 bg-white dark:bg-darknavy border-r border-gray-200 dark:border-gray-800 p-6 flex flex-col justify-between transform -translate-x-full md:translate-x-0 md:static transition-transform duration-300 ease-in-out overflow-y-auto">
         <div class="space-y-6">
-          <!-- Brand Logo & Name Header (Above Parent Hub) -->
-          <div class="flex items-center justify-between pb-5 border-b border-gray-200 dark:border-gray-800">
+          <!-- Mobile Sidebar Brand & Close Header (Visible only in mobile drawer) -->
+          <div class="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-gray-800 md:hidden">
+
+
+
+
             <a href="index.html" class="flex items-center space-x-2.5 rtl:space-x-reverse">
               <span class="w-9 h-9 rounded-full bg-magenta flex items-center justify-center text-white font-extrabold text-base shadow shadow-magenta/30">K</span>
               <span class="text-lg sm:text-xl font-bold tracking-tight text-darknavy dark:text-white font-sans">Kinder<span class="text-magenta">Nest</span></span>
             </a>
-            <button id="closeSidebarBtn" class="md:hidden w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-500 flex items-center justify-center hover:bg-gray-200 transition" aria-label="Close sidebar">
+            <button id="closeSidebarBtn" class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-500 flex items-center justify-center hover:bg-gray-200 transition" aria-label="Close sidebar">
               <i class="bi bi-x-lg text-xs"></i>
             </button>
           </div>
