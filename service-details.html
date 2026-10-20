@@ -143,7 +143,7 @@
 
   <!-- Mobile Navigation Drawer -->
   <div id="mobile-menu" class="hidden fixed inset-0 z-50 bg-black/60 xl:hidden">
-    <div class="absolute inset-0" onclick="document.getElementById('mobile-menu').classList.add('hidden')"></div>
+    <div class="absolute inset-0" onclick="window.closeMobileMenu ? window.closeMobileMenu() : document.getElementById('mobile-menu').classList.add('hidden')"></div>
     
     <div class="absolute top-0 right-0 rtl:left-0 rtl:right-auto w-80 max-w-[85vw] h-full bg-white dark:bg-neutral-900 p-6 shadow-2xl flex flex-col justify-between transition-transform duration-300 z-10 overflow-y-auto">
       <div class="space-y-6">

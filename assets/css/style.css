@@ -1033,5 +1033,31 @@ html:not(.dark) aside p {
   color: #d1d5db !important;
 }
 
+/* ==============================================================
+   Mobile & Tablet Menu Background Scroll Lock & Touch Containment
+   ============================================================== */
+html.mobile-menu-open,
+body.mobile-menu-open {
+  overflow: hidden !important;
+  height: 100% !important;
+  max-height: 100vh !important;
+  overscroll-behavior: none !important;
+  touch-action: none !important;
+}
+
+#mobile-menu,
+#sidebarBackdrop {
+  overscroll-behavior: contain !important;
+  touch-action: none;
+}
+
+#mobile-menu .overflow-y-auto,
+#sidebarMenu {
+  overscroll-behavior: contain !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-y !important;
+}
+
+
 
 

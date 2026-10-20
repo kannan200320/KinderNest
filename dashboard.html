@@ -1152,20 +1152,46 @@
       const sidebar = document.getElementById("sidebarMenu");
       const backdrop = document.getElementById("sidebarBackdrop");
 
+      let dashboardScrollY = 0;
+      let isSidebarOpen = false;
+
       window.openMobileSidebar = function() {
+        if (isSidebarOpen) return;
+        isSidebarOpen = true;
+        dashboardScrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
         if (sidebar) sidebar.classList.remove("-translate-x-full");
         if (backdrop) backdrop.classList.remove("hidden");
-        document.body.classList.add("overflow-hidden");
+
+        document.documentElement.classList.add("mobile-menu-open");
+        document.body.classList.add("mobile-menu-open");
+        document.documentElement.style.overflow = "hidden";
+        document.body.style.overflow = "hidden";
+        document.body.style.position = "fixed";
+        document.body.style.top = `-${dashboardScrollY}px`;
+        document.body.style.width = "100%";
       };
 
       window.closeMobileSidebar = function() {
+        if (!isSidebarOpen && (!sidebar || sidebar.classList.contains("-translate-x-full"))) return;
+        isSidebarOpen = false;
         if (sidebar) sidebar.classList.add("-translate-x-full");
         if (backdrop) backdrop.classList.add("hidden");
-        document.body.classList.remove("overflow-hidden");
+
+        document.documentElement.classList.remove("mobile-menu-open");
+        document.body.classList.remove("mobile-menu-open");
+        document.documentElement.style.overflow = "";
+        document.body.style.overflow = "";
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.width = "";
+        window.scrollTo(0, dashboardScrollY);
       };
 
       if (openBtn) openBtn.addEventListener("click", window.openMobileSidebar);
       if (closeBtn) closeBtn.addEventListener("click", window.closeMobileSidebar);
+      if (backdrop) {
+        backdrop.addEventListener("touchmove", (e) => e.preventDefault(), { passive: false });
+      }
     });
 
     function switchTab(tabId, btnEl) {

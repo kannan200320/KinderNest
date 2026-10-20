@@ -324,6 +324,7 @@ function initMobileMenu() {
   if (!mobileMenu) return;
   
   const backdrop = mobileMenu.querySelector('.absolute.inset-0');
+  const drawer = mobileMenu.querySelector('.overflow-y-auto') || mobileMenu.children[1];
   
   // Format the inner SVG of the mobile menu btn to have three distinct lines for animation
   if (menuBtn) {
@@ -336,17 +337,53 @@ function initMobileMenu() {
     `;
   }
   
+  let scrollPosition = 0;
+  let isMenuOpen = false;
+
   const openMenu = () => {
+    if (isMenuOpen) return;
+    isMenuOpen = true;
+
+    // Capture current scroll position before freezing body
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
     mobileMenu.classList.remove('hidden');
-    document.body.classList.add('overflow-hidden');
+
+    // Bulletproof scroll-locking on mobile & tablet viewports
+    document.documentElement.classList.add('mobile-menu-open');
+    document.body.classList.add('mobile-menu-open');
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.width = '100%';
+
     if (menuBtn) menuBtn.classList.add('open');
   };
   
   const closeMenu = () => {
+    if (!isMenuOpen && mobileMenu.classList.contains('hidden')) return;
+    isMenuOpen = false;
+
     mobileMenu.classList.add('hidden');
-    document.body.classList.remove('overflow-hidden');
+
+    // Release scroll locking
+    document.documentElement.classList.remove('mobile-menu-open');
+    document.body.classList.remove('mobile-menu-open');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+
+    // Restore exact scroll position
+    window.scrollTo(0, scrollPosition);
+
     if (menuBtn) menuBtn.classList.remove('open');
   };
+
+  window.openMobileMenu = openMenu;
+  window.closeMobileMenu = closeMenu;
   
   if (menuBtn) {
     menuBtn.addEventListener('click', (e) => {
@@ -372,7 +409,47 @@ function initMobileMenu() {
       e.stopPropagation();
       closeMenu();
     });
+
+    // Prevent background touch dragging on backdrop
+    backdrop.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+    }, { passive: false });
   }
+
+  // Prevent background wheel and touch scrolling when touching outside the drawer
+  mobileMenu.addEventListener('wheel', (e) => {
+    if (drawer && !drawer.contains(e.target)) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  mobileMenu.addEventListener('touchmove', (e) => {
+    if (drawer && !drawer.contains(e.target)) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  // Close on Escape key press
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isMenuOpen) {
+      closeMenu();
+    }
+  });
+
+  // Close menu if resized to desktop breakpoint
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1280 && isMenuOpen) {
+      closeMenu();
+    }
+  });
+
+  // Close menu when tapping any navigation link inside the drawer
+  const navLinks = mobileMenu.querySelectorAll('a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      closeMenu();
+    });
+  });
 }
 
 
