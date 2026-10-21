@@ -151,14 +151,14 @@
 
       <!-- Social Logins -->
       <div class="grid grid-cols-2 gap-4">
-        <button type="button" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-darknavy hover:bg-gray-50 dark:hover:bg-darknavy-light transition text-xs font-bold text-gray-700 dark:text-gray-200">
+        <a href="https://accounts.google.com/" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-darknavy hover:bg-gray-50 dark:hover:bg-darknavy-light transition text-xs font-bold text-gray-700 dark:text-gray-200 shadow-xs">
           <i class="bi bi-google text-sm text-[#4285F4]"></i>
           Google
-        </button>
-        <button type="button" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-darknavy hover:bg-gray-50 dark:hover:bg-darknavy-light transition text-xs font-bold text-gray-700 dark:text-gray-200">
+        </a>
+        <a href="https://appleid.apple.com/" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-darknavy hover:bg-gray-50 dark:hover:bg-darknavy-light transition text-xs font-bold text-gray-700 dark:text-gray-200 shadow-xs">
           <i class="bi bi-apple text-sm"></i>
           Apple ID
-        </button>
+        </a>
       </div>
 
       <!-- Footer Link -->
@@ -177,6 +177,7 @@
           <input type="text" id="register-name" minlength="2" placeholder="Eleanor Jenkins" class="w-full bg-white dark:bg-darknavy-deep text-black dark:text-white border border-gray-200 dark:border-gray-850 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-magenta transition">
           <i class="bi bi-person absolute right-3.5 rtl:left-3.5 rtl:right-auto top-3 text-gray-400 pointer-events-none text-sm"></i>
         </div>
+        <p class="text-[11px] text-red-500 font-bold hidden mt-1" id="errRegisterName">Name must contain letters only (numbers are not allowed).</p>
       </div>
 
       <div class="space-y-1">
@@ -218,6 +219,25 @@
       <button type="submit" class="w-full bg-magenta hover:bg-magenta-hover active:scale-[0.98] text-white py-3.5 rounded-xl font-bold shadow-md shadow-magenta/20 transition uppercase tracking-wider text-xs">
         Create Parent Account
       </button>
+
+      <!-- Divider -->
+      <div class="relative flex py-2 items-center">
+        <div class="flex-grow border-t border-gray-150 dark:border-gray-850"></div>
+        <span class="flex-shrink mx-4 text-gray-400 dark:text-gray-500 text-[10px] font-extrabold tracking-widest uppercase">Or sign up with</span>
+        <div class="flex-grow border-t border-gray-150 dark:border-gray-850"></div>
+      </div>
+
+      <!-- Social Logins -->
+      <div class="grid grid-cols-2 gap-4">
+        <a href="https://accounts.google.com/" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-darknavy hover:bg-gray-50 dark:hover:bg-darknavy-light transition text-xs font-bold text-gray-700 dark:text-gray-200 shadow-xs">
+          <i class="bi bi-google text-sm text-[#4285F4]"></i>
+          Google
+        </a>
+        <a href="https://appleid.apple.com/" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-darknavy hover:bg-gray-50 dark:hover:bg-darknavy-light transition text-xs font-bold text-gray-700 dark:text-gray-200 shadow-xs">
+          <i class="bi bi-apple text-sm"></i>
+          Apple ID
+        </a>
+      </div>
 
       <!-- Footer Link -->
       <div class="text-center pt-2">
@@ -266,13 +286,87 @@
       }
     }
 
-    // Completely dummy forms: no alerts, no messages, no navigation
+    // Real-time name input validation: block and strip numbers immediately
+    const registerNameInput = document.getElementById('register-name');
+    const errRegisterName = document.getElementById('errRegisterName');
+
+    if (registerNameInput) {
+      registerNameInput.addEventListener('input', function() {
+        const originalVal = this.value;
+        const cleanVal = originalVal.replace(/[0-9]/g, '');
+        if (originalVal !== cleanVal) {
+          this.value = cleanVal;
+          if (errRegisterName) errRegisterName.classList.remove('hidden');
+        } else {
+          if (errRegisterName && !/[0-9]/.test(this.value)) {
+            errRegisterName.classList.add('hidden');
+          }
+        }
+      });
+      registerNameInput.addEventListener('blur', function() {
+        if (/[0-9]/.test(this.value)) {
+          this.value = this.value.replace(/[0-9]/g, '');
+        }
+        if (errRegisterName) errRegisterName.classList.add('hidden');
+      });
+    }
+
+    // Login Form Submit: Validate & redirect to dashboard
     document.getElementById('login-form').addEventListener('submit', function(e) {
       e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const pass = document.getElementById('login-password').value;
+      if (!email || !pass) {
+        if (window.showToast) window.showToast('Please enter your email and password.');
+        return;
+      }
+      if (window.showToast) window.showToast('Welcome back! Redirecting to Parent Portal...');
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 500);
     });
 
+    // Register Form Submit: Validate name (letters only), email, password & redirect
     document.getElementById('register-form').addEventListener('submit', function(e) {
       e.preventDefault();
+      const name = registerNameInput ? registerNameInput.value.trim() : '';
+      const email = document.getElementById('register-email').value.trim();
+      const pass = document.getElementById('register-password').value;
+      const confirmPass = document.getElementById('register-confirm-password').value;
+      const agree = document.getElementById('register-agree').checked;
+
+      if (!name || name.length < 2 || /[0-9]/.test(name)) {
+        if (errRegisterName) errRegisterName.classList.remove('hidden');
+        if (registerNameInput) registerNameInput.focus();
+        return;
+      }
+      if (errRegisterName) errRegisterName.classList.add('hidden');
+
+      if (!email || !email.includes('@')) {
+        if (window.showToast) window.showToast('Please enter a valid email address.');
+        return;
+      }
+
+      if (!pass || pass.length < 8) {
+        if (window.showToast) window.showToast('Password must be at least 8 characters.');
+        return;
+      }
+
+      if (pass !== confirmPass) {
+        if (window.showToast) window.showToast('Passwords do not match.');
+        return;
+      }
+
+      if (!agree) {
+        if (window.showToast) window.showToast('Please agree to the Community Guidelines & Handbook.');
+        return;
+      }
+
+      localStorage.setItem('userName', name);
+      if (window.showToast) window.showToast('Account created successfully! Redirecting...');
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 500);
     });
   </script>
   <script src="assets/js/main.js"></script>

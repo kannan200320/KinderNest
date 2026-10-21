@@ -99,6 +99,20 @@ header .group:not(a.group):hover,
   animation: none !important;
 }
 
+/* Footer header row alignment with brand logo */
+footer .space-y-4 > h4 {
+  min-height: 2.5rem; /* 40px, matching logo height */
+  display: flex;
+  align-items: center;
+  margin-top: 0 !important;
+}
+footer .space-y-4 > a:first-child {
+  min-height: 2.5rem; /* 40px */
+  display: flex;
+  align-items: center;
+}
+
+
 /* Hover effects for links in dark mode */
 .dark a[href*="program-"]:hover,
 .dark a[href*="blog-details-"]:hover,
@@ -1057,6 +1071,47 @@ body.mobile-menu-open {
   -webkit-overflow-scrolling: touch !important;
   touch-action: pan-y !important;
 }
+
+/* ==============================================================
+   768px Tablet View: Home 2 Feedback Testimonials Alignment
+   ============================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .home2-feedback-quote {
+    min-height: 11.5rem !important;
+    height: 11.5rem !important;
+    display: flex !important;
+    align-items: flex-start !important;
+  }
+  .home2-feedback-author {
+    height: 4rem !important;
+    min-height: 4rem !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+}
+
+/* ==============================================================
+   Programs Page (services.html) - Parent Portal Cards Spacing & Alignment
+   ============================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .program-portal-title {
+    height: 3.25rem !important;
+    min-height: 3.25rem !important;
+    display: flex !important;
+    align-items: flex-start !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .program-portal-title {
+    height: 2.25rem !important;
+    min-height: 2.25rem !important;
+    display: flex !important;
+    align-items: flex-start !important;
+  }
+}
+
+
 
 
 

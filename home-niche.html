@@ -213,8 +213,8 @@
 
   <!-- ================= 1. HERO SECTION ================= -->
   <section id="hero" class="relative overflow-hidden bg-white dark:bg-black py-28 lg:py-40 text-black dark:text-white border-b border-gray-150 dark:border-gray-900 transition-colors duration-300">
-    <div class="absolute inset-0 bg-cover bg-center opacity-50 dark:opacity-60" style="background-image: url('assets/images/home2-hero-bg.jpg');"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent dark:from-black dark:via-black/60 dark:to-transparent"></div>
+    <div class="absolute inset-0 bg-cover bg-center opacity-85 dark:opacity-80 pointer-events-none transition-opacity duration-300" style="background-image: url('assets/images/home2-hero-bg.jpg');"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-white/75 via-white/55 to-white/85 dark:from-black/80 dark:via-black/60 dark:to-black/85 pointer-events-none"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6 flex flex-col items-center text-center">
       <span class="inline-block bg-magenta text-white font-extrabold text-xs px-4 py-2 rounded-full tracking-widest uppercase shadow-sm">
@@ -253,13 +253,13 @@
           </p>
           <div class="grid sm:grid-cols-2 gap-4 pt-4 border-t border-gray-150 dark:border-gray-800">
             <div class="p-5 bg-gray-50 dark:bg-darknavy rounded-2xl border border-gray-150 dark:border-gray-800 flex flex-col justify-between h-full">
-              <div>
+              <div class="min-w-0">
                 <h4 class="font-bold text-magenta text-base">Practical Botany</h4>
                 <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">Daily watering, composting, propagating cuttings, and harvesting organic herbs.</p>
               </div>
             </div>
             <div class="p-5 bg-gray-50 dark:bg-darknavy rounded-2xl border border-gray-150 dark:border-gray-800 flex flex-col justify-between h-full">
-              <div>
+              <div class="min-w-0">
                 <h4 class="font-bold text-magenta text-base">Sensorial Natural Craft</h4>
                 <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">Carving soft cedar, botanical watercolor pressings, and natural stone mosaics.</p>
               </div>
@@ -350,21 +350,21 @@
           <div class="space-y-6">
             <div class="flex gap-4">
               <div class="w-8 h-8 rounded-full bg-magenta/10 text-magenta flex items-center justify-center shrink-0 mt-1 font-bold">✔</div>
-              <div>
+              <div class="min-w-0">
                 <h5 class="font-bold text-black dark:text-white">All-Weather Outdoor Work Cycles</h5>
                 <p class="text-xs text-gray-500 mt-1">Rain or shine, children experience seasonal transitions with appropriate gear, developing physical resilience and sensory awareness.</p>
               </div>
             </div>
             <div class="flex gap-4">
               <div class="w-8 h-8 rounded-full bg-magenta/10 text-magenta flex items-center justify-center shrink-0 mt-1 font-bold">✔</div>
-              <div>
+              <div class="min-w-0">
                 <h5 class="font-bold text-black dark:text-white">Safety-Trained Naturalist Guides</h5>
                 <p class="text-xs text-gray-500 mt-1">Our guides are wilderness first-aid certified and specialize in gentle, respectful risk management that empowers confidence.</p>
               </div>
             </div>
             <div class="flex gap-4">
               <div class="w-8 h-8 rounded-full bg-magenta/10 text-magenta flex items-center justify-center shrink-0 mt-1 font-bold">✔</div>
-              <div>
+              <div class="min-w-0">
                 <h5 class="font-bold text-black dark:text-white">Deep Concentration Without Over-Stimulation</h5>
                 <p class="text-xs text-gray-500 mt-1">Replacing screens and plastic flashing toys with natural stones, clean timber, and real earth fosters lasting peace of mind.</p>
               </div>
@@ -389,14 +389,16 @@
         <!-- Testimonial 1 -->
         <div class="group bg-white dark:bg-black-deep p-8 rounded-3xl border border-gray-155 dark:border-gray-800 shadow-sm relative flex flex-col justify-between h-full hover:border-magenta hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-magenta/20 transition duration-300">
           <span class="text-magenta text-5xl font-serif absolute right-6 top-6 opacity-20 group-hover:opacity-40 group-hover:scale-110 transition duration-300">“</span>
-          <p class="text-sm text-gray-650 dark:text-gray-300 italic leading-relaxed min-h-[5.5rem] flex-grow">
+          <div class="home2-feedback-quote md:min-h-[11.5rem] flex items-start">
+            <p class="text-sm text-gray-650 dark:text-gray-300 italic leading-relaxed">
             "The botanical pod has given our son a profound connection to nature. He comes home telling us about earthworm aeration, naming tree species by their bark, and displaying an inner stillness we had never seen before."
           </p>
-          <div class="flex items-center gap-3.5 mt-auto pt-4 border-t border-gray-150 dark:border-gray-800">
+          </div>
+          <div class="home2-feedback-author flex items-center gap-3.5 mt-auto pt-4 border-t border-gray-150 dark:border-gray-800 min-h-[4rem] h-16 shrink-0">
             <img src="assets/images/avatars/avatar-parent-2.jpg" alt="Marcus T." class="w-11 h-11 rounded-full object-cover border-2 border-magenta/40 shadow-sm shrink-0">
-            <div>
-              <h6 class="font-bold text-black dark:text-white text-sm">Marcus T.</h6>
-              <span class="text-[10px] text-gray-400 uppercase font-extrabold">Parent of Julian (Nature Pod, Age 5)</span>
+            <div class="min-w-0">
+              <h6 class="font-bold text-black dark:text-white text-sm leading-tight">Marcus T.</h6>
+              <span class="text-[9.5px] sm:text-[10px] text-gray-400 uppercase font-extrabold tracking-tight block truncate">Parent of Julian (Nature Pod, Age 5)</span>
             </div>
           </div>
         </div>
@@ -404,14 +406,16 @@
         <!-- Testimonial 2 -->
         <div class="group bg-white dark:bg-black-deep p-8 rounded-3xl border border-gray-155 dark:border-gray-800 shadow-sm relative flex flex-col justify-between h-full hover:border-magenta hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-magenta/20 transition duration-300">
           <span class="text-magenta text-5xl font-serif absolute right-6 top-6 opacity-20 group-hover:opacity-40 group-hover:scale-110 transition duration-300">“</span>
-          <p class="text-sm text-gray-650 dark:text-gray-300 italic leading-relaxed min-h-[5.5rem] flex-grow">
+          <div class="home2-feedback-quote md:min-h-[11.5rem] flex items-start">
+            <p class="text-sm text-gray-650 dark:text-gray-300 italic leading-relaxed">
             "We were looking for an alternative to noisy daycare centers. KinderNest's garden pod is peaceful, clean, and filled with gentle joy. Watching the children cooperatively peel organic carrots for snack is priceless."
           </p>
-          <div class="flex items-center gap-3.5 mt-auto pt-4 border-t border-gray-150 dark:border-gray-800">
+          </div>
+          <div class="home2-feedback-author flex items-center gap-3.5 mt-auto pt-4 border-t border-gray-150 dark:border-gray-800 min-h-[4rem] h-16 shrink-0">
             <img src="assets/images/avatars/avatar-parent-1.jpg" alt="Elena V." class="w-11 h-11 rounded-full object-cover border-2 border-magenta/40 shadow-sm shrink-0">
-            <div>
-              <h6 class="font-bold text-black dark:text-white text-sm">Elena V.</h6>
-              <span class="text-[10px] text-gray-400 uppercase font-extrabold">Parent of Maya (Children's House, Age 4)</span>
+            <div class="min-w-0">
+              <h6 class="font-bold text-black dark:text-white text-sm leading-tight">Elena V.</h6>
+              <span class="text-[9.5px] sm:text-[10px] text-gray-400 uppercase font-extrabold tracking-tight block truncate">Parent of Maya (Children's House, Age 4)</span>
             </div>
           </div>
         </div>
@@ -598,7 +602,7 @@
           </p>
           <div class="mt-auto flex items-center space-x-3 rtl:space-x-reverse pt-4 border-t border-gray-150 dark:border-gray-800 min-h-[3.5rem]">
             <img src="assets/images/avatars/avatar-parent-3.jpg" alt="Maya & Rohan S." class="w-11 h-11 rounded-full object-cover border-2 border-magenta/40 shadow-sm shrink-0">
-            <div>
+            <div class="min-w-0">
               <h4 class="font-bold text-sm text-black dark:text-white">Maya & Rohan S.</h4>
               <span class="text-[10px] text-gray-400">Parents of Kabir (Age 5)</span>
             </div>
@@ -611,7 +615,7 @@
           </p>
           <div class="mt-auto flex items-center space-x-3 rtl:space-x-reverse pt-4 border-t border-gray-150 dark:border-gray-800 min-h-[3.5rem]">
             <img src="assets/images/avatars/avatar-parent-2.jpg" alt="Thomas & Lisa K." class="w-11 h-11 rounded-full object-cover border-2 border-emerald-500/40 shadow-sm shrink-0">
-            <div>
+            <div class="min-w-0">
               <h4 class="font-bold text-sm text-black dark:text-white">Thomas & Lisa K.</h4>
               <span class="text-[10px] text-gray-400">Parents of Zoe (Age 7)</span>
             </div>
@@ -624,7 +628,7 @@
           </p>
           <div class="mt-auto flex items-center space-x-3 rtl:space-x-reverse pt-4 border-t border-gray-150 dark:border-gray-800 min-h-[3.5rem]">
             <img src="assets/images/avatars/avatar-parent-1.jpg" alt="Elena & Gregory B." class="w-11 h-11 rounded-full object-cover border-2 border-amber-500/40 shadow-sm shrink-0">
-            <div>
+            <div class="min-w-0">
               <h4 class="font-bold text-sm text-black dark:text-white">Elena & Gregory B.</h4>
               <span class="text-[10px] text-gray-400">Parents of Nora (Age 3.5)</span>
             </div>
@@ -733,7 +737,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pt-12 text-sm text-gray-600 dark:text-gray-300">
         <div class="space-y-4">
-          <a href="index.html" class="flex items-center space-x-2 rtl:space-x-reverse">
+            <a href="index.html" class="flex items-center space-x-2 rtl:space-x-reverse">
             <span class="w-10 h-10 rounded-full bg-magenta flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-magenta/30">K</span>
             <span class="text-xl font-bold tracking-tight text-darknavy dark:text-white">Kinder<span class="text-magenta">Nest</span></span>
           </a>
