@@ -94,12 +94,12 @@
             </div>
           </div>
 
-          <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">About Us</a>
-          <a href="services.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Programs</a>
-          <a href="service-details.html" class="text-magenta font-semibold py-2 transition-colors duration-200">Curriculum</a>
+          <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200 whitespace-nowrap">About Us</a>
+          <a href="services.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200 whitespace-nowrap">Programs</a>
+          <a href="service-details.html" class="text-magenta font-semibold py-2 transition-colors duration-200 whitespace-nowrap">Curriculum</a>
           
           <div class="relative group">
-            <button class="dropdown-toggle flex items-center space-x-1 rtl:space-x-reverse text-gray-700 dark:text-gray-300 hover:text-magenta py-2 font-semibold transition-colors duration-200">
+            <button class="dropdown-toggle flex items-center space-x-1 rtl:space-x-reverse text-gray-700 dark:text-gray-300 hover:text-magenta py-2 font-semibold transition-colors duration-200 whitespace-nowrap">
               <span>Explore</span>
               <svg class="w-4 h-4 text-gray-400 group-hover:text-magenta transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
@@ -111,9 +111,9 @@
             </div>
           </div>
           
-          <a href="blog.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Blog</a>
-          <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Contact</a>
-          <a href="dashboard.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200">Dashboard</a>
+          <a href="blog.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200 whitespace-nowrap">Blog</a>
+          <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200 whitespace-nowrap">Contact</a>
+          <a href="dashboard.html" class="text-gray-700 dark:text-gray-300 hover:text-magenta font-semibold transition-colors duration-200 whitespace-nowrap">Dashboard</a>
         </nav>
 
         <!-- Utility Toggles & Button -->
@@ -127,7 +127,8 @@
             <span class="rtl-text">RTL</span>
           </button>
 
-          <a href="login-register.html" class="bg-magenta hover:bg-magenta-hover text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-magenta/20 transition duration-150 text-sm">Sign In</a>
+          <a href="contact.html" class="bg-magenta hover:bg-magenta-hover text-white px-5 py-2.5 rounded-full font-bold shadow-md shadow-magenta/20 transition duration-150 text-sm whitespace-nowrap">Book a Tour</a>
+          <a href="login-register.html" class="nav-signin-btn px-4 py-2 rounded-full border-2 border-magenta bg-magenta/10 dark:bg-magenta/20 text-magenta dark:text-white hover:bg-magenta hover:text-white text-sm font-bold transition duration-150 whitespace-nowrap shadow-xs">Sign In</a>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -190,8 +191,10 @@
       </div>
 
       <div class="space-y-4">
-        <div class="pt-4 border-t border-gray-150 dark:border-gray-800">
-          <a href="login-register.html" class="block w-full text-center bg-magenta hover:bg-magenta-hover text-white py-3.5 rounded-xl font-bold shadow transition text-sm">Sign In</a>
+        <!-- Mobile Drawer CTA Buttons -->
+        <div class="pt-4 border-t border-gray-150 dark:border-gray-800 space-y-2">
+          <a href="contact.html" class="block w-full text-center bg-magenta hover:bg-magenta-hover text-white py-3 rounded-xl font-bold shadow transition text-sm mb-2">Book a Tour</a>
+          <a href="login-register.html" class="block w-full text-center border-2 border-magenta bg-magenta/10 dark:bg-magenta/20 text-magenta dark:text-white hover:bg-magenta hover:text-white py-2.5 rounded-xl font-bold transition text-sm">Sign In / Parent Portal</a>
         </div>
 
         <div class="flex justify-between items-center pt-4 border-t border-gray-150 dark:border-gray-800">
@@ -210,7 +213,7 @@
 
   <!-- ================= BREADCRUMB COVER IMAGE ================= -->
   <section class="relative pt-32 pb-24 bg-cover bg-center text-white overflow-hidden" style="background-image: url('assets/images/curriculum-hero-bg.jpg');">
-    <div class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/50 to-black/70 dark:from-black/85 dark:via-black/75 dark:to-darknavy-deep/95"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/50 to-black/70 dark:from-black/60 dark:via-black/45 dark:to-darknavy-deep/75"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 z-10">
       <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight drop-shadow-sm">Montessori Curriculum Areas</h1>
       <p class="text-white font-medium sm:font-semibold max-w-2xl mx-auto font-sans leading-relaxed text-base sm:text-lg md:text-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">A comprehensive look at the five interconnected learning areas: Practical Life, Sensorial, Math, Language, and Culture.</p>
@@ -220,56 +223,113 @@
   <!-- ================= DETAILS LAYOUT ================= -->
   <section class="py-20 bg-white dark:bg-black-deep">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-3 gap-12">
+      <!-- Curriculum Intro & Sidebar Card -->
+      <div class="grid lg:grid-cols-3 gap-12 items-start">
         
         <!-- Main Description -->
         <div class="lg:col-span-2 space-y-8">
           <img src="assets/images/curriculum-self-correcting.jpg" alt="The Self-Correcting Architecture of Montessori Learning" class="w-full h-96 object-cover rounded-3xl shadow-xl">
           
           <h2 class="text-3xl font-extrabold text-black dark:text-white">The Self-Correcting Architecture of Montessori Learning</h2>
-          <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-base sm:text-lg">
             In an authentic Montessori pod, the curriculum is not presented as abstract lectures or forced homework worksheets. Instead, learning materializes through concrete, scientifically designed sensorial apparatus with a built-in <em>control of error</em>. Children discover solutions through their own hands, developing supreme analytical self-confidence and uninterrupted focus.
           </p>
+        </div>
 
-          <h3 class="text-2xl font-bold text-black dark:text-white pt-4">The Five Foundation Areas</h3>
-          <div class="grid sm:grid-cols-2 gap-4">
-            
+        <!-- Sidebar Details Card -->
+        <div class="space-y-6">
+          <div class="bg-gray-50 dark:bg-darknavy p-8 rounded-3xl border border-gray-150 dark:border-gray-800 space-y-6 shadow-sm">
+            <h3 class="font-bold text-2xl text-black dark:text-white">Curriculum Overview</h3>
+            <hr class="border-gray-200 dark:border-gray-800">
+            <div class="space-y-3 text-sm text-gray-600 dark:text-gray-300">
+              <div class="flex justify-between">
+                <span>Standard</span>
+                <strong class="text-black dark:text-white">AMI / AMS Aligned</strong>
+              </div>
+              <div class="flex justify-between">
+                <span>Daily Work Cycle</span>
+                <strong class="text-black dark:text-white">3 Hours Uninterrupted</strong>
+              </div>
+              <div class="flex justify-between">
+                <span>Guide Ratio</span>
+                <strong class="text-black dark:text-white">1:5 Ratio</strong>
+              </div>
+              <div class="flex justify-between">
+                <span>Materials</span>
+                <strong class="text-black dark:text-white">Nienhuis Beechwood</strong>
+              </div>
+              <div class="flex justify-between">
+                <span>Assessments</span>
+                <strong class="text-black dark:text-white">Continuous Portfolios</strong>
+              </div>
+            </div>
+            <hr class="border-gray-200 dark:border-gray-800">
+            <a href="login-register.html" class="block w-full bg-magenta hover:bg-magenta-hover text-white text-center py-4 rounded-xl font-bold transition shadow-md shadow-magenta/20">Book a Pod Observation</a>
+          </div>
+
+          <!-- Quick Testimonial -->
+          <div class="bg-magenta/5 border border-magenta/15 p-6 rounded-3xl space-y-4">
+            <p class="text-xs text-magenta font-extrabold uppercase tracking-wide">Parent Observation</p>
+            <p class="text-sm italic text-gray-600 dark:text-gray-300">
+              "Seeing our 4-year-old comfortably add 4-digit numbers with golden beads proved to us that Montessori concrete math truly works wonders."
+            </p>
+            <p class="text-xs font-bold text-black dark:text-white">- Rebecca M., Primary Pod Parent</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================= THE FIVE FOUNDATION AREAS & FAQ (CENTERED) ================= -->
+      <div class="mt-20 pt-16 border-t border-gray-150 dark:border-gray-800 space-y-20 max-w-5xl mx-auto">
+        
+        <!-- The Five Foundation Areas -->
+        <div class="space-y-8">
+          <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h3 class="text-3xl font-extrabold text-black dark:text-white">The Five Foundation Areas</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Five interconnected areas of development across every Montessori classroom.</p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4 sm:gap-6">
             <!-- Area 1: Practical Life -->
-            <div class="bg-gray-50 dark:bg-darknavy p-5 rounded-2xl border border-gray-150 dark:border-gray-800">
+            <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-2xl border border-gray-150 dark:border-gray-800 text-center flex flex-col items-center justify-center hover:border-magenta/30 transition">
               <h4 class="font-bold text-magenta mb-2">1. Practical Life (Independence)</h4>
-              <p class="text-xs text-gray-500 dark:text-gray-400">Pouring liquids, spooning grains, buttoning, sweeping, polishing copper, preparing fresh snacks, and social grace & courtesy.</p>
+              <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Pouring liquids, spooning grains, buttoning, sweeping, polishing copper, preparing fresh snacks, and social grace & courtesy.</p>
             </div>
 
             <!-- Area 2: Sensorial -->
-            <div class="bg-gray-50 dark:bg-darknavy p-5 rounded-2xl border border-gray-150 dark:border-gray-800">
+            <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-2xl border border-gray-150 dark:border-gray-800 text-center flex flex-col items-center justify-center hover:border-magenta/30 transition">
               <h4 class="font-bold text-magenta mb-2">2. Sensorial (Dimensions & Senses)</h4>
-              <p class="text-xs text-gray-500 dark:text-gray-400">Pink Tower, broad brown stairs, knobbed cylinder blocks, baric tablets, color gradient boxes, and geometric cabinet forms.</p>
+              <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Pink Tower, broad brown stairs, knobbed cylinder blocks, baric tablets, color gradient boxes, and geometric cabinet forms.</p>
             </div>
 
             <!-- Area 3: Mathematics -->
-            <div class="bg-gray-50 dark:bg-darknavy p-5 rounded-2xl border border-gray-150 dark:border-gray-800">
+            <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-2xl border border-gray-150 dark:border-gray-800 text-center flex flex-col items-center justify-center hover:border-magenta/30 transition">
               <h4 class="font-bold text-magenta mb-2">3. Mathematics (Concrete to Abstract)</h4>
-              <p class="text-xs text-gray-500 dark:text-gray-400">Golden beads decimal system, spindle boxes, teens and tens boards, stamp game, bead chains, and geometric fractions.</p>
+              <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Golden beads decimal system, spindle boxes, teens and tens boards, stamp game, bead chains, and geometric fractions.</p>
             </div>
 
             <!-- Area 4: Language & Phonetics -->
-            <div class="bg-gray-50 dark:bg-darknavy p-5 rounded-2xl border border-gray-150 dark:border-gray-800">
+            <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-2xl border border-gray-150 dark:border-gray-800 text-center flex flex-col items-center justify-center hover:border-magenta/30 transition">
               <h4 class="font-bold text-magenta mb-2">4. Language (Phonetics & Reading)</h4>
-              <p class="text-xs text-gray-500 dark:text-gray-400">Tactile sandpaper phonogram letters, metal insets for pre-writing control, large movable alphabet, and rich nomenclature cards.</p>
+              <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Tactile sandpaper phonogram letters, metal insets for pre-writing control, large movable alphabet, and rich nomenclature cards.</p>
             </div>
 
             <!-- Area 5: Cultural & Science -->
-            <div class="bg-gray-50 dark:bg-darknavy p-5 rounded-2xl border border-gray-150 dark:border-gray-800 sm:col-span-2">
+            <div class="bg-gray-50 dark:bg-darknavy p-6 rounded-2xl border border-gray-150 dark:border-gray-800 sm:col-span-2 text-center flex flex-col items-center justify-center hover:border-magenta/30 transition">
               <h4 class="font-bold text-magenta mb-2">5. Cultural Studies, Botany & Cosmic Science</h4>
-              <p class="text-xs text-gray-500 dark:text-gray-400">Continental puzzle maps, land and water forms, botanical leaf cabinet, animal kingdom classification, solar system planets, and history timelines.</p>
+              <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Continental puzzle maps, land and water forms, botanical leaf cabinet, animal kingdom classification, solar system planets, and history timelines.</p>
             </div>
+          </div>
+        </div>
 
+        <!-- Frequently Asked Questions -->
+        <div class="space-y-6">
+          <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h3 class="text-3xl font-extrabold text-black dark:text-white">Frequently Asked Questions</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Everything you need to know about our pedagogy, materials, and daily routines.</p>
           </div>
 
-          <!-- FAQ Accordion -->
-          <h3 class="text-2xl font-bold text-black dark:text-white pt-8">Frequently Asked Questions</h3>
           <div class="space-y-4">
-            
             <div class="border border-gray-200 dark:border-gray-800 rounded-xl p-5 bg-gray-50 dark:bg-darknavy">
               <h4 class="font-bold text-black dark:text-white flex justify-between cursor-pointer" onclick="this.nextElementSibling.classList.toggle('hidden')">
                 <span>How does a child transition from concrete beads to abstract math?</span>
@@ -299,49 +359,6 @@
                 Parents have 24/7 access to our custom Parent Portal Dashboard. Lead guides log weekly presentations, photo milestones of your child working with specific apparatus, and narrative developmental reflections.
               </p>
             </div>
-
-          </div>
-
-        </div>
-
-        <!-- Sidebar Details Card -->
-        <div class="space-y-6">
-          <div class="bg-gray-50 dark:bg-darknavy p-8 rounded-3xl border border-gray-150 dark:border-gray-800 space-y-6">
-            <h3 class="font-bold text-2xl text-black dark:text-white">Curriculum Overview</h3>
-            <hr class="border-gray-200 dark:border-gray-800">
-            <div class="space-y-3 text-sm text-gray-600 dark:text-gray-300">
-              <div class="flex justify-between">
-                <span>Standard</span>
-                <strong class="text-black dark:text-white">AMI / AMS Aligned</strong>
-              </div>
-              <div class="flex justify-between">
-                <span>Daily Work Cycle</span>
-                <strong class="text-black dark:text-white">3 Hours Uninterrupted</strong>
-              </div>
-              <div class="flex justify-between">
-                <span>Guide Ratio</span>
-                <strong class="text-black dark:text-white">1:5 Ratio</strong>
-              </div>
-              <div class="flex justify-between">
-                <span>Materials</span>
-                <strong class="text-black dark:text-white">Nienhuis Beechwood</strong>
-              </div>
-              <div class="flex justify-between">
-                <span>Assessments</span>
-                <strong class="text-black dark:text-white">Continuous Portfolios</strong>
-              </div>
-            </div>
-            <hr class="border-gray-200 dark:border-gray-800">
-            <a href="login-register.html" class="block w-full bg-magenta hover:bg-magenta-hover text-white text-center py-4 rounded-xl font-bold transition">Book a Pod Observation</a>
-          </div>
-
-          <!-- Quick Testimonial -->
-          <div class="bg-magenta/5 border border-magenta/15 p-6 rounded-3xl space-y-4">
-            <p class="text-xs text-magenta font-extrabold uppercase tracking-wide">Parent Observation</p>
-            <p class="text-sm italic text-gray-600 dark:text-gray-300">
-              "Seeing our 4-year-old comfortably add 4-digit numbers with golden beads proved to us that Montessori concrete math truly works wonders."
-            </p>
-            <p class="text-xs font-bold text-black dark:text-white">- Rebecca M., Primary Pod Parent</p>
           </div>
         </div>
 
@@ -668,13 +685,13 @@
           <path d="M50 0 C70 30 100 50 100 100 C50 100 30 70 0 50 C30 50 50 30 50 0 Z"/>
         </svg>
 
-        <div class="max-w-3xl space-y-6 relative z-10">
+        <div class="max-w-3xl mx-auto text-center space-y-6 relative z-10 flex flex-col items-center">
           <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur text-xs font-bold uppercase tracking-widest">See the Materials Firsthand</span>
-          <h2 class="text-3xl sm:text-5xl font-extrabold leading-tight">Witness the Beauty of Our Prepared Shelves</h2>
-          <p class="text-sm sm:text-base text-white/90 leading-relaxed max-w-2xl">
+          <h2 class="text-3xl sm:text-5xl font-extrabold leading-tight text-center">Witness the Beauty of Our Prepared Shelves</h2>
+          <p class="text-sm sm:text-base text-white/90 leading-relaxed max-w-2xl mx-auto text-center">
             Schedule a quiet morning observation tour to see how our materials invite children into hours of joyful, self-directed learning.
           </p>
-          <div class="pt-4 flex flex-col sm:flex-row gap-4">
+          <div class="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
             <a href="contact.html" class="bg-white text-magenta hover:bg-gray-100 font-extrabold px-8 py-4 rounded-2xl text-center shadow-lg transition duration-200 text-sm">Schedule Morning Visit</a>
             <a href="services.html" class="border-2 border-white/60 hover:border-white text-white font-bold px-8 py-4 rounded-2xl text-center transition duration-200 text-sm">View Learning Pods</a>
           </div>

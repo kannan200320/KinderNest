@@ -113,7 +113,7 @@
       <div id="sidebarBackdrop" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-40 hidden md:hidden transition-opacity duration-300" onclick="closeMobileSidebar()"></div>
 
       <!-- Left Sidebar Menu -->
-      <aside id="sidebarMenu" class="fixed inset-y-0 left-0 z-50 w-72 md:w-64 shrink-0 bg-white dark:bg-darknavy border-r border-gray-200 dark:border-gray-800 p-6 flex flex-col justify-between transform -translate-x-full md:translate-x-0 md:static transition-transform duration-300 ease-in-out overflow-y-auto">
+      <aside id="sidebarMenu" class="fixed inset-y-0 left-0 z-50 w-72 md:w-60 lg:w-64 shrink-0 bg-white dark:bg-darknavy border-r border-gray-200 dark:border-gray-800 p-6 flex flex-col justify-between transform -translate-x-full md:translate-x-0 md:static transition-transform duration-300 ease-in-out overflow-y-auto">
         <div class="space-y-6">
           <!-- Mobile Sidebar Brand & Close Header (Visible only in mobile drawer) -->
           <div class="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-gray-800 md:hidden">
@@ -173,7 +173,7 @@
       </aside>
 
       <!-- Main Dashboard Panel -->
-      <main class="flex-grow p-4 pt-5 sm:p-6 md:p-8 relative bg-white dark:bg-darknavy-deep overflow-y-auto overflow-x-hidden w-full max-w-full">
+      <main class="flex-grow p-4 pt-5 sm:p-5 md:p-6 lg:p-8 relative bg-white dark:bg-darknavy-deep overflow-y-auto overflow-x-hidden w-full max-w-full">
         
         <!-- Skeleton Loader Screen -->
         <div id="skeleton-loader" class="space-y-6">
@@ -196,41 +196,74 @@
               </div>
             </div>
             
+            <!-- Welcome Note Banner -->
+            <div class="relative bg-gradient-to-r from-magenta/10 via-honey-500/10 to-sage-500/10 dark:from-magenta/20 dark:via-darknavy-light dark:to-sage-600/20 border border-magenta/20 dark:border-magenta/30 rounded-2xl p-5 sm:p-6 overflow-hidden shadow-xs">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xl">☀️</span>
+                    <h3 class="text-lg sm:text-xl font-bold text-black dark:text-white">Welcome back, Eleanor Jenkins!</h3>
+                  </div>
+                  <p class="text-xs sm:text-sm text-gray-650 dark:text-gray-300 leading-relaxed max-w-2xl">
+                    Emily and Liam are currently in their 3-hour morning work cycle. You have <strong>1 pending observation report</strong> from Guide Marianne and this month's tuition reminder.
+                  </p>
+                </div>
+                <div class="flex items-center gap-2.5 shrink-0">
+                  <button onclick="switchTab('attendance', document.querySelectorAll('.tab-btn')[2])" class="px-4 py-2 bg-magenta hover:bg-magenta-hover text-white text-xs font-bold rounded-xl shadow-sm transition">
+                    View Today's Journal
+                  </button>
+                </div>
+              </div>
+            </div>
+
             <!-- Quick Stats -->
-            <div class="grid sm:grid-cols-3 gap-6">
-              <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 flex items-center justify-between">
-                <div>
-                  <h4 class="text-gray-400 text-xs font-bold uppercase">Enrolled Children</h4>
-                  <p class="text-3xl font-extrabold text-magenta mt-2">3 Active</p>
+            <div class="overview-stats-grid grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 lg:gap-6">
+              
+              <!-- Stat Card 1 -->
+              <div class="overview-stat-card bg-gray-50 dark:bg-darknavy p-3.5 sm:p-4 lg:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 flex flex-col justify-between">
+                <div class="overview-stat-header flex items-start justify-between gap-1.5 w-full">
+                  <h4 class="text-gray-400 text-[10px] sm:text-xs font-bold uppercase tracking-tight">Enrolled Children</h4>
+                  <div class="overview-stat-icon w-8 h-8 sm:w-9 sm:h-9 lg:w-12 lg:h-12 rounded-xl bg-magenta/10 flex items-center justify-center text-magenta shrink-0">
+                    <svg class="w-4 h-4 sm:w-4.5 sm:h-4.5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                  </div>
                 </div>
-                <div class="w-12 h-12 rounded-xl bg-magenta/10 flex items-center justify-center text-magenta">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                </div>
-              </div>
-              <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 flex items-center justify-between">
-                <div>
-                  <h4 class="text-gray-400 text-xs font-bold uppercase">Work Cycle Attendance</h4>
-                  <p class="text-3xl font-extrabold text-emerald-600 dark:text-emerald-400 mt-2">96%</p>
-                </div>
-                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <div class="overview-stat-body mt-2 sm:mt-2.5 lg:mt-4">
+                  <p class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-magenta leading-tight">3 Active</p>
                 </div>
               </div>
-              <div class="bg-gray-50 dark:bg-darknavy p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 flex items-center justify-between">
-                <div>
-                  <h4 class="text-gray-400 text-xs font-bold uppercase">Tuition Status</h4>
-                  <p class="text-xs font-extrabold text-amber-600 mt-3 bg-amber-100 dark:bg-amber-950/40 px-3 py-1.5 rounded-full inline-block" id="overview-billing-status">Pending Payment</p>
+
+              <!-- Stat Card 2 -->
+              <div class="overview-stat-card bg-gray-50 dark:bg-darknavy p-3.5 sm:p-4 lg:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 flex flex-col justify-between">
+                <div class="overview-stat-header flex items-start justify-between gap-1.5 w-full">
+                  <h4 class="text-gray-400 text-[10px] sm:text-xs font-bold uppercase tracking-tight">Work Attendance</h4>
+                  <div class="overview-stat-icon w-8 h-8 sm:w-9 sm:h-9 lg:w-12 lg:h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 shrink-0">
+                    <svg class="w-4 h-4 sm:w-4.5 sm:h-4.5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
                 </div>
-                <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                  </svg>
+                <div class="overview-stat-body mt-2 sm:mt-2.5 lg:mt-4">
+                  <p class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400 leading-tight">96%</p>
                 </div>
               </div>
+
+              <!-- Stat Card 3 -->
+              <div class="overview-stat-card bg-gray-50 dark:bg-darknavy p-3.5 sm:p-4 lg:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 flex flex-col justify-between">
+                <div class="overview-stat-header flex items-start justify-between gap-1.5 w-full">
+                  <h4 class="text-gray-400 text-[10px] sm:text-xs font-bold uppercase tracking-tight">Tuition Status</h4>
+                  <div class="overview-stat-icon w-8 h-8 sm:w-9 sm:h-9 lg:w-12 lg:h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 shrink-0">
+                    <svg class="w-4 h-4 sm:w-4.5 sm:h-4.5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="overview-stat-body mt-2 sm:mt-2.5 lg:mt-4">
+                  <span class="inline-block text-[10px] sm:text-xs font-extrabold text-amber-600 bg-amber-100 dark:bg-amber-950/40 px-2.5 py-1 rounded-full whitespace-nowrap" id="overview-billing-status">Pending Payment</span>
+                </div>
+              </div>
+
             </div>
 
             <!-- Detailed Grid -->

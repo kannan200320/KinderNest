@@ -1111,6 +1111,117 @@ body.mobile-menu-open {
   }
 }
 
+/* ==============================================================
+   Dark Mode Hero Image Contrast & Clarity Enhancement
+   ============================================================== */
+.dark section.bg-cover,
+.dark section#hero .bg-cover,
+.dark section.bg-cover[style*="background-image"] {
+  filter: contrast(1.1) brightness(0.98);
+}
+
+/* ==============================================================
+   768px Tablet View: Dashboard Overview Stats Container Fit & Full Visibility
+   ============================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #tab-overview .overview-stats-grid {
+    gap: 0.625rem !important;
+  }
+  #tab-overview .overview-stat-card {
+    padding: 0.75rem 0.625rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+  }
+  #tab-overview .overview-stat-header {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 0.25rem !important;
+    width: 100% !important;
+  }
+  #tab-overview .overview-stat-header h4 {
+    font-size: 0.625rem !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+    text-overflow: clip !important;
+    overflow: visible !important;
+    flex: 1 1 0% !important;
+    letter-spacing: -0.01em !important;
+  }
+  #tab-overview .overview-stat-icon {
+    width: 1.625rem !important;
+    height: 1.625rem !important;
+    border-radius: 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+  #tab-overview .overview-stat-icon svg {
+    width: 0.875rem !important;
+    height: 0.875rem !important;
+  }
+  #tab-overview .overview-stat-body {
+    margin-top: 0.375rem !important;
+    width: 100% !important;
+  }
+  #tab-overview .overview-stat-body p {
+    font-size: 1.125rem !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+  #tab-overview .overview-stat-body span#overview-billing-status {
+    font-size: 0.625rem !important;
+    padding: 0.2rem 0.45rem !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    display: inline-block !important;
+  }
+}
+
+/* ==============================================================
+   Desktop Header Navigation: Prevent Text Wrapping
+   ============================================================== */
+header nav a,
+header nav button,
+header nav .dropdown-toggle {
+  white-space: nowrap !important;
+}
+
+/* ==============================================================
+   High-Contrast Distinct Sign In Button in Header Nav
+   ============================================================== */
+.nav-signin-btn {
+  background-color: rgba(224, 122, 95, 0.12) !important;
+  border: 2px solid #E07A5F !important;
+  color: #E07A5F !important;
+  font-weight: 700 !important;
+  transition: all 0.2s ease-in-out !important;
+}
+.nav-signin-btn:hover {
+  background-color: #E07A5F !important;
+  color: #FFFFFF !important;
+  border-color: #E07A5F !important;
+  box-shadow: 0 4px 12px rgba(224, 122, 95, 0.25) !important;
+}
+.dark .nav-signin-btn {
+  background-color: rgba(224, 122, 95, 0.25) !important;
+  border: 2px solid #E07A5F !important;
+  color: #FFFFFF !important;
+}
+.dark .nav-signin-btn:hover {
+  background-color: #C85A3E !important;
+  color: #FFFFFF !important;
+  border-color: #C85A3E !important;
+  box-shadow: 0 4px 12px rgba(200, 90, 62, 0.35) !important;
+}
+
+
+
+
 
 
 
